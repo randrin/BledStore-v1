@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 .history
+.env
 .vscode
 dist
 /dist
