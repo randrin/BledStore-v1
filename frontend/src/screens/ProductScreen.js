@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LoadingBox from "../components/LoadingBox";
@@ -8,12 +8,13 @@ import { getProductById } from "../redux/actions/productActions";
 
 const ProductScreen = (props) => {
   const productId = props.match.params.productId;
+  const [qty, setQty] = useState(1)
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
   const addToCartHandler = () => {
-    // props.history.push(`/cart/${productId}?qty=${qty}`);
+    props.history.push(`/cart/${productId}?qty=${qty}`);
   };
 
   useEffect(() => {
@@ -58,6 +59,12 @@ const ProductScreen = (props) => {
             <div className="col-1">
               <div className="card card-body">
                 <ul>
+                <li>
+                    <div className="row">
+                      <div>Price</div>
+                      <div className="price">${product.price}</div>
+                    </div>
+                  </li>
                   <li>
                     <div className="row">
                       <div>Status</div>
@@ -70,6 +77,22 @@ const ProductScreen = (props) => {
                       </div>
                     </div>
                   </li>
+                  {product.countInStock > 0 && (
+                    <li>
+                      <div className="row">
+                        <div>Qty</div>
+                        <div>
+                          <select value={qty} onChange={e => setQty(e.target.value)}>
+                            {[...Array(product.countInStock).keys()].map(
+                              (x, index) => (
+                                <option key={index} value={x + 1}>{x + 1}</option>
+                              )
+                            )}
+                          </select>
+                        </div>
+                      </div>
+                    </li>
+                  )}
                   <li>
                     <button
                       onClick={addToCartHandler}
