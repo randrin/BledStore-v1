@@ -43,7 +43,7 @@ const data = {
       },
       {
         _id: "eb9c79870b474d2c85f9eff0",
-        name: "Brown Scarf",
+        name: "Brown Sweater",
         description:
           "vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes",
         category: "nisl duis bibendum felis sed",
