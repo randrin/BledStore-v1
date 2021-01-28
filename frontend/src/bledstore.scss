@@ -228,6 +228,10 @@ img.large {
 /* Alert */
 .loading {
   display: block !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
 }
 .success {
   color: #20a020;

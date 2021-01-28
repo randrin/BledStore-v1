@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Error404 from "../../components/Error404";
-import HomeScreen from "../../screens/HomeScreen";
-import ProductScreen from "../../screens/ProductScreen";
+import Error404 from "../components/Error404";
+import HomeScreen from "../screens/HomeScreen";
+import ProductScreen from "../screens/ProductScreen";
 
 const Routes = () => (
     <Switch>
