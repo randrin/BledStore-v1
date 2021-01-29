@@ -8,6 +8,7 @@ export const generateToken = (user) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      pseudo: user.pseudo,
     },
     config.JWT_SECRET,
     {

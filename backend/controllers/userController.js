@@ -19,6 +19,7 @@ export const signinUser = expressAsyncHander(async (req, res) => {
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
+        pseudo: user.pseudo,
         token: generateToken(user),
       });
       return;

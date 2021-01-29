@@ -1,14 +1,22 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { signout } from "../redux/actions/userActions";
 
 const BledStoreHeader = () => {
   const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
+  const user = useSelector((state) => state.userSignin);
 
-  useEffect(() => {
-    
-  }, [cart]);
+  const dispatch = useDispatch();
+
+  const { cartItems } = cart;
+  const { userInfo } = user;
+
+  const signoutHandler = () => {
+    dispatch(signout());
+  };
+
+  useEffect(() => {}, [cart]);
   return (
     <header className="row">
       <div>
@@ -23,9 +31,30 @@ const BledStoreHeader = () => {
             {cartItems.length > 0 ? cartItems.length : 0}
           </span>
         </Link>
-        <Link to="/signin">
-          <i className="fa fa-user-circle"></i> Sign In
-        </Link>
+        {userInfo ? (
+          <div className="dropdown">
+            <Link to="#">
+              {userInfo.pseudo} <i className="fa fa-caret-down"></i>{" "}
+            </Link>
+            <ul className="dropdown-content">
+              <li>
+                <Link to="/profile">User Profile</Link>
+              </li>
+              <li>
+                <Link to="/orderhistory">Order History</Link>
+              </li>
+              <li>
+                <Link to="#signout" onClick={signoutHandler}>
+                  Sign Out
+                </Link>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link to="/signin">
+            <i className="fa fa-user-circle"></i> Sign In
+          </Link>
+        )}
       </div>
     </header>
   );
