@@ -32,3 +32,26 @@ export const signinUser = expressAsyncHander(async (req, res) => {
     res.status(401).send({ message: "User not Found. Signup" });
   }
 });
+
+export const signupUser = expressAsyncHander(async (req, res) => {
+  const data = User({
+    pseudo: req.body.pseudo,
+    email: req.body.email,
+    name: req.body.name,
+    phone: req.body.phone,
+    password: bcrypt.hashSync(req.body.password, 8),
+  });
+  const user = await data.save();
+  if (!user) {
+    res.status(404).send({ message: "Something went wrong." });
+  } else {
+    res.status(200).send({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      pseudo: user.pseudo,
+      token: generateToken(user),
+    });
+  }
+});
