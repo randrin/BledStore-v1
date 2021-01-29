@@ -20,11 +20,12 @@ const CartScreen = (props) => {
   }, [dispatch, productId, qty]);
 
   const removeFromCartHandler = (id) => {
-      console.log('removeFromCartHandler: ', id)
     dispatch(removeFromCart(id));
   };
 
-  const checkoutHandler = (product) => {};
+  const checkoutHandler = () => {
+    props.history.push("/signin?redirect=shipping");
+  };
 
   return (
     <div className="row top">

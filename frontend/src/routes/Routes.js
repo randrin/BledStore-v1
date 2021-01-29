@@ -5,6 +5,7 @@ import CartScreen from "../screens/CartScreen";
 import HomeScreen from "../screens/HomeScreen";
 import ProductScreen from "../screens/ProductScreen";
 import RegisterScreen from "../screens/RegisterSreeen";
+import ShippingAddressScreen from "../screens/ShippingAddressScreen";
 import SigninScreen from "../screens/SigninScreen";
 
 const Routes = () => (
@@ -14,9 +15,10 @@ const Routes = () => (
       <Route exact path="/cart/:productId?" strict component={CartScreen} />
       <Route exact path="/signin" strict component={SigninScreen} />
       <Route exact path="/register" strict component={RegisterScreen} />
+      <Route exact path="/shipping" strict component={ShippingAddressScreen} />
       {/* 
        />
-      <Route exact path="/shop" strict component={Shop} />
+      
       <Route exact path="/cart" strict component={Cart} />
       <PrivateRoute exact path="/user/dashboard" strict component={UserDashboard} />
       <AdminRoute exact path="/admin/products" strict component={ManageProducts} />
