@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import MessageBox from "../components/MessageBox";
-import { addToCart } from "../redux/actions/cartActions";
+import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
 const CartScreen = (props) => {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  const dispatch = useDispatch();
   const productId = props.match.params.productId;
   const qty = props.location.search
     ? Number(props.location.search.split("=")[1])
@@ -19,7 +19,10 @@ const CartScreen = (props) => {
     }
   }, [dispatch, productId, qty]);
 
-  const removeFromCartHandler = (product) => {};
+  const removeFromCartHandler = (id) => {
+      console.log('removeFromCartHandler: ', id)
+    dispatch(removeFromCart(id));
+  };
 
   const checkoutHandler = (product) => {};
 
@@ -62,9 +65,9 @@ const CartScreen = (props) => {
                   <div>
                     <button
                       type="button"
-                      onClick={removeFromCartHandler(item.product)}
+                      onClick={() => removeFromCartHandler(item.product)}
                     >
-                      Remove to Cart
+                      <i className="fa fa-remove"></i> Remove to Cart
                     </button>
                   </div>
                 </div>

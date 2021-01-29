@@ -1,0 +1,9 @@
+// Scrollbar
+::-webkit-scrollbar-thumb {
+    background-color: var(--bledstore-secondary);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
