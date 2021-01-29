@@ -6,6 +6,7 @@ export default {
   PORT: process.env.SERVER_PORT || 5000,
   MONGODB_URL: process.env.MONGODB_URL,
   JWT_SECRET: process.env.JWT_SECRET,
+  JWT_EXPIRE: process.env.JWT_EXPIRE,
   PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID,
   AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,

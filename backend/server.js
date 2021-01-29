@@ -13,6 +13,9 @@ import userRouter from "./routers/userRouter.js";
 import productRouter from "./routers/productRouter.js";
 
 const app = express();
+// Middleware to content data like json : resove problem "message": "Cannot read property 'email' of undefined"
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 mongoose
   .connect(config.MONGODB_URL, {

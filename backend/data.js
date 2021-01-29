@@ -5,7 +5,7 @@ const data = {
     {
       pseudo: "randrino17",
       name: "Randrin Nzeukang",
-      email: "nzeukangrandrin@gmil.com",
+      email: "nzeukangrandrin@gmail.com",
       phone: "3296187465",
       password: bcrypt.hashSync("123456789", 8),
       isAdmin: true,
@@ -13,7 +13,7 @@ const data = {
     {
       pseudo: "bokino12",
       name: "Boclair",
-      email: "temgoua2001@gmil.com",
+      email: "temgoua2001@gmail.com",
       password: bcrypt.hashSync("0000000", 8),
       phone: "325568656",
       isAdmin: false,
