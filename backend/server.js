@@ -6,11 +6,11 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import config from "./config.js";
-import data from "./data.js";
 dotenv.config();
 
 // Import Routes
 import userRouter from "./routers/userRouter.js";
+import productRouter from "./routers/productRouter.js";
 
 const app = express();
 
@@ -29,6 +29,7 @@ mongoose
 
 // Routes
 app.use("/v1/api/users", userRouter);
+app.use("/v1/api/products", productRouter);
 
 // Middleware
 app.use(morgan("dev"));
@@ -41,21 +42,6 @@ app.use((err, req, res, next) => {
 
 app.get("/", (req, res) => {
   res.send("Server is running ....");
-});
-
-app.get("/v1/api/products", (req, res) => {
-  res.send(data.products);
-});
-
-app.get("/v1/api/products/:productId", (req, res) => {
-  const product = data.products.find(
-    (product) => product._id === req.params.productId
-  );
-  if (product) {
-    res.send(product);
-  } else {
-    res.status(404).send({ message: "Product not found!!!!" });
-  }
 });
 
 app.listen(config.PORT, () => {

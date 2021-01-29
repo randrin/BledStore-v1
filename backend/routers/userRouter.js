@@ -2,8 +2,8 @@ import express from "express";
 
 const userRouter = express.Router();
 
-import seedData from "../controllers/userController.js";
+import seedUsers from "../controllers/userController.js";
 
-userRouter.get("/seed", seedData);
+userRouter.get("/seed", seedUsers);
 
 export default userRouter;

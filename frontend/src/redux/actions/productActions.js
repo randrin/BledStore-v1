@@ -20,7 +20,7 @@ export const listProducts = () => async (dispatch) => {
     if (response.statusText !== "OK") {
       dispatch({ type: PRODUCT_LIST_FAIL, error: "Somethig went wrong !!!" });
     } else {
-      dispatch({ type: PRODUCT_LIST_SUCCESS, payload: response.data });
+      dispatch({ type: PRODUCT_LIST_SUCCESS, payload: response.data.listProducts });
     }
   } catch (error) {
     dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
