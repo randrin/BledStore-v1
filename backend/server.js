@@ -11,6 +11,7 @@ dotenv.config();
 // Import Routes
 import userRouter from "./routers/userRouter.js";
 import productRouter from "./routers/productRouter.js";
+import orderRouter from "./routers/orderRouter.js";
 
 const app = express();
 // Middleware to content data like json : resove problem "message": "Cannot read property 'email' of undefined"
@@ -33,6 +34,7 @@ mongoose
 // Routes
 app.use("/v1/api/users", userRouter);
 app.use("/v1/api/products", productRouter);
+app.use("/v1/api/orders", orderRouter);
 
 // Middleware
 app.use(morgan("dev"));

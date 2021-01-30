@@ -1,15 +1,15 @@
 import express from "express";
-
-const productRouter = express.Router();
-
 import {
   seedProducts,
   getListProducts,
   getProductById,
 } from "../controllers/productController.js";
+import { isAuth } from "../utils.js";
+
+const productRouter = express.Router();
 
 productRouter.get("/", getListProducts);
-productRouter.get("/seed", seedProducts);
+productRouter.get("/seed", isAuth, seedProducts);
 productRouter.get("/:id", getProductById);
 
 export default productRouter;

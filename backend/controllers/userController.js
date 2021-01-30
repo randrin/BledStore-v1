@@ -45,7 +45,7 @@ export const signupUser = expressAsyncHander(async (req, res) => {
   if (!user) {
     res.status(404).send({ message: "Something went wrong." });
   } else {
-    res.status(200).send({
+    res.status(201).send({
       _id: user._id,
       name: user.name,
       email: user.email,
