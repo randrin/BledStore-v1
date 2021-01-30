@@ -1,23 +1,37 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutStep";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+import { createOrder } from "../redux/actions/orderActions";
+import { ORDER_CREATE_RESET } from "../redux/constants/orderConstants";
 
 const PlaceOrderScreen = (props) => {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const orderCreated = useSelector((state) => state.order);
   const userShippingAddress = useSelector((state) => state.shippingAddress);
   const userPaymentMethod = useSelector((state) => state.paymentMethod);
 
-  const { loading, error } = cart;
+  // const { loading, error } = cart;
+  const { loading, success, error, order } = orderCreated;
   const { shippingAddress } = userShippingAddress;
   const { paymentMethod } = userPaymentMethod;
 
+  console.log('orderCreated response: ', orderCreated)
+
+  useEffect(() => {
+    if (success) {
+      props.history.push(`/order/${order._id}`);
+      dispatch({ type: ORDER_CREATE_RESET });
+    }
+  }, [dispatch, order, props.history, success]);
+
   if (!paymentMethod) {
-    props.history.push('/payment')
+    props.history.push("/payment");
   }
-  
+
   const toPrice = (num) => Number(num.toFixed(2)); // 5.123 => "5.12" => 5.12
   cart.itemsPrice = toPrice(
     cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0)
@@ -26,7 +40,10 @@ const PlaceOrderScreen = (props) => {
   cart.taxPrice = toPrice(0.15 * cart.itemsPrice);
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
-  const placeOrderHandler = () => {};
+  const placeOrderHandler = () => {
+    dispatch(createOrder({ ...cart, orderItems: cart.cartItems, shippingAddress, paymentMethod}));
+  };
+
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
@@ -85,6 +102,8 @@ const PlaceOrderScreen = (props) => {
         </div>
         <div className="col-1">
           <div className="card card-body">
+            {loading && <LoadingBox></LoadingBox>}
+            {error && <MessageBox variant="danger">{error}</MessageBox>}
             <ul>
               <li>
                 <h2>Order Summary</h2>
@@ -127,8 +146,6 @@ const PlaceOrderScreen = (props) => {
                   Place Order
                 </button>
               </li>
-              {loading && <LoadingBox></LoadingBox>}
-              {error && <MessageBox variant="danger">{error}</MessageBox>}
             </ul>
           </div>
         </div>

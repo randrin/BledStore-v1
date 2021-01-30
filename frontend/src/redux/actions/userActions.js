@@ -71,7 +71,7 @@ export const signup = (pseudo, name, email, phone, password) => async (
         password,
       },
     });
-    if (response.statusText !== "OK") {
+    if (response.statusText !== "Created") {
       dispatch({ type: USER_SIGNUP_FAIL });
     } else {
       dispatch({

@@ -14,7 +14,7 @@ const ShippingAddressScreen = (props) => {
   const [country, setCountry] = useState(shippingAddress.country);
   const dispatch = useDispatch();
 
-  const { loading, error, userInfo } = user;
+  const { userInfo } = user;
 
   if (!userInfo) {
     props.history.push("/signin");
