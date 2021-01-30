@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
-import { getProfileUser, updateProfileUser } from "../redux/actions/userActions";
+import {
+  getProfileUser,
+  updateProfileUser,
+} from "../redux/actions/userActions";
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();
@@ -15,31 +18,41 @@ const ProfileScreen = () => {
   const { userInfo } = userSignin;
 
   const userDetails = useSelector((state) => state.userDetails);
-  console.log("userDetails: ", userDetails);
   const { loading, error, user } = userDetails;
 
+  const userDetailsUpdate = useSelector((state) => state.userDetailsUpdate);
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = userDetailsUpdate;
 
   useEffect(() => {
-    dispatch(getProfileUser(userInfo._id));
-  }, [dispatch, userInfo._id]);
+    if (!user) {
+      dispatch(getProfileUser(userInfo._id));
+    } else {
+      setName(user.name);
+      setEmail(user.email);
+    }
+  }, [dispatch, userInfo._id, user]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-        alert('Password and Confirm Password Are Not Matched');
-      } else {
-        dispatch(
-          updateProfileUser({
-            userId: user._id,
-            name,
-            email,
-            password,
-            // sellerName,
-            // sellerLogo,
-            // sellerDescription,
-          })
-        );
-      }
+      alert("Password and Confirm Password Are Not Matched");
+    } else {
+      dispatch(
+        updateProfileUser({
+          userId: user._id,
+          name,
+          email,
+          password,
+          // sellerName,
+          // sellerLogo,
+          // sellerDescription,
+        })
+      );
+    }
   };
 
   return (
@@ -55,7 +68,7 @@ const ProfileScreen = () => {
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <>
-            {/* {loadingUpdate && <LoadingBox></LoadingBox>}
+            {loadingUpdate && <LoadingBox></LoadingBox>}
             {errorUpdate && (
               <MessageBox variant="danger">{errorUpdate}</MessageBox>
             )}
@@ -63,14 +76,14 @@ const ProfileScreen = () => {
               <MessageBox variant="success">
                 Profile Updated Successfully
               </MessageBox>
-            )} */}
+            )}
             <div>
               <label htmlFor="name">Name</label>
               <input
                 id="name"
                 type="text"
                 placeholder="Enter name"
-                value={user.name}
+                value={name}
                 onChange={(e) => setName(e.target.value)}
               ></input>
             </div>
@@ -80,7 +93,7 @@ const ProfileScreen = () => {
                 id="email"
                 type="email"
                 placeholder="Enter email"
-                value={user.email}
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
             </div>

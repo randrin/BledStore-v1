@@ -8,7 +8,7 @@ import {
   productsReducer,
 } from "./reducers/productsReducer";
 import { shippingReducer } from "./reducers/shippingsReducer";
-import { userDetailsReducer, userSigninReducer, userSignupReducer } from "./reducers/usersReducer";
+import { userDetailsReducer, userDetailsUpdateReducer, userSigninReducer, userSignupReducer } from "./reducers/usersReducer";
 
 const initialState = {
   userSignin: {
@@ -37,6 +37,7 @@ const reducer = combineReducers({
   userSignin: userSigninReducer,
   userSignup: userSignupReducer,
   userDetails: userDetailsReducer,
+  userDetailsUpdate: userDetailsUpdateReducer,
   shippingAddress: shippingReducer,
   paymentMethod: paymentReducer,
   paymentOrder: paymentOrderReducer,

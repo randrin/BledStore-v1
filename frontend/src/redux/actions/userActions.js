@@ -10,6 +10,9 @@ import {
   USER_SIGNUP_FAIL,
   USER_SIGNUP_REQUEST,
   USER_SIGNUP_SUCCESS,
+  USER_UPDATE_DETAILS_FAIL,
+  USER_UPDATE_DETAILS_REQUEST,
+  USER_UPDATE_DETAILS_SUCCESS,
 } from "../constants/userConstants";
 
 export const signin = (email, password) => async (dispatch) => {
@@ -101,7 +104,7 @@ export const signup = (pseudo, name, email, phone, password) => async (
 export const getProfileUser = (userId) => async (dispatch, getState) => {
   dispatch({
     type: USER_DETAILS_REQUEST,
-    payload: userId
+    payload: userId,
   });
   try {
     const {
@@ -134,34 +137,40 @@ export const getProfileUser = (userId) => async (dispatch, getState) => {
   }
 };
 
-export const updateProfileUser = (userId) => async (dispatch, getState) => {
+export const updateProfileUser = (user) => async (dispatch, getState) => {
   dispatch({
-    type: USER_DETAILS_REQUEST,
-    payload: userId
+    type: USER_UPDATE_DETAILS_REQUEST,
+    payload: user,
   });
   try {
     const {
       userSignin: { userInfo },
     } = getState();
     const response = await axios({
-      url: `/v1/api/users/${userId}`,
-      method: "GET",
+      url: `/v1/api/users/profile`,
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${userInfo.token}`,
       },
+      data: user
     });
     if (response.statusText !== "OK") {
       dispatch({
-        type: USER_DETAILS_FAIL,
+        type: USER_UPDATE_DETAILS_FAIL,
         error: "Something went wrong !!!",
       });
     } else {
-      dispatch({ type: USER_DETAILS_SUCCESS, payload: response.data });
+      dispatch({ type: USER_UPDATE_DETAILS_SUCCESS, payload: response.data });
+      dispatch({
+        type: USER_SIGNIN_SUCCESS,
+        payload: response.data,
+      });
+      localStorage.setItem("userInfos", JSON.stringify(response.data));
     }
   } catch (error) {
     dispatch({
-      type: USER_DETAILS_FAIL,
+      type: USER_UPDATE_DETAILS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

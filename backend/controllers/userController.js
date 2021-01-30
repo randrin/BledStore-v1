@@ -64,3 +64,25 @@ export const getProfileUser = expressAsyncHander(async (req, res) => {
     res.status(200).send(user);
   }
 });
+
+export const updateProfileUser = expressAsyncHander(async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (!user) {
+    res.status(401).send({ message: "User not found !!!" });
+  } else {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    if (req.body.password) {
+      user.password = bcrypt.hashSync(req.body.password, 8);
+    }
+    const updatedUser = await user.save();
+    res.send({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      pseudo: updatedUser.pseudo,
+      token: generateToken(updatedUser),
+    });
+  }
+});
