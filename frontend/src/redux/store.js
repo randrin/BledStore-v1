@@ -8,7 +8,7 @@ import {
   productsReducer,
 } from "./reducers/productsReducer";
 import { shippingReducer } from "./reducers/shippingsReducer";
-import { userSigninReducer, userSignupReducer } from "./reducers/usersReducer";
+import { userDetailsReducer, userSigninReducer, userSignupReducer } from "./reducers/usersReducer";
 
 const initialState = {
   userSignin: {
@@ -36,6 +36,7 @@ const reducer = combineReducers({
   cart: cartReducer,
   userSignin: userSigninReducer,
   userSignup: userSignupReducer,
+  userDetails: userDetailsReducer,
   shippingAddress: shippingReducer,
   paymentMethod: paymentReducer,
   paymentOrder: paymentOrderReducer,

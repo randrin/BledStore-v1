@@ -15,7 +15,7 @@ const OrderScreen = (props) => {
   const [sdkReady, setSdkReady] = useState(false);
   const orderDetails = useSelector((state) => state.orderDetails);
   const orderPay = useSelector((state) => state.paymentOrder);
-  const { order, loading, success, error } = orderDetails;
+  const { order, loading, error } = orderDetails;
   const {
     loading: loadingPay,
     success: successPay,

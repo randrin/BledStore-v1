@@ -55,3 +55,12 @@ export const signupUser = expressAsyncHander(async (req, res) => {
     });
   }
 });
+
+export const getProfileUser = expressAsyncHander(async (req, res) => {
+  const user = await User.findById(req.params.userId);
+  if (!user) {
+    res.status(404).send({ message: "User not found!!!!" });
+  } else {
+    res.status(200).send(user);
+  }
+});
