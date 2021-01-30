@@ -4,6 +4,7 @@ import Error404 from "../components/Error404";
 import CartScreen from "../screens/CartScreen";
 import HomeScreen from "../screens/HomeScreen";
 import PaymentMethodScreen from "../screens/PaymentMethodScreen";
+import PlaceOrderScreen from "../screens/PlaceOrderScreen";
 import ProductScreen from "../screens/ProductScreen";
 import RegisterScreen from "../screens/RegisterSreeen";
 import ShippingAddressScreen from "../screens/ShippingAddressScreen";
@@ -18,11 +19,12 @@ const Routes = () => (
       <Route exact path="/register" strict component={RegisterScreen} />
       <Route exact path="/shipping" strict component={ShippingAddressScreen} />
       <Route exact path="/payment" strict component={PaymentMethodScreen} />
+      <Route exact path="/placeorder" strict component={PlaceOrderScreen} />
       {/* 
        />
       
       
-      <PrivateRoute exact path="/user/dashboard" strict component={UserDashboard} />
+      
       <AdminRoute exact path="/admin/products" strict component={ManageProducts} />
       <PrivateRoute exact path="/profile/:userId" strict component={Profile} />
       <AdminRoute exact path="/admin/dashboard" strict component={AdminDashboard} />

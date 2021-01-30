@@ -7,9 +7,10 @@ const PaymentMethodScreen = (props) => {
   const dispatch = useDispatch();
   const [paymentMethod, setPaymentMethod] = useState("PayPal");
 
-  const addressShipping = useSelector((state) => state.shippingAddress);
+  const userShippingAddress = useSelector((state) => state.shippingAddress);
 
-  const {shippingAddress} = addressShipping;
+  const { shippingAddress } = userShippingAddress;
+  
   if (!shippingAddress.address) {
     props.history.push("/shipping");
   }

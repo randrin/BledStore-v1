@@ -36,7 +36,7 @@ const reducer = combineReducers({
   userSignin: userSigninReducer,
   userSignup: userSignupReducer,
   shippingAddress: shippingReducer,
-  paymentMethos: paymentReducer,
+  paymentMethod: paymentReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
