@@ -7,6 +7,9 @@ import {
   ORDER_DETAIL_FAIL,
   ORDER_DETAIL_REQUEST,
   ORDER_DETAIL_SUCCESS,
+  ORDER_MINE_LIST_FAIL,
+  ORDER_MINE_LIST_REQUEST,
+  ORDER_MINE_LIST_SUCCESS,
 } from "../constants/orderConstants";
 
 export const createOrder = (order) => async (dispatch, getState) => {
@@ -68,13 +71,48 @@ export const getOrderById = (orderId) => async (dispatch, getState) => {
       },
     });
     if (response.statusText !== "OK") {
-      dispatch({ type: ORDER_DETAIL_FAIL, error: "Somethig went wrong !!!" });
+      dispatch({ type: ORDER_DETAIL_FAIL, error: "Something went wrong !!!" });
     } else {
       dispatch({ type: ORDER_DETAIL_SUCCESS, payload: response.data });
     }
   } catch (error) {
     dispatch({
       type: ORDER_DETAIL_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getMyOrderList = () => async (dispatch, getState) => {
+  dispatch({
+    type: ORDER_MINE_LIST_REQUEST,
+  });
+  try {
+    const {
+      userSignin: { userInfo },
+    } = getState();
+    const response = await axios({
+      url: `/v1/api/orders/mine`,
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
+    if (response.statusText !== "OK") {
+      dispatch({
+        type: ORDER_MINE_LIST_FAIL,
+        error: "Something went wrong !!!",
+      });
+    } else {
+      dispatch({ type: ORDER_MINE_LIST_SUCCESS, payload: response.data });
+    }
+  } catch (error) {
+    dispatch({
+      type: ORDER_MINE_LIST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

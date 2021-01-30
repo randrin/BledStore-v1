@@ -18,7 +18,7 @@ export const listProducts = () => async (dispatch) => {
       method: "GET",
     });
     if (response.statusText !== "OK") {
-      dispatch({ type: PRODUCT_LIST_FAIL, error: "Somethig went wrong !!!" });
+      dispatch({ type: PRODUCT_LIST_FAIL, error: "Something went wrong !!!" });
     } else {
       dispatch({ type: PRODUCT_LIST_SUCCESS, payload: response.data.listProducts });
     }
@@ -38,7 +38,7 @@ export const getProductById = (productId) => async (dispatch) => {
       method: "GET",
     });
     if (response.statusText !== "OK") {
-      dispatch({ type: PRODUCT_DETAIL_FAIL, error: "Somethig went wrong !!!" });
+      dispatch({ type: PRODUCT_DETAIL_FAIL, error: "Something went wrong !!!" });
     } else {
       dispatch({ type: PRODUCT_DETAIL_SUCCESS, payload: response.data });
     }

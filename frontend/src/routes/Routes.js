@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Error404 from "../components/Error404";
 import CartScreen from "../screens/CartScreen";
 import HomeScreen from "../screens/HomeScreen";
+import OrderHistoryScreeen from "../screens/OrderHistoryScreeen";
 import OrderScreen from "../screens/OrderScreen";
 import PaymentMethodScreen from "../screens/PaymentMethodScreen";
 import PlaceOrderScreen from "../screens/PlaceOrderScreen";
@@ -22,6 +23,7 @@ const Routes = () => (
       <Route exact path="/payment" strict component={PaymentMethodScreen} />
       <Route exact path="/placeorder" strict component={PlaceOrderScreen} />
       <Route exact path="/order/:orderId" strict component={OrderScreen} />
+      <Route exact path="/orderhistory" strict component={OrderHistoryScreeen} />
       {/* 
        />
       

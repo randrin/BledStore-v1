@@ -36,7 +36,7 @@ export const payOrder = (order, paymentResult) => async (
       data: paymentResult,
     });
     if (response.statusText !== "OK") {
-      dispatch({ type: ADD_PAYMENT_FAIL, error: "Somethig went wrong !!!" });
+      dispatch({ type: ADD_PAYMENT_FAIL, error: "Something went wrong !!!" });
     } else {
       dispatch({ type: ADD_PAYMENT_SUCCESS, payload: response.data });
     }
