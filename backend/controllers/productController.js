@@ -14,7 +14,7 @@ export const seedProducts = expressAsyncHander(async (req, res) => {
 });
 
 export const getProductById = expressAsyncHander(async (req, res) => {
-  const product = await Product.findById(req.params.id);
+  const product = await Product.findById(req.params.productId);
   if (!product) {
     res.status(404).send({ message: "Product not found!!!!" });
   } else {

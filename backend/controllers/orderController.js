@@ -2,7 +2,6 @@ import expressAsyncHander from "express-async-handler";
 import Order from "../models/orderModel.js";
 
 export const placeOrder = expressAsyncHander(async (req, res) => {
-    console.log('req.body: ', req.body)
   if (req.body.orderItems.length === 0) {
     res.status(403).send({ message: "Cart is empty" });
   } else {
@@ -25,5 +24,15 @@ export const placeOrder = expressAsyncHander(async (req, res) => {
         order: order,
       });
     }
+  }
+});
+
+
+export const getOrderById = expressAsyncHander(async (req, res) => {
+  const order = await Order.findById(req.params.orderId);
+  if (!order) {
+    res.status(404).send({ message: "Order not found!!!!" });
+  } else {
+    res.status(200).send(order);
   }
 });

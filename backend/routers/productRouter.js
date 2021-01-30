@@ -10,6 +10,6 @@ const productRouter = express.Router();
 
 productRouter.get("/", getListProducts);
 productRouter.get("/seed", isAuth, seedProducts);
-productRouter.get("/:id", getProductById);
+productRouter.get("/:productId", getProductById);
 
 export default productRouter;
