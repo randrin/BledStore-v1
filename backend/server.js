@@ -35,6 +35,9 @@ mongoose
 app.use("/v1/api/users", userRouter);
 app.use("/v1/api/products", productRouter);
 app.use("/v1/api/orders", orderRouter);
+app.use("/v1/api/paypal/cliendId", (req, res) => {
+  res.send({ clientId: config.PAYPAL_CLIENT_ID });
+});
 
 // Middleware
 app.use(morgan("dev"));
