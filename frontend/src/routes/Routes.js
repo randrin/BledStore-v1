@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Error404 from "../components/Error404";
 import CartScreen from "../screens/CartScreen";
 import HomeScreen from "../screens/HomeScreen";
+import PaymentMethodScreen from "../screens/PaymentMethodScreen";
 import ProductScreen from "../screens/ProductScreen";
 import RegisterScreen from "../screens/RegisterSreeen";
 import ShippingAddressScreen from "../screens/ShippingAddressScreen";
@@ -16,10 +17,11 @@ const Routes = () => (
       <Route exact path="/signin" strict component={SigninScreen} />
       <Route exact path="/register" strict component={RegisterScreen} />
       <Route exact path="/shipping" strict component={ShippingAddressScreen} />
+      <Route exact path="/payment" strict component={PaymentMethodScreen} />
       {/* 
        />
       
-      <Route exact path="/cart" strict component={Cart} />
+      
       <PrivateRoute exact path="/user/dashboard" strict component={UserDashboard} />
       <AdminRoute exact path="/admin/products" strict component={ManageProducts} />
       <PrivateRoute exact path="/profile/:userId" strict component={Profile} />

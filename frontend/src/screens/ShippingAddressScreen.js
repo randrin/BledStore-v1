@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CheckoutSteps from "../components/CheckoutStep";
-import { saveSgippingAddress } from "../redux/actions/shippingActions";
+import { saveShippingAddress } from "../redux/actions/shippingActions";
 
 const ShippingAddressScreen = (props) => {
   const user = useSelector((state) => state.userSignin);
@@ -23,7 +23,7 @@ const ShippingAddressScreen = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
-      saveSgippingAddress({ fullName, address, city, postalCode, country })
+      saveShippingAddress({ fullName, address, city, postalCode, country })
     );
     props.history.push("/payment");
   };
