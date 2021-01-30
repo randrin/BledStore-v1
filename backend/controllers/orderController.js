@@ -27,12 +27,36 @@ export const placeOrder = expressAsyncHander(async (req, res) => {
   }
 });
 
-
 export const getOrderById = expressAsyncHander(async (req, res) => {
   const order = await Order.findById(req.params.orderId);
   if (!order) {
     res.status(404).send({ message: "Order not found!!!!" });
   } else {
     res.status(200).send(order);
+  }
+});
+
+export const payOrder = expressAsyncHander(async (req, res) => {
+  const order = await Order.findById(req.params.orderId);
+  console.log('req.body: ', req.body)
+  if (order) {
+    order.isPaid = true;
+    order.paidAt = Date.now();
+    order.paymentResult = {
+      paymentID: req.body.id,
+      status: req.body.status,
+      payerID: req.body.payer.payer_id,
+      payerEmailAddress: req.body.payer.email_address,
+      payerCountryCode: req.body.payer.address.country_code,
+      payerFullName: req.body.payer.name.given_name + ' ' + req.body.payer.name.surname,
+      update_time: req.body.update_time,
+      create_time: req.body.create_time,
+    };
+    const updatedOrder = await order.save();
+    res
+      .status(200)
+      .send({ message: "Order Paid successfully.", order: updatedOrder });
+  } else {
+    res.status(404).send({ message: "Order Not Found" });
   }
 });
