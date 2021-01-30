@@ -1,8 +1,10 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Error404 from "../components/Error404";
+import AdminRoute from "../core/AdminRoute";
 import PrivateRoute from "../core/PrivateRoute";
 import CartScreen from "../screens/CartScreen";
+import ProductListScreen from "../screens/dashboard/ProductListScreen";
 import HomeScreen from "../screens/HomeScreen";
 import OrderHistoryScreeen from "../screens/OrderHistoryScreeen";
 import OrderScreen from "../screens/OrderScreen";
@@ -27,6 +29,7 @@ const Routes = () => (
     <Route exact path="/order/:orderId" strict component={OrderScreen} />
     <Route exact path="/orderhistory" strict component={OrderHistoryScreeen} />
     <PrivateRoute exact path="/profile" strict component={ProfileScreen} />
+    <AdminRoute exact path="/productlist" strict component={ProductListScreen} />
     <Route component={Error404} />
   </Switch>
 );
