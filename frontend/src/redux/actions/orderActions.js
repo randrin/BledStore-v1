@@ -1,5 +1,4 @@
 import axios from "axios";
-import { CART_EMPTY_ITEM } from "../constants/cartConstants";
 import {
   ORDER_CREATE_FAIL,
   ORDER_CREATE_REQUEST,
@@ -20,6 +19,7 @@ import {
   ORDER_MINE_LIST_REQUEST,
   ORDER_MINE_LIST_SUCCESS,
 } from "../constants/orderConstants";
+export const CART_EMPTY_ITEM = "CART_EMPTY_ITEM";
 
 export const createOrder = (order) => async (dispatch, getState) => {
   dispatch({
