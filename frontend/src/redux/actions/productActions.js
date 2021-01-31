@@ -3,6 +3,9 @@ import {
   PRODUCT_CREATE_FAIL,
   PRODUCT_CREATE_REQUEST,
   PRODUCT_CREATE_SUCCESS,
+  PRODUCT_DELETE_FAIL,
+  PRODUCT_DELETE_REQUEST,
+  PRODUCT_DELETE_SUCCESS,
   PRODUCT_DETAIL_FAIL,
   PRODUCT_DETAIL_REQUEST,
   PRODUCT_DETAIL_SUCCESS,
@@ -131,6 +134,42 @@ export const updateProduct = (product) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const deleteProduct = (productId) => async (dispatch, getState) => {
+  dispatch({
+    type: PRODUCT_DELETE_REQUEST,
+    payload: productId,
+  });
+  try {
+    const {
+      userSignin: { userInfo },
+    } = getState();
+    const response = await axios({
+      url: `/v1/api/products/${productId}`,
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
+    if (response.statusText !== "OK") {
+      dispatch({ type: PRODUCT_DELETE_FAIL });
+    } else {
+      dispatch({
+        type: PRODUCT_DELETE_SUCCESS,
+        payload: response.data.product,
+      });
+    }
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_DELETE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

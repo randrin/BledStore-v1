@@ -76,3 +76,18 @@ export const updateProduct = expressAsyncHander(async (req, res) => {
     res.status(404).send({ message: "Product not Found" });
   }
 });
+
+export const deleteProduct = expressAsyncHander(async (req, res) => {
+  const product = await Product.findById(req.params.productId);
+  if (product) {
+    const productDeleted = await product.remove();
+    res
+      .status(200)
+      .send({
+        message: "Product deleted successfully",
+        product: productDeleted,
+      });
+  } else {
+    res.status(404).send({ message: "Product not Found" });
+  }
+});
