@@ -56,7 +56,8 @@ export const payOrder = expressAsyncHander(async (req, res) => {
       payerID: req.body.payer.payer_id,
       payerEmailAddress: req.body.payer.email_address,
       payerCountryCode: req.body.payer.address.country_code,
-      payerFullName: req.body.payer.name.given_name + ' ' + req.body.payer.name.surname,
+      payerFullName:
+        req.body.payer.name.given_name + " " + req.body.payer.name.surname,
       update_time: req.body.update_time,
       create_time: req.body.create_time,
     };
@@ -70,7 +71,7 @@ export const payOrder = expressAsyncHander(async (req, res) => {
 });
 
 export const getListOrders = expressAsyncHander(async (req, res) => {
-  const listOrders = await Order.find({}).populate('user', 'name');
+  const listOrders = await Order.find({}).populate("user", "name");
   res.status(200).send({ listOrders });
 });
 
@@ -78,13 +79,25 @@ export const deleteOrder = expressAsyncHander(async (req, res) => {
   const order = await Order.findById(req.params.orderId);
   if (order) {
     const orderDeleted = await order.remove();
-    res
-      .status(200)
-      .send({
-        message: "Order deleted successfully",
-        order: orderDeleted,
-      });
+    res.status(200).send({
+      message: "Order deleted successfully",
+      order: orderDeleted,
+    });
   } else {
     res.status(404).send({ message: "Order not Found" });
+  }
+});
+
+export const deliverOrder = expressAsyncHander(async (req, res) => {
+  const order = await Order.findById(req.params.orderId);
+  if (order) {
+    order.isDelivered = true;
+    order.deliveredAt = Date.now();
+    const updatedOrder = await order.save();
+    res
+      .status(200)
+      .send({ message: "Order Delivered successfully.", order: updatedOrder });
+  } else {
+    res.status(404).send({ message: "Order Not Found" });
   }
 });
