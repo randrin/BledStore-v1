@@ -2,19 +2,37 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingBox from "../../components/LoadingBox";
 import MessageBox from "../../components/MessageBox";
-import { listProducts } from "../../redux/actions/productActions";
+import {
+  createProduct,
+  listProducts,
+} from "../../redux/actions/productActions";
+import { PRODUCT_CREATE_RESET } from "../../redux/constants/productConstants";
 
 const ProductListScreen = (props) => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productsList);
   const { loading, error, products } = productList;
 
-  useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+  const productCreate = useSelector((state) => state.productCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    product: createdProduct,
+  } = productCreate;
 
-  const createHandler = (e) => {
-    e.preventDefault();
+  console.log('productCreate: ', productCreate)
+
+  useEffect(() => {
+    if (successCreate) {
+      dispatch({ type: PRODUCT_CREATE_RESET });
+      props.history.push(`/product/${createdProduct._id}/edit`);
+    }
+    dispatch(listProducts());
+  }, [createdProduct, dispatch, props.history, successCreate]);
+
+  const createHandler = () => {
+    dispatch(createProduct());
   };
 
   const deleteHandler = () => {};
@@ -24,15 +42,15 @@ const ProductListScreen = (props) => {
       <div className="row">
         <h1>Products</h1>
         <button type="button" className="primary" onClick={createHandler}>
-          Create Product
+          Create Product <i className="fa fa-angle-double-right"></i>
         </button>
       </div>
 
       {/* {loadingDelete && <LoadingBox></LoadingBox>}
-      {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
+      {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>*/}
 
       {loadingCreate && <LoadingBox></LoadingBox>}
-      {errorCreate && <MessageBox variant="danger">{errorCreate}</MessageBox>} */}
+      {errorCreate && <MessageBox variant="danger">{errorCreate}</MessageBox>}
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
