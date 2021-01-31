@@ -207,6 +207,10 @@ const OrderScreen = (props) => {
                 )}
                 {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
                   <li>
+                    {loadingDeliver && <LoadingBox></LoadingBox>}
+                    {errorDeliver && (
+                      <MessageBox variant="danger">{error}</MessageBox>
+                    )}
                     <button
                       type="button"
                       className="primary block"
