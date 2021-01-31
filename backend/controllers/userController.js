@@ -10,6 +10,11 @@ export const seedUsers = expressAsyncHander(async (req, res) => {
   res.send({ createdUsers });
 });
 
+export const getListUsers = expressAsyncHander(async (req, res) => {
+  const listUsers = await User.find({});
+  res.status(200).send({ listUsers });
+});
+
 export const signinUser = expressAsyncHander(async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (user) {
@@ -84,5 +89,17 @@ export const updateProfileUser = expressAsyncHander(async (req, res) => {
       pseudo: updatedUser.pseudo,
       token: generateToken(updatedUser),
     });
+  }
+});
+
+export const deleteUser = expressAsyncHander(async (req, res) => {
+  const user = await User.findById(req.params.userId);
+  if (user) {
+    const userDeleted = await user.remove();
+    res
+      .status(200)
+      .send({ message: "USer Delivered successfully.", user: userDeleted });
+  } else {
+    res.status(404).send({ message: "User Not Found" });
   }
 });
