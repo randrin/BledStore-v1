@@ -17,7 +17,7 @@ import {
   PRODUCT_UPDATE_REQUEST,
   PRODUCT_UPDATE_RESET,
   PRODUCT_UPDATE_SUCCESS,
-} from "../constants/productConstants";
+} from "../constants/productConstants.js";
 
 export const productsReducer = (
   state = { products: [], loading: true },

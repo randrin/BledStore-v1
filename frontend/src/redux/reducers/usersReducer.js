@@ -13,7 +13,7 @@ import {
   USER_UPDATE_DETAILS_REQUEST,
   USER_UPDATE_DETAILS_RESET,
   USER_UPDATE_DETAILS_SUCCESS,
-} from "../constants/userConstants";
+} from "../constants/userConstants.js";
 
 export const userSigninReducer = (state = {}, action) => {
   switch (action.type) {

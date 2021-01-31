@@ -4,7 +4,7 @@ import {
   ADD_PAYMENT_REQUEST,
   ADD_PAYMENT_RESET,
   ADD_PAYMENT_SUCCESS,
-} from "../constants/paymentConstants";
+} from "../constants/paymentConstants.js";
 
 export const paymentReducer = (state = {}, action) => {
   switch (action.type) {
