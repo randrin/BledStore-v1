@@ -27,7 +27,7 @@ const Routes = () => (
     <Route exact path="/payment" strict component={PaymentMethodScreen} />
     <Route exact path="/placeorder" strict component={PlaceOrderScreen} />
     <Route exact path="/order/:orderId" strict component={OrderScreen} />
-    <Route exact path="/orderhistory" strict component={OrderHistoryScreeen} />
+    <Route exact path="/orders/history" strict component={OrderHistoryScreeen} />
     <PrivateRoute exact path="/profile" strict component={ProfileScreen} />
     <AdminRoute exact path="/productlist" strict component={ProductListScreen} />
     <Route component={Error404} />

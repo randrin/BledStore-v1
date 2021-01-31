@@ -38,14 +38,18 @@ const BledStoreHeader = () => {
             </Link>
             <ul className="dropdown-content">
               <li>
-                <Link to="/profile">User Profile</Link>
+                <Link to="/profile">
+                  <i className="fa fa-user-circle-o"></i> User Profile
+                </Link>
               </li>
               <li>
-                <Link to="/orderhistory">Order History</Link>
+                <Link to="/orders/history">
+                  <i className="	fa fa-list"></i> Order History
+                </Link>
               </li>
               <li>
                 <Link to="#signout" onClick={signoutHandler}>
-                  Sign Out
+                  <i className="fa fa-power-off"></i> Sign Out
                 </Link>
               </li>
             </ul>
@@ -62,16 +66,24 @@ const BledStoreHeader = () => {
             </Link>
             <ul className="dropdown-content">
               <li>
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/dashboard">
+                  <i className="fa fa-pie-chart"></i> Dashboard
+                </Link>
               </li>
               <li>
-                <Link to="/productlist">Products</Link>
+                <Link to="/productlist">
+                  <i className="fa fa-shopping-bag"></i> Products
+                </Link>
               </li>
               <li>
-                <Link to="/orderlist">Orders</Link>
+                <Link to="/orderlist">
+                  <i className="fa fa-gift"></i> Orders
+                </Link>
               </li>
               <li>
-                <Link to="/userlist">Users</Link>
+                <Link to="/userlist">
+                  <i className="fa fa-users"></i> Users
+                </Link>
               </li>
             </ul>
           </div>
