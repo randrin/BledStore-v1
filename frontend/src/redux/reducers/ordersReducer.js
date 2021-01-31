@@ -20,7 +20,7 @@ import {
   ORDER_MINE_LIST_FAIL,
   ORDER_MINE_LIST_REQUEST,
   ORDER_MINE_LIST_SUCCESS,
-} from "../constants/orderConstants.js";
+} from "../constants/orderConstants";
 
 export const ordersReducer = (
   state = { orders: [], loading: true },
