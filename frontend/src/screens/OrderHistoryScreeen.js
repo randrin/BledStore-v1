@@ -51,7 +51,7 @@ const OrderHistoryScreeen = (props) => {
                       props.history.push(`/order/${order._id}`);
                     }}
                   >
-                    Details <i className="fa fa-angle-double-right"></i>
+                     <i className="fa fa-file-text success"></i> Details
                   </button>
                 </td>
               </tr>
