@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "../../../../node_modules/axios/index";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
-import { getProductById, updateProduct } from "../../../redux/actions/productActions";
+import {
+  getProductById,
+  updateProduct,
+} from "../../../redux/actions/productActions";
 import { PRODUCT_UPDATE_RESET } from "../../../redux/constants/productConstants";
 
 const ProductEditScreen = (props) => {
@@ -17,6 +21,11 @@ const ProductEditScreen = (props) => {
   const [countInStock, setCountInStock] = useState("");
   const [brand, setBrand] = useState("");
   const [description, setDescription] = useState("");
+  const [loadingUpload, setLoadingUpload] = useState(false);
+  const [errorUpload, setErrorUpload] = useState("");
+
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -62,6 +71,29 @@ const ProductEditScreen = (props) => {
         description,
       })
     );
+  };
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append("image", file);
+    setLoadingUpload(true);
+    try {
+      const { data } = await axios({
+        url: `/v1/api/uploads/`,
+        method: "POST",
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+        data: bodyFormData,
+      });
+      setImage(data.image);
+      setLoadingUpload(false);
+    } catch (error) {
+      setErrorUpload(error.message);
+      setLoadingUpload(false);
+    }
   };
 
   return (
@@ -114,7 +146,7 @@ const ProductEditScreen = (props) => {
                 onChange={(e) => setDiscountPrice(e.target.value)}
               ></input>
             </div>
-            {/* <div>
+            <div>
               <label htmlFor="image">Image</label>
               <input
                 id="image"
@@ -123,8 +155,8 @@ const ProductEditScreen = (props) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></input>
-            </div> */}
-            {/* <div>
+            </div>
+            <div>
               <label htmlFor="imageFile">Image File</label>
               <input
                 type="file"
@@ -136,7 +168,7 @@ const ProductEditScreen = (props) => {
               {errorUpload && (
                 <MessageBox variant="danger">{errorUpload}</MessageBox>
               )}
-            </div> */}
+            </div>
             <div>
               <label htmlFor="category">Category</label>
               <input

@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import path from 'path';
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -12,6 +13,7 @@ dotenv.config();
 import userRouter from "./routers/userRouter.js";
 import productRouter from "./routers/productRouter.js";
 import orderRouter from "./routers/orderRouter.js";
+import uploadRouter from "./routers/uploadRouter.js";
 
 const app = express();
 // Middleware to content data like json : resove problem "message": "Cannot read property 'email' of undefined"
@@ -35,6 +37,7 @@ mongoose
 app.use("/v1/api/users", userRouter);
 app.use("/v1/api/products", productRouter);
 app.use("/v1/api/orders", orderRouter);
+app.use("/v1/api/uploads", uploadRouter);
 app.use("/v1/api/paypal/cliendId", (req, res) => {
   res.send({ clientId: config.PAYPAL_CLIENT_ID });
 });
@@ -47,6 +50,9 @@ app.use(cors());
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
+
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 app.get("/", (req, res) => {
   res.send("Server is running ....");

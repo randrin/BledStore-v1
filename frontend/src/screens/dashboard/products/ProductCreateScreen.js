@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "../../../../node_modules/axios/index";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import { createProduct } from "../../../redux/actions/productActions";
@@ -16,6 +17,11 @@ const ProductCreateScreen = (props) => {
   const [countInStock, setCountInStock] = useState("");
   const [brand, setBrand] = useState("");
   const [description, setDescription] = useState("");
+  const [loadingUpload, setLoadingUpload] = useState(false);
+  const [errorUpload, setErrorUpload] = useState("");
+
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
 
   const productCreate = useSelector((state) => state.productCreate);
   const { loading, error, success, product } = productCreate;
@@ -43,10 +49,33 @@ const ProductCreateScreen = (props) => {
     );
   };
 
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append("image", file);
+    setLoadingUpload(true);
+    try {
+      const { data } = await axios({
+        url: `/v1/api/uploads/`,
+        method: "POST",
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+        data: bodyFormData,
+      });
+      setImage(data.image);
+      setLoadingUpload(false);
+    } catch (error) {
+      setErrorUpload(error.message);
+      setLoadingUpload(false);
+    }
+  };
+
   return (
     <div>
       <form className="form" onSubmit={submitCreateHandler}>
-      <div>
+        <div>
           <Link to="/productlist">
             <i className="fa fa-angle-left"></i> Back to Products
           </Link>
@@ -68,6 +97,7 @@ const ProductCreateScreen = (props) => {
                 placeholder="Enter name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                required
               ></input>
             </div>
             <div>
@@ -78,6 +108,7 @@ const ProductCreateScreen = (props) => {
                 placeholder="Enter price"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
+                required
               ></input>
             </div>
             <div>
@@ -88,9 +119,10 @@ const ProductCreateScreen = (props) => {
                 placeholder="Enter discount price"
                 value={discountPrice}
                 onChange={(e) => setDiscountPrice(e.target.value)}
+                required
               ></input>
             </div>
-            {/* <div>
+            <div>
               <label htmlFor="image">Image</label>
               <input
                 id="image"
@@ -98,9 +130,10 @@ const ProductCreateScreen = (props) => {
                 placeholder="Enter image"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
+                required
               ></input>
-            </div> */}
-            {/* <div>
+            </div>
+            <div>
               <label htmlFor="imageFile">Image File</label>
               <input
                 type="file"
@@ -112,7 +145,7 @@ const ProductCreateScreen = (props) => {
               {errorUpload && (
                 <MessageBox variant="danger">{errorUpload}</MessageBox>
               )}
-            </div> */}
+            </div>
             <div>
               <label htmlFor="category">Category</label>
               <input
@@ -121,6 +154,7 @@ const ProductCreateScreen = (props) => {
                 placeholder="Enter category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+                required
               ></input>
             </div>
             <div>
@@ -131,6 +165,7 @@ const ProductCreateScreen = (props) => {
                 placeholder="Enter brand"
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
+                required
               ></input>
             </div>
             <div>
@@ -141,6 +176,7 @@ const ProductCreateScreen = (props) => {
                 placeholder="Enter countInStock"
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
+                required
               ></input>
             </div>
             <div>
@@ -152,6 +188,7 @@ const ProductCreateScreen = (props) => {
                 placeholder="Enter description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+                required
               ></textarea>
             </div>
             <div>

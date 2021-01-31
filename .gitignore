@@ -4,6 +4,7 @@
 /node_modules
 .history
 .env
+uploads
 .vscode
 dist
 /dist

@@ -32,17 +32,7 @@ export const createProduct = expressAsyncHander(async (req, res) => {
     price: req.body.price,
     discountPrice: req.body.price,
     countInStock: req.body.countInStock,
-    image: "/assets/images/products/demo.png",
-    // name: 'sample name ' + Date.now(),
-    // image: '/assets/images/products/demo.png',
-    // price: 10,
-    // discountPrice: 0,
-    // category: 'sample category',
-    // brand: 'sample brand',
-    // countInStock: 0,
-    // rating: 0,
-    // numReviews: 0,
-    // description: 'sample description',
+    image: req.body.image,
   });
   if (product.price < product.discountPrice) {
     res.status(400).send({ message: "Discount price is greater than price" });
