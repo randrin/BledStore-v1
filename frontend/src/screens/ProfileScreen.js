@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import {
@@ -59,6 +60,9 @@ const ProfileScreen = () => {
     <div>
       {" "}
       <form className="form" onSubmit={submitHandler}>
+        <Link to="/productlist">
+          <i className="fa fa-angle-left"></i> Back to Products
+        </Link>
         <div>
           <h1>User Profile</h1>
         </div>

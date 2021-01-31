@@ -24,24 +24,25 @@ export const getProductById = expressAsyncHander(async (req, res) => {
 
 export const createProduct = expressAsyncHander(async (req, res) => {
   const product = new Product({
-    // name: req.body.name,
-    // description: req.body.description,
-    // category: req.body.category,
-    // brand: req.body.brand,
-    // image: req.body.image,
-    // price: req.body.price,
-    // discountPrice: req.body.price,
-    // countInStock: req.body.countInStock,
-    name: 'sample name ' + Date.now(),
-    image: '/assets/images/products/demo.png',
-    price: 10,
-    discountPrice: 0,
-    category: 'sample category',
-    brand: 'sample brand',
-    countInStock: 0,
-    rating: 0,
-    numReviews: 0,
-    description: 'sample description',
+    name: req.body.name,
+    description: req.body.description,
+    category: req.body.category,
+    brand: req.body.brand,
+    image: req.body.image,
+    price: req.body.price,
+    discountPrice: req.body.price,
+    countInStock: req.body.countInStock,
+    image: "/assets/images/products/demo.png",
+    // name: 'sample name ' + Date.now(),
+    // image: '/assets/images/products/demo.png',
+    // price: 10,
+    // discountPrice: 0,
+    // category: 'sample category',
+    // brand: 'sample brand',
+    // countInStock: 0,
+    // rating: 0,
+    // numReviews: 0,
+    // description: 'sample description',
   });
   if (product.price < product.discountPrice) {
     res.status(400).send({ message: "Discount price is greater than price" });
@@ -54,5 +55,34 @@ export const createProduct = expressAsyncHander(async (req, res) => {
     });
   } else {
     res.status(500).send({ message: "Error in creating product" });
+  }
+});
+
+export const updateProduct = expressAsyncHander(async (req, res) => {
+  const product = await Product.findById(req.params.productId);
+  if (product) {
+    product.name = req.body.name;
+    product.description = req.body.description;
+    product.category = req.body.category;
+    product.brand = req.body.brand;
+    product.image = req.body.image;
+    product.price = req.body.price;
+    product.discountPrice = req.body.discountPrice;
+    product.countInStock = req.body.countInStock;
+    if (product.price < product.discountPrice) {
+      res.status(400).send({ message: "Discount price is greater than price" });
+    } else {
+      const productUpdated = await product.save();
+      if (productUpdated) {
+        res.status(200).send({
+          message: "Product Updated successfully.",
+          product: productUpdated,
+        });
+      } else {
+        res.status(500).send({ message: "Error in updating product" });
+      }
+    }
+  } else {
+    res.status(404).send({ message: "Product not Found" });
   }
 });

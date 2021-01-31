@@ -4,7 +4,9 @@ import Error404 from "../components/Error404";
 import AdminRoute from "../core/AdminRoute";
 import PrivateRoute from "../core/PrivateRoute";
 import CartScreen from "../screens/CartScreen";
-import ProductListScreen from "../screens/dashboard/ProductListScreen";
+import ProductCreateScreen from "../screens/dashboard/products/ProductCreateScreen";
+import ProductEditScreen from "../screens/dashboard/products/ProductEditScreen";
+import ProductListScreen from "../screens/dashboard/products/ProductListScreen";
 import HomeScreen from "../screens/HomeScreen";
 import OrderHistoryScreeen from "../screens/OrderHistoryScreeen";
 import OrderScreen from "../screens/OrderScreen";
@@ -20,6 +22,7 @@ const Routes = () => (
   <Switch>
     <Route exact path="/" strict component={HomeScreen} />
     <Route exact path="/product/:productId" strict component={ProductScreen} />
+    <Route exact path="/product/:productId/edit" strict component={ProductEditScreen} />
     <Route exact path="/cart/:productId?" strict component={CartScreen} />
     <Route exact path="/signin" strict component={SigninScreen} />
     <Route exact path="/register" strict component={RegisterScreen} />
@@ -30,6 +33,7 @@ const Routes = () => (
     <Route exact path="/orders/history" strict component={OrderHistoryScreeen} />
     <PrivateRoute exact path="/profile" strict component={ProfileScreen} />
     <AdminRoute exact path="/productlist" strict component={ProductListScreen} />
+    <AdminRoute exact path="/create/product" strict component={ProductCreateScreen} />
     <Route component={Error404} />
   </Switch>
 );
