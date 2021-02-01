@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
+import SearchBox from "../components/SearchBox";
 import { signout } from "../redux/actions/userActions";
 
 const BledStoreHeader = () => {
@@ -23,6 +24,11 @@ const BledStoreHeader = () => {
         <Link className="brand" to="/">
           amazona
         </Link>
+      </div>
+      <div>
+        <Route
+          render={({ history }) => <SearchBox history={history}></SearchBox>}
+        ></Route>
       </div>
       <div>
         <Link to="/cart">
@@ -66,10 +72,15 @@ const BledStoreHeader = () => {
             </Link>
             <ul className="dropdown-content">
               <li>
-                <Link to="/productlist/seller"> <i className="fa fa-shopping-bag"></i> Products</Link>
+                <Link to="/productlist/seller">
+                  {" "}
+                  <i className="fa fa-shopping-bag"></i> Products
+                </Link>
               </li>
               <li>
-                <Link to="/orderlist/seller"><i className="fa fa-gift"></i> Orders</Link>
+                <Link to="/orderlist/seller">
+                  <i className="fa fa-gift"></i> Orders
+                </Link>
               </li>
             </ul>
           </div>

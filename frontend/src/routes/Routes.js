@@ -23,6 +23,7 @@ import UserEditScreen from "../screens/store/user/UserEditScreen";
 import UserListScreen from "../screens/store/user/UserListScreen";
 import SellerScreen from "../screens/store/seller/SellerScreen";
 import SellerOrAdminRoute from "../core/SellerOrAdminRoute";
+import SearchScreen from "../screens/store/product/SearchScreen";
 
 const Routes = () => (
   <Switch>
@@ -46,6 +47,7 @@ const Routes = () => (
     <SellerRoute exact path="/orderlist/seller" strict component={OrderListScreen} /> 
     <AdminRoute exact path="/user/:userId/edit" strict component={UserEditScreen} />
     <Route exact path="/seller/:sellerId" strict component={SellerScreen} />
+    <Route exact path="/search/name/:name?" strict component={SearchScreen} />
     <Route component={Error404} />
   </Switch>
 );

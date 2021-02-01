@@ -4,11 +4,13 @@ import data from "../data.js";
 
 export const getListProducts = expressAsyncHander(async (req, res) => {
   const seller = req.query.seller || "";
+  const name = req.query.name || "";
   const sellerFilter = seller ? { seller } : {};
-  const listProducts = await Product.find({ ...sellerFilter }).populate(
-    "seller",
-    "seller.name seller.logo"
-  );
+  const nameFilter = name ? { name: { $regex: name, $options: "i" } } : {}; // to contains some characters in the search
+  const listProducts = await Product.find({
+    ...sellerFilter,
+    ...nameFilter,
+  }).populate("seller", "seller.name seller.logo");
   res.status(200).send({ listProducts });
 });
 
