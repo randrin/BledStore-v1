@@ -397,6 +397,15 @@ img.large {
   max-width: 30rem;
 }
 
+.carousel .slide .legend {
+  width: auto !important;
+  opacity: inherit !important;
+}
+
+.carousel .slide {
+  background: transparent !important;
+}
+
 /* Search */
 .search button {
   border-radius: 0 0.5rem 0.5rem 0;

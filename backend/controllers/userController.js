@@ -15,6 +15,13 @@ export const getListUsers = expressAsyncHander(async (req, res) => {
   res.status(200).send({ listUsers });
 });
 
+export const getTopSellers = expressAsyncHander(async (req, res) => {
+  const listTopSellers = await User.find({ isSeller: true })
+    .sort({ "seller.rating": -1 })
+    .limit(5);
+  res.status(200).send({ listTopSellers });
+});
+
 export const signinUser = expressAsyncHander(async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (user) {
@@ -82,7 +89,8 @@ export const updateProfileUser = expressAsyncHander(async (req, res) => {
     if (user.isSeller) {
       user.seller.name = req.body.sellerName || user.seller.name;
       user.seller.logo = req.body.sellerLogo || user.seller.logo;
-      user.seller.description = req.body.sellerDescription || user.seller.description;
+      user.seller.description =
+        req.body.sellerDescription || user.seller.description;
     }
     if (req.body.password) {
       user.password = bcrypt.hashSync(req.body.password, 8);
@@ -126,7 +134,11 @@ export const deleteUser = expressAsyncHander(async (req, res) => {
   const user = await User.findById(req.params.userId);
   if (user) {
     if (user.isAdmin) {
-      res.status(403).send({ message: "Can't delete the Admin User. See your administration." });
+      res
+        .status(403)
+        .send({
+          message: "Can't delete the Admin User. See your administration.",
+        });
       return;
     }
     const userDeleted = await user.remove();

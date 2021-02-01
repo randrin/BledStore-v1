@@ -25,6 +25,9 @@ import {
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
   USER_UPDATE_RESET,
+  USER_LIST_TOP_SELLER_REQUEST,
+  USER_LIST_TOP_SELLER_SUCCESS,
+  USER_LIST_TOP_SELLER_FAIL,
 } from "../constants/userConstants";
 
 export const usersReducer = (state = { users: [], loading: true }, action) => {
@@ -34,6 +37,22 @@ export const usersReducer = (state = { users: [], loading: true }, action) => {
     case USER_LIST_SUCCESS:
       return { loading: false, users: action.payload };
     case USER_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const usersToSellersReducer = (
+  state = { users: [], loading: true },
+  action
+) => {
+  switch (action.type) {
+    case USER_LIST_TOP_SELLER_REQUEST:
+      return { loading: true };
+    case USER_LIST_TOP_SELLER_SUCCESS:
+      return { loading: false, users: action.payload };
+    case USER_LIST_TOP_SELLER_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

@@ -7,7 +7,8 @@ import {
   updateProfileUser,
   getListUsers,
   deleteUser,
-  updateUser
+  updateUser,
+  getTopSellers
 } from "../controllers/userController.js";
 import { isAdmin, isAuth } from "../utils.js";
 
@@ -15,6 +16,7 @@ const userRouter = express.Router();
 
 userRouter.get("/seed", isAuth, isAdmin, seedUsers);
 userRouter.get("/", isAuth, isAdmin, getListUsers);
+userRouter.get("/top-sellers", getTopSellers);
 userRouter.get("/:userId", isAuth, getProfileUser);
 userRouter.put("/profile", isAuth, updateProfileUser);
 userRouter.put("/:userId", isAuth, updateUser);
