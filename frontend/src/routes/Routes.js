@@ -22,6 +22,7 @@ import SigninScreen from "../screens/store/auth/SigninScreen";
 import UserEditScreen from "../screens/store/user/UserEditScreen";
 import UserListScreen from "../screens/store/user/UserListScreen";
 import SellerScreen from "../screens/store/seller/SellerScreen";
+import SellerOrAdminRoute from "../core/SellerOrAdminRoute";
 
 const Routes = () => (
   <Switch>
@@ -39,7 +40,7 @@ const Routes = () => (
     <PrivateRoute exact path="/profile" strict component={ProfileScreen} />
     <AdminRoute exact path="/productlist" strict component={ProductListScreen} />
     <SellerRoute exact path="/productlist/seller" strict component={ProductListScreen} />
-    <AdminRoute exact path="/create/product" strict component={ProductCreateScreen} />
+    <SellerOrAdminRoute exact path="/create/product" strict component={ProductCreateScreen} />
     <AdminRoute exact path="/orderlist" strict component={OrderListScreen} />
     <AdminRoute exact path="/userlist" strict component={UserListScreen} /> 
     <SellerRoute exact path="/orderlist/seller" strict component={OrderListScreen} /> 

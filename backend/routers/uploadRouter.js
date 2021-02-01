@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import { isAdmin, isAuth } from "../utils.js";
+import { isAdmin, isAuth, isSellerOrAdmin } from "../utils.js";
 import { uploadProductImage } from "../controllers/uploadController.js";
 
 const uploadRouter = express.Router();
@@ -16,6 +16,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-uploadRouter.post("/", isAuth, isAdmin, upload.single('image'), uploadProductImage);
+uploadRouter.post("/", isAuth, isSellerOrAdmin, upload.single('image'), uploadProductImage);
 
 export default uploadRouter;

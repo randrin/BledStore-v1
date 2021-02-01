@@ -7,7 +7,7 @@ import { addToCart, removeFromCart } from "../../../redux/actions/cartActions";
 const CartScreen = (props) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
+  const { cartItems, error } = cart;
   const productId = props.match.params.productId;
   const qty = props.location.search
     ? Number(props.location.search.split("=")[1])
@@ -37,6 +37,7 @@ const CartScreen = (props) => {
           </MessageBox>
         ) : (
           <ul>
+            {error && <MessageBox variant="danger">{error}</MessageBox>}
             {cartItems.map((item, index) => (
               <li key={index}>
                 <div className="row">
