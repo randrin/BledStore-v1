@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import LoadingBox from "../components/LoadingBox";
-import MessageBox from "../components/MessageBox";
+import LoadingBox from "../../../components/LoadingBox";
+import MessageBox from "../../../components/MessageBox";
 import {
   getProfileUser,
   updateProfileUser,
-} from "../redux/actions/userActions";
+} from "../../../redux/actions/userActions";
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import LoadingBox from "../../components/LoadingBox";
-import MessageBox from "../../components/MessageBox";
-import { getProfileUser, updateUser } from "../../redux/actions/userActions";
-import { USER_UPDATE_RESET } from "../../redux/constants/userConstants";
+import LoadingBox from "../../../components/LoadingBox";
+import MessageBox from "../../../components/MessageBox";
+import { getProfileUser, updateUser } from "../../../redux/actions/userActions";
+import { USER_UPDATE_RESET } from "../../../redux/constants/userConstants";
 
 const UserEditScreen = (props) => {
   const userId = props.match.params.userId;

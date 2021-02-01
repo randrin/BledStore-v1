@@ -2,24 +2,25 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Error404 from "../components/Error404";
 import AdminRoute from "../core/AdminRoute";
+import SellerRoute from "../core/SellerRoute";
 import PrivateRoute from "../core/PrivateRoute";
-import CartScreen from "../screens/CartScreen";
+import CartScreen from "../screens/store/cart/CartScreen";
 import OrderListScreen from "../screens/dashboard/orders/OrderListScreen";
 import ProductCreateScreen from "../screens/dashboard/products/ProductCreateScreen";
 import ProductEditScreen from "../screens/dashboard/products/ProductEditScreen";
 import ProductListScreen from "../screens/dashboard/products/ProductListScreen";
-import HomeScreen from "../screens/HomeScreen";
-import OrderHistoryScreeen from "../screens/OrderHistoryScreeen";
-import OrderScreen from "../screens/OrderScreen";
-import PaymentMethodScreen from "../screens/PaymentMethodScreen";
-import PlaceOrderScreen from "../screens/PlaceOrderScreen";
-import ProductScreen from "../screens/ProductScreen";
-import ProfileScreen from "../screens/ProfileScreen";
-import RegisterScreen from "../screens/RegisterSreeen";
-import ShippingAddressScreen from "../screens/ShippingAddressScreen";
-import SigninScreen from "../screens/SigninScreen";
-import UserEditScreen from "../screens/store/UserEditScreen";
-import UserListScreen from "../screens/store/UserListScreen";
+import HomeScreen from "../screens/store/HomeScreen";
+import OrderHistoryScreeen from "../screens/store/order/OrderHistoryScreeen";
+import OrderScreen from "../screens/store/order/OrderScreen";
+import PaymentMethodScreen from "../screens/store/cart/PaymentMethodScreen";
+import PlaceOrderScreen from "../screens/store/order/PlaceOrderScreen";
+import ProductScreen from "../screens/store/product/ProductScreen";
+import ProfileScreen from "../screens/store/user/ProfileScreen";
+import RegisterScreen from "../screens/store/auth/RegisterSreeen";
+import ShippingAddressScreen from "../screens/store/cart/ShippingAddressScreen";
+import SigninScreen from "../screens/store/auth/SigninScreen";
+import UserEditScreen from "../screens/store/user/UserEditScreen";
+import UserListScreen from "../screens/store/user/UserListScreen";
 
 const Routes = () => (
   <Switch>
@@ -36,9 +37,11 @@ const Routes = () => (
     <Route exact path="/orders/history" strict component={OrderHistoryScreeen} />
     <PrivateRoute exact path="/profile" strict component={ProfileScreen} />
     <AdminRoute exact path="/productlist" strict component={ProductListScreen} />
+    <SellerRoute exact path="/productlist/seller" strict component={ProductListScreen} />
     <AdminRoute exact path="/create/product" strict component={ProductCreateScreen} />
     <AdminRoute exact path="/orderlist" strict component={OrderListScreen} />
     <AdminRoute exact path="/userlist" strict component={UserListScreen} /> 
+    <SellerRoute exact path="/orderlist/seller" strict component={UserListScreen} /> 
     <AdminRoute exact path="/user/:userId/edit" strict component={UserEditScreen} />
     <Route component={Error404} />
   </Switch>

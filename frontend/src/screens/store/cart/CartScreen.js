@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import MessageBox from "../components/MessageBox";
-import { addToCart, removeFromCart } from "../redux/actions/cartActions";
+import MessageBox from "../../../components/MessageBox";
+import { addToCart, removeFromCart } from "../../../redux/actions/cartActions";
 
 const CartScreen = (props) => {
   const dispatch = useDispatch();

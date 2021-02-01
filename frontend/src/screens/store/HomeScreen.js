@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LoadingBox from "../components/LoadingBox";
-import MessageBox from "../components/MessageBox";
-import Product from "../components/Product";
-import { listProducts } from "../redux/actions/productActions";
+import LoadingBox from "../../components/LoadingBox";
+import MessageBox from "../../components/MessageBox";
+import Product from "../../components/Product";
+import { listProducts } from "../../redux/actions/productActions";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();

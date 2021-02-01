@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import LoadingBox from "../components/LoadingBox";
-import MessageBox from "../components/MessageBox";
-import Rating from "../components/Rating";
-import { getProductById } from "../redux/actions/productActions";
+import LoadingBox from "../../../components/LoadingBox";
+import MessageBox from "../../../components/MessageBox";
+import Rating from "../../../components/Rating";
+import { getProductById } from "../../../redux/actions/productActions";
 
 const ProductScreen = (props) => {
   const productId = props.match.params.productId;
