@@ -24,6 +24,7 @@ export const signinUser = expressAsyncHander(async (req, res) => {
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
+        isSeller: user.isSeller,
         pseudo: user.pseudo,
         token: generateToken(user),
       });
@@ -55,6 +56,7 @@ export const signupUser = expressAsyncHander(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      isSeller: user.isSeller,
       pseudo: user.pseudo,
       token: generateToken(user),
     });
@@ -86,6 +88,29 @@ export const updateProfileUser = expressAsyncHander(async (req, res) => {
       name: updatedUser.name,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
+      isSeller: user.isSeller,
+      pseudo: updatedUser.pseudo,
+      token: generateToken(updatedUser),
+    });
+  }
+});
+
+export const updateUser = expressAsyncHander(async (req, res) => {
+  const user = await User.findById(req.params.userId);
+  if (!user) {
+    res.status(401).send({ message: "User not found !!!" });
+  } else {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.isAdmin = Boolean(req.body.isAdmin);
+    user.isSeller = Boolean(req.body.isSeller);
+    const updatedUser = await user.save();
+    res.send({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      isSeller: user.isSeller,
       pseudo: updatedUser.pseudo,
       token: generateToken(updatedUser),
     });
@@ -95,6 +120,10 @@ export const updateProfileUser = expressAsyncHander(async (req, res) => {
 export const deleteUser = expressAsyncHander(async (req, res) => {
   const user = await User.findById(req.params.userId);
   if (user) {
+    if (user.isAdmin) {
+      res.status(403).send({ message: "Can't delete the Admin User. See your administration." });
+      return;
+    }
     const userDeleted = await user.remove();
     res
       .status(200)

@@ -19,6 +19,9 @@ import {
   USER_UPDATE_DETAILS_FAIL,
   USER_UPDATE_DETAILS_REQUEST,
   USER_UPDATE_DETAILS_SUCCESS,
+  USER_UPDATE_FAIL,
+  USER_UPDATE_REQUEST,
+  USER_UPDATE_SUCCESS,
 } from "../constants/userConstants";
 
 export const signin = (email, password) => async (dispatch) => {
@@ -177,6 +180,44 @@ export const updateProfileUser = (user) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_UPDATE_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const updateUser = (user) => async (dispatch, getState) => {
+  dispatch({
+    type: USER_UPDATE_REQUEST,
+    payload: user,
+  });
+  try {
+    const {
+      userSignin: { userInfo },
+    } = getState();
+    const response = await axios({
+      url: `/v1/api/users/${user._id}`,
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+      data: user,
+    });
+    if (response.statusText !== "OK") {
+      dispatch({
+        type: USER_UPDATE_FAIL,
+        error: "Something went wrong !!!",
+      });
+    } else {
+      dispatch({ type: USER_UPDATE_SUCCESS, payload: response.data });
+      localStorage.setItem("userInfos", JSON.stringify(response.data));
+    }
+  } catch (error) {
+    dispatch({
+      type: USER_UPDATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

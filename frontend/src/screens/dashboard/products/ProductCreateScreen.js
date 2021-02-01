@@ -24,7 +24,7 @@ const ProductCreateScreen = (props) => {
   const { userInfo } = userSignin;
 
   const productCreate = useSelector((state) => state.productCreate);
-  const { loading, error, success, product } = productCreate;
+  const { loading, error, success } = productCreate;
 
   useEffect(() => {
     if (success) {

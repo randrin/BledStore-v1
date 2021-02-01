@@ -68,7 +68,7 @@ const CartScreen = (props) => {
                       type="button"
                       onClick={() => removeFromCartHandler(item.product)}
                     >
-                      <i className="fa fa-remove"></i> Remove to Cart
+                      <i className="fa fa-remove danger"></i> Remove to Cart
                     </button>
                   </div>
                 </div>

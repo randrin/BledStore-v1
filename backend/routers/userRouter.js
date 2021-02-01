@@ -7,6 +7,7 @@ import {
   updateProfileUser,
   getListUsers,
   deleteUser,
+  updateUser
 } from "../controllers/userController.js";
 import { isAdmin, isAuth } from "../utils.js";
 
@@ -16,6 +17,7 @@ userRouter.get("/seed", isAuth, isAdmin, seedUsers);
 userRouter.get("/", isAuth, isAdmin, getListUsers);
 userRouter.get("/:userId", isAuth, getProfileUser);
 userRouter.put("/profile", isAuth, updateProfileUser);
+userRouter.put("/:userId", isAuth, updateUser);
 userRouter.post("/signin", signinUser);
 userRouter.post("/signup", signupUser);
 userRouter.delete("/:userId", isAuth, isAdmin, deleteUser);

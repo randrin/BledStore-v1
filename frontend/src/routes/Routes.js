@@ -18,6 +18,7 @@ import ProfileScreen from "../screens/ProfileScreen";
 import RegisterScreen from "../screens/RegisterSreeen";
 import ShippingAddressScreen from "../screens/ShippingAddressScreen";
 import SigninScreen from "../screens/SigninScreen";
+import UserEditScreen from "../screens/store/UserEditScreen";
 import UserListScreen from "../screens/store/UserListScreen";
 
 const Routes = () => (
@@ -38,6 +39,7 @@ const Routes = () => (
     <AdminRoute exact path="/create/product" strict component={ProductCreateScreen} />
     <AdminRoute exact path="/orderlist" strict component={OrderListScreen} />
     <AdminRoute exact path="/userlist" strict component={UserListScreen} /> 
+    <AdminRoute exact path="/user/:userId/edit" strict component={UserEditScreen} />
     <Route component={Error404} />
   </Switch>
 );
