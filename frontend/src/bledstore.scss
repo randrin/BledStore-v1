@@ -261,11 +261,13 @@ img.large {
 }
 
 .card-body>* {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .price {
   font-size: 2rem;
+  top: 5px;
+  position: relative;
 }
 
 /* Rating */

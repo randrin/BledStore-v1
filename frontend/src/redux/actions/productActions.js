@@ -17,13 +17,13 @@ import {
   PRODUCT_UPDATE_SUCCESS,
 } from "../constants/productConstants";
 
-export const listProducts = () => async (dispatch) => {
+export const listProducts = ({seller = ''}) => async (dispatch) => {
   dispatch({
     type: PRODUCT_LIST_REQUEST,
   });
   try {
     const response = await axios({
-      url: "/v1/api/products",
+      url: `/v1/api/products?seller=${seller}`,
       method: "GET",
     });
     if (response.statusText !== "OK") {

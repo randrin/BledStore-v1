@@ -66,10 +66,10 @@ const BledStoreHeader = () => {
             </Link>
             <ul className="dropdown-content">
               <li>
-                <Link to="/productlist/seller">Products</Link>
+                <Link to="/productlist/seller"> <i className="fa fa-shopping-bag"></i> Products</Link>
               </li>
               <li>
-                <Link to="/orderlist/seller">Orders</Link>
+                <Link to="/orderlist/seller"><i className="fa fa-gift"></i> Orders</Link>
               </li>
             </ul>
           </div>

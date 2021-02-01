@@ -14,6 +14,9 @@ const ProfileScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [sellerName, setSellerName] = useState("");
+  const [sellerLogo, setSellerLogo] = useState("");
+  const [sellerDescription, setSellerDescription] = useState("");
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -34,6 +37,11 @@ const ProfileScreen = () => {
     } else {
       setName(user.name);
       setEmail(user.email);
+      if (user.seller) {
+        setSellerName(user.seller.name);
+        setSellerLogo(user.seller.logo);
+        setSellerDescription(user.seller.description);
+      }
     }
   }, [dispatch, userInfo._id, user]);
 
@@ -48,9 +56,9 @@ const ProfileScreen = () => {
           name,
           email,
           password,
-          // sellerName,
-          // sellerLogo,
-          // sellerDescription,
+          sellerName,
+          sellerLogo,
+          sellerDescription,
         })
       );
     }
@@ -119,7 +127,7 @@ const ProfileScreen = () => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               ></input>
             </div>
-            {/* {user.isSeller && (
+            {user.isSeller && (
               <>
                 <h2>Seller</h2>
                 <div>
@@ -153,7 +161,7 @@ const ProfileScreen = () => {
                   ></input>
                 </div>
               </>
-            )} */}
+            )}
             <div>
               <label />
               <button className="primary" type="submit">

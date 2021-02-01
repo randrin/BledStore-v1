@@ -9,10 +9,14 @@ import {
 import { PRODUCT_DELETE_RESET } from "../../../redux/constants/productConstants";
 
 const ProductListScreen = (props) => {
+  const sellerMode = props.match.path.indexOf('/seller') >= 0;
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productsList);
   const { loading, error, products } = productList;
+
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
 
   const productDelete = useSelector((state) => state.productDelete);
   const {
@@ -24,10 +28,10 @@ const ProductListScreen = (props) => {
   useEffect(() => {
     if (successDelete) {
       dispatch({ type: PRODUCT_DELETE_RESET });
-      dispatch(listProducts());
+      dispatch(listProducts({ seller: sellerMode ? userInfo._id : '' }));
     }
-    dispatch(listProducts());
-  }, [dispatch, props.history, successDelete]);
+    dispatch(listProducts({ seller: sellerMode ? userInfo._id : '' }));
+  }, [dispatch, props.history, sellerMode, successDelete, userInfo._id]);
 
   const createHandler = () => {
     props.history.push(`/create/product`);

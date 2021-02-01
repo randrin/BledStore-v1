@@ -8,7 +8,7 @@ import { getProductById } from "../../../redux/actions/productActions";
 
 const ProductScreen = (props) => {
   const productId = props.match.params.productId;
-  const [qty, setQty] = useState(1)
+  const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -28,7 +28,7 @@ const ProductScreen = (props) => {
       ) : error ? (
         <MessageBox>{error}</MessageBox>
       ) : (
-        <div>
+        <div className="product-screen-wrapper">
           <Link to="/">Back to result</Link>
           <div className="row top">
             <div className="col-2">
@@ -59,7 +59,27 @@ const ProductScreen = (props) => {
             <div className="col-1">
               <div className="card card-body">
                 <ul>
-                <li>
+                  {product.seller && (
+                    <li>
+                      Seller
+                      <h2>
+                        <img
+                          className="small product-seller-logo"
+                          src={product.seller.seller.logo}
+                          alt={product.seller.seller.name}
+                        ></img>
+                        <Link to={`/seller/${product.seller._id}`} className="product-seller-name">
+                          {product.seller.seller.name}
+                        </Link>
+                      </h2>
+                      <Rating
+                        rating={product.seller.seller.rating}
+                        numReviews={product.seller.seller.numReviews}
+                      ></Rating>
+                    </li>
+                  )}
+
+                  <li>
                     <div className="row">
                       <div>Price</div>
                       <div className="price">${product.price}</div>
@@ -82,10 +102,15 @@ const ProductScreen = (props) => {
                       <div className="row">
                         <div>Qty</div>
                         <div>
-                          <select value={qty} onChange={e => setQty(e.target.value)}>
+                          <select
+                            value={qty}
+                            onChange={(e) => setQty(e.target.value)}
+                          >
                             {[...Array(product.countInStock).keys()].map(
                               (x, index) => (
-                                <option key={index} value={x + 1}>{x + 1}</option>
+                                <option key={index} value={x + 1}>
+                                  {x + 1}
+                                </option>
                               )
                             )}
                           </select>

@@ -130,7 +130,7 @@ export const getMyOrderList = () => async (dispatch, getState) => {
   }
 };
 
-export const listOrders = () => async (dispatch, getState) => {
+export const listOrders = ({seller = ''}) => async (dispatch, getState) => {
   dispatch({
     type: ORDER_LIST_REQUEST,
   });
@@ -139,7 +139,7 @@ export const listOrders = () => async (dispatch, getState) => {
       userSignin: { userInfo },
     } = getState();
     const response = await axios({
-      url: `/v1/api/orders`,
+      url: `/v1/api/orders?seller=${seller}`,
       method: "GET",
       headers: {
         "Content-Type": "application/json",

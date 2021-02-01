@@ -71,7 +71,12 @@ export const payOrder = expressAsyncHander(async (req, res) => {
 });
 
 export const getListOrders = expressAsyncHander(async (req, res) => {
-  const listOrders = await Order.find({}).populate("user", "name");
+  const seller = req.query.seller || "";
+  const sellerFilter = seller ? { seller } : {};
+  const listOrders = await Order.find({ ...sellerFilter }).populate(
+    "user",
+    "name"
+  );
   res.status(200).send({ listOrders });
 });
 

@@ -1,10 +1,10 @@
 import express from "express";
 import { placeOrder, getOrderById, payOrder, getMineOrders, getListOrders, deleteOrder, deliverOrder } from "../controllers/orderController.js";
-import { isAdmin, isAuth } from "../utils.js";
+import { isAdmin, isAuth, isSellerOrAdmin } from "../utils.js";
 
 const orderRouter = express.Router();
 
-orderRouter.get("/", isAuth, isAdmin, getListOrders);
+orderRouter.get("/", isAuth, isSellerOrAdmin, getListOrders);
 orderRouter.get("/mine", isAuth, getMineOrders);
 orderRouter.get("/:orderId", isAuth, getOrderById);
 orderRouter.post("/", isAuth, placeOrder);

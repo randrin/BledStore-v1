@@ -21,6 +21,7 @@ import ShippingAddressScreen from "../screens/store/cart/ShippingAddressScreen";
 import SigninScreen from "../screens/store/auth/SigninScreen";
 import UserEditScreen from "../screens/store/user/UserEditScreen";
 import UserListScreen from "../screens/store/user/UserListScreen";
+import SellerScreen from "../screens/store/seller/SellerScreen";
 
 const Routes = () => (
   <Switch>
@@ -41,8 +42,9 @@ const Routes = () => (
     <AdminRoute exact path="/create/product" strict component={ProductCreateScreen} />
     <AdminRoute exact path="/orderlist" strict component={OrderListScreen} />
     <AdminRoute exact path="/userlist" strict component={UserListScreen} /> 
-    <SellerRoute exact path="/orderlist/seller" strict component={UserListScreen} /> 
+    <SellerRoute exact path="/orderlist/seller" strict component={OrderListScreen} /> 
     <AdminRoute exact path="/user/:userId/edit" strict component={UserEditScreen} />
+    <Route exact path="/seller/:sellerId" strict component={SellerScreen} />
     <Route component={Error404} />
   </Switch>
 );

@@ -3,7 +3,12 @@ import Product from "../models/productModel.js";
 import data from "../data.js";
 
 export const getListProducts = expressAsyncHander(async (req, res) => {
-  const listProducts = await Product.find({});
+  const seller = req.query.seller || "";
+  const sellerFilter = seller ? { seller } : {};
+  const listProducts = await Product.find({ ...sellerFilter }).populate(
+    "seller",
+    "seller.name seller.logo"
+  );
   res.status(200).send({ listProducts });
 });
 
@@ -14,7 +19,10 @@ export const seedProducts = expressAsyncHander(async (req, res) => {
 });
 
 export const getProductById = expressAsyncHander(async (req, res) => {
-  const product = await Product.findById(req.params.productId);
+  const product = await Product.findById(req.params.productId).populate(
+    "seller",
+    "seller.name seller.description seller.logo seller.numReviews seller.rating"
+  );
   if (!product) {
     res.status(404).send({ message: "Product not found!!!!" });
   } else {
@@ -25,6 +33,7 @@ export const getProductById = expressAsyncHander(async (req, res) => {
 export const createProduct = expressAsyncHander(async (req, res) => {
   const product = new Product({
     name: req.body.name,
+    seller: req.user._id,
     description: req.body.description,
     category: req.body.category,
     brand: req.body.brand,
@@ -81,12 +90,10 @@ export const deleteProduct = expressAsyncHander(async (req, res) => {
   const product = await Product.findById(req.params.productId);
   if (product) {
     const productDeleted = await product.remove();
-    res
-      .status(200)
-      .send({
-        message: "Product deleted successfully",
-        product: productDeleted,
-      });
+    res.status(200).send({
+      message: "Product deleted successfully",
+      product: productDeleted,
+    });
   } else {
     res.status(404).send({ message: "Product not Found" });
   }

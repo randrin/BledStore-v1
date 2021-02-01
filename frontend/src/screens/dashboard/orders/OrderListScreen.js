@@ -6,12 +6,12 @@ import { deleteOrder, listOrders } from "../../../redux/actions/orderActions";
 import { ORDER_DELETE_RESET } from "../../../redux/constants/orderConstants";
 
 const OrderListScreen = (props) => {
+  const sellerMode = props.match.path.indexOf('/seller') >= 0;
   const dispatch = useDispatch();
 
   const ordersList = useSelector((state) => state.ordersList);
   const { loading, error, orders } = ordersList;
 
-  
   const orderDelete = useSelector((state) => state.orderDelete);
   const {
     loading: loadingDelete,
@@ -26,8 +26,8 @@ const OrderListScreen = (props) => {
     if (successDelete) {
       dispatch({ type: ORDER_DELETE_RESET });
     }
-    dispatch(listOrders());
-  }, [dispatch, successDelete, userInfo._id]);
+    dispatch(listOrders({ seller: sellerMode ? userInfo._id : '' }));
+  }, [dispatch, sellerMode, successDelete, userInfo._id]);
 
   const deleteHandler = (order) => {
     if (window.confirm("Are you sure to delete?")) {
