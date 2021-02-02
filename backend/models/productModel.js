@@ -1,4 +1,16 @@
 import mongoose from "mongoose";
+import Review from "./reviewModel.js";
+
+const reviewSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    comment: { type: String, required: true },
+    rating: { type: Number, required: true },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const productSchema = new mongoose.Schema(
   {
@@ -14,6 +26,7 @@ const productSchema = new mongoose.Schema(
     rating: { type: Number, default: 0.0, required: true },
     numReviews: { type: Number, default: 0, required: true },
     active: { type: Boolean, default: false },
+    reviews: [reviewSchema]
   },
   { timestamps: true }
 );

@@ -5,6 +5,7 @@ import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import Rating from "../../../components/Rating";
 import { getProductById } from "../../../redux/actions/productActions";
+import ReviewScreen from "./ReviewScreen";
 
 const ProductScreen = (props) => {
   const dispatch = useDispatch();
@@ -70,7 +71,10 @@ const ProductScreen = (props) => {
                           src={product.seller.seller.logo}
                           alt={product.seller.seller.name}
                         ></img>
-                        <Link to={`/seller/${product.seller._id}`} className="product-seller-name">
+                        <Link
+                          to={`/seller/${product.seller._id}`}
+                          className="product-seller-name"
+                        >
                           {product.seller.seller.name}
                         </Link>
                       </h2>
@@ -132,6 +136,7 @@ const ProductScreen = (props) => {
               </div>
             </div>
           </div>
+          <ReviewScreen product={product} productId={productId} />
         </div>
       )}
     </>

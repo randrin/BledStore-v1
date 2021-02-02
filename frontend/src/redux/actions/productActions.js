@@ -26,7 +26,6 @@ export const listProducts = ({seller = '', name = '', category = '', min = 0, ma
       url: `/v1/api/products?seller=${seller}&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}&order=${order}`,
       method: "GET",
     });
-    console.log('response: ', response)
     if (response.statusText !== "OK") {
       dispatch({ type: PRODUCT_LIST_FAIL, error: "Something went wrong !!!" });
     } else {

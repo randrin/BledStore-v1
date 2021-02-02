@@ -11,6 +11,7 @@ import {
   productsReducer,
   productUpdateReducer,
 } from "./reducers/productsReducer";
+import { reviewsReducer } from "./reducers/reviewsReducer";
 import { shippingReducer } from "./reducers/shippingsReducer";
 import { userDeleteReducer, userDetailsReducer, userDetailsUpdateReducer, userSigninReducer, userSignupReducer, usersReducer, usersToSellersReducer, userUpdateReducer } from "./reducers/usersReducer";
 
@@ -58,7 +59,8 @@ const reducer = combineReducers({
   orderMineList: orderMineReducer,
   orderDelete: orderDeleteReducer,
   orderDeliver: orderDeliverReducer,
-  categoriesList: categoriesReducer
+  categoriesList: categoriesReducer,
+  reviews: reviewsReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
