@@ -5,7 +5,7 @@ import data from "../data.js";
 import { generateToken } from "../utils.js";
 
 export const seedUsers = expressAsyncHander(async (req, res) => {
-  // await User.remove({}); // Remove all the users before saving
+  await User.remove({}); // Remove all the users before saving
   const createdUsers = await User.insertMany(data.users);
   res.send({ createdUsers });
 });

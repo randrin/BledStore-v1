@@ -9,6 +9,14 @@ const data = {
       phone: "3296187465",
       password: bcrypt.hashSync("123456789", 8),
       isAdmin: true,
+      isSeller: true,
+      seller: {
+        name: "Randrino's Seller",
+        logo: "/assets/images/products/product-1.jpg",
+        description: "Best quality products in lower cost for all the people on the world",
+        rating: 4.5,
+        numReviews: 120,
+      },
     },
     {
       pseudo: "bokino12",

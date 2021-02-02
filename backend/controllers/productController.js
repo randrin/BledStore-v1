@@ -41,9 +41,20 @@ export const getListProducts = expressAsyncHander(async (req, res) => {
 });
 
 export const seedProducts = expressAsyncHander(async (req, res) => {
-  // await Product.remove({}); // Remove all the products before saving
-  const createdProducts = await Product.insertMany(data.products);
-  res.status(200).send({ createdProducts });
+  await Product.remove({}); // Remove all the products before saving
+  const seller = await User.findOne({ isSeller: true });
+  if (seller) {
+    const products = data.products.map((product) => ({
+      ...product,
+      seller: seller._id,
+    }));
+    const createdProducts = await Product.insertMany(products);
+    res.status(200).send({ createdProducts });
+  } else {
+    res
+      .status(500)
+      .send({ message: "No seller found. first run /v1/api/users/seed" });
+  }
 });
 
 export const getProductById = expressAsyncHander(async (req, res) => {
