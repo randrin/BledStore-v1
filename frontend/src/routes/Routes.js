@@ -48,6 +48,8 @@ const Routes = () => (
     <AdminRoute exact path="/user/:userId/edit" strict component={UserEditScreen} />
     <Route exact path="/seller/:sellerId" strict component={SellerScreen} />
     <Route exact path="/search/name/:name?" strict component={SearchScreen} />
+    <Route exact path="/search/category/:category" strict component={SearchScreen} />
+    <Route exact path="/search/category/:category/name/:name" strict component={SearchScreen} />
     <Route component={Error404} />
   </Switch>
 );
