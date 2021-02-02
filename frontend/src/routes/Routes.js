@@ -24,6 +24,7 @@ import UserListScreen from "../screens/store/user/UserListScreen";
 import SellerScreen from "../screens/store/seller/SellerScreen";
 import SellerOrAdminRoute from "../core/SellerOrAdminRoute";
 import SearchScreen from "../screens/store/product/SearchScreen";
+import MapScreen from "../screens/store/cart/MapScreen";
 
 const Routes = () => (
   <Switch>
@@ -39,6 +40,7 @@ const Routes = () => (
     <Route exact path="/order/:orderId" strict component={OrderScreen} />
     <Route exact path="/orders/history" strict component={OrderHistoryScreeen} />
     <PrivateRoute exact path="/profile" strict component={ProfileScreen} />
+    <PrivateRoute exact path="/map" strict component={MapScreen} />
     <AdminRoute exact path="/productlist" strict component={ProductListScreen} />
     <SellerRoute exact path="/productlist/seller" strict component={ProductListScreen} />
     <SellerOrAdminRoute exact path="/create/product" strict component={ProductCreateScreen} />

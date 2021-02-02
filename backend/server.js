@@ -45,6 +45,9 @@ app.use("/v1/api/uploads", uploadRouter);
 app.use("/v1/api/paypal/cliendId", (req, res) => {
   res.send({ clientId: config.PAYPAL_CLIENT_ID });
 });
+app.use("/v1/api/google/apiKey", (req, res) => {
+  res.send({ clientId: config.GOOGLE_API_KEY });
+});
 
 // Middleware
 app.use(morgan("dev"));

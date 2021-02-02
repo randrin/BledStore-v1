@@ -4,17 +4,24 @@ import CheckoutSteps from "../../../components/CheckoutStep";
 import { saveShippingAddress } from "../../../redux/actions/shippingActions";
 
 const ShippingAddressScreen = (props) => {
+  const dispatch = useDispatch();
+
   const user = useSelector((state) => state.userSignin);
+  const { userInfo } = user;
+
   const addressShipping = useSelector((state) => state.shippingAddress);
   const { shippingAddress } = addressShipping;
+
   const [fullName, setFullName] = useState(shippingAddress.fullName);
   const [address, setAddress] = useState(shippingAddress.address);
   const [city, setCity] = useState(shippingAddress.city);
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
   const [country, setCountry] = useState(shippingAddress.country);
-  const dispatch = useDispatch();
+  const [lat, setLat] = useState(shippingAddress.lat);
+  const [lng, setLng] = useState(shippingAddress.lng);
 
-  const { userInfo } = user;
+  const userAddressMap = useSelector((state) => state.userAddressMap);
+  const { address: shippingAddressMap } = userAddressMap;
 
   if (!userInfo) {
     props.history.push("/signin");
@@ -22,11 +29,49 @@ const ShippingAddressScreen = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(
-      saveShippingAddress({ fullName, address, city, postalCode, country })
-    );
-    props.history.push("/payment");
+    const newLat = shippingAddressMap ? shippingAddressMap.lat : lat;
+    const newLng = shippingAddressMap ? shippingAddressMap.lng : lng;
+    if (shippingAddressMap) {
+      setLat(shippingAddressMap.lat);
+      setLng(shippingAddressMap.lng);
+    }
+    let moveOn = true;
+    if (!newLat || !newLng) {
+      moveOn = window.confirm(
+        "You did not set your location on map. Continue?"
+      );
+    }
+    if (moveOn) {
+      dispatch(
+        saveShippingAddress({
+          fullName,
+          address,
+          city,
+          postalCode,
+          country,
+          lat: newLat,
+          lng: newLng,
+        })
+      );
+      props.history.push("/payment");
+    }
   };
+
+  const chooseOnMap = () => {
+    dispatch(
+      saveShippingAddress({
+        fullName,
+        address,
+        city,
+        postalCode,
+        country,
+        lat,
+        lng,
+      })
+    );
+    props.history.push('/map');
+  };
+
   return (
     <div>
       <CheckoutSteps step1 step2></CheckoutSteps>
@@ -89,12 +134,12 @@ const ShippingAddressScreen = (props) => {
             required
           ></input>
         </div>
-        {/* <div>
+        <div>
           <label htmlFor="chooseOnMap">Location</label>
           <button type="button" onClick={chooseOnMap}>
             Choose On Map
           </button>
-        </div> */}
+        </div>
         <div>
           <label />
           <button className="primary" type="submit">

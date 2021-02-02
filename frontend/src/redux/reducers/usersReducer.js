@@ -28,6 +28,7 @@ import {
   USER_LIST_TOP_SELLER_REQUEST,
   USER_LIST_TOP_SELLER_SUCCESS,
   USER_LIST_TOP_SELLER_FAIL,
+  USER_ADDRESS_MAP_CONFIRM,
 } from "../constants/userConstants";
 
 export const usersReducer = (state = { users: [], loading: true }, action) => {
@@ -142,6 +143,15 @@ export const userDeleteReducer = (state = {}, action) => {
       return { loading: false, success: false, error: action.payload };
     case USER_DELETE_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const userAddressMapReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_ADDRESS_MAP_CONFIRM:
+      return { address: action.payload };
     default:
       return state;
   }

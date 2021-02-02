@@ -13,4 +13,5 @@ export default {
   AWS_BUCKET_NAME: process.env.AWS_BUCKET_NAME,
   AWS_REGION: process.env.AWS_REGION,
   AWS_UPLOADED_FILE_URL_LINK: `https://s3-${process.env.AWS_REGION}.amazonaws.com/${process.env.AWS_BUCKET_NAME}`,
+  GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
 };
