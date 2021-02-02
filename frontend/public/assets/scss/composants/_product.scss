@@ -19,8 +19,25 @@
 .product-screen-wrapper {
     .product-seller-name {
         top: -10px;
-            left: 5px;
-            position: relative;
+        left: 5px;
+        position: relative;
 
+    }
+}
+
+.search-wrapper {
+    .search-sort-by {
+        right: 25px;
+        float: right;
+        top: 15px;
+        position: relative;
+    }
+
+    .search-content {
+        display: grid;
+    }
+
+    .search-products {
+        display: flex;
     }
 }

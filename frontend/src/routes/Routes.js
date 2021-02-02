@@ -50,6 +50,7 @@ const Routes = () => (
     <Route exact path="/search/name/:name?" strict component={SearchScreen} />
     <Route exact path="/search/category/:category" strict component={SearchScreen} />
     <Route exact path="/search/category/:category/name/:name" strict component={SearchScreen} />
+    <Route exact path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order" strict component={SearchScreen} />
     <Route component={Error404} />
   </Switch>
 );

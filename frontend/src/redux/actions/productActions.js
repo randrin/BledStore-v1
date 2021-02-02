@@ -17,15 +17,16 @@ import {
   PRODUCT_UPDATE_SUCCESS,
 } from "../constants/productConstants";
 
-export const listProducts = ({seller = '', name = '', category = ''}) => async (dispatch) => {
+export const listProducts = ({seller = '', name = '', category = '', min = 0, max = 0, rating = 0, order = ''}) => async (dispatch) => {
   dispatch({
     type: PRODUCT_LIST_REQUEST,
   });
   try {
     const response = await axios({
-      url: `/v1/api/products?seller=${seller}&name=${name}&category=${category}`,
+      url: `/v1/api/products?seller=${seller}&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}&order=${order}`,
       method: "GET",
     });
+    console.log('response: ', response)
     if (response.statusText !== "OK") {
       dispatch({ type: PRODUCT_LIST_FAIL, error: "Something went wrong !!!" });
     } else {

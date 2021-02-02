@@ -1,23 +1,26 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import { addToCart, removeFromCart } from "../../../redux/actions/cartActions";
 
 const CartScreen = (props) => {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
-  const { cartItems, error } = cart;
-  const productId = props.match.params.productId;
   const qty = props.location.search
-    ? Number(props.location.search.split("=")[1])
-    : 1;
+  ? Number(props.location.search.split("=")[1])
+  : 1;
+  const productId = props.match.params.productId;
+
+  const cart = useSelector((state) => state.cart);
+  const { cartItems, error, loading } = cart;
+
 
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty));
     }
-  }, [dispatch, productId, qty]);
+  }, [dispatch, productId, qty, error]);
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
@@ -37,6 +40,7 @@ const CartScreen = (props) => {
           </MessageBox>
         ) : (
           <ul>
+            {loading && <LoadingBox></LoadingBox>}
             {error && <MessageBox variant="danger">{error}</MessageBox>}
             {cartItems.map((item, index) => (
               <li key={index}>

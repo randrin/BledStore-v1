@@ -7,9 +7,11 @@ import Rating from "../../../components/Rating";
 import { getProductById } from "../../../redux/actions/productActions";
 
 const ProductScreen = (props) => {
-  const productId = props.match.params.productId;
-  const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
+  const productId = props.match.params.productId;
+
+  const [qty, setQty] = useState(1);
+
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 

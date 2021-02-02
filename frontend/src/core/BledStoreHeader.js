@@ -35,7 +35,7 @@ const BledStoreHeader = () => {
 
   return (
     <>
-      <header className="row">
+      <header className="header-wrapper row">
         <div>
           <button
             type="button"
@@ -45,7 +45,7 @@ const BledStoreHeader = () => {
             <i className="fa fa-bars"></i>
           </button>
           <Link className="brand" to="/">
-            amazona
+            BledStore <span>v1</span>
           </Link>
         </div>
         <div>
@@ -142,7 +142,9 @@ const BledStoreHeader = () => {
       <aside className={sidebarIsOpen ? "open" : ""}>
         <ul className="categories">
           <li>
-            <strong>Categories</strong>
+            <Link className="brand" to="/">
+              BledStore <span>v1</span>
+            </Link>
             <button
               className="close-sidebar"
               type="button"
