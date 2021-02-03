@@ -50,6 +50,7 @@ const Routes = () => (
     <AdminRoute exact path="/userlist" strict component={UserListScreen} /> 
     <SellerRoute exact path="/orderlist/seller" strict component={OrderListScreen} /> 
     <AdminRoute exact path="/user/:userId/edit" strict component={UserEditScreen} />
+    <Route exact path="/seller/:sellerId/page/:pageNumber/size/:pageSize" strict component={SellerScreen} />
     <Route exact path="/seller/:sellerId" strict component={SellerScreen} />
     <Route exact path="/search/name/:name?" strict component={SearchScreen} />
     <Route exact path="/search/category/:category" strict component={SearchScreen} />

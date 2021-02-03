@@ -79,6 +79,15 @@ export const getProfileUser = expressAsyncHander(async (req, res) => {
   }
 });
 
+export const getProfileSeller = expressAsyncHander(async (req, res) => {
+  const seller = await User.findById(req.params.sellerId);
+  if (!seller) {
+    res.status(404).send({ message: "Seller not found!!!!" });
+  } else {
+    res.status(200).send(seller);
+  }
+});
+
 export const updateProfileUser = expressAsyncHander(async (req, res) => {
   const user = await User.findById(req.user._id);
   if (!user) {

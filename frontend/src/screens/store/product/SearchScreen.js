@@ -22,9 +22,7 @@ const SearchScreen = (props) => {
   } = useParams();
 
   const productList = useSelector((state) => state.productsList);
-  const { loading, error, products, pages, page } = productList;
-
-  console.log("Products SearchScreen: ", products);
+  const { loading, error, products, pages, page, totalProducts } = productList;
 
   const categoryList = useSelector((state) => state.categoriesList);
   const {
@@ -68,14 +66,16 @@ const SearchScreen = (props) => {
       ) : (
         <div className="row top">
           <div className="col-1">
-            <h3>Categories</h3>
-            <div>
+            <div className="search-content">
+              <h3 className="search-title">
+                <span>Categories</span>
+              </h3>
               {loadingCategory ? (
                 <LoadingBox></LoadingBox>
               ) : errorCategory ? (
                 <MessageBox variant="danger">{errorCategory}</MessageBox>
               ) : (
-                <ul>
+                <ul className="search-content-items">
                   <li>
                     <Link
                       className={"all" === category ? "active" : ""}
@@ -97,9 +97,11 @@ const SearchScreen = (props) => {
                 </ul>
               )}
             </div>
-            <div>
-              <h3>Price</h3>
-              <ul>
+            <div className="search-content">
+              <h3 className="search-title">
+                <span>Price</span>
+              </h3>
+              <ul className="search-content-items">
                 {prices.map((p, index) => (
                   <li key={index}>
                     <Link
@@ -114,9 +116,11 @@ const SearchScreen = (props) => {
                 ))}
               </ul>
             </div>
-            <div>
-              <h3>Average Customers Reviews</h3>
-              <ul>
+            <div className="search-content">
+              <h3 className="search-title">
+                <span>Average Customers Reviews</span>
+              </h3>
+              <ul className="search-content-items">
                 {ratings.map((r) => (
                   <li key={r.name}>
                     <Link
@@ -137,7 +141,7 @@ const SearchScreen = (props) => {
               <MessageBox variant="danger">{error}</MessageBox>
             ) : (
               <>
-                {products.length === 0 ? (
+                {totalProducts === 0 ? (
                   <MessageBox>
                     No Product Found for search: name: {name}, category:{" "}
                     {category}, min: {min}, max: {max}, rating: {rating} and
@@ -146,7 +150,7 @@ const SearchScreen = (props) => {
                 ) : (
                   <div className="search-seller-products">
                     <h2 className="search-products-count">
-                      {products.length} Products found
+                      {totalProducts} {totalProducts === 1 ? 'Product' : 'Products'} found
                     </h2>
                     <div className="search-sort-by">
                       <span>Sort By</span>

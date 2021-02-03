@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import Product from "../../../components/Product";
 import Rating from "../../../components/Rating";
 import { listProducts } from "../../../redux/actions/productActions";
-import { getProfileUser } from "../../../redux/actions/userActions";
+import { getProfileSeller } from "../../../redux/actions/userActions";
 
 const SellerScreen = (props) => {
+  const { pageNumber = 1, pageSize = 4 } = useParams();
   const sellerId = props.match.params.sellerId;
   const dispatch = useDispatch();
 
@@ -16,15 +18,18 @@ const SellerScreen = (props) => {
     loading: loadingProducts,
     error: errorProducts,
     products,
+    pages,
+    page,
+    totalProducts,
   } = productList;
 
-  const userDetails = useSelector((state) => state.userDetails);
-  const { loading, error, user } = userDetails;
+  const sellerDetails = useSelector((state) => state.sellerDetails);
+  const { loading, error, seller } = sellerDetails;
 
   useEffect(() => {
-    dispatch(getProfileUser(sellerId));
-    dispatch(listProducts({ seller: sellerId }));
-  }, [dispatch, sellerId]);
+    dispatch(getProfileSeller(sellerId));
+    dispatch(listProducts({ seller: sellerId, pageNumber, pageSize }));
+  }, [dispatch, sellerId, pageNumber, pageSize]);
 
   return (
     <div className="seller-wrapper row top">
@@ -40,25 +45,25 @@ const SellerScreen = (props) => {
                 <div className="p-1">
                   <img
                     className="small"
-                    src={user.seller.logo}
-                    alt={user.seller.name}
+                    src={seller.seller.logo}
+                    alt={seller.seller.name}
                   ></img>
                 </div>
                 <div className="p-1">
-                  <h1>{user.seller.name}</h1>
+                  <h1>{seller.seller.name}</h1>
                 </div>
               </div>
             </li>
             <li>
               <Rating
-                rating={user.seller.rating}
-                numReviews={user.seller.numReviews}
+                rating={seller.seller.rating}
+                numReviews={seller.seller.numReviews}
               ></Rating>
             </li>
             <li>
-              <a href={`mailto:${user.email}`}>Contact Seller</a>
+              <a href={`mailto:${seller.email}`}>Contact Seller</a>
             </li>
-            <li>{user.seller.description}</li>
+            <li>{seller.seller.description}</li>
           </ul>
         )}
       </div>
@@ -69,16 +74,32 @@ const SellerScreen = (props) => {
           <MessageBox variant="danger">{errorProducts}</MessageBox>
         ) : (
           <>
-            {products.length === 0 ? (
+            {totalProducts === 0 ? (
               <MessageBox>No Product Found</MessageBox>
             ) : (
-              <h2 className="seller-products-count">{products.length} products for this Seller</h2>
+              <h2 className="seller-products-count">
+                {totalProducts} {totalProducts === 1 ? "Product" : "Products"}{" "}
+                for this Seller
+              </h2>
             )}
             <div className="row center">
               {products.map((product) => (
                 <Product key={product._id} product={product}></Product>
               ))}
             </div>
+            {!!products.length && (
+                <div className="pagination">
+                  {[...Array(pages).keys()].map((x) => (
+                    <Link
+                      className={x + 1 === page ? "active" : ""}
+                      key={x + 1}
+                      to={`/seller/${sellerId}/page/${x + 1}/size/${pageSize}`}
+                    >
+                      {x + 1}
+                    </Link>
+                  ))}
+                </div>
+              )}
           </>
         )}
       </div>

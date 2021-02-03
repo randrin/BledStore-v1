@@ -8,7 +8,8 @@ import {
   getListUsers,
   deleteUser,
   updateUser,
-  getTopSellers
+  getTopSellers,
+  getProfileSeller
 } from "../controllers/userController.js";
 import { isAdmin, isAuth } from "../utils.js";
 
@@ -18,6 +19,7 @@ userRouter.get("/seed", seedUsers);
 userRouter.get("/", isAuth, isAdmin, getListUsers);
 userRouter.get("/top-sellers", getTopSellers);
 userRouter.get("/:userId", isAuth, getProfileUser);
+userRouter.get("/seller/:sellerId", getProfileSeller);
 userRouter.put("/profile", isAuth, updateProfileUser);
 userRouter.put("/:userId", isAuth, updateUser);
 userRouter.post("/signin", signinUser);

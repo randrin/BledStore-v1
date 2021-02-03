@@ -51,7 +51,7 @@ export const getListProducts = expressAsyncHander(async (req, res) => {
     .limit(pageSize);
   res
     .status(200)
-    .send({ listProducts, page, pages: Math.ceil(count / pageSize) });
+    .send({ listProducts, page, pages: Math.ceil(count / pageSize), count });
 });
 
 export const seedProducts = expressAsyncHander(async (req, res) => {

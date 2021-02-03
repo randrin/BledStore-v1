@@ -1,5 +1,10 @@
 import axios from "axios";
 import {
+  SELLER_DETAILS_FAIL,
+  SELLER_DETAILS_REQUEST,
+  SELLER_DETAILS_SUCCESS,
+} from "../constants/sellerConstants";
+import {
   USER_DELETE_FAIL,
   USER_DELETE_REQUEST,
   USER_DELETE_SUCCESS,
@@ -141,6 +146,35 @@ export const getProfileUser = (userId) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getProfileSeller = (sellerId) => async (dispatch, getState) => {
+  dispatch({
+    type: SELLER_DETAILS_REQUEST,
+    payload: sellerId,
+  });
+  try {
+    const response = await axios({
+      url: `/v1/api/users/seller/${sellerId}`,
+      method: "GET",
+    });
+    if (response.statusText !== "OK") {
+      dispatch({
+        type: SELLER_DETAILS_FAIL,
+        error: "Something went wrong !!!",
+      });
+    } else {
+      dispatch({ type: SELLER_DETAILS_SUCCESS, payload: response.data });
+    }
+  } catch (error) {
+    dispatch({
+      type: SELLER_DETAILS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
