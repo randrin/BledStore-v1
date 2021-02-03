@@ -4,6 +4,8 @@ import data from "../data.js";
 import User from "../models/userModel.js";
 
 export const getListProducts = expressAsyncHander(async (req, res) => {
+  const pageSize = Number(req.query.pageSize) || 4;
+  const page = Number(req.query.pageNumber) || 1;
   const seller = req.query.seller || "";
   const name = req.query.name || "";
   const order = req.query.order || "";
@@ -29,6 +31,13 @@ export const getListProducts = expressAsyncHander(async (req, res) => {
       : order === "toprated"
       ? { rating: -1 }
       : { _id: -1 };
+  const count = await Product.count({
+    ...sellerFilter,
+    ...nameFilter,
+    ...categoryFilter,
+    ...priceFilter,
+    ...ratingFilter,
+  });
   const listProducts = await Product.find({
     ...sellerFilter,
     ...nameFilter,
@@ -37,8 +46,12 @@ export const getListProducts = expressAsyncHander(async (req, res) => {
     ...ratingFilter,
   })
     .populate("seller", "seller.name seller.logo")
-    .sort(sortOrder);
-  res.status(200).send({ listProducts });
+    .sort(sortOrder)
+    .skip(pageSize * (page - 1))
+    .limit(pageSize);
+  res
+    .status(200)
+    .send({ listProducts, page, pages: Math.ceil(count / pageSize) });
 });
 
 export const seedProducts = expressAsyncHander(async (req, res) => {

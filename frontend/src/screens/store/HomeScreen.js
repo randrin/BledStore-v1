@@ -6,14 +6,16 @@ import Product from "../../components/Product";
 import { listProducts } from "../../redux/actions/productActions";
 import { Carousel } from "react-responsive-carousel";
 import { listTopSellers } from "../../redux/actions/userActions";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const HomeScreen = () => {
+  const pageSize = 5;
+  const { pageNumber = 1 } = useParams();
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productsList);
-  const { loading, error, products } = productList;
+  const { loading, error, products, pages, page } = productList;
 
   const usersToSellers = useSelector((state) => state.usersToSellers);
   const {
@@ -23,9 +25,9 @@ const HomeScreen = () => {
   } = usersToSellers;
 
   useEffect(() => {
-    dispatch(listProducts({}));
+    dispatch(listProducts({ pageNumber, pageSize }));
     dispatch(listTopSellers());
-  }, [dispatch]);
+  }, [dispatch, pageNumber]);
 
   return (
     <main className="main-wrapper">
@@ -55,12 +57,25 @@ const HomeScreen = () => {
       ) : error ? (
         <MessageBox>{error}</MessageBox>
       ) : (
-        <div className="row center">
-          {products.length === 0 && <MessageBox>No Product Found</MessageBox>}
-          {products.map((product, index) => (
-            <Product key={index} product={product} />
-          ))}
-        </div>
+        <>
+          <div className="row center">
+            {products.length === 0 && <MessageBox>No Product Found</MessageBox>}
+            {products.map((product, index) => (
+              <Product key={index} product={product} />
+            ))}
+          </div>
+          <div className="row center pagination">
+            {[...Array(pages).keys()].map((x) => (
+              <Link
+                className={x + 1 === page ? "active" : ""}
+                key={x + 1}
+                to={`/page/${x + 1}/size/${pageSize}`}
+              >
+                {x + 1}
+              </Link>
+            ))}
+          </div>
+        </>
       )}
     </main>
   );

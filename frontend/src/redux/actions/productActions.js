@@ -17,13 +17,13 @@ import {
   PRODUCT_UPDATE_SUCCESS,
 } from "../constants/productConstants";
 
-export const listProducts = ({seller = '', name = '', category = '', min = 0, max = 0, rating = 0, order = ''}) => async (dispatch) => {
+export const listProducts = ({pageNumber = '', pageSize = '', seller = '', name = '', category = '', min = 0, max = 0, rating = 0, order = '' }) => async (dispatch) => {
   dispatch({
     type: PRODUCT_LIST_REQUEST,
   });
   try {
     const response = await axios({
-      url: `/v1/api/products?seller=${seller}&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}&order=${order}`,
+      url: `/v1/api/products?pageNumber=${pageNumber}&pageSize=${pageSize}&seller=${seller}&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}&order=${order}`,
       method: "GET",
     });
     if (response.statusText !== "OK") {
@@ -31,7 +31,7 @@ export const listProducts = ({seller = '', name = '', category = '', min = 0, ma
     } else {
       dispatch({
         type: PRODUCT_LIST_SUCCESS,
-        payload: response.data.listProducts,
+        payload: response.data,
       });
     }
   } catch (error) {

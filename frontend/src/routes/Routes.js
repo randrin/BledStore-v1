@@ -29,6 +29,7 @@ import MapScreen from "../screens/store/cart/MapScreen";
 const Routes = () => (
   <Switch>
     <Route exact path="/" strict component={HomeScreen} />
+    <Route exact path="/page/:pageNumber/size/:pageSize" strict component={HomeScreen} />
     <Route exact path="/product/:productId" strict component={ProductScreen} />
     <Route exact path="/product/:productId/edit" strict component={ProductEditScreen} />
     <Route exact path="/cart/:productId?" strict component={CartScreen} />
@@ -42,6 +43,7 @@ const Routes = () => (
     <PrivateRoute exact path="/profile" strict component={ProfileScreen} />
     <PrivateRoute exact path="/map" strict component={MapScreen} />
     <AdminRoute exact path="/productlist" strict component={ProductListScreen} />
+    <AdminRoute exact path="/productlist/page/:pageNumber/size/:pageSize" strict component={ProductListScreen} />
     <SellerRoute exact path="/productlist/seller" strict component={ProductListScreen} />
     <SellerOrAdminRoute exact path="/create/product" strict component={ProductCreateScreen} />
     <AdminRoute exact path="/orderlist" strict component={OrderListScreen} />
@@ -52,7 +54,7 @@ const Routes = () => (
     <Route exact path="/search/name/:name?" strict component={SearchScreen} />
     <Route exact path="/search/category/:category" strict component={SearchScreen} />
     <Route exact path="/search/category/:category/name/:name" strict component={SearchScreen} />
-    <Route exact path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order" strict component={SearchScreen} />
+    <Route exact path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/size/:pageSize/page/:pageNumber" strict component={SearchScreen} />
     <Route component={Error404} />
   </Switch>
 );
