@@ -63,9 +63,11 @@ const ProductListScreen = (props) => {
           <table className="table">
             <thead>
               <tr>
-                <th>ID</th>
+                <th>PRODUCT ID</th>
                 <th>NAME</th>
+                <th>SELLER NAME</th>
                 <th>PRICE</th>
+                <th>STOCK</th>
                 <th>CATEGORY</th>
                 <th>BRAND</th>
                 <th>ACTIONS</th>
@@ -76,7 +78,9 @@ const ProductListScreen = (props) => {
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
+                  <td>{product.seller.seller.name}</td>
                   <td>{product.price}</td>
+                  <td>{product.countInStock}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>

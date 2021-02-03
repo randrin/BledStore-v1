@@ -16,7 +16,7 @@ const SearchScreen = (props) => {
     min = 0,
     max = 0,
     rating = 0,
-    order = "newest"
+    order = "newest",
   } = useParams();
 
   const productList = useSelector((state) => state.productsList);
@@ -37,7 +37,7 @@ const SearchScreen = (props) => {
         min,
         max,
         rating,
-        order
+        order,
       })
     );
   }, [category, dispatch, max, min, name, order, rating]);
@@ -59,112 +59,115 @@ const SearchScreen = (props) => {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <>
-          <div className="search-sort-by">
-            Sort By
-            <select
-              value={order}
-              onChange={(e) => {
-                props.history.push(getFilterUrl({ order: e.target.value }));
-              }}
-            >
-              <option value="newest">Newest Arrivals</option>
-              <option value="lowest">Price: Low to High</option>
-              <option value="highest">Price: High to Low</option>
-              <option value="toprated">Avg. Customer Reviews</option>
-            </select>
-          </div>
-          <div className="row top">
-            <div className="col-1">
-              <h3>Categories</h3>
-              <div>
-                {loadingCategory ? (
-                  <LoadingBox></LoadingBox>
-                ) : errorCategory ? (
-                  <MessageBox variant="danger">{errorCategory}</MessageBox>
-                ) : (
-                  <ul>
-                    <li>
-                      <Link
-                        className={"all" === category ? "active" : ""}
-                        to={getFilterUrl({ category: "all" })}
-                      >
-                        Any
-                      </Link>
-                    </li>
-                    {categories.map((c, index) => (
-                      <li key={index}>
-                        <Link
-                          to={getFilterUrl({ category: c })}
-                          className={c === category ? "active" : ""}
-                        >
-                          {c}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-              <div>
-                <h3>Price</h3>
+        <div className="row top">
+          <div className="col-1">
+            <h3>Categories</h3>
+            <div>
+              {loadingCategory ? (
+                <LoadingBox></LoadingBox>
+              ) : errorCategory ? (
+                <MessageBox variant="danger">{errorCategory}</MessageBox>
+              ) : (
                 <ul>
-                  {prices.map((p, index) => (
+                  <li>
+                    <Link
+                      className={"all" === category ? "active" : ""}
+                      to={getFilterUrl({ category: "all" })}
+                    >
+                      Any
+                    </Link>
+                  </li>
+                  {categories.map((c, index) => (
                     <li key={index}>
                       <Link
-                        to={getFilterUrl({ min: p.min, max: p.max })}
-                        className={
-                          `${p.min}-${p.max}` === `${min}-${max}`
-                            ? "active"
-                            : ""
-                        }
+                        to={getFilterUrl({ category: c })}
+                        className={c === category ? "active" : ""}
                       >
-                        {p.name}
+                        {c}
                       </Link>
                     </li>
                   ))}
                 </ul>
-              </div>
-              <div>
-                <h3>Average Customers Reviews</h3>
-                <ul>
-                  {ratings.map((r) => (
-                    <li key={r.name}>
-                      <Link
-                        to={getFilterUrl({ rating: r.rating })}
-                        className={
-                          `${r.rating}` === `${rating}` ? "active" : ""
-                        }
-                      >
-                        <Rating caption={" & up"} rating={r.rating}></Rating>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="col-3">
-              {loading ? (
-                <LoadingBox></LoadingBox>
-              ) : error ? (
-                <MessageBox variant="danger">{error}</MessageBox>
-              ) : (
-                <div className="row center search-content">
-                  {products.length === 0 && (
-                    <MessageBox>No Product Found for search: {name}</MessageBox>
-                  )}
-                  <h2 className="search-products-count">
-                    {products.length} Products found
-                  </h2>
-                  <div className="search-products">
-                    {products.map((product, index) => (
-                      <Product key={index} product={product} />
-                    ))}
-                  </div>
-                </div>
               )}
             </div>
+            <div>
+              <h3>Price</h3>
+              <ul>
+                {prices.map((p, index) => (
+                  <li key={index}>
+                    <Link
+                      to={getFilterUrl({ min: p.min, max: p.max })}
+                      className={
+                        `${p.min}-${p.max}` === `${min}-${max}` ? "active" : ""
+                      }
+                    >
+                      {p.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3>Average Customers Reviews</h3>
+              <ul>
+                {ratings.map((r) => (
+                  <li key={r.name}>
+                    <Link
+                      to={getFilterUrl({ rating: r.rating })}
+                      className={`${r.rating}` === `${rating}` ? "active" : ""}
+                    >
+                      <Rating caption={" & up"} rating={r.rating}></Rating>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </>
+          <div className="col-3">
+            {loading ? (
+              <LoadingBox></LoadingBox>
+            ) : error ? (
+              <MessageBox variant="danger">{error}</MessageBox>
+            ) : (
+              <>
+                {products.length === 0 ? (
+                  <MessageBox>
+                    No Product Found for search: name: {name}, category:{" "}
+                    {category}, min: {min}, max: {max}, rating: {rating} and
+                    sort: {order}
+                  </MessageBox>
+                ) : (
+                  <div className="search-seller-products">
+                    <h2 className="search-products-count">
+                      {products.length} Products found
+                    </h2>
+                    <div className="search-sort-by">
+                      <span>Sort By</span>
+                      <select
+                        value={order}
+                        onChange={(e) => {
+                          props.history.push(
+                            getFilterUrl({ order: e.target.value })
+                          );
+                        }}
+                      >
+                        <option value="newest">Newest Arrivals</option>
+                        <option value="lowest">Price: Low to High</option>
+                        <option value="highest">Price: High to Low</option>
+                        <option value="toprated">Avg. Customer Reviews</option>
+                      </select>
+                    </div>
+                  </div>
+                )}
+                <div className="row center search-content">
+                  {products.map((product, index) => (
+                    <Product key={index} product={product} />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );

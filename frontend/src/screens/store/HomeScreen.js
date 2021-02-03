@@ -28,7 +28,7 @@ const HomeScreen = () => {
   }, [dispatch]);
 
   return (
-    <main>
+    <main className="main-wrapper">
       <h2>Top Sellers</h2>
       {loadingSellers ? (
         <LoadingBox></LoadingBox>

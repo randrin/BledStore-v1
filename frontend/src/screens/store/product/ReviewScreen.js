@@ -12,6 +12,7 @@ const ReviewScreen = ({ product, productId }) => {
 
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
+  const [showFormReview, setShowFormReview] = useState(false);
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -24,14 +25,12 @@ const ReviewScreen = ({ product, productId }) => {
     review,
   } = reviewsCreate;
 
-  console.log("product: ", product);
-  console.log("productId: ", productId);
-
   useEffect(() => {
     if (successReviewCreate) {
-      window.alert("Review added succefully.");
+      window.alert("Review added successfully.");
       setRating(0);
       setComment("");
+      setShowFormReview(false);
       dispatch({ type: REVIEW_CREATE_RESET });
     }
   }, [dispatch, successReviewCreate]);
@@ -50,8 +49,13 @@ const ReviewScreen = ({ product, productId }) => {
   return (
     <div className="review-wrapper">
       <h2 id="reviews">Reviews</h2>
-      {product.reviews && product.reviews.length === 0 && (
-        <MessageBox>There is no review</MessageBox>
+      {product.reviews && product.reviews.length === 0 && userInfo && (
+        <MessageBox>
+          There is no reviews.
+          <Link to="#" onClick={() => setShowFormReview(!showFormReview)}>
+            {showFormReview ? "Hide Form review" : "Leave your review"}
+          </Link>
+        </MessageBox>
       )}
       <ul>
         {product.reviews &&
@@ -72,42 +76,44 @@ const ReviewScreen = ({ product, productId }) => {
                   <MessageBox variant="danger">{errorReviewCreate}</MessageBox>
                 )}
               </div>
-              <form className="form" onSubmit={submitHandler}>
-                <div>
-                  <h2>Write a customer review</h2>
-                </div>
-                <div>
-                  <label htmlFor="rating">Rating</label>
-                  <select
-                    id="rating"
-                    value={rating}
-                    onChange={(e) => setRating(e.target.value)}
-                  >
-                    <option value="">Select...</option>
-                    <option value="1">1- Poor</option>
-                    <option value="2">2- Fair</option>
-                    <option value="3">3- Good</option>
-                    <option value="4">4- Very Good</option>
-                    <option value="5">5- Excelent</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="comment">Comment</label>
-                  <textarea
-                    rows="8"
-                    placeholder="Insert the review"
-                    id="comment"
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                  ></textarea>
-                </div>
-                <div>
-                  <label />
-                  <button className="primary" type="submit">
-                    Submit
-                  </button>
-                </div>
-              </form>
+              {showFormReview && (
+                <form className="form" onSubmit={submitHandler}>
+                  <div>
+                    <h2>Write a customer review</h2>
+                  </div>
+                  <div>
+                    <label htmlFor="rating">Rating</label>
+                    <select
+                      id="rating"
+                      value={rating}
+                      onChange={(e) => setRating(e.target.value)}
+                    >
+                      <option value="">Select...</option>
+                      <option value="1">1- Poor</option>
+                      <option value="2">2- Fair</option>
+                      <option value="3">3- Good</option>
+                      <option value="4">4- Very Good</option>
+                      <option value="5">5- Excelent</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="comment">Comment</label>
+                    <textarea
+                      rows="8"
+                      placeholder="Insert the review"
+                      id="comment"
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                    ></textarea>
+                  </div>
+                  <div>
+                    <label />
+                    <button className="primary" type="submit">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              )}
             </>
           ) : (
             <MessageBox>

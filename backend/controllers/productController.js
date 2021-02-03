@@ -1,6 +1,7 @@
 import expressAsyncHander from "express-async-handler";
 import Product from "../models/productModel.js";
 import data from "../data.js";
+import User from "../models/userModel.js";
 
 export const getListProducts = expressAsyncHander(async (req, res) => {
   const seller = req.query.seller || "";

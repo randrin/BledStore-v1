@@ -12,7 +12,7 @@ import { isAdmin, isAuth, isSellerOrAdmin } from "../utils.js";
 const productRouter = express.Router();
 
 productRouter.get("/", getListProducts);
-productRouter.get("/seed", isAuth, isSellerOrAdmin, seedProducts);
+productRouter.get("/seed", seedProducts);
 productRouter.get("/:productId", getProductById);
 productRouter.post("/create", isAuth, isSellerOrAdmin, createProduct);
 productRouter.put("/:productId", isAuth, isSellerOrAdmin, updateProduct);

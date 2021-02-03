@@ -33,7 +33,7 @@ const data = {
       name: "Gray Coat",
       description:
         "ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices",
-      category: "feugiat non pretium quis lectus suspendisse potenti",
+      category: "Clothes",
       brand:
         "a pede posuere nonummy integer non velit donec diam neque vestibulum eget",
       rating: 9.8,
@@ -47,7 +47,7 @@ const data = {
       name: "Brown Scarf",
       description:
         "pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu",
-      category: "vel enim sit amet nunc viverra dapibus nulla",
+      category: "Clothes",
       brand: "mi in porttitor pede justo eu massa donec dapibus duis at",
       rating: 5.8,
       numReviews: 75,
@@ -60,7 +60,7 @@ const data = {
       name: "Brown Tshirt",
       description:
         "magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient",
-      category: "natoque penatibus et magnis dis parturient montes",
+      category: "Tshirt",
       brand:
         "non lectus aliquam sit amet diam in magna bibendum imperdiet nullam",
       rating: 9.8,
@@ -74,7 +74,7 @@ const data = {
       name: "Brown Sweater",
       description:
         "vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes",
-      category: "nisl duis bibendum felis sed",
+      category: "Clothes",
       brand:
         "orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur",
       rating: 4.3,
@@ -88,7 +88,7 @@ const data = {
       name: "Yellow Dress",
       description:
         "dui maecenas tristique est et tempus semper est quam pharetra magna ac",
-      category: "justo maecenas rhoncus aliquam lacus",
+      category: "Clothes",
       brand:
         "tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna",
       rating: 1.1,
@@ -102,7 +102,7 @@ const data = {
       name: "Dark Green Women Set",
       description:
         "maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras",
-      category: "blandit mi in porttitor pede justo eu massa donec dapibus",
+      category: "Tshirt",
       brand:
         "tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo",
       rating: 7.4,
@@ -116,7 +116,7 @@ const data = {
       name: "Dress Jeans",
       description:
         "dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque",
-      category: "neque duis bibendum morbi non quam nec",
+      category: "Clothes",
       brand:
         "mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy",
       rating: 6.3,
@@ -130,7 +130,7 @@ const data = {
       name: "Women Shoes",
       description:
         "eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices",
-      category: "ac leo pellentesque ultrices mattis",
+      category: "Shoes",
       brand:
         "ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices",
       rating: 3.2,
@@ -144,7 +144,7 @@ const data = {
       name: "Gray Bag",
       description:
         "ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo",
-      category: "posuere felis sed lacus morbi",
+      category: "Bag",
       brand: "ut nunc vestibulum ante ipsum primis in faucibus orci luctus",
       rating: 9.5,
       numReviews: 88,
@@ -157,7 +157,7 @@ const data = {
       name: "Yellow Tshirt Small",
       description:
         "risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum",
-      category: "eu est congue elementum in hac habitasse platea",
+      category: "Tshirt",
       brand:
         "pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel",
       rating: 5.8,
@@ -171,7 +171,7 @@ const data = {
       name: "Woman High Shoe",
       description:
         "habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate",
-      category: "consequat nulla nisl nunc nisl duis bibendum felis",
+      category: "Shoes",
       brand:
         "tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero",
       rating: 1.7,
@@ -185,7 +185,7 @@ const data = {
       name: "Black Bag",
       description:
         "in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin",
-      category: "rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel",
+      category: "Bag",
       brand:
         "gravida nisi at nibh in hac habitasse platea dictumst aliquam augue",
       rating: 4.4,
@@ -199,7 +199,7 @@ const data = {
       name: "Brown Bag",
       description:
         "duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi vel lectus in",
-      category: "est donec odio justo sollicitudin",
+      category: "Bag",
       brand:
         "eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed",
       rating: 2.2,
@@ -213,7 +213,7 @@ const data = {
       name: "Brown Mini Dress",
       description:
         "ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor",
-      category: "eu mi nulla ac enim in tempor turpis",
+      category: "Clothes",
       brand:
         "posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin",
       rating: 2.8,
@@ -227,7 +227,7 @@ const data = {
       name: "Brown Mini Bag",
       description:
         "faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec",
-      category: "volutpat quam pede lobortis ligula",
+      category: "Bag",
       brand:
         "nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in",
       rating: 9.6,

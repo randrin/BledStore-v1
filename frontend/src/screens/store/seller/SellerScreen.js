@@ -27,8 +27,8 @@ const SellerScreen = (props) => {
   }, [dispatch, sellerId]);
 
   return (
-    <div className="row top">
-      <div className="col-1">
+    <div className="seller-wrapper row top">
+      <div className="seller-menu-left col-1">
         {loading ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
@@ -62,14 +62,18 @@ const SellerScreen = (props) => {
           </ul>
         )}
       </div>
-      <div className="col-3">
+      <div className="seller-content col-3">
         {loadingProducts ? (
           <LoadingBox></LoadingBox>
         ) : errorProducts ? (
           <MessageBox variant="danger">{errorProducts}</MessageBox>
         ) : (
           <>
-            {products.length === 0 && <MessageBox>No Product Found</MessageBox>}
+            {products.length === 0 ? (
+              <MessageBox>No Product Found</MessageBox>
+            ) : (
+              <h2 className="seller-products-count">{products.length} products for this Seller</h2>
+            )}
             <div className="row center">
               {products.map((product) => (
                 <Product key={product._id} product={product}></Product>

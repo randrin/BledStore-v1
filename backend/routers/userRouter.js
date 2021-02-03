@@ -14,7 +14,7 @@ import { isAdmin, isAuth } from "../utils.js";
 
 const userRouter = express.Router();
 
-userRouter.get("/seed", isAuth, isAdmin, seedUsers);
+userRouter.get("/seed", seedUsers);
 userRouter.get("/", isAuth, isAdmin, getListUsers);
 userRouter.get("/top-sellers", getTopSellers);
 userRouter.get("/:userId", isAuth, getProfileUser);

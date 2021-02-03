@@ -25,7 +25,7 @@ const Product = ({ product }) => {
               <span className="product-seller-infos">
                 <Link to={`/seller/${product.seller._id}`}>
                   <img
-                    className="small product-seller-logo"
+                    className="seller-logo product-seller-logo"
                     src={product.seller.seller.logo}
                     alt={product.seller.seller.name}
                   ></img>

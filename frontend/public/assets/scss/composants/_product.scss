@@ -26,18 +26,32 @@
 }
 
 .search-wrapper {
-    .search-sort-by {
-        right: 25px;
-        float: right;
-        top: 15px;
-        position: relative;
-    }
-
-    .search-content {
-        display: grid;
-    }
-
-    .search-products {
+    .search-seller-products {
         display: flex;
+
+        .search-sort-by {
+            right: 25px;
+            float: right;
+            position: absolute;
+            padding-top: 15px;
+
+            span {
+                right: 5px;
+                position: relative;
+            }
+        }
+
+        .search-content {
+            // display: grid;
+        }
+
+        .search-products-count {
+            text-align: center;
+        }
+
+        .search-products {
+            // display: flex;
+        }
     }
+
 }

@@ -6,7 +6,7 @@ import {
 } from "../constants/reviewConstants";
 
 export const reviewsReducer = (
-  state = { review: {}, loading: true },
+  state = { review: {} },
   action
 ) => {
   switch (action.type) {
