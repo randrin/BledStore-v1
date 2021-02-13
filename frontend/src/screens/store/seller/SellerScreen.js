@@ -9,7 +9,7 @@ import { listProducts } from "../../../redux/actions/productActions";
 import { getProfileSeller } from "../../../redux/actions/userActions";
 
 const SellerScreen = (props) => {
-  const { pageNumber = 1, pageSize = 4 } = useParams();
+  const { pageNumber = 1, pageSize = 8 } = useParams();
   const sellerId = props.match.params.sellerId;
   const dispatch = useDispatch();
 

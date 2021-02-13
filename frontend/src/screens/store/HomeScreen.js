@@ -10,7 +10,7 @@ import { Link, useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const HomeScreen = () => {
-  const pageSize = 5;
+  const pageSize = 10;
   const { pageNumber = 1 } = useParams();
   const dispatch = useDispatch();
 

@@ -127,7 +127,7 @@ const SearchScreen = (props) => {
                       to={getFilterUrl({ rating: r.rating })}
                       className={`${r.rating}` === `${rating}` ? "active" : ""}
                     >
-                      <Rating caption={" & up"} rating={r.rating}></Rating>
+                      <Rating className="rating-active" caption={" & up"} rating={r.rating}></Rating>
                     </Link>
                   </li>
                 ))}

@@ -1,4 +1,12 @@
 .product-wrapper {
+    .card {
+        .card-body {
+            .card-title {
+                padding: 0 !important;
+            }
+        }
+    }
+
     .product-seller-content {
         position: relative;
 
