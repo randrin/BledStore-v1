@@ -1,8 +1,29 @@
 .product-wrapper {
+
     .card {
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 25px 0 rgba(34, 41, 47, 0.25);
+        }
+
         .card-body {
             .card-title {
                 padding: 0 !important;
+            }
+        }
+
+        .card-footer {
+            display: grid;
+            text-align: center;
+
+            .product-add-to-cart {
+                font-weight: 600;
+                border-bottom-left-radius: 0.5rem;
+                border-bottom-right-radius: 0.5rem;
+                border: 0.1rem #c0c0c0 solid;
+                border-color: #f0c040 !important;
+                background-color: #f0c040 !important;
+                color: var(--bledstore-primary) !important;
             }
         }
     }
@@ -25,17 +46,33 @@
 }
 
 .product-screen-wrapper {
+    top: 15px;
+    position: relative;
+
+    .product-screen-btn-back {
+        margin: 15px 0px 15px 20px;
+    }
+
     .product-seller-name {
         top: -10px;
         left: 5px;
         position: relative;
 
     }
+
+    .product-add-to-cart {
+        &:hover {
+            background-color: var(--bledstore-primary);
+            color: var(--bledstore-white);
+        }
+    }
 }
 
 .search-wrapper {
     .search-seller-products {
         display: flex;
+        top: 15px;
+        position: relative;
 
         .search-sort-by {
             right: 25px;

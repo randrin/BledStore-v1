@@ -73,14 +73,15 @@ const ShippingAddressScreen = (props) => {
   };
 
   return (
-    <div>
+    <div className="shipping-wrapper">
       <CheckoutSteps step1 step2></CheckoutSteps>
       <form className="form" onSubmit={submitHandler}>
-        <div>
+        <div className="bledstore-shipping-title">
+          <i className="bledstore-shipping-title-icon fa fa-map-marker"></i>
           <h1>Shipping Address</h1>
         </div>
         <div>
-          <label htmlFor="fullName">Full Name</label>
+          <label htmlFor="fullName">Full Name <span className="form-required">*</span></label>
           <input
             type="text"
             id="fullName"
@@ -91,7 +92,7 @@ const ShippingAddressScreen = (props) => {
           ></input>
         </div>
         <div>
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address">Address <span className="form-required">*</span></label>
           <input
             type="text"
             id="address"
@@ -102,7 +103,7 @@ const ShippingAddressScreen = (props) => {
           ></input>
         </div>
         <div>
-          <label htmlFor="city">City</label>
+          <label htmlFor="city">City <span className="form-required">*</span></label>
           <input
             type="text"
             id="city"
@@ -113,7 +114,7 @@ const ShippingAddressScreen = (props) => {
           ></input>
         </div>
         <div>
-          <label htmlFor="postalCode">Postal Code</label>
+          <label htmlFor="postalCode">Postal Code <span className="form-required">*</span></label>
           <input
             type="text"
             id="postalCode"
@@ -124,7 +125,7 @@ const ShippingAddressScreen = (props) => {
           ></input>
         </div>
         <div>
-          <label htmlFor="country">Country</label>
+          <label htmlFor="country">Country <span className="form-required">*</span></label>
           <input
             type="text"
             id="country"
@@ -134,16 +135,16 @@ const ShippingAddressScreen = (props) => {
             required
           ></input>
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="chooseOnMap">Location</label>
           <button type="button" onClick={chooseOnMap}>
             Choose On Map
           </button>
-        </div>
+        </div> */}
         <div>
           <label />
-          <button className="primary" type="submit">
-            Continue
+          <button className="bledstore-btn-submit primary" type="submit">
+            Continue <i className="fa fa-angle-double-right"></i>
           </button>
         </div>
       </form>

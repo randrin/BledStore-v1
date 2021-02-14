@@ -1,0 +1,30 @@
+.bledstore-auth-wrapper {
+
+    .bledstore-auth-title,
+    .bledstore-auth-footer {
+        text-align: center;
+
+        .bledstore-auth-title-icon {
+            top: 10px;
+            position: relative;
+            font-size: 75px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+    }
+
+    .bledstore-auth-cta {
+        left: 5px;
+        position: relative;
+    }
+
+    .bledstore-auth-btn-submit {
+        &:hover {
+            background-color: var(--bledstore-primary);
+            color: var(--bledstore-white);
+        }
+    }
+}

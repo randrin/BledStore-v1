@@ -37,9 +37,10 @@ const RegisterScreen = (props) => {
   }, [dispatch, props.history, redirect, userInfo]);
 
   return (
-    <div>
+    <div className="bledstore-auth-wrapper">
       <form className="form" onSubmit={submitHandler}>
-        <div>
+        <div className="bledstore-auth-title">
+          <i className="bledstore-auth-title-icon fa fa-user-circle-o"></i>
           <h1>Sign Up</h1>
         </div>
         {loading && <LoadingBox></LoadingBox>}
@@ -118,14 +119,15 @@ const RegisterScreen = (props) => {
         </div>
         <div>
           <label />
-          <button className="primary" type="submit">
-            Sign In
+          <button className="bledstore-auth-btn-submit primary" type="submit">
+            Register <i className="fa fa-angle-double-right"></i>
           </button>
         </div>
-        <div>
+        <div className="bledstore-auth-footer">
           <label />
           <div>
-            Already have an account ?<Link to={`/signin?redirect=${redirect}`}>Signin</Link>
+            Already have an account ?
+            <Link to={`/signin?redirect=${redirect}`} className="bledstore-auth-cta">Sign In</Link>
           </div>
         </div>
       </form>

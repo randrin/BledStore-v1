@@ -37,6 +37,14 @@ const Product = ({ product }) => {
             )}
           </div>
         </div>
+        <div className="card-footer">
+          <Link
+            to={`/product/${product._id}`}
+            className="bledstore-button product-add-to-cart"
+          >
+            <i className="fa fa-shopping-cart"></i> Add to Cart
+          </Link>
+        </div>
       </div>
     </div>
   );

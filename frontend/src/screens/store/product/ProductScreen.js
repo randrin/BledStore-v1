@@ -32,7 +32,11 @@ const ProductScreen = (props) => {
         <MessageBox>{error}</MessageBox>
       ) : (
         <div className="product-screen-wrapper">
-          <Link to="/">Back to result</Link>
+          <div className="row">
+            <Link to="/" className="product-screen-btn-back">
+              <i className="fa fa-angle-left"></i> Back to Result
+            </Link>
+          </div>
           <div className="row top">
             <div className="col-2">
               <img
@@ -135,9 +139,9 @@ const ProductScreen = (props) => {
                   <li>
                     <button
                       onClick={addToCartHandler}
-                      className="primary block"
+                      className="product-add-to-cart primary block"
                     >
-                      Add to Cart
+                      <i className="fa fa-shopping-cart"></i> Add to Cart
                     </button>
                   </li>
                 </ul>

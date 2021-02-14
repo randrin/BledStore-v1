@@ -29,9 +29,10 @@ const SigninScreen = (props) => {
   }, [dispatch, props.history, redirect, userInfo]);
 
   return (
-    <div>
+    <div className="bledstore-auth-wrapper">
       <form className="form" onSubmit={submitHandler}>
-        <div>
+        <div className="bledstore-auth-title">
+          <i className="bledstore-auth-title-icon fa fa-user-circle"></i>
           <h1>Sign In</h1>
         </div>
         {loading && <LoadingBox></LoadingBox>}
@@ -62,15 +63,15 @@ const SigninScreen = (props) => {
         </div>
         <div>
           <label />
-          <button className="primary" type="submit">
-            Sign In
+          <button className="bledstore-auth-btn-submit primary" type="submit">
+            Login <i className="fa fa-angle-double-right"></i>
           </button>
         </div>
-        <div>
+        <div className="bledstore-auth-footer">
           <label />
           <div>
-            New customer?
-            <Link to={`/register?redirect=${redirect}`}>
+            New customer? 
+            <Link to={`/register?redirect=${redirect}`} className="bledstore-auth-cta">
               Create your account
             </Link>
           </div>

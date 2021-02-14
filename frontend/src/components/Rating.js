@@ -61,7 +61,7 @@ const Rating = ({ rating, numReviews, caption }) => {
       {caption ? (
         <span>{caption}</span>
       ) : (
-        <span>{numReviews + " reviews"}</span>
+        <span>{ "(" + numReviews + ")"}</span>
       )}
     </div>
   );

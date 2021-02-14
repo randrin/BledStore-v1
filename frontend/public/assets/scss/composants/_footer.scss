@@ -1,20 +1,35 @@
 footer {
-    top: 25px;
+    top: 75px;
     height: max-content;
     position: relative;
 }
 
 #bledstore-footer-scrollToTopBtn {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 15px;
+    right: 20px;
     cursor: pointer;
     display: none;
     z-index: 99;
     border-radius: 10%;
-    width: 60px;
-    height: 60px;
-    font-size: 2em;
+    width: 50px;
+    height: 50px;
+    font-size: 1.8em;
+
+    &:hover {
+        background-color: #f08040;
+        color: #ffffff;
+
+        span {
+            top: -8px;
+            transition: ease-in-out 0.3ms;
+        }
+    }
+
+    span {
+        top: -5px;
+        position: relative;
+    }
 }
 
 .bledstore-footer-scrollToTopBtn i {

@@ -79,14 +79,24 @@ li {
 input,
 select,
 textarea,
-button {
+button,
+.bledstore-button {
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0;
   border: 0.1rem #a4a4a4 solid;
   font-size: 1.6rem;
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  &:hover,
+  &:visited,
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    border: 0.1rem var(--bledstore-primary) solid;
+    outline: none !important;
+  }
 }
 
 button {
@@ -98,22 +108,29 @@ button:disabled {
   cursor: no-drop;
 }
 
-input:hover,
-select:hover,
-textarea:hover,
-button:hover {
-  border: 0.1rem #404040 solid;
-}
+// input:hover,
+// select:hover,
+// textarea:hover,
+// button:hover {
+//   border: 0.1rem #404040 solid;
+// }
 
 button:hover:disabled {
   border: none;
 }
 
+.bledstore-btn-submit {
+  &:hover {
+      background-color: var(--bledstore-primary);
+      color: var(--bledstore-white);
+  }
+}
 
 button.primary {
   background-color: #f0c040;
 }
 
+.bledstore-button.block,
 button.block {
   width: 100%;
 }
@@ -325,8 +342,12 @@ img.large {
 
 /* Form */
 .form {
-  max-width: 60rem;
+  max-width: 45rem;
   margin: 0 auto;
+  border: 1px solid var(--bledstore-sliver);
+  border-radius: 5px;
+  top: 50px;
+  position: relative;
 }
 
 .form>div {
@@ -500,6 +521,7 @@ a {
   margin: 30px 0;
   position: relative;
 }
+
 .pagination a {
   padding: 1rem;
   margin: 0.5rem;
@@ -510,6 +532,7 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .pagination a.active {
   font-weight: bold;
   background: #f08040;
