@@ -1,0 +1,80 @@
+// Banner Fixed Top Scroll
+.banner-scroll-wrapper {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: var(--bledstore-transition) !important;
+}
+
+// Banner
+.banner-wrapper {
+    display: flex;
+    height: 3.97714rem;
+    width: 100%;
+    background-color: var(--bledstore-sliver) !important;
+
+    .banner-left {
+        flex: 0 0 75%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .banner-left-img-shipping {
+            width: 30px;
+            right: 10px;
+            position: relative;
+            top: -3px;
+        }
+
+        .banner-left-content {
+            font-weight: 600;
+            letter-spacing: 0.9px;
+            font-size: 13px;
+            color: var(--bledstore-primary) !important;
+
+            a {
+                color: var(--bledstore-warning) !important;
+
+                &:hover {
+                    color: var(--bledstore-white) !important;
+                }
+            }
+        }
+    }
+
+    .banner-right {
+        flex: 0 0 25%;
+        display: flex;
+        align-items: center;
+        background-color: var(--bledstore-warning) !important;
+        color: var(--bledstore-white) !important;
+
+        &:hover {
+            .banner-right-img-promo-white {
+                display: none !important;
+            }
+
+            .banner-right-img-promo-color {
+                display: flex !important;
+            }
+        }
+
+        .banner-right-img-promo-white,
+        .banner-right-img-promo-color {
+            width: 40px;
+            top: -3px;
+            position: relative;
+        }
+
+        .banner-right-img-promo-color {
+            display: none !important;
+        }
+
+        .banner-right-content {
+            font-weight: 600;
+            letter-spacing: 0.9px;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+    }
+}

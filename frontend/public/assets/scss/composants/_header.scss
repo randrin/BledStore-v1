@@ -1,3 +1,13 @@
+// Header Fixed Top Scroll
+.header-scroll-wrapper {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 40px;
+    box-shadow: var(--bledstore-box-shadow) !important;
+    transition: var(--bledstore-transition) !important;
+}
+
 .header-wrapper {
     height: 70px;
 }

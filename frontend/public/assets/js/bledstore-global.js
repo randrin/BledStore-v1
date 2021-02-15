@@ -1,19 +1,34 @@
 // Go to Top Page & Scroll Navbar Effet
 $(document).ready(function () {
-    $('body').append('<button id="bledstore-footer-scrollToTopBtn" class="btn btn-warning btn-round" title="Go to Top Page"><span><i class="fa fa-angle-up"></i></span></button>');
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 260) {
-            $('#bledstore-footer-scrollToTopBtn').fadeIn();
-            $('#navbar-main').addClass('scroll-navbar');
-            $('ul.navbar-nav li.nav-item a.btn-outline-primary').removeClass('btn-outline-primary').addClass('btn-success')
-        } else {
-            $('#bledstore-footer-scrollToTopBtn').fadeOut();
-            $('#navbar-main').removeClass('scroll-navbar');
-            $('ul.navbar-nav li.nav-item a.btn-success').removeClass('btn-success').addClass('btn-outline-primary')
-        }
+  $("body").append(
+    '<button id="bledstore-footer-scrollToTopBtn" class="btn btn-warning btn-round" title="Go to Top Page"><span><i class="fa fa-angle-up"></i></span></button>'
+  );
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 260) {
+      $("#bledstore-footer-scrollToTopBtn").fadeIn();
+      $(".banner-wrapper").addClass("banner-scroll-wrapper");
+      // $(".header-wrapper").addClass("header-scroll-wrapper");
+    } else {
+      $("#bledstore-footer-scrollToTopBtn").fadeOut();
+      $(".banner-wrapper").removeClass("banner-scroll-wrapper");
+      // $(".header-wrapper").removeClass("header-scroll-wrapper");
+    }
+  });
+  $("#bledstore-footer-scrollToTopBtn").click(function () {
+    $("html, body").animate({ scrollTop: 0 }, 600);
+    return false;
+  });
+});
+
+// Click anytime and first go to top screen
+$(document).ready(function () {
+  var element = document.querySelector(".loading");
+
+  if (element) {
+    console.log("element: ", element);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
     });
-    $('#bledstore-footer-scrollToTopBtn').click(function () {
-        $("html, body").animate({scrollTop: 0}, 600);
-        return false;
-    });
+  }
 });
