@@ -8,6 +8,7 @@ import { signin } from "../../../redux/actions/userActions";
 const SigninScreen = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordType, setPasswordType] = useState("password");
   const dispatch = useDispatch();
 
   const redirect = props.location.search
@@ -27,6 +28,12 @@ const SigninScreen = (props) => {
       props.history.push(redirect);
     }
   }, [dispatch, props.history, redirect, userInfo]);
+
+  const showHideIcon = () => {
+    passwordType === "password"
+      ? setPasswordType("text")
+      : setPasswordType("password");
+  };
 
   return (
     <div className="bledstore-auth-wrapper">
@@ -54,12 +61,20 @@ const SigninScreen = (props) => {
             Password <span className="form-required">*</span>
           </label>
           <input
-            type="password"
+            type={passwordType}
             id="password"
             placeholder="Enter password"
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
+          <span className="blestaore-auth-show-hide-content">
+            <i
+              onClick={showHideIcon}
+              className={`blestaore-auth-show-hide-icon fa fa-${
+                passwordType === "password" ? "eye" : "eye-slash"
+              }`}
+            ></i>
+          </span>
         </div>
         <div>
           <label />
@@ -70,8 +85,11 @@ const SigninScreen = (props) => {
         <div className="bledstore-auth-footer">
           <label />
           <div>
-            New customer? 
-            <Link to={`/register?redirect=${redirect}`} className="bledstore-auth-cta">
+            New customer?
+            <Link
+              to={`/register?redirect=${redirect}`}
+              className="bledstore-auth-cta"
+            >
               Create your account
             </Link>
           </div>

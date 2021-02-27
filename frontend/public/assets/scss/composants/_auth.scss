@@ -21,6 +21,25 @@
     .bledstore-auth-cta {
         left: 5px;
         position: relative;
+        font-weight: 800;
+        color: var(--bledstore-primary) !important;
+
+        &:hover {
+            color: var(--bledstore-warning) !important;
+        }
+    }
+
+    .blestaore-auth-show-hide-content {
+
+        .blestaore-auth-show-hide-icon {
+            position: relative;
+            text-align: right;
+            top: -30px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            float: right;
+        }
     }
 
     .bledstore-auth-btn-submit {

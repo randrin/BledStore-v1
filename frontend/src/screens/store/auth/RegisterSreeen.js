@@ -12,6 +12,8 @@ const RegisterScreen = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordType, setPasswordType] = useState("password");
+  const [confirmPasswordType, setConfirmPasswordType] = useState("password");
   const dispatch = useDispatch();
 
   const redirect = props.location.search
@@ -35,6 +37,18 @@ const RegisterScreen = (props) => {
       props.history.push(redirect);
     }
   }, [dispatch, props.history, redirect, userInfo]);
+
+  const showHideIcon = (e) => {
+    if (e.target.id === "blestaore-auth-show-hide-password") {
+      passwordType === "password"
+        ? setPasswordType("text")
+        : setPasswordType("password");
+    } else {
+      confirmPasswordType === "password"
+        ? setConfirmPasswordType("text")
+        : setConfirmPasswordType("password");
+    }
+  };
 
   return (
     <div className="bledstore-auth-wrapper">
@@ -98,24 +112,42 @@ const RegisterScreen = (props) => {
             Password <span className="form-required">*</span>
           </label>
           <input
-            type="password"
+            type={passwordType}
             id="password"
             placeholder="Enter password"
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
+          <span className="blestaore-auth-show-hide-content">
+            <i
+              id="blestaore-auth-show-hide-password"
+              onClick={(e) => showHideIcon(e)}
+              className={`blestaore-auth-show-hide-icon fa fa-${
+                passwordType === "password" ? "eye" : "eye-slash"
+              }`}
+            ></i>
+          </span>
         </div>
         <div>
           <label htmlFor="confirmPassword">
             Confirm Password <span className="form-required">*</span>
           </label>
           <input
-            type="password"
+            type={confirmPasswordType}
             id="confirmPassword"
             placeholder="Enter confirm password"
             required
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></input>
+          <span className="blestaore-auth-show-hide-content">
+            <i
+              id="blestaore-auth-show-hide-confirmPassword"
+              onClick={(e) => showHideIcon(e)}
+              className={`blestaore-auth-show-hide-icon fa fa-${
+                confirmPasswordType === "password" ? "eye" : "eye-slash"
+              }`}
+            ></i>
+          </span>
         </div>
         <div>
           <label />
@@ -127,7 +159,12 @@ const RegisterScreen = (props) => {
           <label />
           <div>
             Already have an account ?
-            <Link to={`/signin?redirect=${redirect}`} className="bledstore-auth-cta">Sign In</Link>
+            <Link
+              to={`/signin?redirect=${redirect}`}
+              className="bledstore-auth-cta"
+            >
+              Sign In
+            </Link>
           </div>
         </div>
       </form>
