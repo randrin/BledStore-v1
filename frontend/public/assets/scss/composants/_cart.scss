@@ -1,4 +1,33 @@
 .cart-wrapper {
     top: 15px;
     position: relative;
+
+    .cart-empty-wrapper {
+        text-align: center;
+
+        .cart-empty-icon {
+            font-size: 100px;
+            color: var(--bledstore-warning);
+        }
+
+        .cart-empty-title {
+            font-size: 25px;
+            font-weight: 600;
+            color: var(--bledstore-primary);
+        }
+
+        .cart-empty-subtitle {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--bledstore-warning);
+        }
+
+        .bledstore-auth-btn-submit {
+            margin: 25px;
+            &:hover {
+                background-color: var(--bledstore-primary);
+                color: var(--bledstore-white);
+            }
+        }
+    }
 }

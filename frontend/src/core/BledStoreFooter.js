@@ -186,7 +186,7 @@ const BledStoreFooter = () => {
               ) : (
                 createdYear
               )}
-              Bled Store. All Rights Reserved.
+              . Bled Store. All Rights Reserved.
             </p>
           </div>
           <div className="bledstore-footer-payment">

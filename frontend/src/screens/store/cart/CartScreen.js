@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import { addToCart, removeFromCart } from "../../../redux/actions/cartActions";
+import EmptyCartScreen from "./EmptyCartScreen";
 
 const CartScreen = (props) => {
   const dispatch = useDispatch();
   const qty = props.location.search
-  ? Number(props.location.search.split("=")[1])
-  : 1;
+    ? Number(props.location.search.split("=")[1])
+    : 1;
   const productId = props.match.params.productId;
 
   const cart = useSelector((state) => state.cart);
   const { cartItems, error, loading } = cart;
-
 
   useEffect(() => {
     if (productId) {
@@ -34,11 +34,7 @@ const CartScreen = (props) => {
     <div className="cart-wrapper row top">
       <div className="col-2">
         <h1>Shopping Cart</h1>
-        {cartItems.length === 0 ? (
-          <MessageBox>
-            Cart Empty . <Link to="/">Go Shopping</Link>
-          </MessageBox>
-        ) : (
+        {cartItems.length !== 0 && (
           <ul>
             {loading && <LoadingBox></LoadingBox>}
             {error && <MessageBox variant="danger">{error}</MessageBox>}
@@ -104,6 +100,7 @@ const CartScreen = (props) => {
           </ul>
         </div>
       </div>
+      {cartItems.length === 0 && <EmptyCartScreen></EmptyCartScreen>}
     </div>
   );
 };
