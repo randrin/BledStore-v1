@@ -87,10 +87,10 @@ const SearchScreen = (props) => {
                   {categories.map((c, index) => (
                     <li key={index}>
                       <Link
-                        to={getFilterUrl({ category: c })}
-                        className={c === category ? "active" : ""}
+                        to={getFilterUrl({ category: c.name })}
+                        className={c.name === category ? "active" : ""}
                       >
-                        {c}
+                        {c.name}
                       </Link>
                     </li>
                   ))}

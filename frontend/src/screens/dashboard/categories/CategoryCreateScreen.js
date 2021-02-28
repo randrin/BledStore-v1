@@ -4,19 +4,14 @@ import { Link } from "react-router-dom";
 import axios from "../../../../node_modules/axios/index";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
-import { createProduct } from "../../../redux/actions/productActions";
-import { PRODUCT_CREATE_RESET } from "../../../redux/constants/productConstants";
+import { createCategory } from "../../../redux/actions/categoryActions";
+import { CATEGORY_CREATE_RESET } from "../../../redux/constants/categoryConstants";
 
-const ProductCreateScreen = (props) => {
+const CategoryCreateScreen = (props) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [discountPrice, setDiscountPrice] = useState("");
+  const [icon, setIcon] = useState("");
   const [image, setImage] = useState("");
-  const [category, setCategory] = useState("");
-  const [countInStock, setCountInStock] = useState("");
-  const [brand, setBrand] = useState("");
-  const [description, setDescription] = useState("");
   const [loadingUpload, setLoadingUpload] = useState(false);
   const [errorUpload, setErrorUpload] = useState("");
   const [showImage, setShowImage] = useState(false);
@@ -24,28 +19,23 @@ const ProductCreateScreen = (props) => {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
-  const productCreate = useSelector((state) => state.productCreate);
-  const { loading, error, success } = productCreate;
+  const categoryCreate = useSelector((state) => state.categoryCreate);
+  const { loading, error, success } = categoryCreate;
 
   useEffect(() => {
     if (success) {
-      dispatch({ type: PRODUCT_CREATE_RESET });
-      props.history.push("/productlist");
+      dispatch({ type: CATEGORY_CREATE_RESET });
+      props.history.push("/categorylist");
     }
   }, [dispatch, props.history, success]);
 
   const submitCreateHandler = (e) => {
     e.preventDefault();
     dispatch(
-      createProduct({
+      createCategory({
         name,
-        price,
-        discountPrice,
+        icon,
         image,
-        category,
-        brand,
-        countInStock,
-        description,
       })
     );
   };
@@ -74,16 +64,17 @@ const ProductCreateScreen = (props) => {
     }
   };
 
+
   return (
     <div className="bledstore-dashboard-wrapper">
       <div className="bledstore-dashboard-btn-back">
-        <Link to="/productlist">
-          <i className="fa fa-angle-left"></i> Back to Products
+        <Link to="/categorylist">
+          <i className="fa fa-angle-left"></i> Back to Categories
         </Link>
       </div>
       <form className="form" onSubmit={submitCreateHandler}>
         <div className="bledstore-dashboard-title">
-          <h1>Create New Product</h1>
+          <h1>Create New Category</h1>
         </div>
         {loading ? (
           <LoadingBox></LoadingBox>
@@ -105,26 +96,16 @@ const ProductCreateScreen = (props) => {
               ></input>
             </div>
             <div>
-              <label htmlFor="price">
-                Price <span className="form-required">*</span>
+              <label htmlFor="icon">
+                Icon <span className="form-required">*</span>
               </label>
               <input
-                id="price"
-                type="number"
-                placeholder="Enter price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                id="icon"
+                type="text"
+                placeholder="Enter icon"
+                value={icon}
+                onChange={(e) => setIcon(e.target.value)}
                 required
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="discountPrice">Discount Price</label>
-              <input
-                id="discountPrice"
-                type="number"
-                placeholder="Enter discount price"
-                value={discountPrice}
-                onChange={(e) => setDiscountPrice(e.target.value)}
               ></input>
             </div>
             {showImage ? (
@@ -159,59 +140,6 @@ const ProductCreateScreen = (props) => {
               </div>
             )}
             <div>
-              <label htmlFor="category">
-                Category <span className="form-required">*</span>
-              </label>
-              <input
-                id="category"
-                type="text"
-                placeholder="Enter category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                required
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="brand">
-                Brand <span className="form-required">*</span>
-              </label>
-              <input
-                id="brand"
-                type="text"
-                placeholder="Enter brand"
-                value={brand}
-                onChange={(e) => setBrand(e.target.value)}
-                required
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="countInStock">
-                Count In Stock <span className="form-required">*</span>
-              </label>
-              <input
-                id="countInStock"
-                type="text"
-                placeholder="Enter countInStock"
-                value={countInStock}
-                onChange={(e) => setCountInStock(e.target.value)}
-                required
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="description">
-                Description <span className="form-required">*</span>
-              </label>
-              <textarea
-                id="description"
-                rows="10"
-                type="text"
-                placeholder="Enter description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-              ></textarea>
-            </div>
-            <div>
               <label></label>
               <button className="bledstore-dashboard-btn primary" type="submit">
                 <i className="fa fa-check"></i> Create
@@ -224,4 +152,4 @@ const ProductCreateScreen = (props) => {
   );
 };
 
-export default ProductCreateScreen;
+export default CategoryCreateScreen;

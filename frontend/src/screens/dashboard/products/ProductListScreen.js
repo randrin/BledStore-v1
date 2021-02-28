@@ -61,7 +61,7 @@ const ProductListScreen = (props) => {
   };
 
   const deleteHandler = (product) => {
-    if (window.confirm("Are you sure to delete?")) {
+    if (window.confirm("Are you sure to delete this product?")) {
       dispatch(deleteProduct(product._id));
     }
   };
@@ -74,7 +74,6 @@ const ProductListScreen = (props) => {
           Create Product <i className="fa fa-angle-double-right"></i>
         </button>
       </div>
-
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
       {loading ? (

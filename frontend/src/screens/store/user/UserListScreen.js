@@ -32,8 +32,10 @@ const UserListScreen = (props) => {
   };
 
   return (
-    <div>
-      <h1>Users</h1>
+    <div className="bledstore-dashboard-wrapper">
+      <div className="row">
+        <h1>All Users Store</h1>
+      </div>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
       {successDelete && (
@@ -47,8 +49,8 @@ const UserListScreen = (props) => {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>NAME</th>
+              <th>USER ID</th>
+              <th>FULL NAME</th>
               <th>EMAIL</th>
               <th>IS SELLER</th>
               <th>IS ADMIN</th>

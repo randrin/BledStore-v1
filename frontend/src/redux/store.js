@@ -1,9 +1,26 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import { cartReducer } from "./reducers/cartsReducer";
-import { categoriesReducer } from "./reducers/categoriesReducer";
-import { orderDeleteReducer, orderDeliverReducer, orderDetailsReducer, orderMineReducer, orderReducer, ordersReducer } from "./reducers/ordersReducer";
-import { paymentOrderReducer, paymentReducer } from "./reducers/paymentsReducer";
+import {
+  categoriesReducer,
+  categoryActivationReducer,
+  categoryCreateReducer,
+  categoryDeleteReducer,
+  categoryDetailsReducer,
+  categoryUpdateReducer,
+} from "./reducers/categoriesReducer";
+import {
+  orderDeleteReducer,
+  orderDeliverReducer,
+  orderDetailsReducer,
+  orderMineReducer,
+  orderReducer,
+  ordersReducer,
+} from "./reducers/ordersReducer";
+import {
+  paymentOrderReducer,
+  paymentReducer,
+} from "./reducers/paymentsReducer";
 import {
   productCreateReducer,
   productDeleteReducer,
@@ -14,7 +31,17 @@ import {
 import { reviewsReducer } from "./reducers/reviewsReducer";
 import { sellerDetailsReducer } from "./reducers/sellersReducer";
 import { shippingReducer } from "./reducers/shippingsReducer";
-import { userAddressMapReducer, userDeleteReducer, userDetailsReducer, userDetailsUpdateReducer, userSigninReducer, userSignupReducer, usersReducer, usersToSellersReducer, userUpdateReducer } from "./reducers/usersReducer";
+import {
+  userAddressMapReducer,
+  userDeleteReducer,
+  userDetailsReducer,
+  userDetailsUpdateReducer,
+  userSigninReducer,
+  userSignupReducer,
+  usersReducer,
+  usersToSellersReducer,
+  userUpdateReducer,
+} from "./reducers/usersReducer";
 
 const initialState = {
   userSignin: {
@@ -33,8 +60,8 @@ const initialState = {
       : {},
   },
   paymentMethod: {
-    paymentMethod: "PayPal"
-  }
+    paymentMethod: "PayPal",
+  },
 };
 const reducer = combineReducers({
   productsList: productsReducer,
@@ -62,6 +89,11 @@ const reducer = combineReducers({
   orderDelete: orderDeleteReducer,
   orderDeliver: orderDeliverReducer,
   categoriesList: categoriesReducer,
+  categoryCreate: categoryCreateReducer,
+  categoryDelete: categoryDeleteReducer,
+  categoryActivation: categoryActivationReducer,
+  categoryUpdate: categoryUpdateReducer,
+  categoryDetails: categoryDetailsReducer,
   reviews: reviewsReducer,
   sellerDetails: sellerDetailsReducer,
 });

@@ -162,10 +162,10 @@ const BledStoreHeader = () => {
               {categories.map((c, index) => (
                 <li key={index}>
                   <Link
-                    to={`/search/category/${c}`}
+                    to={`/search/category/${c.name}`}
                     onClick={() => setSidebarIsOpen(false)}
                   >
-                    {c}
+                    {c.name}
                   </Link>
                 </li>
               ))}
