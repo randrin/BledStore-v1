@@ -36,8 +36,11 @@ const OrderListScreen = (props) => {
   };
 
   return (
-    <div>
-      <h1>Orders</h1>
+    <div className="bledstore-dashboard-wrapper">
+      <div className="row">
+        <h1>All Orders Store</h1>
+      </div>
+
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
       {loading ? (

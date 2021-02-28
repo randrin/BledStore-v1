@@ -67,10 +67,10 @@ const ProductListScreen = (props) => {
   };
 
   return (
-    <div>
+    <div className="bledstore-dashboard-wrapper">
       <div className="row">
-        <h1>Products</h1>
-        <button type="button" className="primary" onClick={createHandler}>
+        <h1>All Products Store</h1>
+        <button type="button" className="bledstore-dashboard-btn primary" onClick={createHandler}>
           Create Product <i className="fa fa-angle-double-right"></i>
         </button>
       </div>
@@ -89,7 +89,7 @@ const ProductListScreen = (props) => {
                 <th>PRODUCT ID</th>
                 <th>NAME</th>
                 <th>SELLER NAME</th>
-                <th>PRICE</th>
+                <th>PRICE (€)</th>
                 <th>STOCK</th>
                 <th>CATEGORY</th>
                 <th>BRAND</th>

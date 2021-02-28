@@ -73,13 +73,14 @@ const ProductCreateScreen = (props) => {
   };
 
   return (
-    <div>
-      <form className="form" onSubmit={submitCreateHandler}>
-        <div>
+    <div className="bledstore-dashboard-products-wrapper">
+      <div className="bledstore-dashboard-btn-back">
           <Link to="/productlist">
             <i className="fa fa-angle-left"></i> Back to Products
           </Link>
         </div>
+      <form className="form" onSubmit={submitCreateHandler}>
+        
         <div>
           <h1>Create New Product</h1>
         </div>
@@ -193,8 +194,8 @@ const ProductCreateScreen = (props) => {
             </div>
             <div>
               <label></label>
-              <button className="primary" type="submit">
-                Create
+              <button className="bledstore-dashboard-btn primary" type="submit">
+                <i className="fa fa-check"></i> Create
               </button>
             </div>
           </>

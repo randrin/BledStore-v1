@@ -414,6 +414,12 @@ img.large {
   padding: 0.5rem;
 }
 
+.table th {
+  background-color: var(--bledstore-warning) !important;
+  padding: 1rem 0.5rem;
+  color: var(--bledstore-primary) !important;
+}
+
 .table button {
   margin: 0 0.2rem;
 }

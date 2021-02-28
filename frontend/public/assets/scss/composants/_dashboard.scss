@@ -1,0 +1,17 @@
+.bledstore-dashboard-wrapper {
+    margin: 20px;
+
+    .bledstore-dashboard-btn {
+        margin: 30px 0px;
+
+        &:hover {
+            background-color: var(--bledstore-primary);
+            color: var(--bledstore-white);
+        }
+    }
+
+    .bledstore-dashboard-btn-back {
+        top: 25px;
+        position: relative;
+    }
+}
