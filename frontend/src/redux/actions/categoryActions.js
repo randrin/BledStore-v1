@@ -29,7 +29,6 @@ export const listCagetories = () => async (dispatch) => {
       url: `/v1/api/categories`,
       method: "GET",
     });
-    console.log("response: ", response);
     if (response.statusText !== "OK") {
       dispatch({ type: CATEGORY_LIST_FAIL, error: "Something went wrong !!!" });
     } else {

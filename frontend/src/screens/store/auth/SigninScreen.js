@@ -67,10 +67,10 @@ const SigninScreen = (props) => {
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-          <span className="blestaore-auth-show-hide-content">
+          <span className="bledstore-auth-show-hide-content">
             <i
               onClick={showHideIcon}
-              className={`blestaore-auth-show-hide-icon fa fa-${
+              className={`bledstore-auth-show-hide-icon fa fa-${
                 passwordType === "password" ? "eye" : "eye-slash"
               }`}
             ></i>

@@ -165,7 +165,7 @@ const BledStoreHeader = () => {
                     to={`/search/category/${c.name}`}
                     onClick={() => setSidebarIsOpen(false)}
                   >
-                    {c.name}
+                    <i className={c.icon}></i> {c.name}
                   </Link>
                 </li>
               ))}

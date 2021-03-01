@@ -2,12 +2,22 @@
 
     .card {
         transition: var(--bledstore-transition) !important;
+
         &:hover {
             transform: translateY(-5px);
             box-shadow: 0 4px 25px 0 rgba(34, 41, 47, 0.25);
         }
 
         .card-body {
+            .category {
+                color: var(--bledstore-sliver) !important;
+                font-weight: 300;
+                font-size: 1.3rem;
+                line-height: 1.2;
+                letter-spacing: -.01em;
+                margin-bottom: .3rem;
+            }
+
             .card-title {
                 padding: 0 !important;
             }

@@ -53,7 +53,13 @@ const CategoryListScreen = (props) => {
   };
 
   const activateHandler = (category) => {
-    if (window.confirm(`Are you sure to ${category.active ? "disabled" : "activate"} this category?`)) {
+    if (
+      window.confirm(
+        `Are you sure to ${
+          category.active ? "disabled" : "activate"
+        } this category?`
+      )
+    ) {
       dispatch(activationCategory(category._id));
     }
   };
@@ -97,8 +103,17 @@ const CategoryListScreen = (props) => {
               <tr key={category._id}>
                 <td>{category._id}</td>
                 <td>{category.name}</td>
-                <td>{category.icon}</td>
-                <td>{category.image}</td>
+                <td className="bledstore-dashboard-table-item">
+                  <i className={category.icon}></i>
+                </td>
+                <td className="bledstore-dashboard-table-item">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    width="50"
+                    height="50"
+                  />
+                </td>
                 <td className="bledstore-dashboard-table-item">
                   <i
                     className={`fa fa-power-off ${
@@ -126,7 +141,7 @@ const CategoryListScreen = (props) => {
                       props.history.push(`/category/${category._id}/edit`);
                     }}
                   >
-                    <i className="fa fa-file-text success"></i> Update
+                    <i className="fa fa-edit success"></i> Edit
                   </button>
                   <button
                     type="button"

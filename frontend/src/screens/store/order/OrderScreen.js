@@ -5,7 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
-import { deliverOrder, getOrderById } from "../../../redux/actions/orderActions";
+import {
+  deliverOrder,
+  getOrderById,
+} from "../../../redux/actions/orderActions";
 import { payOrder } from "../../../redux/actions/paymentActions";
 import { ADD_PAYMENT_RESET } from "../../../redux/constants/paymentConstants";
 import { ORDER_DELIVER_RESET } from "../../../redux/constants/orderConstants";
@@ -82,8 +85,13 @@ const OrderScreen = (props) => {
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <div>
-      <h1>Order {order._id}</h1>
+    <div className="bledstore-dashboard-wrapper">
+      <div className="bledstore-dashboard-btn-back">
+        <Link to="/orders/history">
+          <i className="fa fa-angle-left"></i> Back to your Orders
+        </Link>
+      </div>
+      <h1 className="bledstore-dashboard-title">Order {order._id}</h1>
       <div className="row top">
         <div className="col-2">
           <ul>

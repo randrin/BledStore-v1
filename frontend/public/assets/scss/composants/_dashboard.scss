@@ -22,4 +22,24 @@
     .bledstore-dashboard-table-item {
         text-align: center;
     }
+
+    .bledstore-auth-show-hide-content {
+
+        .bledstore-auth-show-hide-icon {
+            position: relative;
+            text-align: right;
+            top: -30px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            float: right;
+        }
+    }
+
+    .bledstore-auth-btn-submit {
+        &:hover {
+            background-color: var(--bledstore-primary);
+            color: var(--bledstore-white);
+        }
+    }
 }

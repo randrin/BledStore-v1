@@ -17,6 +17,8 @@ const ProfileScreen = () => {
   const [sellerName, setSellerName] = useState("");
   const [sellerLogo, setSellerLogo] = useState("");
   const [sellerDescription, setSellerDescription] = useState("");
+  const [passwordType, setPasswordType] = useState("password");
+  const [confirmPasswordType, setConfirmPasswordType] = useState("password");
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -45,6 +47,18 @@ const ProfileScreen = () => {
     }
   }, [dispatch, userInfo._id, user]);
 
+  const showHideIcon = (e) => {
+    if (e.target.id === "blestaore-auth-show-hide-password") {
+      passwordType === "password"
+        ? setPasswordType("text")
+        : setPasswordType("password");
+    } else {
+      confirmPasswordType === "password"
+        ? setConfirmPasswordType("text")
+        : setConfirmPasswordType("password");
+    }
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -65,12 +79,13 @@ const ProfileScreen = () => {
   };
 
   return (
-    <div>
-      {" "}
-      <form className="form" onSubmit={submitHandler}>
-        <Link to="/productlist">
-          <i className="fa fa-angle-left"></i> Back to Products
+    <div className="bledstore-dashboard-wrapper">
+      <div className="bledstore-dashboard-btn-back">
+        <Link to="/orders/history">
+          <i className="fa fa-angle-left"></i> Back to My Orders
         </Link>
+      </div>
+      <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>User Profile</h1>
         </div>
@@ -90,7 +105,9 @@ const ProfileScreen = () => {
               </MessageBox>
             )}
             <div>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">
+                Name <span className="form-required">*</span>
+              </label>
               <input
                 id="name"
                 type="text"
@@ -100,7 +117,9 @@ const ProfileScreen = () => {
               ></input>
             </div>
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">
+                Email <span className="form-required">*</span>
+              </label>
               <input
                 id="email"
                 type="email"
@@ -110,28 +129,52 @@ const ProfileScreen = () => {
               ></input>
             </div>
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">
+                Password <span className="form-required">*</span>
+              </label>
               <input
                 id="password"
-                type="password"
+                type={passwordType}
                 placeholder="Enter password"
                 onChange={(e) => setPassword(e.target.value)}
               ></input>
+              <span className="bledstore-auth-show-hide-content">
+                <i
+                  id="blestaore-auth-show-hide-password"
+                  onClick={(e) => showHideIcon(e)}
+                  className={`bledstore-auth-show-hide-icon fa fa-${
+                    passwordType === "password" ? "eye" : "eye-slash"
+                  }`}
+                ></i>
+              </span>
             </div>
             <div>
-              <label htmlFor="confirmPassword">confirm Password</label>
+              <label htmlFor="confirmPassword">
+                Confirm Password <span className="form-required">*</span>
+              </label>
               <input
                 id="confirmPassword"
-                type="password"
+                type={confirmPasswordType}
                 placeholder="Enter confirm password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
               ></input>
+              <span className="bledstore-auth-show-hide-content">
+                <i
+                  id="blestaore-auth-show-hide-confirmPassword"
+                  onClick={(e) => showHideIcon(e)}
+                  className={`bledstore-auth-show-hide-icon fa fa-${
+                    confirmPasswordType === "password" ? "eye" : "eye-slash"
+                  }`}
+                ></i>
+              </span>
             </div>
             {user.isSeller && (
               <>
                 <h2>Seller</h2>
                 <div>
-                  <label htmlFor="sellerName">Seller Name</label>
+                  <label htmlFor="sellerName">
+                    Seller Name <span className="form-required">*</span>
+                  </label>
                   <input
                     id="sellerName"
                     type="text"
@@ -141,7 +184,9 @@ const ProfileScreen = () => {
                   ></input>
                 </div>
                 <div>
-                  <label htmlFor="sellerLogo">Seller Logo</label>
+                  <label htmlFor="sellerLogo">
+                    Seller Logo <span className="form-required">*</span>
+                  </label>
                   <input
                     id="sellerLogo"
                     type="text"
@@ -151,21 +196,24 @@ const ProfileScreen = () => {
                   ></input>
                 </div>
                 <div>
-                  <label htmlFor="sellerDescription">Seller Description</label>
-                  <input
+                  <label htmlFor="sellerDescription">
+                    Seller Description <span className="form-required">*</span>
+                  </label>
+                  <textarea
                     id="sellerDescription"
+                    rows="8"
                     type="text"
                     placeholder="Enter Seller Description"
                     value={sellerDescription}
                     onChange={(e) => setSellerDescription(e.target.value)}
-                  ></input>
+                  ></textarea>
                 </div>
               </>
             )}
             <div>
               <label />
-              <button className="primary" type="submit">
-                Update
+              <button className="bledstore-auth-btn-submit primary" type="submit">
+                Update <i className="fa fa-angle-double-right"></i>
               </button>
             </div>
           </>

@@ -118,11 +118,11 @@ const RegisterScreen = (props) => {
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-          <span className="blestaore-auth-show-hide-content">
+          <span className="bledstore-auth-show-hide-content">
             <i
               id="blestaore-auth-show-hide-password"
               onClick={(e) => showHideIcon(e)}
-              className={`blestaore-auth-show-hide-icon fa fa-${
+              className={`bledstore-auth-show-hide-icon fa fa-${
                 passwordType === "password" ? "eye" : "eye-slash"
               }`}
             ></i>
@@ -139,11 +139,11 @@ const RegisterScreen = (props) => {
             required
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></input>
-          <span className="blestaore-auth-show-hide-content">
+          <span className="bledstore-auth-show-hide-content">
             <i
               id="blestaore-auth-show-hide-confirmPassword"
               onClick={(e) => showHideIcon(e)}
-              className={`blestaore-auth-show-hide-icon fa fa-${
+              className={`bledstore-auth-show-hide-icon fa fa-${
                 confirmPasswordType === "password" ? "eye" : "eye-slash"
               }`}
             ></i>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "../../../../node_modules/axios/index";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
+import { listCagetories } from "../../../redux/actions/categoryActions";
 import { createProduct } from "../../../redux/actions/productActions";
 import { PRODUCT_CREATE_RESET } from "../../../redux/constants/productConstants";
 
@@ -21,6 +22,13 @@ const ProductCreateScreen = (props) => {
   const [errorUpload, setErrorUpload] = useState("");
   const [showImage, setShowImage] = useState(false);
 
+  const categoryList = useSelector((state) => state.categoriesList);
+  const {
+    loading: loadingCategories,
+    error: errorCategories,
+    categories,
+  } = categoryList;
+
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
@@ -32,6 +40,7 @@ const ProductCreateScreen = (props) => {
       dispatch({ type: PRODUCT_CREATE_RESET });
       props.history.push("/productlist");
     }
+    dispatch(listCagetories());
   }, [dispatch, props.history, success]);
 
   const submitCreateHandler = (e) => {
@@ -162,14 +171,34 @@ const ProductCreateScreen = (props) => {
               <label htmlFor="category">
                 Category <span className="form-required">*</span>
               </label>
-              <input
+              {loadingCategories ? (
+                <LoadingBox></LoadingBox>
+              ) : errorCategories ? (
+                <MessageBox variant="danger">{error}</MessageBox>
+              ) : (
+                <select
+                  onChange={(e) => setCategory(e.target.value)}
+                  value={category}
+                >
+                  <option value="" disabled hidden>
+                    Select the Category
+                  </option>
+                  {categories.map((category, index) => (
+                    <option key={index} value={category.name}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+              )}
+
+              {/* <input
                 id="category"
                 type="text"
                 placeholder="Enter category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 required
-              ></input>
+              ></input> */}
             </div>
             <div>
               <label htmlFor="brand">
