@@ -75,6 +75,9 @@
             letter-spacing: 0.9px;
             font-size: 13px;
             text-transform: uppercase;
+            @include small() {
+                font-size: 10px;
+            }
         }
     }
 }
@@ -82,5 +85,84 @@
 // Error 404
 .bledstore-error-404-wrapper {
     position: relative;
+    margin: 20px;
+}
+
+// Dividing Line
+.bledstore-dividing-line-wrapper {
+    padding: 25px 0px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    max-width: inherit;
+
+    .bledstore-dividing-line-row {
+        flex-grow: 1;
+
+        .bledstore-dividing-line-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            background-color: transparent;
+    
+            .bledstore-dividing-line-left {
+                align-self: auto;
+                min-height: 1.125rem;
+                padding-right: 1.25rem;
+                flex-grow: 1;
+                width: 100%;
+    
+                .bledstore-left-line {
+                    margin: 0.5rem 0;
+                    height: 0.125rem;
+                    border-top-width: 0.0625rem !important;
+                    color: var(--bledstore-warning) !important;
+                    border-top-style: solid !important;
+                    border-bottom: none;
+                    border-left: none;
+                    border-right: none;
+                }
+            }
+    
+            .bledstore-dividing-line-center {
+                display: inline-flex;
+    
+                .bledstore-center-content {
+                    font-size: 2.5rem;
+                    font-weight: 600;
+                    line-height: 1rem;
+                    vertical-align: middle;
+                    color: var(--bledstore-primary) !important;
+                    min-width: max-content;
+                }
+            }
+    
+            .bledstore-dividing-line-right {
+                align-self: auto;
+                min-height: 1.125rem;
+                padding-left: 1.25rem;
+                flex-grow: 1;
+                width: 100%;
+    
+                .bledstore-right-line {
+                    margin: 0.5rem 0;
+                    height: 0.125rem;
+                    border-top-width: 0.0625rem !important;
+                    color: var(--bledstore-warning) !important;
+                    border-top-style: solid !important;
+                    border-bottom: none;
+                    border-left: none;
+                    border-right: none;
+    
+                }
+            }
+        }
+    }
+
+}
+
+// Review 
+.review-wrapper {
     margin: 20px;
 }

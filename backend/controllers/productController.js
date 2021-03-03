@@ -83,6 +83,22 @@ export const getProductById = expressAsyncHander(async (req, res) => {
   }
 });
 
+export const getProductsRelatedByCategory = expressAsyncHander(
+  async (req, res) => {
+    let limit = req.query.limit ? parseInt(req.query.limit) : 6;
+    const product = await Product.findById(req.params.productId);
+    const productsRelated = await Product.find({
+      _id: { $ne: req.params.productId },
+      category: product.category,
+    }).populate("seller", "seller.name seller.logo").limit(limit);
+    if (!productsRelated) {
+      res.status(404).send({ message: `Products related with ${req.params.category} not found!!!!` });
+    } else {
+      res.status(200).send(productsRelated);
+    }
+  }
+);
+
 export const createProduct = expressAsyncHander(async (req, res) => {
   const product = new Product({
     name: req.body.name,

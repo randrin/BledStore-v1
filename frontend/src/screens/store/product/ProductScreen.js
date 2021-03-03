@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import DividingLine from "../../../components/DividingLine";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
+import Product from "../../../components/Product";
 import Rating from "../../../components/Rating";
-import { getProductById } from "../../../redux/actions/productActions";
+import {
+  getProductById,
+  getProductsRelatedByCategory,
+} from "../../../redux/actions/productActions";
+import {
+  PRODUCT_DETAIL_RESET,
+  PRODUCT_RELATED_RESET,
+} from "../../../redux/constants/productConstants";
 import ReviewScreen from "./ReviewScreen";
 
 const ProductScreen = (props) => {
@@ -14,7 +23,14 @@ const ProductScreen = (props) => {
   const [qty, setQty] = useState(1);
 
   const productDetails = useSelector((state) => state.productDetails);
-  const { loading, error, product } = productDetails;
+  const { loading, error, success, product } = productDetails;
+
+  const productsListRelated = useSelector((state) => state.productsListRelated);
+  const {
+    loading: loadingRelated,
+    error: errorRelated,
+    productsRelated,
+  } = productsListRelated;
 
   const addToCartHandler = () => {
     props.history.push(`/cart/${productId}?qty=${qty}`);
@@ -22,6 +38,7 @@ const ProductScreen = (props) => {
 
   useEffect(() => {
     dispatch(getProductById(productId));
+    dispatch(getProductsRelatedByCategory(productId));
   }, [dispatch, productId]);
 
   return (
@@ -56,10 +73,17 @@ const ProductScreen = (props) => {
                     numReviews={product.numReviews}
                   ></Rating>
                 </li>
-                <li>Pirce : ${product.price}</li>
                 <li>
-                  Description:
-                  <p>{product.description}</p>
+                  <span className="product-screen-title-item">Price :</span> <span>${product.price}</span>
+                </li>
+                <li>
+                  <span className="product-screen-title-item">Category :</span> <span>{product.category}</span>
+                </li>
+                <li>
+                  <span className="product-screen-title-item">Brand :</span> <span>{product.brand}</span>
+                </li>
+                <li>
+                  <span className="product-screen-title-item">Description :</span><p>{product.description}</p>
                 </li>
               </ul>
             </div>
@@ -147,6 +171,39 @@ const ProductScreen = (props) => {
                 </ul>
               </div>
             </div>
+          </div>
+          <div className="row center products-related">
+            {loadingRelated ? (
+              <LoadingBox />
+            ) : errorRelated ? (
+              <MessageBox>{error}</MessageBox>
+            ) : (
+              <div>
+                <DividingLine title="You will like also this products"></DividingLine>
+                <div className="row">
+                  {productsRelated.length === 0 && (
+                    <MessageBox>
+                      No Related Products with category {product.category} Found
+                      at the moment.
+                    </MessageBox>
+                  )}
+                  {productsRelated.map((product, index) => (
+                    <Product key={index} product={product} />
+                  ))}
+                </div>
+                {/* <div className="row center pagination">
+            {[...Array(pages).keys()].map((x) => (
+              <Link
+                className={x + 1 === page ? "active" : ""}
+                key={x + 1}
+                to={`/page/${x + 1}/size/${pageSize}`}
+              >
+                {x + 1}
+              </Link>
+            ))}
+          </div> */}
+              </div>
+            )}
           </div>
           <ReviewScreen product={product} productId={productId} />
         </div>

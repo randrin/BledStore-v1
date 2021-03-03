@@ -181,17 +181,26 @@ a.brand {
 
 .col-1 {
   flex: 1 1 25rem;
-  margin: 20px 0px;
+  margin: 20px;
+  @include small() {
+    margin: 10px;
+  }
 }
 
 .col-2 {
   flex: 2 1 50rem;
-  margin: 20px 0px 0;
+  margin: 20px;
+  @include small() {
+    margin: 10px;
+  }
 }
 
 .col-3 {
   flex: 32 1 75rem;
-  margin: 20px 0px;
+  margin: 20px;
+  @include small() {
+    margin: 10px;
+  }
 }
 
 .min-30 {

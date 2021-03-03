@@ -10,7 +10,9 @@ const Product = ({ product }) => {
           <img className="medium" src={product.image} alt={product.name} />
         </Link>
         <div className="card-body">
-          <div className="category"><Link to="#">{product.category}</Link></div>
+          <div className="category">
+            <Link to={`/product/${product._id}`}>{product.category}</Link>
+          </div>
           <Link to={`/product/${product._id}`}>
             <h2 className="card-title">{product.name}</h2>
           </Link>

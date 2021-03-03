@@ -22,7 +22,7 @@ const PaymentMethodScreen = (props) => {
   };
 
   return (
-    <div>
+    <div className="payment-wrapper">
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
       <form className="form" onSubmit={submitHandler}>
         <div>

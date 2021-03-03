@@ -8,6 +8,7 @@ import { Carousel } from "react-responsive-carousel";
 import { listTopSellers } from "../../redux/actions/userActions";
 import { Link, useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import DividingLine from "../../components/DividingLine";
 
 const HomeScreen = () => {
   const pageSize = 10;
@@ -31,7 +32,7 @@ const HomeScreen = () => {
 
   return (
     <main className="main-wrapper">
-      <h2>Top Sellers</h2>
+      <DividingLine title="Top Sellers"></DividingLine>
       {loadingSellers ? (
         <LoadingBox></LoadingBox>
       ) : errorSellers ? (
@@ -51,7 +52,7 @@ const HomeScreen = () => {
           </Carousel>
         </>
       )}
-      <h2>Featured Products</h2>
+      <DividingLine title="Featured Products"></DividingLine>
       {loading ? (
         <LoadingBox />
       ) : error ? (

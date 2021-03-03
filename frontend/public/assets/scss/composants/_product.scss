@@ -77,6 +77,14 @@
             color: var(--bledstore-white);
         }
     }
+
+    .products-related {
+        display: grid;
+    }
+
+    .product-screen-title-item {
+        border-bottom: 1px solid var(--bledstore-warning);
+    }
 }
 
 .search-wrapper {

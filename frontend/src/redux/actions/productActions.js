@@ -12,12 +12,25 @@ import {
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
+  PRODUCT_RELATED_FAIL,
+  PRODUCT_RELATED_REQUEST,
+  PRODUCT_RELATED_SUCCESS,
   PRODUCT_UPDATE_FAIL,
   PRODUCT_UPDATE_REQUEST,
   PRODUCT_UPDATE_SUCCESS,
 } from "../constants/productConstants";
 
-export const listProducts = ({pageNumber = '', pageSize = '', seller = '', name = '', category = '', min = 0, max = 0, rating = 0, order = '' }) => async (dispatch) => {
+export const listProducts = ({
+  pageNumber = "",
+  pageSize = "",
+  seller = "",
+  name = "",
+  category = "",
+  min = 0,
+  max = 0,
+  rating = 0,
+  order = "",
+}) => async (dispatch) => {
   dispatch({
     type: PRODUCT_LIST_REQUEST,
   });
@@ -60,6 +73,36 @@ export const getProductById = (productId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_DETAIL_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getProductsRelatedByCategory = (productId) => async (dispatch) => {
+  dispatch({
+    type: PRODUCT_RELATED_REQUEST,
+    payload: productId,
+  });
+  try {
+    const response = await axios({
+      url: `/v1/api/products/related/${productId}`,
+      method: "GET",
+    });
+    console.log("getProductsRelatedByCategory: ", response)
+    if (response.statusText !== "OK") {
+      dispatch({
+        type: PRODUCT_RELATED_FAIL,
+        error: "Something went wrong !!!",
+      });
+    } else {
+      dispatch({ type: PRODUCT_RELATED_SUCCESS, payload: response.data });
+    }
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_RELATED_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

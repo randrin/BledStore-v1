@@ -48,7 +48,7 @@ const BledStoreHeader = () => {
             BledStore <span>v1</span>
           </Link>
         </div>
-        <div>
+        <div className="search-wrapper">
           <Route
             render={({ history }) => <SearchBox history={history}></SearchBox>}
           ></Route>

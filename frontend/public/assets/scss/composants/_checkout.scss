@@ -13,3 +13,17 @@
         }
     }
 }
+
+.payment-wrapper {
+    .checkout-steps {
+        top: 40px;
+        position: relative;
+    }
+}
+
+.place-order-wrapper {
+    .checkout-steps {
+        margin: 40px 0 0;
+        position: relative;
+    }
+}

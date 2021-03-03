@@ -10,6 +10,12 @@
 
 .header-wrapper {
     height: 70px;
+
+    .search-wrapper {
+        @include small() {
+            display: none !important;
+        }
+    }
 }
 
 .aside-wrapper {

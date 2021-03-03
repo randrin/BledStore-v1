@@ -13,6 +13,10 @@ import {
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
+  PRODUCT_RELATED_FAIL,
+  PRODUCT_RELATED_REQUEST,
+  PRODUCT_RELATED_RESET,
+  PRODUCT_RELATED_SUCCESS,
   PRODUCT_UPDATE_FAIL,
   PRODUCT_UPDATE_REQUEST,
   PRODUCT_UPDATE_RESET,
@@ -41,6 +45,30 @@ export const productsReducer = (
   }
 };
 
+export const productsRelatedReducer = (
+  state = { productsRelated: [], loading: false },
+  action
+) => {
+  switch (action.type) {
+    case PRODUCT_RELATED_REQUEST:
+      return { loading: true };
+    case PRODUCT_RELATED_SUCCESS:
+      return {
+        loading: false,
+        productsRelated: action.payload,
+        pages: action.payload.pages,
+        page: action.payload.page,
+        totalProducts: action.payload.count,
+      };
+    case PRODUCT_RELATED_FAIL:
+      return { loading: false, error: action.payload };
+    case PRODUCT_RELATED_RESET:
+      return { };
+    default:
+      return state;
+  }
+};
+
 export const productDetailsReducer = (
   state = { products: {}, loading: true },
   action
@@ -49,9 +77,9 @@ export const productDetailsReducer = (
     case PRODUCT_DETAIL_REQUEST:
       return { loading: true };
     case PRODUCT_DETAIL_SUCCESS:
-      return { loading: false, product: action.payload };
+      return { loading: false, success: true, product: action.payload };
     case PRODUCT_DETAIL_FAIL:
-      return { loading: false, error: action.payload };
+      return { loading: false, success: false, error: action.payload };
     default:
       return state;
   }

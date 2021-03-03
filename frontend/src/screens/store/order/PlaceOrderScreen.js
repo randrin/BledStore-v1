@@ -43,7 +43,7 @@ const PlaceOrderScreen = (props) => {
   };
 
   return (
-    <div>
+    <div className="place-order-wrapper">
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <div className="row top">
         <div className="col-2">
