@@ -3,6 +3,7 @@
         top: 40px;
         position: relative;
     }
+
     .bledstore-shipping-title {
         text-align: center;
 
@@ -19,11 +20,39 @@
         top: 40px;
         position: relative;
     }
+
+    .bledstore-payment-title {
+        text-align: center;
+
+        .bledstore-payment-title-icon {
+            top: 10px;
+            position: relative;
+            font-size: 75px;
+        }
+    }
+
+    .bledstore-payment-radio {
+        display: block;
+
+        input,
+        label {
+            cursor: pointer;
+            color: var(--bledstore-primary) !important;
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
 }
 
 .place-order-wrapper {
     .checkout-steps {
         margin: 40px 0 0;
         position: relative;
+    }
+    .place-order-btn-submit {
+        &:hover {
+            background-color: var(--bledstore-primary);
+            color: var(--bledstore-white);
+        }
     }
 }

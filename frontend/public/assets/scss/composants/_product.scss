@@ -17,11 +17,10 @@
             letter-spacing: -.01em;
             padding: .5rem .9rem;
             text-align: center;
-            background-color: var(--bledstore-tomato);
             color: var(--bledstore-white);
         }
 
-        .label-circle {
+        .label-circle-sale {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -30,6 +29,23 @@
             min-width: 0;
             border-radius: 50%;
             line-height: 1;
+            background-color: var(--bledstore-tomato);
+        }
+
+        .label-margin {
+            margin: 50px 0 0 10px;
+        }
+
+        .label-circle-new {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4.6rem;
+            min-width: 0;
+            border-radius: 50%;
+            line-height: 1;
+            background-color: var(--bledstore-success);
         }
 
         .card-body {
@@ -48,6 +64,10 @@
                         color: var(--bledstore-warning) !important;
                     }
                 }
+            }
+
+            .description {
+                color: var(--bledstore-primary) !important;
             }
 
             .card-title {
@@ -153,6 +173,17 @@
 
     .product-screen-title-item {
         border-bottom: 1px solid var(--bledstore-warning);
+    }
+
+
+    .product-old-price {
+        color: var(--bledstore-sliver) !important;
+        text-decoration: line-through;
+        margin-left: 5px;
+    }
+
+    .product-new-price {
+        color: var(--bledstore-primary) !important;
     }
 }
 

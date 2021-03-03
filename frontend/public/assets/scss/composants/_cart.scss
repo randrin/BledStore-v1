@@ -2,6 +2,10 @@
     top: 15px;
     position: relative;
 
+    .cart-title {
+        border-bottom: 1px solid var(--bledstore-primary);
+    }
+
     .cart-empty-wrapper {
         text-align: center;
 
@@ -24,10 +28,42 @@
 
         .bledstore-auth-btn-submit {
             margin: 25px;
+
             &:hover {
                 background-color: var(--bledstore-primary);
                 color: var(--bledstore-white);
             }
+        }
+    }
+
+    .cart-new-price {
+        font-size: 2rem;
+        font-weight: 400;
+        padding: 8px 0px;
+        line-height: 25px;
+        color: var(--bledstore-tomato) !important;
+    }
+
+    .cart-old-price {
+        font-size: 2rem;
+        font-weight: 400;
+        color: var(--bledstore-primary) !important;
+        text-decoration: line-through;
+        padding: 8px 0px 8px 10px;
+        line-height: 25px;
+    }
+
+    .cart-btn-submit {
+        &:hover {
+            background-color: var(--bledstore-primary);
+            color: var(--bledstore-white);
+        }
+    }
+
+    .cart-btn-remove {
+        &:hover {
+            background-color: var(--bledstore-primary);
+            color: var(--bledstore-white);
         }
     }
 }

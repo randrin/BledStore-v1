@@ -70,16 +70,37 @@ const ProductScreen = (props) => {
                   ></Rating>
                 </li>
                 <li>
-                  <span className="product-screen-title-item">Price :</span> <span>${product.price}</span>
+                  <span className="product-screen-title-item">Price :</span>{" "}
+                  <span>
+                    {product.discountPrice ? (
+                      <>
+                        <strong className="product-new-price">
+                          {product.discountPrice} €
+                        </strong>
+                        <strong className="product-old-price">
+                          {product.price} €
+                        </strong>
+                      </>
+                    ) : (
+                      <strong className="product-new-price">
+                        {product.price} €
+                      </strong>
+                    )}
+                  </span>
                 </li>
                 <li>
-                  <span className="product-screen-title-item">Category :</span> <span>{product.category}</span>
+                  <span className="product-screen-title-item">Category :</span>{" "}
+                  <span>{product.category}</span>
                 </li>
                 <li>
-                  <span className="product-screen-title-item">Brand :</span> <span>{product.brand}</span>
+                  <span className="product-screen-title-item">Brand :</span>{" "}
+                  <span>{product.brand}</span>
                 </li>
                 <li>
-                  <span className="product-screen-title-item">Description :</span><p>{product.description}</p>
+                  <span className="product-screen-title-item">
+                    Description :
+                  </span>
+                  <p>{product.description}</p>
                 </li>
               </ul>
             </div>
@@ -108,11 +129,17 @@ const ProductScreen = (props) => {
                       ></Rating>
                     </li>
                   )}
-
                   <li>
                     <div className="row">
                       <div>Price</div>
-                      <div className="price">${product.price}</div>
+
+                      <span>
+                        {product.discountPrice ? (
+                          <div className="price">{product.discountPrice} €</div>
+                        ) : (
+                          <div className="price">{product.price} €</div>
+                        )}
+                      </span>
                     </div>
                   </li>
                   <li>

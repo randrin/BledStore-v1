@@ -10,7 +10,7 @@ const PaymentMethodScreen = (props) => {
   const userShippingAddress = useSelector((state) => state.shippingAddress);
 
   const { shippingAddress } = userShippingAddress;
-  
+
   if (!shippingAddress.address) {
     props.history.push("/shipping");
   }
@@ -25,40 +25,37 @@ const PaymentMethodScreen = (props) => {
     <div className="payment-wrapper">
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
       <form className="form" onSubmit={submitHandler}>
-        <div>
+        <div className="bledstore-payment-title">
+          <i className="bledstore-payment-title-icon	fa fa-cc-mastercard"></i>
           <h1>Payment Method</h1>
         </div>
-        <div>
-          <div>
-            <input
-              type="radio"
-              id="paypal"
-              value="PayPal"
-              name="paymentMethod"
-              required
-              checked
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            ></input>
-            <label htmlFor="paypal">PayPal</label>
-          </div>
+        <div className="bledstore-payment-radio">
+          <input
+            type="radio"
+            id="paypal"
+            value="PayPal"
+            name="paymentMethod"
+            required
+            checked
+            onChange={(e) => setPaymentMethod(e.target.value)}
+          ></input>
+          <label htmlFor="paypal">PayPal</label>
         </div>
-        <div>
-          <div>
-            <input
-              type="radio"
-              id="stripe"
-              value="Stripe"
-              name="paymentMethod"
-              required
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            ></input>
-            <label htmlFor="stripe">Stripe</label>
-          </div>
+        <div className="bledstore-payment-radio">
+          <input
+            type="radio"
+            id="stripe"
+            value="Stripe"
+            name="paymentMethod"
+            required
+            onChange={(e) => setPaymentMethod(e.target.value)}
+          ></input>
+          <label htmlFor="stripe">Stripe</label>
         </div>
         <div>
           <label />
-          <button className="primary" type="submit">
-            Continue
+          <button className="bledstore-btn-submit primary" type="submit">
+            Continue <i className="fa fa-angle-double-right"></i>
           </button>
         </div>
       </form>

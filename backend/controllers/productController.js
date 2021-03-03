@@ -108,7 +108,7 @@ export const createProduct = expressAsyncHander(async (req, res) => {
     brand: req.body.brand,
     image: req.body.image,
     price: req.body.price,
-    discountPrice: req.body.price,
+    discountPrice: req.body.discountPrice,
     countInStock: req.body.countInStock,
   });
   if (product.price <= product.discountPrice) {

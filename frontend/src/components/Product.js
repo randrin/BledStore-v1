@@ -3,19 +3,33 @@ import { Link } from "react-router-dom";
 import Rating from "./Rating";
 
 const Product = ({ product }) => {
-  const sale = product.discountPrice
+  const labelSale = product.discountPrice
     ? Math.floor(
         ((product.price - product.discountPrice) / product.price) * 100
       )
     : 0;
 
+  const productCreatedAt = new Date(product.createdAt).getTime();
+  const productCreatedAtAfter7Day = productCreatedAt + 7 * 24 * 60 * 60 * 1000;
+  const currentDate = new Date().getTime();
+  const labelNew = currentDate > productCreatedAtAfter7Day ? false : true;
+
   return (
     <div className="product-wrapper">
       <div className="card">
         <Link to={`/product/${product._id}`}>
+          {labelNew ? (
+            <span className="card-product-label label-circle-new">New</span>
+          ) : (
+            ""
+          )}
           {product.discountPrice ? (
-            <span className="card-product-label label-circle label-sale">
-              {sale}%
+            <span
+              className={`card-product-label ${
+                labelNew ? "label-margin" : ""
+              } label-circle-sale`}
+            >
+              {labelSale}%
             </span>
           ) : (
             ""
