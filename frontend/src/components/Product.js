@@ -3,10 +3,23 @@ import { Link } from "react-router-dom";
 import Rating from "./Rating";
 
 const Product = ({ product }) => {
+  const sale = product.discountPrice
+    ? Math.floor(
+        ((product.price - product.discountPrice) / product.price) * 100
+      )
+    : 0;
+
   return (
     <div className="product-wrapper">
       <div className="card">
         <Link to={`/product/${product._id}`}>
+          {product.discountPrice ? (
+            <span className="card-product-label label-circle label-sale">
+              {sale}%
+            </span>
+          ) : (
+            ""
+          )}
           <img className="medium" src={product.image} alt={product.name} />
         </Link>
         <div className="card-body">
@@ -23,7 +36,16 @@ const Product = ({ product }) => {
               : product.description}
           </div>
           <div className="row start product-seller-content">
-            <div className="price">${product.price}</div>
+            <div className="product-price-content">
+              {product.discountPrice ? (
+                <>
+                  <div className="product-price">{product.discountPrice}€</div>
+                  <div className="product-discount-price">{product.price}€</div>
+                </>
+              ) : (
+                <div className="price">{product.price}€</div>
+              )}
+            </div>
             {product.seller && (
               <span className="product-seller-infos">
                 <Link to={`/seller/${product.seller._id}`}>

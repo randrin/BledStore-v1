@@ -111,17 +111,18 @@ export const createProduct = expressAsyncHander(async (req, res) => {
     discountPrice: req.body.price,
     countInStock: req.body.countInStock,
   });
-  if (product.price < product.discountPrice) {
-    res.status(400).send({ message: "Discount price is greater than price" });
-  }
-  const createdProduct = await product.save();
-  if (createdProduct) {
-    res.status(201).send({
-      message: "Product Created successfuly.",
-      product: createdProduct,
-    });
+  if (product.price <= product.discountPrice) {
+    res.status(400).send({ message: "Discount price is greater or equal than price" });
   } else {
-    res.status(500).send({ message: "Error in creating product" });
+    const createdProduct = await product.save();
+    if (createdProduct) {
+      res.status(201).send({
+        message: "Product Created successfuly.",
+        product: createdProduct,
+      });
+    } else {
+      res.status(500).send({ message: "Error in creating product" });
+    }
   }
 });
 
@@ -136,8 +137,8 @@ export const updateProduct = expressAsyncHander(async (req, res) => {
     product.price = req.body.price;
     product.discountPrice = req.body.discountPrice;
     product.countInStock = req.body.countInStock;
-    if (product.price < product.discountPrice) {
-      res.status(400).send({ message: "Discount price is greater than price" });
+    if (product.price <= product.discountPrice) {
+      res.status(400).send({ message: "Discount price is greater or equal than price" });
     } else {
       const productUpdated = await product.save();
       if (productUpdated) {

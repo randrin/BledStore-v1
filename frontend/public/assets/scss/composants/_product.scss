@@ -8,18 +8,55 @@
             box-shadow: 0 4px 25px 0 rgba(34, 41, 47, 0.25);
         }
 
+        .card-product-label {
+            position: absolute;
+            z-index: 1;
+            margin: 10px;
+            font-weight: 600;
+            font-size: 1.5rem;
+            letter-spacing: -.01em;
+            padding: .5rem .9rem;
+            text-align: center;
+            background-color: var(--bledstore-tomato);
+            color: var(--bledstore-white);
+        }
+
+        .label-circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4.6rem;
+            min-width: 0;
+            border-radius: 50%;
+            line-height: 1;
+        }
+
         .card-body {
             .category {
-                color: var(--bledstore-sliver) !important;
+
                 font-weight: 300;
                 font-size: 1.3rem;
                 line-height: 1.2;
                 letter-spacing: -.01em;
                 margin-bottom: .3rem;
+
+                a {
+                    color: var(--bledstore-secondary) !important;
+
+                    &:hover {
+                        color: var(--bledstore-warning) !important;
+                    }
+                }
             }
 
             .card-title {
                 padding: 0 !important;
+                color: var(--bledstore-primary) !important;
+
+                &:hover {
+                    color: var(--bledstore-warning) !important;
+                }
             }
         }
 
@@ -42,10 +79,42 @@
     .product-seller-content {
         position: relative;
 
+        .product-price-content {
+            display: flex;
+            top: 5px;
+            position: relative;
+
+            .product-price {
+                font-size: 2rem;
+                font-weight: 600;
+                padding: 8px 0px;
+                line-height: 25px;
+                color: var(--bledstore-tomato) !important;
+            }
+
+            .product-discount-price {
+                font-size: 2rem;
+                font-weight: 600;
+                color: var(--bledstore-sliver) !important;
+                text-decoration: line-through;
+                padding: 8px 0px 8px 10px;
+                line-height: 25px;
+            }
+        }
+
         .product-seller-infos {
             position: absolute;
             float: right;
             right: 0;
+
+            a {
+                color: var(--bledstore-secondary) !important;
+                font-weight: 600;
+
+                &:hover {
+                    color: var(--bledstore-warning) !important;
+                }
+            }
 
             .product-seller-logo {
                 top: 10px;

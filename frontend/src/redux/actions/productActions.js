@@ -91,7 +91,6 @@ export const getProductsRelatedByCategory = (productId) => async (dispatch) => {
       url: `/v1/api/products/related/${productId}`,
       method: "GET",
     });
-    console.log("getProductsRelatedByCategory: ", response)
     if (response.statusText !== "OK") {
       dispatch({
         type: PRODUCT_RELATED_FAIL,

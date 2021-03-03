@@ -10,10 +10,6 @@ import {
   getProductById,
   getProductsRelatedByCategory,
 } from "../../../redux/actions/productActions";
-import {
-  PRODUCT_DETAIL_RESET,
-  PRODUCT_RELATED_RESET,
-} from "../../../redux/constants/productConstants";
 import ReviewScreen from "./ReviewScreen";
 
 const ProductScreen = (props) => {
@@ -23,7 +19,7 @@ const ProductScreen = (props) => {
   const [qty, setQty] = useState(1);
 
   const productDetails = useSelector((state) => state.productDetails);
-  const { loading, error, success, product } = productDetails;
+  const { loading, error, product } = productDetails;
 
   const productsListRelated = useSelector((state) => state.productsListRelated);
   const {
