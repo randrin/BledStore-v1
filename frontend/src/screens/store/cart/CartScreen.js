@@ -64,14 +64,14 @@ const CartScreen = (props) => {
                     </select>
                   </div>
                   <div>{item.discountPrice ? (
-                      <>
+                      <div className="cart-price-content">
                         <span className="cart-new-price">
                           {item.discountPrice}€
                         </span>
                         <span className="cart-old-price">
                           {item.price}€
                         </span>
-                      </>
+                      </div>
                     ) : (
                       <span className="cart-new-price">
                         {item.price}€
@@ -105,7 +105,7 @@ const CartScreen = (props) => {
               <button
                 type="button"
                 onClick={checkoutHandler}
-                className="cart-btn-submit primary block"
+                className={`primary ${cartItems.length === 0 ? "" : "cart-btn-submit"} block`}
                 disabled={cartItems.length === 0}
               >
                 Proceed to Checkout <i className="fa fa-angle-double-right"></i>

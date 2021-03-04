@@ -9,6 +9,7 @@ import { listTopSellers } from "../../redux/actions/userActions";
 import { Link, useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import DividingLine from "../../components/DividingLine";
+import Services from "../../components/Services";
 
 const HomeScreen = () => {
   const pageSize = 10;
@@ -78,6 +79,7 @@ const HomeScreen = () => {
           </div>
         </>
       )}
+      <Services />
     </main>
   );
 };

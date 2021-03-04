@@ -75,6 +75,7 @@
             letter-spacing: 0.9px;
             font-size: 13px;
             text-transform: uppercase;
+
             @include small() {
                 font-size: 10px;
             }
@@ -105,14 +106,14 @@
             flex-wrap: nowrap;
             align-items: center;
             background-color: transparent;
-    
+
             .bledstore-dividing-line-left {
                 align-self: auto;
                 min-height: 1.125rem;
                 padding-right: 1.25rem;
                 flex-grow: 1;
                 width: 100%;
-    
+
                 .bledstore-left-line {
                     margin: 0.5rem 0;
                     height: 0.125rem;
@@ -124,10 +125,10 @@
                     border-right: none;
                 }
             }
-    
+
             .bledstore-dividing-line-center {
                 display: inline-flex;
-    
+
                 .bledstore-center-content {
                     font-size: 2.5rem;
                     font-weight: 600;
@@ -137,14 +138,14 @@
                     min-width: max-content;
                 }
             }
-    
+
             .bledstore-dividing-line-right {
                 align-self: auto;
                 min-height: 1.125rem;
                 padding-left: 1.25rem;
                 flex-grow: 1;
                 width: 100%;
-    
+
                 .bledstore-right-line {
                     margin: 0.5rem 0;
                     height: 0.125rem;
@@ -154,7 +155,7 @@
                     border-bottom: none;
                     border-left: none;
                     border-right: none;
-    
+
                 }
             }
         }
@@ -165,4 +166,51 @@
 // Review 
 .review-wrapper {
     margin: 20px;
+}
+
+// Services 
+.services-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .services-container {
+        display: flex;
+
+        @include small() {
+            display: block;
+        }
+
+        .services-box {
+            flex: 0 0 25%;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            margin: 10px;
+            border: .2rem solid var(--bledstore-primary) !important;
+
+            .services-box-icon {
+                display: inline-block;
+                line-height: 0;
+                min-width: 7rem;
+                text-align: center;
+                margin-bottom: 0;
+                font-size: 3rem;
+            }
+        }
+
+        .services-box-content {
+            .services-box-content-title {
+                margin: 1rem 0 !important;
+                color: var(--bledstore-primary) !important;
+            }
+
+            .services-box-content-description {
+                margin: 0 !important;
+                color: var(--bledstore-primary) !important;
+            }
+        }
+    }
 }

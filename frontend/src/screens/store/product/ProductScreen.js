@@ -157,7 +157,7 @@ const ProductScreen = (props) => {
                             )}
                           </>
                         ) : (
-                          <span className="danger">Unavailable</span>
+                          <span className="danger">Out of Stock</span>
                         )}
                       </div>
                     </div>
@@ -184,12 +184,18 @@ const ProductScreen = (props) => {
                     </li>
                   )}
                   <li>
-                    <button
-                      onClick={addToCartHandler}
-                      className="product-add-to-cart primary block"
-                    >
-                      <i className="fa fa-shopping-cart"></i> Add to Cart
-                    </button>
+                    {product.countInStock <= 0 ? (
+                      <button disabled className="primary block">
+                        <i className="fa fa-shopping-cart"></i> Add to Cart
+                      </button>
+                    ) : (
+                      <button
+                        onClick={addToCartHandler}
+                        className="product-add-to-cart primary block"
+                      >
+                        <i className="fa fa-shopping-cart"></i> Add to Cart
+                      </button>
+                    )}
                   </li>
                 </ul>
               </div>
