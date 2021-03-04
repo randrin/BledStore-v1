@@ -10,6 +10,7 @@ import { Link, useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import DividingLine from "../../components/DividingLine";
 import Services from "../../components/Services";
+import Categories from "../../components/Categories";
 
 const HomeScreen = () => {
   const pageSize = 10;
@@ -53,6 +54,7 @@ const HomeScreen = () => {
           </Carousel>
         </>
       )}
+      <Categories />
       <DividingLine title="Featured Products"></DividingLine>
       {loading ? (
         <LoadingBox />

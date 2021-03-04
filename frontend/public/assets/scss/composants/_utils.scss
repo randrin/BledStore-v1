@@ -185,7 +185,7 @@
             flex: 0 0 25%;
             display: flex;
             align-items: center;
-            width: 100%;
+            width: auto;
             padding-top: 1rem;
             padding-bottom: 1rem;
             margin: 10px;
@@ -210,6 +210,44 @@
             .services-box-content-description {
                 margin: 0 !important;
                 color: var(--bledstore-primary) !important;
+            }
+        }
+    }
+}
+
+// Categories
+.categories-wrapper {
+    padding: 20px;
+
+    .categories-title {
+        text-align: center;
+        margin-bottom: 4rem !important;
+        font-size: 2.4rem;
+        color: var(--bledstore-primary) !important;
+    }
+
+    .categories-container {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+
+        .categories-row {
+            display: flex;
+            padding-bottom: 1rem;
+
+            .categories-block {
+                display: flex;
+                align-items: stretch;
+                justify-content: center;
+                padding-right: 10px;
+                padding-left: 10px;
+
+                .categories-block-container-img {
+                    .categories-block-img {
+                        width: 100px;
+                        height: 100px;
+                    }
+                }
             }
         }
     }
