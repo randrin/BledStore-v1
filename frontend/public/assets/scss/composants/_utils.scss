@@ -175,7 +175,7 @@
     align-items: center;
 
     .services-container {
-        display: flex;
+        display: contents;
 
         @include small() {
             display: block;
@@ -186,15 +186,14 @@
             display: flex;
             align-items: center;
             width: auto;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+            padding: 0.75rem;
             margin: 10px;
             border: .2rem solid var(--bledstore-primary) !important;
 
             .services-box-icon {
                 display: inline-block;
                 line-height: 0;
-                min-width: 7rem;
+                min-width: 6rem;
                 text-align: center;
                 margin-bottom: 0;
                 font-size: 3rem;

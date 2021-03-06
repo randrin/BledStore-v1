@@ -31,7 +31,7 @@ const Services = () => {
             </div>
             <div className="services-box-content">
               <h3 className="services-box-content-title">
-                Get 20 % Off 1 Item
+                Get 20 % Off
               </h3>
               <p className="services-box-content-description">
                 when you sign up
