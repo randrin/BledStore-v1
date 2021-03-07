@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import User from "../models/userModel.js";
 import data from "../data.js";
 import { generateToken } from "../utils.js";
+import Subscribe from "../models/subscribeModel.js";
 
 export const seedUsers = expressAsyncHander(async (req, res) => {
   await User.remove({}); // Remove all the users before saving
@@ -143,11 +144,9 @@ export const deleteUser = expressAsyncHander(async (req, res) => {
   const user = await User.findById(req.params.userId);
   if (user) {
     if (user.isAdmin) {
-      res
-        .status(403)
-        .send({
-          message: "Can't delete the Admin User. See your administration.",
-        });
+      res.status(403).send({
+        message: "Can't delete the Admin User. See your administration.",
+      });
       return;
     }
     const userDeleted = await user.remove();
@@ -156,5 +155,18 @@ export const deleteUser = expressAsyncHander(async (req, res) => {
       .send({ message: "USer Delivered successfully.", user: userDeleted });
   } else {
     res.status(404).send({ message: "User Not Found" });
+  }
+});
+
+export const subscribeUser = expressAsyncHander(async (req, res) => {
+  const subscription = await Subscribe.where({ email: req.body.email });
+  if (subscription.email) {
+    res.status(404).send({
+      message: errorHandler(res),
+    });
+  } else {
+    const userSubscription = await new Subscribe({email: req.body.email}).save();
+    //const userSubscription = await subscription.save();
+    res.status(200).send({ message: "subscription make successfully.", user: userSubscription });
   }
 });

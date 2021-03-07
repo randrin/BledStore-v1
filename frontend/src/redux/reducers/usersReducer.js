@@ -29,6 +29,9 @@ import {
   USER_LIST_TOP_SELLER_SUCCESS,
   USER_LIST_TOP_SELLER_FAIL,
   USER_ADDRESS_MAP_CONFIRM,
+  USER_SUBSCRIBE_REQUEST,
+  USER_SUBSCRIBE_SUCCESS,
+  USER_SUBSCRIBE_FAIL,
 } from "../constants/userConstants";
 
 export const usersReducer = (state = { users: [], loading: true }, action) => {
@@ -152,6 +155,22 @@ export const userAddressMapReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_ADDRESS_MAP_CONFIRM:
       return { address: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userSubscriptionReducer = (
+  state = { message: "", loading: false },
+  action
+) => {
+  switch (action.type) {
+    case USER_SUBSCRIBE_REQUEST:
+      return { loading: true };
+    case USER_SUBSCRIBE_SUCCESS:
+      return { loading: false, success: true, message: action.payload };
+    case USER_SUBSCRIBE_FAIL:
+      return { loading: false, success: false, error: action.payload };
     default:
       return state;
   }

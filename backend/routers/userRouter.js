@@ -2,6 +2,7 @@ import express from "express";
 import {
   seedUsers,
   signinUser,
+  subscribeUser,
   signupUser,
   getProfileUser,
   updateProfileUser,
@@ -24,6 +25,7 @@ userRouter.put("/profile", isAuth, updateProfileUser);
 userRouter.put("/:userId", isAuth, updateUser);
 userRouter.post("/signin", signinUser);
 userRouter.post("/signup", signupUser);
+userRouter.post("/subscribe", subscribeUser);
 userRouter.delete("/:userId", isAuth, isAdmin, deleteUser);
 
 export default userRouter;

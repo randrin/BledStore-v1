@@ -169,6 +169,12 @@
 
     .products-related {
         display: grid;
+
+        .products-related-wrapper {
+            @include small() {
+                justify-content: center;
+            }
+        }
     }
 
     .product-screen-title-item {

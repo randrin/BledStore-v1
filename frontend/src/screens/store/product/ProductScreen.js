@@ -208,7 +208,7 @@ const ProductScreen = (props) => {
             ) : (
               <div>
                 <DividingLine title="You will like also this products"></DividingLine>
-                <div className="row">
+                <div className="row products-related-wrapper">
                   {productsRelated.length === 0 && (
                     <MessageBox>
                       No Related Products with category {product.category} Found

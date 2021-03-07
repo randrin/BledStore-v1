@@ -24,6 +24,9 @@ import {
   USER_SIGNUP_FAIL,
   USER_SIGNUP_REQUEST,
   USER_SIGNUP_SUCCESS,
+  USER_SUBSCRIBE_FAIL,
+  USER_SUBSCRIBE_REQUEST,
+  USER_SUBSCRIBE_SUCCESS,
   USER_UPDATE_DETAILS_FAIL,
   USER_UPDATE_DETAILS_REQUEST,
   USER_UPDATE_DETAILS_SUCCESS,
@@ -370,4 +373,39 @@ export const signout = () => (dispatch) => {
   localStorage.removeItem("cartItems");
   localStorage.removeItem("shippingAddress");
   dispatch({ type: USER_SIGNOUT });
+};
+
+export const subscribe = (email) => async (dispatch) => {
+  dispatch({
+    type: USER_SUBSCRIBE_REQUEST,
+    payload: {
+      email,
+    },
+  });
+  try {
+    const response = await axios({
+      url: "/v1/api/users/subscribe",
+      method: "POST",
+      data: {
+        email,
+      },
+    });
+    console.log("response: ", response)
+    if (response.statusText !== "OK") {
+      dispatch({ type: USER_SUBSCRIBE_FAIL });
+    } else {
+      dispatch({
+        type: USER_SUBSCRIBE_SUCCESS,
+        payload: response.data.message,
+      });
+    }
+  } catch (error) {
+    dispatch({
+      type: USER_SUBSCRIBE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
 };

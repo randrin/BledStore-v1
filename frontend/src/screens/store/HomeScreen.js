@@ -11,6 +11,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import DividingLine from "../../components/DividingLine";
 import Services from "../../components/Services";
 import Categories from "../../components/Categories";
+import NewsLetters from "../../components/NewsLetters";
 
 const HomeScreen = () => {
   const pageSize = 10;
@@ -82,6 +83,7 @@ const HomeScreen = () => {
         </>
       )}
       <Services />
+      <NewsLetters />
     </main>
   );
 };
