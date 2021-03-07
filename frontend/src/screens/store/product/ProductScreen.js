@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Breadcrumb from "../../../components/Breadcrumb";
 import DividingLine from "../../../components/DividingLine";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
@@ -45,10 +46,8 @@ const ProductScreen = (props) => {
         <MessageBox>{error}</MessageBox>
       ) : (
         <div className="product-screen-wrapper">
-          <div className="row">
-            <Link to="/" className="product-screen-btn-back">
-              <i className="fa fa-angle-left"></i> Back to Result
-            </Link>
+          <div className="product-screen-breadcrumb">
+            <Breadcrumb product={product} />
           </div>
           <div className="row top">
             <div className="col-2">
