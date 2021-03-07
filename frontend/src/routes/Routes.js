@@ -29,6 +29,15 @@ import DashboardScreen from "../screens/dashboard/DashboardScreen";
 import CategoryCreateScreen from "../screens/dashboard/categories/CategoryCreateScreen";
 import CategoryListScreen from "../screens/dashboard/categories/CategoryListScreen";
 import CategoryEditScreen from "../screens/dashboard/categories/CategoryEditScreen";
+import AboutPage from "../pages/AboutPage";
+import CareerPage from "../pages/CareerPage";
+import ServicesPage from "../pages/ServicesPage";
+import PartnersPage from "../pages/PartnersPage";
+import NewsPage from "../pages/NewsPage";
+import BlogsPage from "../pages/BlogsPage";
+import TermsConditionsPage from "../pages/TermsConditionsPage";
+import PrivaciesPoliciesPage from "../pages/PrivaciesPoliciesPage";
+import CookiesPoliciesPage from "../pages/CookiesPoliciesPage";
 
 const Routes = () => (
   <Switch>
@@ -64,6 +73,15 @@ const Routes = () => (
     <Route exact path="/search/category/:category" strict component={SearchScreen} />
     <Route exact path="/search/category/:category/name/:name" strict component={SearchScreen} />
     <Route exact path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/size/:pageSize/page/:pageNumber" strict component={SearchScreen} />
+    <Route exact path="/terms-conditions" strict component={TermsConditionsPage} />
+    <Route exact path="/privacies-policies" strict component={PrivaciesPoliciesPage} />
+    <Route exact path="/cookies-policies" strict component={CookiesPoliciesPage} />
+    <Route exact path="/about" strict component={AboutPage} />
+    <Route exact path="/career" strict component={CareerPage} />
+    <Route exact path="/services" strict component={ServicesPage} />
+    <Route exact path="/partners" strict component={PartnersPage} />
+    <Route exact path="/news" strict component={NewsPage} />
+    <Route exact path="/blogs" strict component={BlogsPage} />
     <Route component={Error404} />
   </Switch>
 );

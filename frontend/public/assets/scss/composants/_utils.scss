@@ -337,7 +337,7 @@
         }
 
         .bledstore-breadcrumb-navigation {
-            font-weight: 500;
+            font-weight: 600;
             display: inline-block;
             padding: 0px 10px 10px 0px;
             color: var(--bledstore-tomato);
@@ -353,4 +353,50 @@
             }
         }
     }
+}
+
+
+// Section Pages
+.about-page-wrapper {
+    top: 15px;
+    position: relative;
+}
+
+.blog-page-wrapper {
+    top: 15px;
+    position: relative;
+}
+
+.career-page-wrapper{
+    top: 15px;
+    position: relative;
+}
+
+.cookies-page-wrapper{
+    top: 15px;
+    position: relative;
+}
+
+.news-page-wrapper {
+    top: 15px;
+    position: relative;
+}
+
+.partners-page-wrapper {
+    top: 15px;
+    position: relative;
+}
+
+.privacies-page-wrapper {
+    top: 15px;
+    position: relative;
+}
+
+.services-page-wrapper {
+    top: 15px;
+    position: relative;
+}
+.conditions-page-wrapper{
+    top: 15px;
+    position: relative;
 }

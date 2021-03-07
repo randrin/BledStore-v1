@@ -11,20 +11,20 @@ const BledStoreFooter = () => {
         <div className="bledstore-footer-box">
           <div className="bledstore-footer-store">
             <div className="bledstore-footer-store-infos">
-            <h2>
-              <Link to="/">
-                <img
-                className="bledstore-footer-store-infos-logo"
-                  src="/assets/images/logo/logo.png"
-                  alt="Logo Compagny Page"
-                />
-              </Link>
-            </h2>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s. Lorem Ipsum is ...
-            </p>
+              <h2>
+                <Link to="/">
+                  <img
+                    className="bledstore-footer-store-infos-logo"
+                    src="/assets/images/logo/logo.png"
+                    alt="Logo Compagny Page"
+                  />
+                </Link>
+              </h2>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s. Lorem Ipsum is ...
+              </p>
             </div>
             <div className="bledstore-footer-socials">
               <a
@@ -58,15 +58,27 @@ const BledStoreFooter = () => {
             </div>
           </div>
           <div className="bledstore-footer-link">
-            <a href="#" className="footer-link" title="Terms and Conditions">
+            <Link
+              to="/terms-conditions"
+              className="footer-link"
+              title="Terms and Conditions"
+            >
               Terms and Conditions
-            </a>
-            <a href="#" className="footer-link" title="Privacies Policies">
+            </Link>
+            <Link
+              to="/privacies-policies"
+              className="footer-link"
+              title="Privacies Policies"
+            >
               Privacies Policies
-            </a>
-            <a href="#" className="footer-link" title="Cookies Policies">
+            </Link>
+            <Link
+              to="/cookies-policies"
+              className="footer-link"
+              title="Cookies Policies"
+            >
               Cookies Policies
-            </a>
+            </Link>
             <div className="bledstore-footer-appstore">
               <a href="#" title="App Store">
                 <img
@@ -86,7 +98,7 @@ const BledStoreFooter = () => {
             <div className="footer-call">
               <i className="icon-phone fa fa-phone"></i>
               <span>Got Question? Call us 24/7</span>
-              <a href="#" className="footer-number">
+              <a href="tel:6 46 55 87 98" className="footer-number">
                 6 46 55 87 98
               </a>
             </div>
@@ -97,38 +109,22 @@ const BledStoreFooter = () => {
           <div className="bledstore-footer-box-quarter">
             <h2>Who we are?</h2>
             <div className="box-quarter">
-              <a href="#" title="">
-                About Bled Store
-              </a>
-              <a href="#" title="">
-                Carrer at Bled Store
-              </a>
-              <a href="#" title="">
-                Our Services
-              </a>
-              <a href="#" title="">
-                Our Partners
-              </a>
-              <a href="#" title="">
-                Our News
-              </a>
-              <a href="#" title="">
-                Our Blogs
-              </a>
+              <Link to="/about">About Bled Store</Link>
+              <Link to="/career">Career at Bled Store</Link>
+              <Link to="/services">Our Services</Link>
+              <Link to="/partners">Our Partners</Link>
+              <Link to="/news">Our News</Link>
+              <Link to="/blogs">Our Blogs</Link>
             </div>
           </div>
           <div className="bledstore-footer-box-quarter">
             <h2>My Account</h2>
             <div className="box-quarter">
-              <a href="/#/signin" title="">
-                Sign In / Sign Up
-              </a>
+              <Link to="/signin">Sign In / Sign Up</Link>
               <a href="#" title="">
                 How to create an account
               </a>
-              <a href="#" title="">
-                My Shopping Cart
-              </a>
+              <Link to="/cart">My Shopping Cart</Link>
               <a href="#" title="">
                 My Wishlist
               </a>

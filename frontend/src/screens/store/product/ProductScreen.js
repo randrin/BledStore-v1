@@ -47,7 +47,7 @@ const ProductScreen = (props) => {
       ) : (
         <div className="product-screen-wrapper">
           <div className="product-screen-breadcrumb">
-            <Breadcrumb product={product} />
+            <Breadcrumb grandfather={product.category} child={product.name} />
           </div>
           <div className="row top">
             <div className="col-2">
