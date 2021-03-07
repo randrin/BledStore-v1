@@ -87,6 +87,46 @@
 .bledstore-error-404-wrapper {
     position: relative;
     margin: 20px;
+
+    .bledstore-error-404-container {
+        padding: 20px 0;
+        @include small() {
+            display: block;
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .bledstore-error-404-left {
+            flex: 0 0 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .bledstore-error-404-logo {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        .bledstore-error-404-right {
+            flex: 0 0 50%;
+            display: grid;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+
+            .bledstore-error-404-right-title {
+                color: var(--bledstore-primary) !important;
+                line-height: 24px;
+
+                .bledstore-error-404-right-link {
+                    text-decoration: underline;
+                    color: var(--bledstore-warning) !important;
+                }
+            }
+        }
+    }
 }
 
 // Dividing Line

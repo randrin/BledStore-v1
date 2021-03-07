@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BledStoreFooter = () => {
   const currentYear = new Date().getFullYear();
@@ -9,13 +10,22 @@ const BledStoreFooter = () => {
       <div className="bledstore-footer-wrapper">
         <div className="bledstore-footer-box">
           <div className="bledstore-footer-store">
-            <h2>Bled Store</h2>
+            <div className="bledstore-footer-store-infos">
+            <h2>
+              <Link to="/">
+                <img
+                className="bledstore-footer-store-infos-logo"
+                  src="/assets/images/logo/logo.png"
+                  alt="Logo Compagny Page"
+                />
+              </Link>
+            </h2>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book
+              ever since the 1500s. Lorem Ipsum is ...
             </p>
+            </div>
             <div className="bledstore-footer-socials">
               <a
                 href="#"
