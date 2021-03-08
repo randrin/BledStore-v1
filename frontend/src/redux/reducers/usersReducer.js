@@ -32,6 +32,7 @@ import {
   USER_SUBSCRIBE_REQUEST,
   USER_SUBSCRIBE_SUCCESS,
   USER_SUBSCRIBE_FAIL,
+  USER_SUBSCRIBE_RESET,
 } from "../constants/userConstants";
 
 export const usersReducer = (state = { users: [], loading: true }, action) => {
@@ -171,6 +172,8 @@ export const userSubscriptionReducer = (
       return { loading: false, success: true, message: action.payload };
     case USER_SUBSCRIBE_FAIL:
       return { loading: false, success: false, error: action.payload };
+    case USER_SUBSCRIBE_RESET:
+      return {};
     default:
       return state;
   }

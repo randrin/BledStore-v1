@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { subscribe } from "../redux/actions/userActions";
+import { USER_SUBSCRIBE_RESET } from "../redux/constants/userConstants";
 import LoadingBox from "./LoadingBox";
-import MessageBox from "./MessageBox";
 
 const NewsLetters = () => {
   const [email, setEmail] = useState("");
-  const [subcription, setSubcription] = useState(false);
+  const [subcriptionSuccess, setSubcriptionSuccess] = useState(false);
+  const [subcriptionError, setSubcriptionError] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -17,12 +18,18 @@ const NewsLetters = () => {
 
   useEffect(() => {
     if (success) {
-      setSubcription(true);
+      setSubcriptionSuccess(true);
       setTimeout(() => {
-        setSubcription(false);
+        setSubcriptionSuccess(false);
+        dispatch({ type: USER_SUBSCRIBE_RESET });
       }, 3000);
+      setEmail("");
     }
-  }, [dispatch, success]);
+
+    if (error) {
+
+    }
+  }, [dispatch, success, error]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -34,10 +41,21 @@ const NewsLetters = () => {
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
-        <MessageBox variant="danger">{error}</MessageBox>
+        <div className="newsletters-error-message">
+          <span className="newsletters-error-icon">
+            <i className="fa fa-times-circle-o"></i>
+            The subscription with the email {email} is already done!
+          </span>
+        </div>
       ) : (
-        <div className={`${subcription ? "newsletters-success-wrapper" : "newsletters-failure-wrapper"}`}>
-          {subcription ? (
+        <div
+          className={`${
+            subcriptionSuccess
+              ? "newsletters-success-message"
+              : "newsletters-failure-message"
+          }`}
+        >
+          {subcriptionSuccess ? (
             <span className="newsletters-success-icon">
               <i className="fa fa-check-circle"></i>
               {message}
@@ -73,6 +91,7 @@ const NewsLetters = () => {
                     type="email"
                     id="email"
                     required
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="newsletters-box-subscribe-form-control"
                     placeholder="Enter your email address"

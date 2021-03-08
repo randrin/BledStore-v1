@@ -166,7 +166,6 @@ export const subscribeUser = expressAsyncHander(async (req, res) => {
     });
   } else {
     const userSubscription = await new Subscribe({email: req.body.email}).save();
-    //const userSubscription = await subscription.save();
-    res.status(200).send({ message: "subscription make successfully.", user: userSubscription });
+    res.status(200).send({ message: "Your subscription has been made successfully.", user: userSubscription });
   }
 });

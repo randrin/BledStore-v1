@@ -370,7 +370,7 @@
 }
 
 // News Letters
-.newsletters-success-wrapper {
+.newsletters-success-message {
     background: var(--bledstore-success) !important;
     padding: 1rem;
     font-size: 18px;
@@ -390,7 +390,27 @@
     }
 }
 
-.newsletters-failure-wrapper {
+.newsletters-error-message {
+    background: var(--bledstore-tomato) !important;
+    padding: 1rem;
+    font-size: 18px;
+    text-align: center;
+    border-top-left-radius: 0.5rem;
+    color: var(--bledstore-white) !important;
+    border-top-right-radius: 0.5rem;
+
+    .newsletters-error-icon {
+        font-size: 20px;
+        letter-spacing: -.025em;
+        line-height: 24px;
+
+        i {
+            padding-right: 5px;
+        }
+    }
+}
+
+.newsletters-failure-message {
     display: none;
 }
 
