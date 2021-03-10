@@ -39,6 +39,15 @@ const Product = ({ product }) => {
         <div className="card-body">
           <div className="category">
             <Link to={`/product/${product._id}`}>{product.category}</Link>
+            {product.countInStock > 5 ? (
+              <span className="availability-in-stock">
+                <span className="availability-stock"></span> Disponible
+              </span>
+            ) : (
+              <span className="availability-out-stock">
+                Il ne reste que {product.countInStock}
+              </span>
+            )}
           </div>
           <Link to={`/product/${product._id}`}>
             <h2 className="card-title">{product.name}</h2>

@@ -38,6 +38,7 @@ import BlogsPage from "../pages/BlogsPage";
 import TermsConditionsPage from "../pages/TermsConditionsPage";
 import PrivaciesPoliciesPage from "../pages/PrivaciesPoliciesPage";
 import CookiesPoliciesPage from "../pages/CookiesPoliciesPage";
+import StepsShopPage from "../pages/StepsShopPage";
 
 const Routes = () => (
   <Switch>
@@ -82,6 +83,7 @@ const Routes = () => (
     <Route exact path="/partners" strict component={PartnersPage} />
     <Route exact path="/news" strict component={NewsPage} />
     <Route exact path="/blogs" strict component={BlogsPage} />
+    <Route exact path="/steps-shopping" strict component={StepsShopPage} />
     <Route component={Error404} />
   </Switch>
 );

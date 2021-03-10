@@ -66,6 +66,32 @@
                 }
             }
 
+            .availability-in-stock {
+                float: right;
+                right: 0;
+                position: relative;
+                display: flex;
+                color: var(--bledstore-success);
+
+                .availability-stock {
+                    background: var(--bledstore-success);
+                    width: 10px;
+                    height: 10px;
+                    border-color: var(--bledstore-success);
+                    border-radius: 5px;
+                    margin: 2px;
+                    margin: 1px 3px;
+                }
+            }
+
+            .availability-out-stock {
+                float: right;
+                right: 0;
+                position: relative;
+                display: flex;
+                color: var(--bledstore-tomato);
+            }
+
             .description {
                 color: var(--bledstore-primary) !important;
             }

@@ -24,11 +24,17 @@ $(document).ready(function () {
 $(document).ready(function () {
   var element = document.querySelector(".loading");
 
-  if (element) {
-    console.log("element: ", element);
+  $("a, button, img").on("click", () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  }
+  });
+  // if (!!element) {
+  //   console.log("element: ", element);
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth",
+  //   });
+  // }
 });

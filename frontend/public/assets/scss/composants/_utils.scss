@@ -563,3 +563,112 @@
     top: 15px;
     position: relative;
 }
+
+.steps-shop-page-wrapper {
+    top: 15px;
+    position: relative;
+
+    .steps-shop-page-container {
+
+        .steps-shop-page-content {
+            text-align: center;
+            padding-bottom: 40px;
+
+            .steps-shop-page-title {
+                text-transform: uppercase;
+                font-size: 18px;
+                margin-bottom: 10px;
+                color: var(--bledstore-tomato);
+            }
+
+            .steps-shop-page-subtitle {
+                color: var(--bledstore-primary);
+                margin-bottom: 0;
+                font-size: 30px;
+            }
+        }
+
+        .steps-shop-page-steps {
+            @include small() {
+                display: grid;
+            }
+            justify-content: center;
+            display: flex;
+            align-content: center;
+            text-align: center;
+
+            .steps-shop-page-step-box {
+                flex: 0 0 25%;
+                padding: 20px 0px;
+                cursor: pointer;
+
+                // &::after {
+                //     content: '';
+                //     width: 100%;
+                //     //background: url(../../../assets/images/svg/arrow-2.svg) no-repeat;
+                //     position: absolute;
+                //     right: 0;
+                //     z-index: 1;
+                //     background-size: contain;
+                //     background-position: right;
+                //     height: 70px;
+                //     top: -35px;
+                //     transform: rotate(50deg);
+                //     left: 65px;
+                // }
+
+                .steps-shop-page-step-box-content {
+                    max-width: 250px;
+                    margin: 0 auto;
+
+                    .steps-shop-page-step-box-content-header {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 120px;
+                        height: 120px;
+                        border-radius: 50%;
+                        background-color: var(--bledstore-tomato);
+                        margin: 0 auto 15px;
+                        position: relative;
+
+                        .steps-shop-page-step-box-content-header-img {
+                            padding: 30px;
+                            max-width: 100%;
+                            width: auto;
+                            height: auto;
+                            border-radius: 3px;
+                        }
+
+                        .steps-shop-page-step-box-content-header-number {
+                            position: absolute;
+                            top: 0;
+                            left: 10px;
+                            background: var(--bledstore-white);
+                            border-radius: 50%;
+                            width: 30px;
+                            height: 30px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                            font-size: 12px;
+                        }
+                    }
+
+                    .steps-shop-page-step-box-content-title {
+                        margin-bottom: 15px;
+                        font-size: 20px;
+                        color: var(--bledstore-primary);
+                    }
+
+                    .steps-shop-page-step-box-content-subtitle {
+                        font-size: 18px;
+                        line-height: 1.6;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

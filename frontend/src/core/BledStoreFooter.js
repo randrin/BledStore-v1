@@ -136,9 +136,9 @@ const BledStoreFooter = () => {
           <div className="bledstore-footer-box-quarter">
             <h2>Customer Services</h2>
             <div className="box-quarter">
-              <a href="#" title="">
+              <Link to="/steps-shopping">
                 How to buy on xxxx
-              </a>
+              </Link>
               <a href="#" title="">
                 Our Payments Methods
               </a>
