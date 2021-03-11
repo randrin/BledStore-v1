@@ -33,6 +33,10 @@ import {
   USER_SUBSCRIBE_SUCCESS,
   USER_SUBSCRIBE_FAIL,
   USER_SUBSCRIBE_RESET,
+  USER_RESET_PASSWORD_REQUEST,
+  USER_RESET_PASSWORD_SUCCESS,
+  USER_RESET_PASSWORD_FAIL,
+  USER_RESET_PASSWORD_RESET,
 } from "../constants/userConstants";
 
 export const usersReducer = (state = { users: [], loading: true }, action) => {
@@ -73,6 +77,24 @@ export const userSigninReducer = (state = {}, action) => {
     case USER_SIGNIN_FAIL:
       return { loading: false, error: action.payload };
     case USER_SIGNOUT:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const userResetPasswordReducer = (
+  state = { loading: false, message: "" },
+  action
+) => {
+  switch (action.type) {
+    case USER_RESET_PASSWORD_REQUEST:
+      return { loading: true };
+    case USER_RESET_PASSWORD_SUCCESS:
+      return { loading: false, success: true, message: action.payload };
+    case USER_RESET_PASSWORD_FAIL:
+      return { loading: false, success: false, error: action.payload };
+    case USER_RESET_PASSWORD_RESET:
       return {};
     default:
       return state;

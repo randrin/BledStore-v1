@@ -42,6 +42,13 @@
         }
     }
 
+    .bledstore-auth-forgot-password {
+        text-align: right;
+        right: 0;
+        position: relative;
+        top: -20px;
+    }
+
     .bledstore-auth-btn-submit {
         &:hover {
             background-color: var(--bledstore-primary);

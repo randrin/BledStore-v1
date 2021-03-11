@@ -17,6 +17,9 @@ import {
   USER_LIST_TOP_SELLER_FAIL,
   USER_LIST_TOP_SELLER_REQUEST,
   USER_LIST_TOP_SELLER_SUCCESS,
+  USER_RESET_PASSWORD_FAIL,
+  USER_RESET_PASSWORD_REQUEST,
+  USER_RESET_PASSWORD_SUCCESS,
   USER_SIGNIN_FAIL,
   USER_SIGNIN_REQUEST,
   USER_SIGNIN_SUCCESS,
@@ -113,6 +116,42 @@ export const signup = (pseudo, name, email, phone, password) => async (
   } catch (error) {
     dispatch({
       type: USER_SIGNIN_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const resetPassword = (email,) => async (
+  dispatch
+) => {
+  dispatch({
+    type: USER_RESET_PASSWORD_REQUEST,
+    payload: {
+      email
+    },
+  });
+  try {
+    const response = await axios({
+      url: "/v1/api/users/resetpassword",
+      method: "POST",
+      data: {
+        email
+      },
+    });
+    if (response.statusText !== "OK") {
+      dispatch({ type: USER_RESET_PASSWORD_FAIL });
+    } else {
+      dispatch({
+        type: USER_RESET_PASSWORD_SUCCESS,
+        payload: response.data,
+      });
+    }
+  } catch (error) {
+    dispatch({
+      type: USER_RESET_PASSWORD_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

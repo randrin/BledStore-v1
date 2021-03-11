@@ -39,6 +39,7 @@ import TermsConditionsPage from "../pages/TermsConditionsPage";
 import PrivaciesPoliciesPage from "../pages/PrivaciesPoliciesPage";
 import CookiesPoliciesPage from "../pages/CookiesPoliciesPage";
 import StepsShopPage from "../pages/StepsShopPage";
+import ForgotPasswordScreen from "../screens/store/auth/ForgotPasswordScreen";
 
 const Routes = () => (
   <Switch>
@@ -50,6 +51,7 @@ const Routes = () => (
     <Route exact path="/cart/:productId?" strict component={CartScreen} />
     <Route exact path="/signin" strict component={SigninScreen} />
     <Route exact path="/register" strict component={RegisterScreen} />
+    <Route exact path="/forgot-password" strict component={ForgotPasswordScreen} />
     <Route exact path="/shipping" strict component={ShippingAddressScreen} />
     <Route exact path="/payment" strict component={PaymentMethodScreen} />
     <AdminRoute exact path="/dashboard" strict component={DashboardScreen} />

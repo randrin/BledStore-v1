@@ -76,6 +76,11 @@ const SigninScreen = (props) => {
             ></i>
           </span>
         </div>
+        <div className="bledstore-auth-forgot-password">
+          <Link to="/forgot-password" className="bledstore-auth-forgot-password-link">
+            Forgot your password?
+          </Link>
+        </div>
         <div>
           <label />
           <button className="bledstore-auth-btn-submit primary" type="submit">

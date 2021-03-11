@@ -10,7 +10,8 @@ body {
   margin: 0;
   height: 100vh;
   font-size: 1.6rem;
-  font-family: Helvetica, Arial, sans-serif;
+  // font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -364,12 +365,13 @@ img.large {
   border-radius: 5px;
   top: 50px;
   position: relative;
+  box-shadow: var(--bledstore-box-shadow) !important;
 }
 
 .form>div {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  margin: 1rem 2rem;
 }
 
 .form label {
