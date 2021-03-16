@@ -13,6 +13,7 @@ import {
   USER_SIGNIN_FAIL,
   USER_SIGNIN_REQUEST,
   USER_SIGNIN_SUCCESS,
+  USER_SIGNIN_RESET,
   USER_SIGNOUT,
   USER_SIGNUP_FAIL,
   USER_SIGNUP_REQUEST,
@@ -77,6 +78,8 @@ export const userSigninReducer = (state = {}, action) => {
     case USER_SIGNIN_FAIL:
       return { loading: false, error: action.payload };
     case USER_SIGNOUT:
+      return {};
+    case USER_SIGNIN_RESET:
       return {};
     default:
       return state;

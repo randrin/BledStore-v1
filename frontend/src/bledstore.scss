@@ -12,6 +12,7 @@ body {
   font-size: 1.6rem;
   // font-family: Helvetica, Arial, sans-serif;
   font-family: 'Lato', sans-serif;
+  letter-spacing: 0.2px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -150,6 +151,10 @@ a.brand {
   color: #ffffff;
   font-size: 3rem;
   font-weight: bold;
+
+  @include small() {
+    font-size: 2rem;
+  }
 }
 
 .badge {
@@ -521,7 +526,7 @@ img.large {
 .cart-items {
   top: -10px;
   position: relative;
-  left: -10px;
+  left: -5px;
   max-height: 10px;
   background: #f08040;
   padding: 2px 5px;

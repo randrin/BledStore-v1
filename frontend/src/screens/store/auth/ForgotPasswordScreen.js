@@ -51,7 +51,7 @@ function ForgotPasswordScreen() {
           <label />
           <div>
             Do you remember your password?
-            <Link to={`/login`} className="bledstore-auth-cta">
+            <Link to={`/signin`} className="bledstore-auth-cta">
               Login
             </Link>
           </div>

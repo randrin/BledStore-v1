@@ -16,8 +16,40 @@
             display: none !important;
         }
     }
+
+    .header-right {
+        .header-right-signin {
+            .header-right-signin-img-new-user-hover {
+                top: 2px;
+                position: relative;
+                display: none;
+            }
+
+            .header-right-signin-img-new-user {
+                top: 2px;
+                position: relative;
+            }
+
+            &:hover {
+                .header-right-signin-img-new-user {
+                    top: 2px;
+                    position: relative;
+                    display: none;
+                }
+
+                .header-right-signin-img-new-user-hover {
+                    top: 2px;
+                    position: relative;
+                    display: inline-block;
+                }
+            }
+
+            .header-right-signin-title {
+                top: -3px;
+                position: relative;
+            }
+        }
+    }
 }
 
-.aside-wrapper {
-    
-}
+.aside-wrapper {}

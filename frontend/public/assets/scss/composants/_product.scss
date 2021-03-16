@@ -89,6 +89,10 @@
                 position: relative;
                 display: flex;
                 color: var(--bledstore-tomato);
+
+                i {
+                    margin: 0 3px;
+                }
             }
 
             .description {

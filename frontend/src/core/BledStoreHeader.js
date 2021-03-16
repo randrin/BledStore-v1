@@ -36,7 +36,7 @@ const BledStoreHeader = () => {
   return (
     <>
       <header className="header-wrapper row">
-        <div>
+        <div className="header-left">
           <button
             type="button"
             className="open-sidebar"
@@ -53,9 +53,9 @@ const BledStoreHeader = () => {
             render={({ history }) => <SearchBox history={history}></SearchBox>}
           ></Route>
         </div>
-        <div>
+        <div className="header-right">
           <Link to="/cart">
-            <i className="fa fa-shopping-cart"></i>{" "}
+            <i className="fa fa-shopping-cart"></i>
             <span className="cart-items">
               {cartItems.length > 0 ? cartItems.length : 0}
             </span>
@@ -73,7 +73,7 @@ const BledStoreHeader = () => {
                 </li>
                 <li>
                   <Link to="/orders/history">
-                    <i className="	fa fa-list"></i> Order History
+                    <i className="fa fa-list"></i> Order History
                   </Link>
                 </li>
                 <li>
@@ -84,8 +84,18 @@ const BledStoreHeader = () => {
               </ul>
             </div>
           ) : (
-            <Link to="/signin">
-              <i className="fa fa-user-circle"></i> Sign In
+            <Link to="/signin" className="header-right-signin">
+              <img
+                className="header-right-signin-img-new-user"
+                src="/assets/images/svg/new-user.svg"
+                alt="New User"
+              />
+              <img
+                className="header-right-signin-img-new-user-hover"
+                src="/assets/images/svg/new-user-hover.svg"
+                alt="New User Hover"
+              />
+              <span className="header-right-signin-title">Sign In</span>
             </Link>
           )}
           {userInfo && userInfo.isSeller && (

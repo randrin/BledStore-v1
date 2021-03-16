@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import { signin } from "../../../redux/actions/userActions";
+import { USER_SIGNIN_RESET } from "../../../redux/constants/userConstants";
 
 const SigninScreen = (props) => {
   const [email, setEmail] = useState("");
@@ -24,6 +25,7 @@ const SigninScreen = (props) => {
   };
 
   useEffect(() => {
+    dispatch({ type: USER_SIGNIN_RESET });
     if (userInfo) {
       props.history.push(redirect);
     }
@@ -77,7 +79,10 @@ const SigninScreen = (props) => {
           </span>
         </div>
         <div className="bledstore-auth-forgot-password">
-          <Link to="/forgot-password" className="bledstore-auth-forgot-password-link">
+          <Link
+            to="/forgot-password"
+            className="bledstore-auth-forgot-password-link"
+          >
             Forgot your password?
           </Link>
         </div>
