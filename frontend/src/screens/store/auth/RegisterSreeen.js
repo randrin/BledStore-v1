@@ -59,6 +59,14 @@ const RegisterScreen = (props) => {
         </div>
         {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
+        <div className="bledstore-auth-register-promo">
+          <img
+            src="/assets/images/svg/Promo-BW.svg"
+            alt="Promotion Registration"
+            width="30"
+          />{" "}
+          <span className="bledstore-auth-register-title">Register now to get a $5 Coupon as New User</span>
+        </div>
         <div>
           <label htmlFor="pseudo">
             Pseudo <span className="form-required">*</span>

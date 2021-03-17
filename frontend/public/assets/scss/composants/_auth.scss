@@ -18,6 +18,19 @@
         }
     }
 
+    .bledstore-auth-register-promo {
+        display: block;
+        border: 1px solid var(--bledstore-tomato);
+        color: var(--bledstore-white);
+        background-color: var(--bledstore-tomato);
+        text-align: center;
+
+        .bledstore-auth-register-title {
+            position: relative;
+            top: -7px;
+        }
+    }
+
     .bledstore-auth-cta {
         left: 5px;
         position: relative;
