@@ -7,6 +7,8 @@ import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import Product from "../../../components/Product";
 import Rating from "../../../components/Rating";
+import "react-multi-carousel/lib/styles.css";
+import Carousel from "react-multi-carousel";
 import {
   getProductById,
   getProductsRelatedByCategory,
@@ -16,6 +18,54 @@ import ReviewScreen from "./ReviewScreen";
 const ProductScreen = (props) => {
   const dispatch = useDispatch();
   const productId = props.match.params.productId;
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 5,
+      slidesToSlide: 2, // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2, // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+  };
+
+  const CustomRightArrow = ({ onClick, ...rest }) => {
+    const {
+      onMove,
+      carouselState: { currentSlide, deviceType },
+    } = rest;
+    // onMove means if dragging or swiping in progress.
+    return <button onClick={() => onClick()} />;
+  };
+
+  const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
+    const {
+      carouselState: { currentSlide },
+    } = rest;
+    return (
+      <div className="carousel-button-group">
+        {" "}
+        // remember to give it position:absolute
+        <button
+          className={currentSlide === 0 ? "disable" : ""}
+          onClick={() => previous()}
+        />
+        <button onClick={() => next()} />
+        <button onClick={() => goToSlide(currentSlide + 1)}>
+          {" "}
+          Go to any slide{" "}
+        </button>
+      </div>
+    );
+  };
 
   const [qty, setQty] = useState(1);
 
@@ -208,6 +258,34 @@ const ProductScreen = (props) => {
             ) : (
               <div>
                 <DividingLine title="You will like also this products"></DividingLine>
+                <div className="products-related-carousel">
+                  <Carousel
+                    swipeable={false}
+                    arrow={false}
+                    ButtonGroup={<ButtonGroup />}
+                    draggable={false}
+                    showDots={false}
+                    responsive={responsive}
+                    ssr={true} // means to render carousel on server-side.
+                    infinite={true}
+                    autoPlay={props.deviceType !== "mobile" ? true : false}
+                    autoPlaySpeed={2000}
+                    keyBoardControl={true}
+                    customTransition="transform 200ms ease-in-out"
+                    transitionDuration={300}
+                    centerMode={false}
+                    renderDotsOutside={true}
+                    containerClass="carousel-container"
+                    removeArrowOnDeviceType={["tablet", "mobile"]}
+                    deviceType={props.deviceType}
+                    dotListClass="custom-dot-list-style"
+                    itemClass="carousel-item-padding-40-px"
+                  >
+                    {productsRelated.map((product, index) => (
+                      <Product key={index} product={product} />
+                    ))}
+                  </Carousel>
+                </div>
                 <div className="row products-related-wrapper">
                   {productsRelated.length === 0 && (
                     <MessageBox>
@@ -215,9 +293,6 @@ const ProductScreen = (props) => {
                       at the moment.
                     </MessageBox>
                   )}
-                  {productsRelated.map((product, index) => (
-                    <Product key={index} product={product} />
-                  ))}
                 </div>
                 {/* <div className="row center pagination">
             {[...Array(pages).keys()].map((x) => (

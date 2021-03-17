@@ -199,6 +199,14 @@
     .products-related {
         display: grid;
 
+        .products-related-carousel {
+            display: grid;
+
+            .react-multi-carousel-item {
+                width: 100% !important;
+            }
+        }
+
         .products-related-wrapper {
             @include small() {
                 justify-content: center;

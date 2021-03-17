@@ -325,6 +325,14 @@
     }
 }
 
+//Messages Box
+.message-box-wrapper {
+    .message-box-alert {
+        top: -1px;
+        position: relative;
+    }
+}
+
 //Breadcrumb
 .bledstore-breadcrumb-wrapper {
     background-color: var(--bledstore-sliver);

@@ -7,7 +7,7 @@ export default function MessageBox(props) {
         <i
           className={`fa ${
             props.variant ? "fa-times-circle-o" : "fa-info-circle"
-          }`}
+          } message-box-alert`}
         ></i>{" "}
         {props.children}
       </div>
