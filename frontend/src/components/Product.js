@@ -43,9 +43,14 @@ const Product = ({ product }) => {
               <span className="availability-in-stock">
                 <span className="availability-stock"></span> Disponible
               </span>
+            ) : product.countInStock === 0 ? (
+              <span className="availability-out-stock">
+                <i className="fa fa-warning"></i> Out of Stock
+              </span>
             ) : (
               <span className="availability-out-stock">
-                <i className="fa fa-warning"></i> Il ne reste que {product.countInStock}
+                <i className="fa fa-warning"></i> Il ne reste que{" "}
+                {product.countInStock}
               </span>
             )}
           </div>

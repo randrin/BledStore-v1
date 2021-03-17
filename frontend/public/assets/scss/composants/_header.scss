@@ -18,6 +18,131 @@
     }
 
     .header-right {
+        display: flex;
+
+        .header-right-cart {
+            .header-right-cart-items {
+                top: 8px;
+                position: relative;
+            }
+
+            .header-right-cart-hover {
+                display: none;
+            }
+
+            &:hover {
+                .header-right-cart-hover {
+                    display: block;
+                    position: absolute;
+                    width: 300px;
+                    z-index: 100;
+                    margin: 20px 0 0;
+                    right: 100px;
+                    padding: 1.5rem 0;
+                    border-radius: 0;
+                    border: none;
+                    box-shadow: var(--bledstore-box-shadow);
+                    background-color: var(--bledstore-white);
+                    transition: var(--bledstore-transition);
+
+                    .header-right-cart-hover-empty-container {
+                        display: grid;
+                        text-align: center;
+                        color: var(--bledstore-primary);
+                        margin: 20px;
+
+                        .header-right-cart-hover-icon {
+                            font-size: 3.5rem;
+                        }
+
+                        .header-right-cart-hover-title {
+                            padding: 15px 0;
+                            font-size: 1.5rem;
+                        }
+
+                        .header-right-cart-hover-btn {
+                            &:hover {
+                                background-color: var(--bledstore-primary);
+                                color: var(--bledstore-white);
+                            }
+                        }
+                    }
+
+                    .header-right-cart-hover-container {
+                        .header-right-cart-hover-items {
+                            .header-right-cart-hover-items-container {
+                                .header-right-cart-hover-item {
+                                    display: flex;
+                                    border-bottom: 1px solid var(--bledstore-sliver);
+
+                                    .header-right-cart-hover-item-img {
+                                        margin: 0 10px;
+                                        position: relative;
+                                    }
+
+                                    .header-right-cart-hover-item-content {
+                                        text-align: left;
+                                        margin: 0 10px;
+                                        top: -5px;
+                                        position: relative;
+                                        color: var(--bledstore-primary);
+
+                                        .header-right-cart-hover-item-title,
+                                        .header-right-cart-hover-item-qty,
+                                        .header-right-cart-hover-item-price {
+                                            margin: 0 !important;
+                                            padding: 0 !important;
+                                        }
+
+                                        .header-right-cart-hover-item-price {
+                                            color: var(--bledstore-tomato);
+                                            padding-top: 10px !important;
+                                        }
+                                    }
+
+                                    &:last-child {
+                                        margin: 0 !important;
+                                    }
+                                }
+                            }
+
+                            .header-right-cart-hover-subtotal {
+                                display: flex;
+                                padding: 10px 0;
+                                background: var(--bledstore-sliver);
+                                margin-bottom: 10px;
+
+                                .header-right-cart-hover-subtotal-title {
+                                    text-transform: uppercase;
+                                    left: 15px;
+                                    position: relative;
+                                    font-weight: 600;
+                                    color: var(--bledstore-primary);
+                                }
+
+                                .header-right-cart-hover-subtotal-price {
+                                    right: 10px;
+                                    position: absolute;
+                                    color: var(--bledstore-tomato);
+                                    font-weight: 600;
+                                }
+                            }
+
+                            .header-right-cart-hover-btn {
+                                width: -webkit-fill-available;
+                                margin: 10px;
+
+                                &:hover {
+                                    background-color: var(--bledstore-primary);
+                                    color: var(--bledstore-white);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         .header-right-signin {
             .header-right-signin-img-new-user-hover {
                 top: 2px;
