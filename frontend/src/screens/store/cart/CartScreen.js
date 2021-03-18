@@ -63,23 +63,23 @@ const CartScreen = (props) => {
                       ))}
                     </select>
                   </div>
-                  <div>{item.discountPrice ? (
+                  <div>
+                    {item.discountPrice ? (
                       <div className="cart-price-content">
                         <span className="cart-new-price">
                           {item.discountPrice}€
                         </span>
-                        <span className="cart-old-price">
-                          {item.price}€
-                        </span>
+                        <span className="cart-old-price">{item.price}€</span>
                       </div>
                     ) : (
-                      <span className="cart-new-price">
-                        {item.price}€
-                      </span>
-                    )}</div>
+                      <div className="cart-price-content">
+                        <span className="cart-price">{item.price}€</span>
+                      </div>
+                    )}
+                  </div>
                   <div>
                     <button
-                    className="cart-btn-remove"
+                      className="cart-btn-remove"
                       type="button"
                       onClick={() => removeFromCartHandler(item.product)}
                     >
@@ -97,15 +97,22 @@ const CartScreen = (props) => {
           <ul>
             <li>
               <h2>
-                SubTotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : 
-                {cartItems.reduce((a, c) => a + c.qty * (c.discountPrice ? c.discountPrice : c.price), 0)} €
+                SubTotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) :
+                {cartItems.reduce(
+                  (a, c) =>
+                    a + c.qty * (c.discountPrice ? c.discountPrice : c.price),
+                  0
+                )}{" "}
+                €
               </h2>
             </li>
             <li>
               <button
                 type="button"
                 onClick={checkoutHandler}
-                className={`primary ${cartItems.length === 0 ? "" : "cart-btn-submit"} block`}
+                className={`primary ${
+                  cartItems.length === 0 ? "" : "cart-btn-submit"
+                } block`}
                 disabled={cartItems.length === 0}
               >
                 Proceed to Checkout <i className="fa fa-angle-double-right"></i>

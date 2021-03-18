@@ -310,7 +310,7 @@
 
                 .categories-block-container-img {
                     .categories-block-img {
-                        width: 100px;
+                        max-width: 100px;
                         height: auto;
                         transition: transform 0.35s ease;
                     }
