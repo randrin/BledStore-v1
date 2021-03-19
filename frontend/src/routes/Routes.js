@@ -57,7 +57,7 @@ const Routes = () => (
     <AdminRoute exact path="/dashboard" strict component={DashboardScreen} />
     <Route exact path="/placeorder" strict component={PlaceOrderScreen} />
     <PrivateRoute exact path="/order/:orderId" strict component={OrderScreen} />
-    <Route exact path="/orders/history" strict component={OrderHistoryScreeen} />
+    <PrivateRoute exact path="/orders/history" strict component={OrderHistoryScreeen} />
     <PrivateRoute exact path="/profile" strict component={ProfileScreen} />
     <PrivateRoute exact path="/map" strict component={MapScreen} />
     <AdminRoute exact path="/productlist" strict component={ProductListScreen} />

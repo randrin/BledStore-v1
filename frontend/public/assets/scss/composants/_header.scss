@@ -19,10 +19,17 @@
 
     .header-right {
         display: flex;
+        right: 10px;
+        position: relative;
+
+        @include small() {
+            right: 0px;
+        }
 
         .header-right-cart {
             .header-right-cart-items {
-                top: 8px;
+                top: 15px;
+                font-size: 25px;
                 position: relative;
             }
 
@@ -32,12 +39,16 @@
 
             &:hover {
                 .header-right-cart-hover {
+                    @include small() {
+                        right: 30%;
+                    }
+
                     display: block;
                     position: absolute;
                     width: 300px;
                     z-index: 100;
-                    margin: 20px 0 0;
-                    right: 100px;
+                    margin: 30px 0 0;
+                    right: 80%;
                     padding: 1.5rem 0;
                     border-radius: 0;
                     border: none;
@@ -144,34 +155,170 @@
         }
 
         .header-right-signin {
-            .header-right-signin-img-new-user-hover {
-                top: 2px;
-                position: relative;
-                display: none;
-            }
+            .header-right-signin-content {
+                display: flex;
+                padding: 15px;
 
-            .header-right-signin-img-new-user {
-                top: 2px;
-                position: relative;
-            }
-
-            &:hover {
-                .header-right-signin-img-new-user {
-                    top: 2px;
+                .header-right-signin-img-new-user-hover {
+                    top: -1px;
                     position: relative;
                     display: none;
                 }
 
-                .header-right-signin-img-new-user-hover {
-                    top: 2px;
+                .header-right-signin-img-new-user {
+                    top: -1px;
                     position: relative;
-                    display: inline-block;
+                }
+
+                .header-right-signin-title {
+                    .header-right-signin-title-link {
+                        font-size: 15px;
+                        letter-spacing: 0.1px;
+                        line-height: 20px;
+
+                        &:last-of-type {
+                            &::before {
+                                border-style: solid;
+                            }
+                        }
+                    }
+
+                    .header-right-signin-title-delimiter {
+                        color: var(--bledstore-white);
+                    }
+
+                    .header-right-signin-subtitle {
+                        font-size: 15px;
+                        letter-spacing: 0.1px;
+                        line-height: 20px;
+                        margin: 0;
+                        left: 10px;
+                        top: 3px;
+                        position: relative;
+                        color: var(--bledstore-white);
+                    }
+                }
+            }
+
+            &:hover {
+                background-color: var(--bledstore-white);
+
+                .header-right-signin-content {
+                    .header-right-signin-img-new-user {
+                        top: 2px;
+                        position: relative;
+                        display: none;
+                    }
+
+                    .header-right-signin-img-new-user-hover {
+                        top: 2px;
+                        position: relative;
+                        display: inline-block;
+                    }
+
+                    .header-right-signin-title {
+
+                        .header-right-signin-title-delimiter,
+                        .header-right-signin-subtitle {
+                            color: var(--bledstore-primary);
+                        }
+
+                        .header-right-signin-title-link {
+                            color: var(--bledstore-primary);
+
+                            &:hover {
+                                color: var(--bledstore-warning);
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+
+
+                .header-right-signin-hover-container {
+                    display: block;
+                    position: absolute;
+                    right: 0px;
+                    width: 300px;
+                    border-radius: 0;
+                    border: none;
+                    padding: 1rem 2rem 0;
+                    z-index: 12;
+                    box-shadow: var(--bledstore-box-shadow);
+                    background-color: var(--bledstore-white);
+                    transition: var(--bledstore-transition);
+
+                    .header-right-signin-hover-user {
+                        padding-bottom: 20px;
+
+                        p {
+                            margin: 1rem 0;
+                            font-size: 18px;
+                            letter-spacing: 0.1px;
+                            line-height: 22px;
+                        }
+
+                        .header-right-signin-hover-btn {
+                            width: 100%;
+
+                            &:hover {
+                                background-color: var(--bledstore-primary);
+                                color: var(--bledstore-white);
+                            }
+                        }
+
+                        &:first-child {
+                            border-bottom: 1px solid var(--bledstore-sliver);
+                        }
+                    }
+
+                    .header-right-signin-hover-menu {
+                        margin: 0 -20px;
+                        background-color: var(--bledstore-sliver);
+
+                        .header-right-signin-hover-menu-items {
+                            margin: 0 2rem;
+                            padding: 1rem 0;
+
+                            .header-right-signin-hover-menu-item {
+                                a {
+                                    color: var(--bledstore-primary);
+                                    padding: 0;
+
+                                    &:hover {
+                                        color: var(--bledstore-warning);
+                                        font-weight: 600;
+                                    }
+
+                                    i {
+                                        font-size: 20px;
+                                    }
+
+                                    span {
+                                        font-size: 18px;
+                                        letter-spacing: 0.1px;
+                                        line-height: 22px;
+                                        left: 10px;
+                                        position: relative;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
             .header-right-signin-title {
                 top: -3px;
                 position: relative;
+
+                @include small() {
+                    display: none;
+                }
+            }
+
+            .header-right-signin-hover-container {
+                display: none;
             }
         }
     }

@@ -6,100 +6,120 @@ import { signout } from "../redux/actions/userActions";
 const BledStoreHeaderUser = ({ userInfo }) => {
   const dispatch = useDispatch();
 
+  const goToPageHandler = (url) => {
+    window.location.href = "/" + url;
+  };
+
   const signoutHandler = () => {
     dispatch(signout());
   };
 
   return (
-    <>
-      {userInfo ? (
-        <div className="dropdown">
-          <Link to="#">
-            {userInfo.pseudo} <i className="fa fa-caret-down"></i>{" "}
-          </Link>
-          <ul className="dropdown-content">
-            <li>
+    <div className="header-right-signin">
+      <div className="header-right-signin-content">
+        <img
+          className="header-right-signin-img-new-user"
+          src="/assets/images/svg/new-user.svg"
+          alt="New User"
+          width="40"
+        />
+        <img
+          className="header-right-signin-img-new-user-hover"
+          src="/assets/images/svg/new-user-hover.svg"
+          alt="New User Hover"
+          width="40"
+        />
+        <div className="header-right-signin-title">
+          {userInfo ? (
+            <Link to="/profile" className="header-right-signin-title-link">
+              Hi {userInfo.pseudo}
+            </Link>
+          ) : (
+            <>
+              <Link to="/signin" className="header-right-signin-title-link">
+                Sign In
+              </Link>
+              <span className="header-right-signin-title-delimiter">|</span>
+              <Link to="/register" className="header-right-signin-title-link">
+                Register Now
+              </Link>
+            </>
+          )}
+          <p className="header-right-signin-subtitle">My Aurelando Shop</p>
+        </div>
+      </div>
+      <div className="header-right-signin-hover-container">
+        {userInfo ? (
+          <div className="header-right-signin-hover-user">
+            <p>Leave Aurelando.com ?</p>
+            <button
+              className="header-right-signin-hover-btn primary"
+              onClick={signoutHandler}
+            >
+              Sign Out <i className="fa fa-long-arrow-right"></i>
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="header-right-signin-hover-user">
+              <p>Welcome to Aurelando.com</p>
+              <button
+                className="header-right-signin-hover-btn primary"
+                onClick={() => goToPageHandler("signin")}
+              >
+                Sign In <i className="fa fa-long-arrow-right"></i>
+              </button>
+            </div>
+            <div className="header-right-signin-hover-user">
+              <p>New User in Aurelando.com ?</p>
+              <button
+                className="header-right-signin-hover-btn primary"
+                onClick={() => goToPageHandler("register")}
+              >
+                Register Free <i className="fa fa-long-arrow-right"></i>
+              </button>
+            </div>
+          </>
+        )}
+
+        <div className="header-right-signin-hover-menu">
+          <ul className="header-right-signin-hover-menu-items">
+            <li className="header-right-signin-hover-menu-item">
               <Link to="/profile">
-                <i className="fa fa-user-circle-o"></i> User Profile
+                <i className="fa fa-home"></i> <span>My AurelandoExpress</span>
               </Link>
             </li>
-            <li>
+            <li className="header-right-signin-hover-menu-item">
+              <Link to="#">
+                <i className="fa fa-tags"></i> <span>My Advantages</span>
+              </Link>
+            </li>
+            <li className="header-right-signin-hover-menu-item">
               <Link to="/orders/history">
-                <i className="fa fa-list"></i> Order History
+                <i className="fa fa-gift"></i> <span>My Orders</span>
               </Link>
             </li>
-            <li>
-              <Link to="#signout" onClick={signoutHandler}>
-                <i className="fa fa-power-off"></i> Sign Out
+            <li className="header-right-signin-hover-menu-item">
+              <Link to="#">
+                <i className="fa fa-truck"></i>{" "}
+                <span>Track, Cancel or Return an Order</span>
               </Link>
             </li>
-          </ul>
-        </div>
-      ) : (
-        <Link to="/signin" className="header-right-signin">
-          <img
-            className="header-right-signin-img-new-user"
-            src="/assets/images/svg/new-user.svg"
-            alt="New User"
-          />
-          <img
-            className="header-right-signin-img-new-user-hover"
-            src="/assets/images/svg/new-user-hover.svg"
-            alt="New User Hover"
-          />
-          <span className="header-right-signin-title">Sign In</span>
-        </Link>
-      )}
-      {userInfo && userInfo.isSeller && (
-        <div className="dropdown">
-          <Link to="#admin">
-            Seller <i className="fa fa-caret-down"></i>
-          </Link>
-          <ul className="dropdown-content">
-            <li>
-              <Link to="/productlist/seller">
-                {" "}
-                <i className="fa fa-shopping-bag"></i> Products
+            <li className="header-right-signin-hover-menu-item">
+              <Link to="#">
+                <i className="fa fa-percent"></i> <span>My Coupons</span>
               </Link>
             </li>
-            <li>
-              <Link to="/orderlist/seller">
-                <i className="fa fa-gift"></i> Orders
+            <li className="header-right-signin-hover-menu-item">
+              <Link to="#">
+                <i className="fa fa-question-circle"></i>{" "}
+                <span>Center Messages</span>
               </Link>
             </li>
           </ul>
         </div>
-      )}
-      {userInfo && userInfo.isAdmin && (
-        <div className="dropdown">
-          <Link to="#admin">
-            Admin <i className="fa fa-caret-down"></i>
-          </Link>
-          <ul className="dropdown-content">
-            <li>
-              <Link to="/dashboard">
-                <i className="fa fa-pie-chart"></i> Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link to="/productlist">
-                <i className="fa fa-shopping-bag"></i> Products
-              </Link>
-            </li>
-            <li>
-              <Link to="/orderlist">
-                <i className="fa fa-gift"></i> Orders
-              </Link>
-            </li>
-            <li>
-              <Link to="/userlist">
-                <i className="fa fa-users"></i> Users
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 };
 
