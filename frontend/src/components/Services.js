@@ -7,7 +7,7 @@ const Services = () => {
         <div className="services-container">
           <div className="services-box">
             <div className="services-box-icon">
-              <i className="fa fa-rocket"></i>
+              <i className="fas fa-rocket"></i>
             </div>
             <div className="services-box-content">
               <h3 className="services-box-content-title">Free Shipping</h3>
@@ -18,7 +18,7 @@ const Services = () => {
           </div>
           <div className="services-box">
             <div className="services-box-icon">
-              <i className="fa fa-rotate-left"></i>
+              <i className="fas fa-truck"></i>
             </div>
             <div className="services-box-content">
               <h3 className="services-box-content-title">Free Returns</h3>
@@ -27,7 +27,7 @@ const Services = () => {
           </div>
           <div className="services-box">
             <div className="services-box-icon">
-              <i className="fa fa-info-circle"></i>
+              <i className="fas fa-info-circle"></i>
             </div>
             <div className="services-box-content">
               <h3 className="services-box-content-title">
@@ -40,7 +40,7 @@ const Services = () => {
           </div>
           <div className="services-box">
             <div className="services-box-icon">
-              <i className="fa fa-life-ring"></i>
+              <i className="fas fa-life-ring"></i>
             </div>
             <div className="services-box-content">
               <h3 className="services-box-content-title">We Support</h3>

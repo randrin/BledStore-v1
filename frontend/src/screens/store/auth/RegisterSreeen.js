@@ -54,7 +54,7 @@ const RegisterScreen = (props) => {
     <div className="bledstore-auth-wrapper">
       <form className="form" onSubmit={submitHandler}>
         <div className="bledstore-auth-title">
-          <i className="bledstore-auth-title-icon fa fa-user-circle-o"></i>
+          <i className="bledstore-auth-title-icon far fa-user-circle"></i>
           <h1>Sign Up</h1>
         </div>
         {loading && <LoadingBox></LoadingBox>}
@@ -130,7 +130,7 @@ const RegisterScreen = (props) => {
             <i
               id="blestaore-auth-show-hide-password"
               onClick={(e) => showHideIcon(e)}
-              className={`bledstore-auth-show-hide-icon fa fa-${
+              className={`bledstore-auth-show-hide-icon fas fa-${
                 passwordType === "password" ? "eye" : "eye-slash"
               }`}
             ></i>
@@ -151,7 +151,7 @@ const RegisterScreen = (props) => {
             <i
               id="blestaore-auth-show-hide-confirmPassword"
               onClick={(e) => showHideIcon(e)}
-              className={`bledstore-auth-show-hide-icon fa fa-${
+              className={`bledstore-auth-show-hide-icon fas fa-${
                 confirmPasswordType === "password" ? "eye" : "eye-slash"
               }`}
             ></i>
@@ -160,7 +160,7 @@ const RegisterScreen = (props) => {
         <div>
           <label />
           <button className="bledstore-auth-btn-submit primary" type="submit">
-            Register <i className="fa fa-angle-double-right"></i>
+            Register <i className="fas fa-angle-double-right"></i>
           </button>
         </div>
         <div className="bledstore-auth-footer">

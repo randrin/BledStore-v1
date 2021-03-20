@@ -88,7 +88,7 @@ const OrderScreen = (props) => {
     <div className="bledstore-dashboard-wrapper">
       <div className="bledstore-dashboard-btn-back">
         <Link to="/orders/history">
-          <i className="fa fa-angle-left"></i> Back to your Orders
+          <i className="fas fa-angle-left"></i> Back to your Orders
         </Link>
       </div>
       <h1 className="bledstore-dashboard-title">Order {order._id}</h1>

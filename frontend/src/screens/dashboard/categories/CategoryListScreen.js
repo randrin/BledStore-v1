@@ -73,7 +73,7 @@ const CategoryListScreen = (props) => {
           className="bledstore-dashboard-btn primary"
           onClick={createHandler}
         >
-          Create Category <i className="fa fa-angle-double-right"></i>
+          Create Category <i className="fas fa-angle-double-right"></i>
         </button>
       </div>
       {loadingDelete && <LoadingBox></LoadingBox>}
@@ -116,7 +116,7 @@ const CategoryListScreen = (props) => {
                 </td>
                 <td className="bledstore-dashboard-table-item">
                   <i
-                    className={`fa fa-power-off ${
+                    className={`fas fa-power-off ${
                       category.active ? "success" : "danger"
                     }`}
                   ></i>
@@ -128,7 +128,7 @@ const CategoryListScreen = (props) => {
                     onClick={() => activateHandler(category)}
                   >
                     <i
-                      className={`fa fa-power-off ${
+                      className={`fas fa-power-off ${
                         category.active ? "danger" : "success"
                       }`}
                     ></i>{" "}
@@ -141,14 +141,14 @@ const CategoryListScreen = (props) => {
                       props.history.push(`/category/${category._id}/edit`);
                     }}
                   >
-                    <i className="fa fa-edit success"></i> Edit
+                    <i className="far fa-edit success"></i> Edit
                   </button>
                   <button
                     type="button"
                     className="small"
                     onClick={() => deleteHandler(category)}
                   >
-                    <i className="fa fa-remove danger"></i> Delete
+                    <i className="far fa-window-close danger"></i> Delete
                   </button>
                 </td>
               </tr>

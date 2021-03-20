@@ -32,28 +32,28 @@ const BledStoreFooter = () => {
                 className="bledstore-social-facebook"
                 title="Facebook Store"
               >
-                <i className="fa fa-facebook"></i>
+                <i className="fab fa-facebook"></i>
               </a>
               <a
                 href="#"
                 className="bledstore-social-twitter"
                 title="Twitter Store"
               >
-                <i className="fa fa-twitter"></i>
+                <i className="fab fa-twitter"></i>
               </a>
               <a
                 href="#"
                 className="bledstore-social-instagram"
                 title="Instagram Store"
               >
-                <i className="fa fa-instagram"></i>
+                <i className="fab fa-instagram"></i>
               </a>
               <a
                 href="#"
                 className="bledstore-social-youtube"
                 title="Youtube Store"
               >
-                <i className="fa fa-youtube"></i>
+                <i className="fab fa-youtube"></i>
               </a>
             </div>
           </div>
@@ -96,7 +96,7 @@ const BledStoreFooter = () => {
           </div>
           <div className="bledstore-footer-contact">
             <div className="footer-call">
-              <i className="icon-phone fa fa-phone"></i>
+              <i className="icon-phone fas fa-phone-alt"></i>
               <span>Got Question? Call us 24/7</span>
               <a href="tel:6 46 55 87 98" className="footer-number">
                 6 46 55 87 98

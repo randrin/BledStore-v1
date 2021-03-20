@@ -49,7 +49,7 @@ const UserEditScreen = (props) => {
     <div className="bledstore-dashboard-wrapper">
       <div className="bledstore-dashboard-btn-back">
         <Link to="/userlist">
-          <i className="fa fa-angle-left"></i> Back to Users
+          <i className="fas fa-angle-left"></i> Back to Users
         </Link>
       </div>
       <form className="form" onSubmit={submitHandler}>

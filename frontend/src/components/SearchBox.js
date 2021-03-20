@@ -18,7 +18,7 @@ const SearchBox = (props) => {
           onChange={(e) => setName(e.target.value)}
         />
         <button className="primary" type="submit">
-          <i className="fa fa-search"></i>
+          <i className="fas fa-search"></i>
         </button>
       </div>
     </form>

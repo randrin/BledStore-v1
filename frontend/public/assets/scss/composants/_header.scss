@@ -28,7 +28,7 @@
 
         .header-right-cart {
             .header-right-cart-items {
-                top: 15px;
+                top: 12px;
                 font-size: 25px;
                 position: relative;
             }
@@ -160,13 +160,13 @@
                 padding: 15px;
 
                 .header-right-signin-img-new-user-hover {
-                    top: -1px;
+                    top: -2px;
                     position: relative;
                     display: none;
                 }
 
                 .header-right-signin-img-new-user {
-                    top: -1px;
+                    top: -2px;
                     position: relative;
                 }
 
@@ -205,13 +205,11 @@
 
                 .header-right-signin-content {
                     .header-right-signin-img-new-user {
-                        top: 2px;
                         position: relative;
                         display: none;
                     }
 
                     .header-right-signin-img-new-user-hover {
-                        top: 2px;
                         position: relative;
                         display: inline-block;
                     }
@@ -250,6 +248,7 @@
 
                     .header-right-signin-hover-user {
                         padding-bottom: 20px;
+                        border-bottom: 1px solid var(--bledstore-sliver);
 
                         p {
                             margin: 1rem 0;
@@ -266,9 +265,9 @@
                                 color: var(--bledstore-white);
                             }
                         }
-
-                        &:first-child {
-                            border-bottom: 1px solid var(--bledstore-sliver);
+                        
+                        &:last-child {
+                            border-bottom: none !important;
                         }
                     }
 
@@ -311,6 +310,7 @@
             .header-right-signin-title {
                 top: -3px;
                 position: relative;
+                left: -10px;
 
                 @include small() {
                     display: none;

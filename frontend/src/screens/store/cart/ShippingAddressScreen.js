@@ -77,7 +77,7 @@ const ShippingAddressScreen = (props) => {
       <CheckoutSteps step1 step2></CheckoutSteps>
       <form className="form" onSubmit={submitHandler}>
         <div className="bledstore-shipping-title">
-          <i className="bledstore-shipping-title-icon fa fa-map-marker"></i>
+          <i className="bledstore-shipping-title-icon fas fa-map-marker-alt"></i>
           <h1>Shipping Address</h1>
         </div>
         <div>
@@ -144,7 +144,7 @@ const ShippingAddressScreen = (props) => {
         <div>
           <label />
           <button className="bledstore-btn-submit primary" type="submit">
-            Continue <i className="fa fa-angle-double-right"></i>
+            Continue <i className="fas fa-angle-double-right"></i>
           </button>
         </div>
       </form>

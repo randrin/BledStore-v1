@@ -21,7 +21,7 @@ function ForgotPasswordScreen() {
     <div className="bledstore-auth-wrapper">
       <form className="form" onSubmit={submitHandler}>
         <div className="bledstore-auth-title">
-          <i className="bledstore-auth-title-icon fa fa-key"></i>
+          <i className="bledstore-auth-title-icon fas fa-key"></i>
           <h1>Password Assistance</h1>
         </div>
         <div>
@@ -44,7 +44,7 @@ function ForgotPasswordScreen() {
         <div>
           <label />
           <button className="bledstore-auth-btn-submit primary" type="submit">
-            Reset Password <i className="fa fa-angle-double-right"></i>
+            Reset Password <i className="fas fa-angle-double-right"></i>
           </button>
         </div>
         <div className="bledstore-auth-footer">

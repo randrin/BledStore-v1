@@ -13,7 +13,7 @@ const DashboardScreen = () => {
           className="bledstore-dashboard-btn primary"
           onClick={createHandler}
         >
-          Create Category <i className="fa fa-angle-double-right"></i>
+          Create Category <i className="fas fa-angle-double-right"></i>
         </button>
       </div>
     </div>

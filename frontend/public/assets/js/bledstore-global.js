@@ -1,7 +1,7 @@
 // Go to Top Page & Scroll Navbar Effet
 $(document).ready(function () {
   $("body").append(
-    '<button id="bledstore-footer-scrollToTopBtn" class="btn btn-warning btn-round" title="Go to Top Page"><span><i class="fa fa-angle-up"></i></span></button>'
+    '<button id="bledstore-footer-scrollToTopBtn" class="btn btn-warning btn-round" title="Go to Top Page"><span><i class="fas fa-angle-up"></i></span></button>'
   );
   $(window).scroll(function () {
     if ($(this).scrollTop() > 260) {

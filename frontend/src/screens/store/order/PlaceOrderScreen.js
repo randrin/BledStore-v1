@@ -141,7 +141,7 @@ const PlaceOrderScreen = (props) => {
                   className="place-order-btn-submit primary block"
                   disabled={cart.cartItems.length === 0}
                 >
-                  Place Order <i className="fa fa-angle-double-right"></i>
+                  Place Order <i className="fas fa-angle-double-right"></i>
                 </button>
               </li>
             </ul>

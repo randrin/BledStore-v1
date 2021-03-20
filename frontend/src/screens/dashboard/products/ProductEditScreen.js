@@ -109,7 +109,7 @@ const ProductEditScreen = (props) => {
     <div className="bledstore-dashboard-wrapper">
       <div className="bledstore-dashboard-btn-back">
         <Link to="/productlist">
-          <i className="fa fa-angle-left"></i> Back to Products
+          <i className="fas fa-angle-left"></i> Back to Products
         </Link>
       </div>
       <form className="form" onSubmit={submitEditHandler}>
@@ -256,7 +256,7 @@ const ProductEditScreen = (props) => {
             <div>
               <label></label>
               <button className="primary" type="submit">
-              <i className="fa fa-check"></i> Update
+              <i className="fas fa-check"></i> Update
               </button>
             </div>
           </>

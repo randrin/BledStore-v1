@@ -71,7 +71,7 @@ const ProductListScreen = (props) => {
       <div className="row">
         <h1>All Products Store</h1>
         <button type="button" className="bledstore-dashboard-btn primary" onClick={createHandler}>
-          Create Product <i className="fa fa-angle-double-right"></i>
+          Create Product <i className="fas fa-angle-double-right"></i>
         </button>
       </div>
       {loadingDelete && <LoadingBox></LoadingBox>}
@@ -113,14 +113,14 @@ const ProductListScreen = (props) => {
                         props.history.push(`/product/${product._id}/edit`)
                       }
                     >
-                      <i className="fa fa-edit success"></i> Edit
+                      <i className="far fa-edit success"></i> Edit
                     </button>
                     <button
                       type="button"
                       className="small"
                       onClick={() => deleteHandler(product)}
                     >
-                      <i className="fa fa-remove danger"></i> Delete
+                      <i className="far fa-window-close danger"></i> Delete
                     </button>
                   </td>
                 </tr>

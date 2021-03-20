@@ -50,15 +50,41 @@ const BledStoreHeaderUser = ({ userInfo }) => {
       </div>
       <div className="header-right-signin-hover-container">
         {userInfo ? (
-          <div className="header-right-signin-hover-user">
-            <p>Leave Aurelando.com ?</p>
-            <button
-              className="header-right-signin-hover-btn primary"
-              onClick={signoutHandler}
-            >
-              Sign Out <i className="fa fa-long-arrow-right"></i>
-            </button>
-          </div>
+          <>
+            {userInfo.isAdmin && (
+              <div className="header-right-signin-hover-user">
+                <p>Bingoo {userInfo.pseudo}, you are Admin</p>
+                <button
+                  className="header-right-signin-hover-btn primary"
+                  onClick={() => goToPageHandler("dashboard")}
+                >
+                  <i className="far fa-list-alt"></i> Admin Dashboard{" "}
+                  <i className="fas fa-long-arrow-alt-right"></i>
+                </button>
+              </div>
+            )}
+            {userInfo.isSeller && (
+              <div className="header-right-signin-hover-user">
+                <p>Bingoo {userInfo.pseudo}, you are Seller</p>
+                <button
+                  className="header-right-signin-hover-btn primary"
+                  onClick={() => goToPageHandler("productlist/seller")}
+                >
+                  <i className="fas fa-user-check"></i> Seller Dashboard{" "}
+                  <i className="fas fa-long-arrow-alt-right"></i>
+                </button>
+              </div>
+            )}
+            <div className="header-right-signin-hover-user">
+              <p>Leave Aurelando.com ?</p>
+              <button
+                className="header-right-signin-hover-btn primary"
+                onClick={signoutHandler}
+              >
+                <i className="fas fa-power-off"></i> Sign Out
+              </button>
+            </div>
+          </>
         ) : (
           <>
             <div className="header-right-signin-hover-user">
@@ -67,7 +93,7 @@ const BledStoreHeaderUser = ({ userInfo }) => {
                 className="header-right-signin-hover-btn primary"
                 onClick={() => goToPageHandler("signin")}
               >
-                Sign In <i className="fa fa-long-arrow-right"></i>
+                Sign In <i className="fas fa-long-arrow-alt-right"></i>
               </button>
             </div>
             <div className="header-right-signin-hover-user">
@@ -76,43 +102,42 @@ const BledStoreHeaderUser = ({ userInfo }) => {
                 className="header-right-signin-hover-btn primary"
                 onClick={() => goToPageHandler("register")}
               >
-                Register Free <i className="fa fa-long-arrow-right"></i>
+                Register Free <i className="fas fa-long-arrow-alt-right"></i>
               </button>
             </div>
           </>
         )}
-
         <div className="header-right-signin-hover-menu">
           <ul className="header-right-signin-hover-menu-items">
             <li className="header-right-signin-hover-menu-item">
               <Link to="/profile">
-                <i className="fa fa-home"></i> <span>My AurelandoExpress</span>
+                <i className="fas fa-home"></i> <span>My AurelandoExpress</span>
               </Link>
             </li>
             <li className="header-right-signin-hover-menu-item">
               <Link to="#">
-                <i className="fa fa-tags"></i> <span>My Advantages</span>
+                <i className="fas fa-tags"></i> <span>My Advantages</span>
               </Link>
             </li>
             <li className="header-right-signin-hover-menu-item">
               <Link to="/orders/history">
-                <i className="fa fa-gift"></i> <span>My Orders</span>
+                <i className="	fas fa-gifts"></i> <span>My Orders</span>
               </Link>
             </li>
             <li className="header-right-signin-hover-menu-item">
               <Link to="#">
-                <i className="fa fa-truck"></i>{" "}
+                <i className="fas fa-truck"></i>{" "}
                 <span>Track, Cancel or Return an Order</span>
               </Link>
             </li>
             <li className="header-right-signin-hover-menu-item">
               <Link to="#">
-                <i className="fa fa-percent"></i> <span>My Coupons</span>
+                <i className="fas fa-percentage"></i> <span>My Coupons</span>
               </Link>
             </li>
             <li className="header-right-signin-hover-menu-item">
               <Link to="#">
-                <i className="fa fa-question-circle"></i>{" "}
+                <i className="fas fa-question-circle"></i>{" "}
                 <span>Center Messages</span>
               </Link>
             </li>

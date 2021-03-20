@@ -39,7 +39,7 @@ const BledStoreHeader = () => {
             className="open-sidebar"
             onClick={() => setSidebarIsOpen(true)}
           >
-            <i className="fa fa-bars"></i>
+            <i className="fas fa-bars"></i>
           </button>
           <Link className="brand" to="/">
             BledStore <span>v1</span>
@@ -66,7 +66,7 @@ const BledStoreHeader = () => {
               type="button"
               onClick={() => setSidebarIsOpen(false)}
             >
-              <i className="fa fa-close"></i>
+              <i className="fas fa-window-close"></i>
             </button>
           </li>
           {loadingCategory ? (

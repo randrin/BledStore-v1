@@ -81,14 +81,14 @@ const OrderListScreen = (props) => {
                       props.history.push(`/order/${order._id}`);
                     }}
                   >
-                    <i className="fa fa-file-text success"></i> Details
+                    <i className="fas fa-file-alt success"></i> Details
                   </button>
                   <button
                     type="button"
                     className="small"
                     onClick={() => deleteHandler(order)}
                   >
-                    <i className="fa fa-remove danger"></i> Delete 
+                    <i className="far fa-window-close danger"></i> Delete 
                   </button>
                 </td>
               </tr>

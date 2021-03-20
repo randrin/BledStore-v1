@@ -10,7 +10,7 @@ const BledStoreHeaderCart = ({ cartItems }) => {
   return (
     <Link to="/cart" className="header-right-cart">
       <div className="header-right-cart-items">
-        <i className="fa fa-shopping-cart"></i>
+        <i className="fas fa-shopping-cart"></i>
         <span className="cart-items">
           {cartItems.length > 0 ? cartItems.length : 0}
         </span>
@@ -54,13 +54,13 @@ const BledStoreHeaderCart = ({ cartItems }) => {
                 </span>
               </div>
               <button className="header-right-cart-hover-btn primary">
-                Buy <i className="fa fa-angle-double-right"></i>
+                Buy <i className="fas fa-angle-double-right"></i>
               </button>
             </div>
           </div>
         ) : (
           <div className="header-right-cart-hover-empty-container">
-            <i className="fa fa-shopping-cart header-right-cart-hover-icon"></i>
+            <i className="fas fa-shopping-cart header-right-cart-hover-icon"></i>
             <span className="header-right-cart-hover-title">
               Your shopping cart is empty
             </span>
@@ -68,7 +68,7 @@ const BledStoreHeaderCart = ({ cartItems }) => {
               className="header-right-cart-hover-btn primary"
               onClick={goToShopping}
             >
-              Go Shopping <i className="fa fa-angle-double-right"></i>
+              Go Shopping <i className="fas fa-angle-double-right"></i>
             </button>
           </div>
         )}

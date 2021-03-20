@@ -235,14 +235,14 @@ const ProductScreen = (props) => {
                   <li>
                     {product.countInStock <= 0 ? (
                       <button disabled className="primary block">
-                        <i className="fa fa-shopping-cart"></i> Add to Cart
+                        <i className="fas fa-shopping-cart"></i> Add to Cart
                       </button>
                     ) : (
                       <button
                         onClick={addToCartHandler}
                         className="product-add-to-cart primary block"
                       >
-                        <i className="fa fa-shopping-cart"></i> Add to Cart
+                        <i className="fas fa-shopping-cart"></i> Add to Cart
                       </button>
                     )}
                   </li>

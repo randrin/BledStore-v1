@@ -82,7 +82,7 @@ const ProfileScreen = () => {
     <div className="bledstore-dashboard-wrapper">
       <div className="bledstore-dashboard-btn-back">
         <Link to="/orders/history">
-          <i className="fa fa-angle-left"></i> Back to My Orders
+          <i className="fas fa-angle-left"></i> Back to My Orders
         </Link>
       </div>
       <form className="form" onSubmit={submitHandler}>
@@ -142,7 +142,7 @@ const ProfileScreen = () => {
                 <i
                   id="blestaore-auth-show-hide-password"
                   onClick={(e) => showHideIcon(e)}
-                  className={`bledstore-auth-show-hide-icon fa fa-${
+                  className={`bledstore-auth-show-hide-icon fas fa-${
                     passwordType === "password" ? "eye" : "eye-slash"
                   }`}
                 ></i>
@@ -162,7 +162,7 @@ const ProfileScreen = () => {
                 <i
                   id="blestaore-auth-show-hide-confirmPassword"
                   onClick={(e) => showHideIcon(e)}
-                  className={`bledstore-auth-show-hide-icon fa fa-${
+                  className={`bledstore-auth-show-hide-icon fas fa-${
                     confirmPasswordType === "password" ? "eye" : "eye-slash"
                   }`}
                 ></i>
@@ -213,7 +213,7 @@ const ProfileScreen = () => {
             <div>
               <label />
               <button className="bledstore-auth-btn-submit primary" type="submit">
-                Update <i className="fa fa-angle-double-right"></i>
+                Update <i className="fas fa-angle-double-right"></i>
               </button>
             </div>
           </>

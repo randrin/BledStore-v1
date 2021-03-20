@@ -69,7 +69,7 @@ const CategoryCreateScreen = (props) => {
     <div className="bledstore-dashboard-wrapper">
       <div className="bledstore-dashboard-btn-back">
         <Link to="/categorylist">
-          <i className="fa fa-angle-left"></i> Back to Categories
+          <i className="fas fa-angle-left"></i> Back to Categories
         </Link>
       </div>
       <form className="form" onSubmit={submitCreateHandler}>
@@ -142,7 +142,7 @@ const CategoryCreateScreen = (props) => {
             <div>
               <label></label>
               <button className="bledstore-dashboard-btn primary" type="submit">
-                <i className="fa fa-check"></i> Create
+                <i className="fas fa-check"></i> Create
               </button>
             </div>
           </>

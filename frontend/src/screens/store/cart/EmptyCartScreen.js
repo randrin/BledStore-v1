@@ -23,7 +23,7 @@ const EmptyCartScreen = () => {
 
   return (
     <div className="cart-empty-wrapper">
-      <i className="cart-empty-icon fa fa-shopping-cart"></i>
+      <i className="cart-empty-icon fas fa-shopping-cart"></i>
       <h2 className="cart-empty-title">
         Your shopping cart is empty at the moment.
       </h2>
@@ -44,7 +44,7 @@ const EmptyCartScreen = () => {
         className="bledstore-auth-btn-submit primary"
         onClick={goShoppingHandler}
       >
-        Access current sales <i className="fa fa-angle-double-right"></i>
+        Access current sales <i className="fas fa-angle-double-right"></i>
       </button>
     </div>
   );

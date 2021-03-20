@@ -43,7 +43,7 @@ const NewsLetters = () => {
       ) : error ? (
         <div className="newsletters-error-message">
           <span className="newsletters-error-icon">
-            <i className="fa fa-times-circle-o"></i>
+            <i className="fas fa-times-circle"></i>
             The subscription with the email {email} is already done!
           </span>
         </div>
@@ -57,7 +57,7 @@ const NewsLetters = () => {
         >
           {subcriptionSuccess ? (
             <span className="newsletters-success-icon">
-              <i className="fa fa-check-circle"></i>
+              <i className="fas fa-check-circle"></i>
               {message}
             </span>
           ) : (
@@ -104,7 +104,7 @@ const NewsLetters = () => {
                       <span className="newsletters-box-subscribe-btn-cta">
                         Subscribe
                       </span>
-                      <i className="fa fa-long-arrow-right"></i>
+                      <i className="fas fa-long-arrow-alt-right"></i>
                     </button>
                   </div>
                 </div>

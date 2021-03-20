@@ -26,7 +26,7 @@ const PaymentMethodScreen = (props) => {
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
       <form className="form" onSubmit={submitHandler}>
         <div className="bledstore-payment-title">
-          <i className="bledstore-payment-title-icon	fa fa-cc-mastercard"></i>
+          <i className="bledstore-payment-title-icon	fab fa-cc-mastercard"></i>
           <h1>Payment Method</h1>
         </div>
         <div className="bledstore-payment-radio">
@@ -55,7 +55,7 @@ const PaymentMethodScreen = (props) => {
         <div>
           <label />
           <button className="bledstore-btn-submit primary" type="submit">
-            Continue <i className="fa fa-angle-double-right"></i>
+            Continue <i className="fas fa-angle-double-right"></i>
           </button>
         </div>
       </form>

@@ -28,6 +28,7 @@ const SigninScreen = (props) => {
     dispatch({ type: USER_SIGNIN_RESET });
     if (userInfo) {
       props.history.push(redirect);
+      window.location.reload();
     }
   }, [dispatch, props.history, redirect, userInfo]);
 
@@ -41,7 +42,7 @@ const SigninScreen = (props) => {
     <div className="bledstore-auth-wrapper">
       <form className="form" onSubmit={submitHandler}>
         <div className="bledstore-auth-title">
-          <i className="bledstore-auth-title-icon fa fa-user-circle"></i>
+          <i className="bledstore-auth-title-icon far fa-user-circle"></i>
           <h1>Sign In</h1>
         </div>
         {loading && <LoadingBox></LoadingBox>}
@@ -72,7 +73,7 @@ const SigninScreen = (props) => {
           <span className="bledstore-auth-show-hide-content">
             <i
               onClick={showHideIcon}
-              className={`bledstore-auth-show-hide-icon fa fa-${
+              className={`bledstore-auth-show-hide-icon fas fa-${
                 passwordType === "password" ? "eye" : "eye-slash"
               }`}
             ></i>
@@ -89,7 +90,7 @@ const SigninScreen = (props) => {
         <div>
           <label />
           <button className="bledstore-auth-btn-submit primary" type="submit">
-            Login <i className="fa fa-angle-double-right"></i>
+            Login <i className="fas fa-angle-double-right"></i>
           </button>
         </div>
         <div className="bledstore-auth-footer">

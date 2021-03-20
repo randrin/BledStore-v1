@@ -83,7 +83,7 @@ const CartScreen = (props) => {
                       type="button"
                       onClick={() => removeFromCartHandler(item.product)}
                     >
-                      <i className="fa fa-remove danger"></i> Remove to Cart
+                      <i className="far fa-window-close danger"></i> Remove to Cart
                     </button>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ const CartScreen = (props) => {
                 } block`}
                 disabled={cartItems.length === 0}
               >
-                Proceed to Checkout <i className="fa fa-angle-double-right"></i>
+                Proceed to Checkout <i className="fas fa-angle-double-right"></i>
               </button>
             </li>
           </ul>

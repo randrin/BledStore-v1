@@ -71,14 +71,14 @@ const UserListScreen = (props) => {
                     className="small"
                     onClick={() => props.history.push(`/user/${user._id}/edit`)}
                   >
-                    <i className="fa fa-edit success"></i> Edit
+                    <i className="far fa-edit success"></i> Edit
                   </button>
                   <button
                     type="button"
                     className="small"
                     onClick={() => deleteHandler(user)}
                   >
-                    <i className="fa fa-remove danger"></i> Delete
+                    <i className="far fa-window-close danger"></i> Delete
                   </button>
                 </td>
               </tr>

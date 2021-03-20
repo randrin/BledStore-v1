@@ -45,11 +45,11 @@ const Product = ({ product }) => {
               </span>
             ) : product.countInStock === 0 ? (
               <span className="availability-out-stock">
-                <i className="fa fa-warning"></i> Out of Stock
+                <i className="fas fa-exclamation-triangle"></i> Out of Stock
               </span>
             ) : (
               <span className="availability-out-stock">
-                <i className="fa fa-warning"></i> Il ne reste que{" "}
+                <i className="fas fa-exclamation-triangle"></i> Il ne reste que{" "}
                 {product.countInStock}
               </span>
             )}
@@ -95,7 +95,7 @@ const Product = ({ product }) => {
             to={`/product/${product._id}`}
             className="bledstore-button product-add-to-cart"
           >
-            <i className="fa fa-shopping-cart"></i> Add to Cart
+            <i className="fas fa-shopping-cart"></i> Add to Cart
           </Link>
         </div>
       </div>
