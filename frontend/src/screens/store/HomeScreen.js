@@ -12,6 +12,7 @@ import DividingLine from "../../components/DividingLine";
 import Services from "../../components/Services";
 import Categories from "../../components/Categories";
 import NewsLetters from "../../components/NewsLetters";
+import MenuCategories from "../../components/MenuCategories";
 
 const HomeScreen = () => {
   const pageSize = 10;
@@ -20,6 +21,9 @@ const HomeScreen = () => {
 
   const productList = useSelector((state) => state.productsList);
   const { loading, error, products, pages, page } = productList;
+
+  const categoryList = useSelector((state) => state.categoriesList);
+  const { loading: loadingCategories, error: errorCategories, categories } = categoryList;
 
   const usersToSellers = useSelector((state) => state.usersToSellers);
   const {
@@ -35,27 +39,35 @@ const HomeScreen = () => {
 
   return (
     <main className="main-wrapper">
-      <DividingLine title="Top Sellers"></DividingLine>
-      {loadingSellers ? (
-        <LoadingBox></LoadingBox>
-      ) : errorSellers ? (
-        <MessageBox variant="danger">{errorSellers}</MessageBox>
-      ) : (
-        <>
-          {sellers.length === 0 && <MessageBox>No Seller Found</MessageBox>}
-          <Carousel showArrows autoPlay infiniteLoop showThumbs={false}>
-            {sellers.map((seller) => (
-              <div key={seller._id}>
-                <Link to={`/seller/${seller._id}`}>
-                  <img src={seller.seller.logo} alt={seller.seller.name} />
-                  <p className="legend">{seller.seller.name}</p>
-                </Link>
-              </div>
-            ))}
-          </Carousel>
-        </>
-      )}
-      <Categories />
+      <div className="main-container row">
+        <div className="main-categories-wrapper col-1">
+          <MenuCategories loading={loadingCategories} error={errorCategories} categories={categories} />
+        </div>
+        <div className="col-2">
+          <DividingLine title="Top Sellers"></DividingLine>
+          {loadingSellers ? (
+            <LoadingBox></LoadingBox>
+          ) : errorSellers ? (
+            <MessageBox variant="danger">{errorSellers}</MessageBox>
+          ) : (
+            <>
+              {sellers.length === 0 && <MessageBox>No Seller Found</MessageBox>}
+              <Carousel showArrows autoPlay infiniteLoop showThumbs={false}>
+                {sellers.map((seller) => (
+                  <div key={seller._id}>
+                    <Link to={`/seller/${seller._id}`}>
+                      <img src={seller.seller.logo} alt={seller.seller.name} />
+                      <p className="legend">{seller.seller.name}</p>
+                    </Link>
+                  </div>
+                ))}
+              </Carousel>
+            </>
+          )}
+        </div>
+        <div className="col-1"></div>
+      </div>
+      <Categories loading={loadingCategories} error={errorCategories} categories={categories} />
       <DividingLine title="Featured Products"></DividingLine>
       {loading ? (
         <LoadingBox />

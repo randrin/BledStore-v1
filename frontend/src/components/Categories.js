@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { listCagetories } from "../redux/actions/categoryActions";
 import LoadingBox from "./LoadingBox";
 import MessageBox from "./MessageBox";
 
-const Categories = () => {
+const Categories = ({ loading, error, categories }) => {
   const dispatch = useDispatch();
-
-  const categoryList = useSelector((state) => state.categoriesList);
-  const { loading, error, categories } = categoryList;
 
   useEffect(() => {
     dispatch(listCagetories());
@@ -35,7 +32,11 @@ const Categories = () => {
                       className="categories-block-img"
                     />
                   </span>
-                  <h3 className="categories-block-title">{c.name}</h3>
+                  <h3 className="categories-block-title">
+                    {c.name.length > 20
+                      ? c.name.substring(0, 20) + " ..."
+                      : c.name}
+                  </h3>
                 </Link>
               </div>
             ))}

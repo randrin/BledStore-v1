@@ -10,7 +10,7 @@ const Breadcrumb = ({ grandfather, father, child }) => {
             <ol className="bledstore-breadcrumb">
               <li className="bledstore-breadcrumb-navigation">
                 <Link to="/" className="bledstore-breadcrumb-link">
-                  <i className="fas fa-home"></i> Home Page
+                  <i className="fas fa-store"></i> Home Page
                 </Link>
               </li>
               {grandfather && (

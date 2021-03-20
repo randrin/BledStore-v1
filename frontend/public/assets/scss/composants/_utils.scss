@@ -6,6 +6,88 @@
     transition: var(--bledstore-transition) !important;
 }
 
+// Main Page
+.main-wrapper {
+    .main-container {
+        align-items: inherit;
+        .main-categories-wrapper {
+            @include small() {
+                display: none;
+            }
+
+            background: var(--bledstore-white);
+            border-radius: 8px;
+            margin-left: 50px;
+            max-width: max-content;
+
+            .main-categories-container {
+                .main-categories-title {
+                    color: var(--bledstore-primary);
+                    font-size: 2rem;
+                    letter-spacing: 1.1px;
+                    line-height: 24px;
+                    font-weight: 600;
+                    padding: 20px 20px 15px;
+                    border-bottom: 1px solid var(--bledstore-sliver);
+
+                    i {
+                        width: 24px;
+                        height: 24px;
+                        text-align: center;
+                    }
+
+                    .main-categories-subtitle {
+                        position: relative;
+                        left: 5px;
+                    }
+                }
+
+                .main-categories-menu {
+                    .main-categories-items {
+                        .main-categories-item {
+                            margin: 0;
+                            line-height: 24px;
+                            letter-spacing: 1px;
+                            padding: 10px 20px;
+
+                            a {
+                                color: var(--bledstore-primary);
+                            }
+
+                            .main-categories-item-icon {
+                                font-weight: 600;
+                                font-size: 20px;
+                                width: 24px;
+                                height: 24px;
+                                text-align: center;
+                            }
+
+                            .main-categories-item-title {
+                                position: relative;
+                                left: 5px;
+                            }
+
+                            &:hover {
+                                box-shadow: var(--bledstore-box-shadow);
+                                transition: var(--bledstore-transition);
+
+                                .main-categories-item-icon {
+                                    color: var(--bledstore-warning);
+                                }
+
+                                .main-categories-item-title {
+                                    color: var(--bledstore-warning);
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 // Banner
 .banner-wrapper {
     display: flex;
@@ -600,6 +682,7 @@
             @include small() {
                 display: grid;
             }
+
             justify-content: center;
             display: flex;
             align-content: center;
