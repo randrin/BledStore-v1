@@ -7,23 +7,26 @@
     }
 
     .cart-empty-wrapper {
-        text-align: center;
+        .cart-empty-container {
+            text-align: center;
+            margin: 50px;
 
-        .cart-empty-icon {
-            font-size: 100px;
-            color: var(--bledstore-warning);
-        }
+            .cart-empty-icon {
+                font-size: 50px;
+                color: var(--bledstore-warning);
+            }
 
-        .cart-empty-title {
-            font-size: 25px;
-            font-weight: 600;
-            color: var(--bledstore-primary);
-        }
+            .cart-empty-title {
+                font-size: 25px;
+                font-weight: 600;
+                color: var(--bledstore-primary);
+            }
 
-        .cart-empty-subtitle {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--bledstore-warning);
+            .cart-empty-subtitle {
+                font-size: 18px;
+                font-weight: 600;
+                color: var(--bledstore-warning);
+            }
         }
 
         .bledstore-auth-btn-submit {

@@ -91,6 +91,7 @@ const CartScreen = (props) => {
             ))}
           </ul>
         )}
+        {cartItems.length === 0 && <EmptyCartScreen></EmptyCartScreen>}
       </div>
       <div className="col-1">
         <div className="card card-body">
@@ -121,7 +122,6 @@ const CartScreen = (props) => {
           </ul>
         </div>
       </div>
-      {cartItems.length === 0 && <EmptyCartScreen></EmptyCartScreen>}
     </div>
   );
 };

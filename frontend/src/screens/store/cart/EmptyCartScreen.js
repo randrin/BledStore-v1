@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import DividingLine from "../../../components/DividingLine";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import Product from "../../../components/Product";
@@ -18,16 +19,22 @@ const EmptyCartScreen = () => {
   }, [dispatch, pageNumber]);
 
   const goShoppingHandler = () => {
-    window.location.href = "/"
+    window.location.href = "/";
   };
 
   return (
     <div className="cart-empty-wrapper">
-      <i className="cart-empty-icon fas fa-shopping-cart"></i>
-      <h2 className="cart-empty-title">
-        Your shopping cart is empty at the moment.
-      </h2>
-      <h3 className="cart-empty-subtitle">We suggest these sales: </h3>
+      <div className="cart-empty-container">
+        <i className="cart-empty-icon fas fa-shopping-cart"></i>
+        <h2 className="cart-empty-title">
+          Your shopping cart is empty at the moment.
+        </h2>
+        <p>
+          The items remain in the cart for 60 minutes, then they are moved to
+          the List Products.
+        </p>
+      </div>
+      <DividingLine title="We suggest these sales" />
       {loading ? (
         <LoadingBox />
       ) : error ? (
@@ -40,12 +47,14 @@ const EmptyCartScreen = () => {
           ))}
         </div>
       )}
-      <button
-        className="bledstore-auth-btn-submit primary"
-        onClick={goShoppingHandler}
-      >
-        Access current sales <i className="fas fa-angle-double-right"></i>
-      </button>
+      <div className="row center">
+        <button
+          className="bledstore-auth-btn-submit primary"
+          onClick={goShoppingHandler}
+        >
+          Access current sales <i className="fas fa-angle-double-right"></i>
+        </button>
+      </div>
     </div>
   );
 };

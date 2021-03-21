@@ -11,9 +11,63 @@
 .header-wrapper {
     height: 70px;
 
-    .search-wrapper {
+    .header-middle {
         @include small() {
             display: none !important;
+        }
+
+        .search-wrapper {
+
+            .search-select {
+                padding: 1.4rem 2rem;
+                font-size: 1.4rem;
+                line-height: 1.5;
+                font-weight: 300;
+                transition: all 0.3s;
+                box-shadow: none;
+                border-color: var(--bledstore-sliver) !important;
+                background-color: var(--bledstore-sliver) !important;
+                cursor: pointer;
+
+                .search-select {
+                    cursor: pointer;
+                }
+            }
+
+            .search-btn-submit {
+                line-height: 1.5;
+                border-top-right-radius: 30px;
+                border-bottom-right-radius: 30px;
+                min-width: 150px;
+                color: var(--bledstore-primary) !important;
+                background-color: var(--bledstore-warning) !important;
+                border-color: var(--bledstore-warning) !important;
+
+                &:hover {
+                    color: var(--bledstore-white) !important;
+                }
+            }
+
+            input {
+                width: 350px;
+                padding: .85rem 2rem;
+                font-size: 1.4rem;
+                line-height: 1.5;
+                font-weight: 300;
+                transition: all 0.3s;
+                box-shadow: none;
+                border-color: var(--bledstore-white) !important;
+                position: relative;
+                flex: 1 1 auto;
+                margin-bottom: 0;
+                padding-top: 1.15rem;
+                padding-bottom: 1.15rem;
+                background-color: var(--bledstore-white) !important;
+            }
+        }
+
+        .search-hover {
+            display: none;
         }
     }
 
@@ -265,7 +319,7 @@
                                 color: var(--bledstore-white);
                             }
                         }
-                        
+
                         &:last-child {
                             border-bottom: none !important;
                         }

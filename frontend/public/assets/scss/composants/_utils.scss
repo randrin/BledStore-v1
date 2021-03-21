@@ -10,6 +10,7 @@
 .main-wrapper {
     .main-container {
         align-items: inherit;
+
         .main-categories-wrapper {
             @include small() {
                 display: none;
@@ -73,6 +74,8 @@
 
                                 .main-categories-item-icon {
                                     color: var(--bledstore-warning);
+                                    left: 3px;
+                                    position: relative;
                                 }
 
                                 .main-categories-item-title {

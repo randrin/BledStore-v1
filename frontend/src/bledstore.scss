@@ -88,7 +88,7 @@ button,
   border-radius: 0;
   border: 0.1rem #a4a4a4 solid;
   font-size: 1.6rem;
-  font-family: Helvetica, Arial, sans-serif;
+  //font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -462,19 +462,6 @@ img.large {
   background: transparent !important;
 }
 
-/* Search */
-.search button {
-  border-radius: 0 0.5rem 0.5rem 0;
-  border-right: none;
-  margin-right: 0.5rem;
-}
-
-.search input {
-  border-radius: 0.5rem 0 0 0.5rem;
-  border-right: none;
-  margin-left: 0.5rem;
-}
-
 .search-content-items .active .rating span:last-child,
 .active {
   font-weight: bold;
@@ -515,7 +502,7 @@ img.large {
   border-radius: 0.5rem;
   border: 0.1rem #a4a4a4 solid;
   font-size: 1.6rem;
-  font-family: Helvetica, Arial, sans-serif;
+  //font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -558,7 +545,7 @@ a {
   border-radius: 0.5rem;
   border: 0.1rem #a4a4a4 solid;
   font-size: 1.6rem;
-  font-family: Helvetica, Arial, sans-serif;
+  //font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
