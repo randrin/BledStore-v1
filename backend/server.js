@@ -10,6 +10,7 @@ import config from "./config.js";
 dotenv.config();
 
 // Import Routes
+import dashboardRouter from "./routers/dashboardRouter.js";
 import userRouter from "./routers/userRouter.js";
 import productRouter from "./routers/productRouter.js";
 import orderRouter from "./routers/orderRouter.js";
@@ -36,6 +37,7 @@ mongoose
   });
 
 // Routes
+app.use("/v1/api/dashboards", dashboardRouter);
 app.use("/v1/api/users", userRouter);
 app.use("/v1/api/products", productRouter);
 app.use("/v1/api/categories", categoryRouter);

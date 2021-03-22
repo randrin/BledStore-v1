@@ -22,10 +22,11 @@ $(document).ready(function () {
 
 // Click anytime and first go to top screen
 $(document).ready(function () {
-  var element = document.querySelector(".loading");
+  var element = document.querySelector(".loading.active");
 
+  console.log("element: ", element)
   $("a, button, img").on("click", () => {
-    $("body").css("opacity", "0.3")
+    // $("body").css("opacity", "0.3")
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -43,14 +44,14 @@ $(document).ready(function () {
 $(document).ready(function () {
   var $searchHover = $(".search-wrapper").find(".search-input");
 
-  $searchHover.on("click", () => {
-    console.log("$searchHover", $searchHover);
-    $(".main-wrapper").css({"opacity": "0.3", "pointer-events": "none"})
-  });
-  $("body").on("focusout", () => {
-    console.log("$searchHover", $searchHover);
-    $(".main-wrapper").css("opacity", "1")
-  });
+  // $searchHover.on("click", () => {
+  //   console.log("$searchHover", $searchHover);
+  //   $(".main-wrapper").css({"opacity": "0.3", "pointer-events": "none"})
+  // });
+  // $("body").on("focusout", () => {
+  //   console.log("$searchHover", $searchHover);
+  //   $(".main-wrapper").css("opacity", "1")
+  // });
   // $(this).on("click", function() {
   //   $("body").css("opacity", "1")
   // })

@@ -9,6 +9,7 @@ import {
   categoryDetailsReducer,
   categoryUpdateReducer,
 } from "./reducers/categoriesReducer";
+import { dashboardItemsReducer } from "./reducers/dashboardsReducer";
 import {
   orderDeleteReducer,
   orderDeliverReducer,
@@ -67,6 +68,7 @@ const initialState = {
   },
 };
 const reducer = combineReducers({
+  dashboardItems: dashboardItemsReducer,
   productsList: productsReducer,
   productsListRelated: productsRelatedReducer,
   productDetails: productDetailsReducer,
