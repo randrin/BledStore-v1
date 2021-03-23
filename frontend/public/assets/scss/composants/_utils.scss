@@ -20,6 +20,7 @@
             border-radius: 8px;
             margin-left: 50px;
             max-width: max-content;
+            box-shadow: var(--bledstore-box-shadow);
 
             .main-categories-container {
                 .main-categories-title {
@@ -83,6 +84,126 @@
                                     font-weight: 600;
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        }
+
+        .main-user-wrapper {
+            @include small() {
+                display: none;
+            }
+
+            .main-user-container {
+                justify-content: center;
+                align-items: center;
+                background: var(--bledstore-white);
+                border-radius: 8px;
+                margin-left: 50px;
+                padding: 20px;
+                box-shadow: var(--bledstore-box-shadow);
+
+                .main-user-profile {
+                    text-align: center;
+
+                    .main-user-profile-pseudo {
+                        margin: 30px;
+
+                        span {
+                            text-transform: uppercase;
+                            background: var(--bledstore-warning);
+                            padding: 30px;
+                            border-radius: 106px;
+                            color: var(--bledstore-white);
+                            font-size: 18px;
+                            letter-spacing: 1px;
+                            line-height: 24px;
+                        }
+                    }
+
+                    .main-user-profile-img {
+                        border-radius: 100%;
+                        width: 100px;
+                        height: 100px;
+                    }
+
+                    .main-user-profile-title {
+                        margin: 0;
+                        color: var(--bledstore-primary);
+                    }
+                }
+
+                .main-user-menu-links {
+                    display: flex;
+                    text-align: center;
+                    margin: 10px;
+                    justify-content: center;
+
+                    .main-user-menu-link {
+                        margin: 10px;
+                        width: 100%;
+
+                        a {
+                            .main-user-menu-link-img {
+                                font-size: 30px;
+                                width: 40px;
+                                background: var(--bledstore-sliver);
+                                color: var(--bledstore-primary);
+                                height: 40px;
+                                border-radius: 100%;
+                                padding: 10px;
+
+                                &::before {
+                                    top: 5px;
+                                    position: relative;
+                                }
+                            }
+
+                            .main-user-menu-link-title {
+                                color: var(--bledstore-primary);
+                                padding-top: 5px;
+                                line-height: 24px;
+                                letter-spacing: 1px;
+                            }
+                        }
+
+                        &:hover {
+                            .main-user-menu-link-img {
+                                color: var(--bledstore-warning);
+                                box-shadow: var(--bledstore-box-shadow);
+                            }
+                        }
+                    }
+                }
+
+                .main-user-links {
+                    display: flex;
+                    text-align: center;
+                    margin: 10px;
+
+                    .main-user-link {
+                        width: 100%;
+                        margin: 10px;
+                        background-color: var(--bledstore-warning);
+                        padding: 15px;
+                        border-radius: 50px;
+                        cursor: pointer;
+
+                        a {
+                            color: var(--bledstore-white);
+                        }
+
+                        &:hover {
+                            background: linear-gradient(90deg, var(--bledstore-primary), var(--bledstore-primary), transparent);
+                        }
+                    }
+
+                    .main-user-link:first-child {
+                        background-color: var(--bledstore-primary);
+
+                        &:hover {
+                            background: linear-gradient(90deg, var(--bledstore-warning), var(--bledstore-warning), transparent);
                         }
                     }
                 }

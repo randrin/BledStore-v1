@@ -42,7 +42,8 @@ const BledStoreHeader = () => {
             <i className="fas fa-bars"></i>
           </button>
           <Link className="brand" to="/">
-            BledStore <span>v1</span>
+            <div className="brand-title">BledStore <span className="brand-title-version">v1</span></div>
+            <span className="brand-subtitle">All together, In the same place</span>
           </Link>
         </div>
         <div className="header-middle">

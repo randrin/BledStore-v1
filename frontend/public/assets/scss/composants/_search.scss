@@ -1,16 +1,27 @@
 .search-wrapper {
-    .search-title {
-        border-bottom: 1px solid var(--bledstore-primary);
-        span {
-            bottom: 5px;
-            position: relative;
-        }
-    }
-    .search-content {
+    .search-container {
         margin: 30px;
-        position: relative;
-        .search-content-items {
-            // margin-bottom: 10px;
+        background-color: var(--bledstore-white);
+        box-shadow: var(--bledstore-box-shadow);
+        border-radius: 5px;
+
+        .search-title {
+            border-bottom: 1px solid var(--bledstore-primary);
+
+            span {
+                bottom: 5px;
+                position: relative;
+            }
+        }
+
+        .search-content {
+            margin: 30px;
+            position: relative;
+
+            .search-content-items {
+                // margin-bottom: 10px;
+            }
         }
     }
+
 }

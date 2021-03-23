@@ -111,7 +111,7 @@ const BledStoreHeaderUser = ({ userInfo }) => {
           <ul className="header-right-signin-hover-menu-items">
             <li className="header-right-signin-hover-menu-item">
               <Link to="/profile">
-                <i className="fas fa-store"></i> <span>My AurelandoExpress</span>
+                <i className="fas fa-store"></i> <span>My AurelandoShop</span>
               </Link>
             </li>
             <li className="header-right-signin-hover-menu-item">

@@ -13,17 +13,25 @@ import Services from "../../components/Services";
 import Categories from "../../components/Categories";
 import NewsLetters from "../../components/NewsLetters";
 import MenuCategories from "../../components/MenuCategories";
+import MenuUser from "../../components/MenuUser";
 
 const HomeScreen = () => {
   const pageSize = 10;
   const { pageNumber = 1 } = useParams();
   const dispatch = useDispatch();
 
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+
   const productList = useSelector((state) => state.productsList);
   const { loading, error, products, pages, page } = productList;
 
   const categoryList = useSelector((state) => state.categoriesList);
-  const { loading: loadingCategories, error: errorCategories, categories } = categoryList;
+  const {
+    loading: loadingCategories,
+    error: errorCategories,
+    categories,
+  } = categoryList;
 
   const usersToSellers = useSelector((state) => state.usersToSellers);
   const {
@@ -41,7 +49,11 @@ const HomeScreen = () => {
     <main className="main-wrapper">
       <div className="main-container row">
         <div className="main-categories-wrapper col-1">
-          <MenuCategories loading={loadingCategories} error={errorCategories} categories={categories} />
+          <MenuCategories
+            loading={loadingCategories}
+            error={errorCategories}
+            categories={categories}
+          />
         </div>
         <div className="col-2">
           <DividingLine title="Top Sellers"></DividingLine>
@@ -65,9 +77,17 @@ const HomeScreen = () => {
             </>
           )}
         </div>
-        <div className="col-1"></div>
+        <div className="col-1">
+          <div className="main-user-wrapper">
+            <MenuUser user={userInfo} />
+          </div>
+        </div>
       </div>
-      <Categories loading={loadingCategories} error={errorCategories} categories={categories} />
+      <Categories
+        loading={loadingCategories}
+        error={errorCategories}
+        categories={categories}
+      />
       <DividingLine title="Featured Products"></DividingLine>
       {loading ? (
         <LoadingBox />

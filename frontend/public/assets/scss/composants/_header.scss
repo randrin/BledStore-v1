@@ -16,11 +16,44 @@
             padding-left: 0px;
 
             .open-sidebar {
-                display: initial;
+                display: initial !important;
             }
         }
 
+        display: flex;
         padding-left: 60px;
+
+        .brand {
+            padding: 0;
+
+            .brand-title {
+                top: 10px;
+                position: relative;
+
+                .brand-title-version {
+                    font-size: 1.8rem;
+                    top: -10px;
+                    border-radius: 3px;
+                    color: var(--bledstore-white) !important;
+                    padding: 2px;
+                    position: relative;
+                    background: var(--bledstore-warning) !important;
+                }
+            }
+
+            .brand-subtitle {
+                @include small() {
+                    display: none !important;
+                }
+
+                letter-spacing: 0.1px;
+                font-size: 13px;
+                top: -10px;
+                position: relative;
+                font-weight: 400;
+                font-style: italic;
+            }
+        }
 
         .open-sidebar {
             display: none;
@@ -51,6 +84,7 @@
             }
 
             .search-btn-submit {
+                padding: 0.9rem;
                 line-height: 1.5;
                 border-top-right-radius: 30px;
                 border-bottom-right-radius: 30px;

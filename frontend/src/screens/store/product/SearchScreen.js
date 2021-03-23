@@ -65,7 +65,7 @@ const SearchScreen = (props) => {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <div className="row top">
-          <div className="col-1">
+          <div className="col-1 search-container">
             <div className="search-content">
               <h3 className="search-title">
                 <span>Categories</span>
