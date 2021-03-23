@@ -11,6 +11,22 @@
 .header-wrapper {
     height: 70px;
 
+    .header-left {
+        @include small() {
+            padding-left: 0px;
+
+            .open-sidebar {
+                display: initial;
+            }
+        }
+
+        padding-left: 60px;
+
+        .open-sidebar {
+            display: none;
+        }
+    }
+
     .header-middle {
         @include small() {
             display: none !important;
