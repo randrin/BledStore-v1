@@ -21,6 +21,24 @@ export const getDashboardItems = expressAsyncHander(async (req, res) => {
       },
     },
   ]);
+  const admins = await User.aggregate([
+    { $match: { isAdmin: true } },
+    {
+      $group: {
+        _id: null,
+        numAdmins: { $sum: 1 },
+      },
+    },
+  ]);
+  const sellers = await User.aggregate([
+    { $match: { isSeller: true } },
+    {
+      $group: {
+        _id: null,
+        numSellers: { $sum: 1 },
+      },
+    },
+  ]);
   const dailyOrders = await Order.aggregate([
     {
       $group: {
@@ -38,5 +56,9 @@ export const getDashboardItems = expressAsyncHander(async (req, res) => {
       },
     },
   ]);
-  res.status(200).send({dashboardItems: {users, orders, dailyOrders, categories}});
+  res
+    .status(200)
+    .send({
+      dashboardItems: { users, admins, sellers, orders, dailyOrders, categories },
+    });
 });

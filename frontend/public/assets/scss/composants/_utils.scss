@@ -189,10 +189,7 @@
                         padding: 15px;
                         border-radius: 50px;
                         cursor: pointer;
-
-                        a {
-                            color: var(--bledstore-white);
-                        }
+                        color: var(--bledstore-white);
 
                         &:hover {
                             background: linear-gradient(90deg, var(--bledstore-primary), var(--bledstore-primary), transparent);

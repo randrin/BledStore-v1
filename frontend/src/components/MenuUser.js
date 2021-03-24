@@ -12,7 +12,9 @@ const MenuUser = ({ user }) => {
             <div className="main-user-profile-pseudo">
               <span>
                 {user.name.split(" ")[0].substring(0, 1)}
-                {user.name.split(" ")[1] ? user.name.split(" ")[1].substring(0, 1) : user.name.split(" ")[0].substring(1, 2)}
+                {user.name.split(" ")[1]
+                  ? user.name.split(" ")[1].substring(0, 1)
+                  : user.name.split(" ")[0].substring(1, 2)}
               </span>
             </div>
             <h2 className="main-user-profile-title">
@@ -55,12 +57,12 @@ const MenuUser = ({ user }) => {
         </div>
       ) : (
         <div className="main-user-links">
-          <div className="main-user-link">
-            <Link to="/register">Join Us</Link>
-          </div>
-          <div className="main-user-link">
-            <Link to="/signin">Sign In</Link>
-          </div>
+          <Link to="/register" className="main-user-link">
+            Join Us
+          </Link>
+          <Link to="/signin" className="main-user-link">
+            Sign In
+          </Link>
         </div>
       )}
       <div className="main-user-content"></div>

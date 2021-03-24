@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CheckoutSteps from "../../../components/CheckoutStep";
+import HelmetSite from "../../../components/HelmetSite";
 import { saveShippingAddress } from "../../../redux/actions/shippingActions";
 
 const ShippingAddressScreen = (props) => {
@@ -69,86 +70,99 @@ const ShippingAddressScreen = (props) => {
         lng,
       })
     );
-    props.history.push('/map');
+    props.history.push("/map");
   };
 
   return (
-    <div className="shipping-wrapper">
-      <CheckoutSteps step1 step2></CheckoutSteps>
-      <form className="form" onSubmit={submitHandler}>
-        <div className="bledstore-shipping-title">
-          <i className="bledstore-shipping-title-icon fas fa-map-marker-alt"></i>
-          <h1>Shipping Address</h1>
-        </div>
-        <div>
-          <label htmlFor="fullName">Full Name <span className="form-required">*</span></label>
-          <input
-            type="text"
-            id="fullName"
-            placeholder="Enter full name"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="address">Address <span className="form-required">*</span></label>
-          <input
-            type="text"
-            id="address"
-            placeholder="Enter address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="city">City <span className="form-required">*</span></label>
-          <input
-            type="text"
-            id="city"
-            placeholder="Enter city"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="postalCode">Postal Code <span className="form-required">*</span></label>
-          <input
-            type="text"
-            id="postalCode"
-            placeholder="Enter postal code"
-            value={postalCode}
-            onChange={(e) => setPostalCode(e.target.value)}
-            required
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="country">Country <span className="form-required">*</span></label>
-          <input
-            type="text"
-            id="country"
-            placeholder="Enter country"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            required
-          ></input>
-        </div>
-        {/* <div>
+    <>
+      <HelmetSite title={"Shipping Address"} />
+      <div className="shipping-wrapper">
+        <CheckoutSteps step1 step2></CheckoutSteps>
+        <form className="form" onSubmit={submitHandler}>
+          <div className="bledstore-shipping-title">
+            <i className="bledstore-shipping-title-icon fas fa-map-marker-alt"></i>
+            <h1>Shipping Address</h1>
+          </div>
+          <div>
+            <label htmlFor="fullName">
+              Full Name <span className="form-required">*</span>
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              placeholder="Enter full name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              required
+            ></input>
+          </div>
+          <div>
+            <label htmlFor="address">
+              Address <span className="form-required">*</span>
+            </label>
+            <input
+              type="text"
+              id="address"
+              placeholder="Enter address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            ></input>
+          </div>
+          <div>
+            <label htmlFor="city">
+              City <span className="form-required">*</span>
+            </label>
+            <input
+              type="text"
+              id="city"
+              placeholder="Enter city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+            ></input>
+          </div>
+          <div>
+            <label htmlFor="postalCode">
+              Postal Code <span className="form-required">*</span>
+            </label>
+            <input
+              type="text"
+              id="postalCode"
+              placeholder="Enter postal code"
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+              required
+            ></input>
+          </div>
+          <div>
+            <label htmlFor="country">
+              Country <span className="form-required">*</span>
+            </label>
+            <input
+              type="text"
+              id="country"
+              placeholder="Enter country"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              required
+            ></input>
+          </div>
+          {/* <div>
           <label htmlFor="chooseOnMap">Location</label>
           <button type="button" onClick={chooseOnMap}>
             Choose On Map
           </button>
         </div> */}
-        <div>
-          <label />
-          <button className="bledstore-btn-submit primary" type="submit">
-            Continue <i className="fas fa-angle-double-right"></i>
-          </button>
-        </div>
-      </form>
-    </div>
+          <div>
+            <label />
+            <button className="bledstore-btn-submit primary" type="submit">
+              Continue <i className="fas fa-angle-double-right"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 

@@ -38,7 +38,7 @@ const DashboardScreen = () => {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <div className="row">
+        <div className="row bledstore-dashboard-container">
           <div className="bledstore-dashboard-items">
             <Link to="/userList" className="bledstore-dashboard-item">
               <div className="bledstore-dashboard-item-icon">
@@ -46,7 +46,9 @@ const DashboardScreen = () => {
               </div>
               <div className="bledstore-dashboard-item-content">
                 <h2 className="bledstore-dashboard-item-content-title">
-                  {items.dashboardItems?.users[0].numUsers}
+                  {items.dashboardItems?.users[0]
+                    ? items.dashboardItems?.users[0].numUsers
+                    : 0}
                 </h2>
                 <p className="bledstore-dashboard-item-content-subtitle">
                   Numbers of users present in Aurelando Shop (Sellers, clients,
@@ -60,10 +62,13 @@ const DashboardScreen = () => {
               </div>
               <div className="bledstore-dashboard-item-content">
                 <h2 className="bledstore-dashboard-item-content-title">
-                  {items.dashboardItems?.orders[0].numOrders} ({items.dashboardItems?.orders[0].totalSales} €)
+                  {items.dashboardItems?.orders[0]
+                    ? items.dashboardItems?.orders[0]?.numOrders
+                    : 0}
                 </h2>
                 <p className="bledstore-dashboard-item-content-subtitle">
-                  Numbers of orders present in Aurelando Shop (Paid and/or unpaid ....)
+                  Numbers of orders present in Aurelando Shop (Paid and/or
+                  unpaid ....)
                 </p>
               </div>
             </Link>
@@ -73,10 +78,13 @@ const DashboardScreen = () => {
               </div>
               <div className="bledstore-dashboard-item-content">
                 <h2 className="bledstore-dashboard-item-content-title">
-                  {items.dashboardItems?.categories[0].count}
+                  {items.dashboardItems?.categories[0]
+                    ? items.dashboardItems?.categories[0]?.count
+                    : 0}
                 </h2>
                 <p className="bledstore-dashboard-item-content-subtitle">
-                  Categories products present in Aurelando Shop (Activae and/or disactive ...)
+                  Categories products present in Aurelando Shop (Activae and/or
+                  disactive ...)
                 </p>
               </div>
             </Link>
@@ -86,10 +94,13 @@ const DashboardScreen = () => {
               </div>
               <div className="bledstore-dashboard-item-content">
                 <h2 className="bledstore-dashboard-item-content-title">
-                  {items.dashboardItems?.categories[0].count}
+                  {items.dashboardItems?.categories[0]
+                    ? items.dashboardItems?.categories[0]?.count
+                    : 0}
                 </h2>
                 <p className="bledstore-dashboard-item-content-subtitle">
-                  Categories products present in Aurelando Shop (Activae and/or disactive ...)
+                  Categories products present in Aurelando Shop (Activae and/or
+                  disactive ...)
                 </p>
               </div>
             </Link>

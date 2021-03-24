@@ -43,53 +43,65 @@
         }
     }
 
-    .bledstore-dashboard-items {
-        @include small() {
-            display: block;
-        }
-        display: flex;
+    .bledstore-dashboard-container {
+        justify-content: center;
 
-        .bledstore-dashboard-item {
+        .bledstore-dashboard-items {
             @include small() {
-                margin-right: 0px;
+                display: block;
             }
+
             display: flex;
-            align-items: center;
-            height: 100%;
-            padding-left: 20px;
-            margin-right: 20px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            border: 1px var(--bledstore-sliver) solid;
-            background-color: var(--bledstore-white);
-            box-shadow: var(--bledstore-box-shadow);
 
-            .bledstore-dashboard-item-icon {
-                font-size: 3.5rem;
-                color: var(--bledstore-primary);
-            }
-
-            .bledstore-dashboard-item-content {
-                margin: 20px;
-
-                .bledstore-dashboard-item-content-title {
-                    margin: 0;
-                    text-align: center;
-                    color: var(--bledstore-warning);
-                    font-size: 2.5rem;
+            .bledstore-dashboard-item {
+                @include small() {
+                    margin-right: 0px;
+                    width: auto;
                 }
 
-                .bledstore-dashboard-item-content-subtitle {
-                    margin: 0;
-                    letter-spacing: 0.9px;
-                    line-height: 24px;
+                display: flex;
+                align-items: center;
+                height: 100%;
+                padding-left: 20px;
+                margin-right: 20px;
+                border-radius: 4px;
+                margin-bottom: 20px;
+                border: 1px var(--bledstore-sliver) solid;
+                background-color: var(--bledstore-white);
+                box-shadow: var(--bledstore-box-shadow);
+                width: 300px;
+
+                .bledstore-dashboard-item-icon {
+                    font-size: 3.5rem;
                     color: var(--bledstore-primary);
-                    text-align: justify;
                 }
-            }
 
-            &:hover {
-                background-color: var(--bledstore-silver);
+                .bledstore-dashboard-item-content {
+                    margin: 20px;
+
+                    .bledstore-dashboard-item-content-title {
+                        margin: 0;
+                        text-align: center;
+                        color: var(--bledstore-warning);
+                        font-size: 2.5rem;
+                    }
+
+                    .bledstore-dashboard-item-content-subtitle {
+                        margin: 0;
+                        letter-spacing: 0.9px;
+                        line-height: 24px;
+                        color: var(--bledstore-primary);
+                        text-align: justify;
+                    }
+                }
+
+                &:hover {
+                    background-color: var(--bledstore-silver);
+
+                    .bledstore-dashboard-item-icon {
+                        color: var(--bledstore-warning);
+                    }
+                }
             }
         }
     }

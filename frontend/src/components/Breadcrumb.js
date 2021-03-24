@@ -14,6 +14,15 @@ const Breadcrumb = ({ grandfather, father, child }) => {
                 </Link>
               </li>
               {grandfather && (
+                <>
+                <li className="bledstore-breadcrumb-navigation">
+                <Link
+                  to={`/search/category/all`}
+                  className="bledstore-breadcrumb-link"
+                >
+                  Products
+                </Link>
+              </li>
                 <li className="bledstore-breadcrumb-navigation">
                   <Link
                     to={`/search/category/${grandfather}`}
@@ -22,6 +31,7 @@ const Breadcrumb = ({ grandfather, father, child }) => {
                     {grandfather}
                   </Link>
                 </li>
+                </>
               )}
               {father && (
                 <li className="bledstore-breadcrumb-navigation">

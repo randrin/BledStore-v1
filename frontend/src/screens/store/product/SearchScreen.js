@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import HelmetSite from "../../../components/HelmetSite";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import Product from "../../../components/Product";
@@ -58,142 +59,156 @@ const SearchScreen = (props) => {
   };
 
   return (
-    <div className="search-wrapper">
-      {loading ? (
-        <LoadingBox></LoadingBox>
-      ) : error ? (
-        <MessageBox variant="danger">{error}</MessageBox>
-      ) : (
-        <div className="row top">
-          <div className="col-1 search-container">
-            <div className="search-content">
-              <h3 className="search-title">
-                <span>Categories</span>
-              </h3>
-              {loadingCategory ? (
-                <LoadingBox></LoadingBox>
-              ) : errorCategory ? (
-                <MessageBox variant="danger">{errorCategory}</MessageBox>
-              ) : (
+    <>
+      <HelmetSite title={"Products"} />
+      <div className="search-wrapper">
+        {loading ? (
+          <LoadingBox></LoadingBox>
+        ) : error ? (
+          <MessageBox variant="danger">{error}</MessageBox>
+        ) : (
+          <div className="row top">
+            <div className="col-1 search-container">
+              <div className="search-content">
+                <h3 className="search-title">
+                  <span>Categories</span>
+                </h3>
+                {loadingCategory ? (
+                  <LoadingBox></LoadingBox>
+                ) : errorCategory ? (
+                  <MessageBox variant="danger">{errorCategory}</MessageBox>
+                ) : (
+                  <ul className="search-content-items">
+                    <li>
+                      <Link
+                        className={"all" === category ? "active" : ""}
+                        to={getFilterUrl({ category: "all" })}
+                      >
+                        Any
+                      </Link>
+                    </li>
+                    {categories.map((c, index) => (
+                      <li key={index}>
+                        <Link
+                          to={getFilterUrl({ category: c.name })}
+                          className={c.name === category ? "active" : ""}
+                        >
+                          {c.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div className="search-content">
+                <h3 className="search-title">
+                  <span>Price</span>
+                </h3>
                 <ul className="search-content-items">
-                  <li>
-                    <Link
-                      className={"all" === category ? "active" : ""}
-                      to={getFilterUrl({ category: "all" })}
-                    >
-                      Any
-                    </Link>
-                  </li>
-                  {categories.map((c, index) => (
+                  {prices.map((p, index) => (
                     <li key={index}>
                       <Link
-                        to={getFilterUrl({ category: c.name })}
-                        className={c.name === category ? "active" : ""}
+                        to={getFilterUrl({ min: p.min, max: p.max })}
+                        className={
+                          `${p.min}-${p.max}` === `${min}-${max}`
+                            ? "active"
+                            : ""
+                        }
                       >
-                        {c.name}
+                        {p.name}
                       </Link>
                     </li>
                   ))}
                 </ul>
-              )}
-            </div>
-            <div className="search-content">
-              <h3 className="search-title">
-                <span>Price</span>
-              </h3>
-              <ul className="search-content-items">
-                {prices.map((p, index) => (
-                  <li key={index}>
-                    <Link
-                      to={getFilterUrl({ min: p.min, max: p.max })}
-                      className={
-                        `${p.min}-${p.max}` === `${min}-${max}` ? "active" : ""
-                      }
-                    >
-                      {p.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="search-content">
-              <h3 className="search-title">
-                <span>Average Customers Reviews</span>
-              </h3>
-              <ul className="search-content-items">
-                {ratings.map((r) => (
-                  <li key={r.name}>
-                    <Link
-                      to={getFilterUrl({ rating: r.rating })}
-                      className={`${r.rating}` === `${rating}` ? "active" : ""}
-                    >
-                      <Rating className="rating-active" caption={" & up"} rating={r.rating}></Rating>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="col-3">
-            {loading ? (
-              <LoadingBox></LoadingBox>
-            ) : error ? (
-              <MessageBox variant="danger">{error}</MessageBox>
-            ) : (
-              <>
-                {totalProducts === 0 ? (
-                  <MessageBox>
-                    No Product Found for search: name: {name}, category:{" "}
-                    {category}, min: {min}, max: {max}, rating: {rating} and
-                    sort: {order}
-                  </MessageBox>
-                ) : (
-                  <div className="search-seller-products">
-                    <h2 className="search-products-count">
-                      {totalProducts} {totalProducts === 1 ? 'Product' : 'Products'} found
-                    </h2>
-                    <div className="search-sort-by">
-                      <span>Sort By</span>
-                      <select
-                        value={order}
-                        onChange={(e) => {
-                          props.history.push(
-                            getFilterUrl({ order: e.target.value })
-                          );
-                        }}
-                      >
-                        <option value="newest">Newest Arrivals</option>
-                        <option value="lowest">Price: Low to High</option>
-                        <option value="highest">Price: High to Low</option>
-                        <option value="toprated">Avg. Customer Reviews</option>
-                      </select>
-                    </div>
-                  </div>
-                )}
-                <div className="row center search-content">
-                  {products.map((product, index) => (
-                    <Product key={index} product={product} />
-                  ))}
-                </div>
-                {!!products.length && (
-                  <div className="pagination">
-                    {[...Array(pages).keys()].map((x) => (
+              </div>
+              <div className="search-content">
+                <h3 className="search-title">
+                  <span>Average Customers Reviews</span>
+                </h3>
+                <ul className="search-content-items">
+                  {ratings.map((r) => (
+                    <li key={r.name}>
                       <Link
-                        className={x + 1 === page ? "active" : ""}
-                        key={x + 1}
-                        to={getFilterUrl({ page: x + 1 })}
+                        to={getFilterUrl({ rating: r.rating })}
+                        className={
+                          `${r.rating}` === `${rating}` ? "active" : ""
+                        }
                       >
-                        {x + 1}
+                        <Rating
+                          className="rating-active"
+                          caption={" & up"}
+                          rating={r.rating}
+                        ></Rating>
                       </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="col-3">
+              {loading ? (
+                <LoadingBox></LoadingBox>
+              ) : error ? (
+                <MessageBox variant="danger">{error}</MessageBox>
+              ) : (
+                <>
+                  {totalProducts === 0 ? (
+                    <MessageBox>
+                      No Product Found for search: name: {name}, category:{" "}
+                      {category}, min: {min}, max: {max}, rating: {rating} and
+                      sort: {order}
+                    </MessageBox>
+                  ) : (
+                    <div className="search-seller-products">
+                      <h2 className="search-products-count">
+                        {totalProducts}{" "}
+                        {totalProducts === 1 ? "Product" : "Products"} found
+                      </h2>
+                      <div className="search-sort-by">
+                        <span>Sort By</span>
+                        <select
+                          value={order}
+                          onChange={(e) => {
+                            props.history.push(
+                              getFilterUrl({ order: e.target.value })
+                            );
+                          }}
+                        >
+                          <option value="newest">Newest Arrivals</option>
+                          <option value="lowest">Price: Low to High</option>
+                          <option value="highest">Price: High to Low</option>
+                          <option value="toprated">
+                            Avg. Customer Reviews
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  )}
+                  <div className="row center search-content">
+                    {products.map((product, index) => (
+                      <Product key={index} product={product} />
                     ))}
                   </div>
-                )}
-              </>
-            )}
+                  {!!products.length && (
+                    <div className="pagination">
+                      {[...Array(pages).keys()].map((x) => (
+                        <Link
+                          className={x + 1 === page ? "active" : ""}
+                          key={x + 1}
+                          to={getFilterUrl({ page: x + 1 })}
+                        >
+                          {x + 1}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 

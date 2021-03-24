@@ -14,6 +14,7 @@ import Categories from "../../components/Categories";
 import NewsLetters from "../../components/NewsLetters";
 import MenuCategories from "../../components/MenuCategories";
 import MenuUser from "../../components/MenuUser";
+import HelmetSite from "../../components/HelmetSite";
 
 const HomeScreen = () => {
   const pageSize = 10;
@@ -46,77 +47,87 @@ const HomeScreen = () => {
   }, [dispatch, pageNumber]);
 
   return (
-    <main className="main-wrapper">
-      <div className="main-container row">
-        <div className="main-categories-wrapper col-1">
-          <MenuCategories
-            loading={loadingCategories}
-            error={errorCategories}
-            categories={categories}
-          />
-        </div>
-        <div className="col-2">
-          <DividingLine title="Top Sellers"></DividingLine>
-          {loadingSellers ? (
-            <LoadingBox></LoadingBox>
-          ) : errorSellers ? (
-            <MessageBox variant="danger">{errorSellers}</MessageBox>
-          ) : (
-            <>
-              {sellers.length === 0 && <MessageBox>No Seller Found</MessageBox>}
-              <Carousel showArrows autoPlay infiniteLoop showThumbs={false}>
-                {sellers.map((seller) => (
-                  <div key={seller._id}>
-                    <Link to={`/seller/${seller._id}`}>
-                      <img src={seller.seller.logo} alt={seller.seller.name} />
-                      <p className="legend">{seller.seller.name}</p>
-                    </Link>
-                  </div>
-                ))}
-              </Carousel>
-            </>
-          )}
-        </div>
-        <div className="col-1">
-          <div className="main-user-wrapper">
-            <MenuUser user={userInfo} />
+    <>
+      <HelmetSite title={"Welcome to Shopping"} />
+      <main className="main-wrapper">
+        <div className="main-container row">
+          <div className="main-categories-wrapper col-1">
+            <MenuCategories
+              loading={loadingCategories}
+              error={errorCategories}
+              categories={categories}
+            />
+          </div>
+          <div className="col-2">
+            <DividingLine title="Top Sellers"></DividingLine>
+            {loadingSellers ? (
+              <LoadingBox></LoadingBox>
+            ) : errorSellers ? (
+              <MessageBox variant="danger">{errorSellers}</MessageBox>
+            ) : (
+              <>
+                {sellers.length === 0 && (
+                  <MessageBox>No Seller Found</MessageBox>
+                )}
+                <Carousel showArrows autoPlay infiniteLoop showThumbs={false}>
+                  {sellers.map((seller) => (
+                    <div key={seller._id}>
+                      <Link to={`/seller/${seller._id}`}>
+                        <img
+                          src={seller.seller.logo}
+                          alt={seller.seller.name}
+                        />
+                        <p className="legend">{seller.seller.name}</p>
+                      </Link>
+                    </div>
+                  ))}
+                </Carousel>
+              </>
+            )}
+          </div>
+          <div className="col-1">
+            <div className="main-user-wrapper">
+              <MenuUser user={userInfo} />
+            </div>
           </div>
         </div>
-      </div>
-      <Categories
-        loading={loadingCategories}
-        error={errorCategories}
-        categories={categories}
-      />
-      <DividingLine title="Featured Products"></DividingLine>
-      {loading ? (
-        <LoadingBox />
-      ) : error ? (
-        <MessageBox>{error}</MessageBox>
-      ) : (
-        <>
-          <div className="row center">
-            {products.length === 0 && <MessageBox>No Product Found</MessageBox>}
-            {products.map((product, index) => (
-              <Product key={index} product={product} />
-            ))}
-          </div>
-          <div className="row center pagination">
-            {[...Array(pages).keys()].map((x) => (
-              <Link
-                className={x + 1 === page ? "active" : ""}
-                key={x + 1}
-                to={`/page/${x + 1}/size/${pageSize}`}
-              >
-                {x + 1}
-              </Link>
-            ))}
-          </div>
-        </>
-      )}
-      <Services />
-      <NewsLetters />
-    </main>
+        <Categories
+          loading={loadingCategories}
+          error={errorCategories}
+          categories={categories}
+        />
+        <DividingLine title="Featured Products"></DividingLine>
+        {loading ? (
+          <LoadingBox />
+        ) : error ? (
+          <MessageBox>{error}</MessageBox>
+        ) : (
+          <>
+            <div className="row center">
+              {products.length === 0 && (
+                <MessageBox>No Product Found</MessageBox>
+              )}
+              {products.map((product, index) => (
+                <Product key={index} product={product} />
+              ))}
+            </div>
+            <div className="row center pagination">
+              {[...Array(pages).keys()].map((x) => (
+                <Link
+                  className={x + 1 === page ? "active" : ""}
+                  key={x + 1}
+                  to={`/page/${x + 1}/size/${pageSize}`}
+                >
+                  {x + 1}
+                </Link>
+              ))}
+            </div>
+          </>
+        )}
+        <Services />
+        <NewsLetters />
+      </main>
+    </>
   );
 };
 
