@@ -87,7 +87,7 @@ const HomeScreen = () => {
           </div>
           <div className="col-1">
             <div className="main-user-wrapper">
-              <MenuUser user={userInfo} />
+              <MenuUser user={userInfo} products={products} loading={loading} error={error} />
             </div>
           </div>
         </div>

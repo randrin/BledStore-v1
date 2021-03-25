@@ -19,6 +19,7 @@
             background: var(--bledstore-white);
             border-radius: 8px;
             margin-left: 50px;
+            height: max-content;
             max-width: max-content;
             box-shadow: var(--bledstore-box-shadow);
 
@@ -201,6 +202,89 @@
 
                         &:hover {
                             background: linear-gradient(90deg, var(--bledstore-warning), var(--bledstore-warning), transparent);
+                        }
+                    }
+                }
+
+                .main-user-content {
+                    border-radius: 5px;
+                    background-color: var(--bledstore-tomato);
+
+                    .main-user-content-top {
+                        padding: 20px 20px 10px;
+
+                        .main-user-content-top-title {
+                            margin: 0;
+                            color: var(--bledstore-white);
+                            letter-spacing: 0.9px;
+                        }
+
+                        .main-user-content-top-subtitle {
+                            padding: 0;
+                            color: var(--bledstore-white);
+                            letter-spacing: 0.9px;
+                        }
+                    }
+
+                    .main-user-content-middle {
+                        padding: 10px 20px;
+                        position: relative;
+
+                        .main-user-content-middle-img {
+                            border-radius: 0;
+                            width: 100%;
+                        }
+
+                        .main-user-content-middle-title {
+                            position: absolute;
+                            top: 10px;
+                            margin-left: 20px;
+                            color: var(--bledstore-white);
+                            font-size: 18px;
+                            line-height: 24px;
+                            letter-spacing: 0.9px;
+                        }
+                    }
+
+                    .main-user-content-bottom {
+                        .products-carousel {
+                            display: grid;
+
+                            .react-multi-carousel-list {
+
+                                .react-multiple-carousel__arrow--left,
+                                .react-multiple-carousel__arrow--right {
+                                    display: none !important;
+                                }
+
+                                .react-multi-carousel-track {
+                                    .react-multi-carousel-item {
+                                        width: auto !important;
+
+                                        a {
+                                            .products-carousel-img {
+                                                width: 100px !important;
+                                                height: 100px !important;
+                                                padding: 5px;
+                                                border-radius: 10px;
+                                            }
+
+                                            .products-carousel-price {
+                                                color: var(--bledstore-white);
+                                                margin: 10px;
+                                                background: var(--bledstore-tomato);
+                                                top: -40px;
+                                                position: relative;
+                                                letter-spacing: 0.9px;
+                                                line-height: 24px;
+                                                font-size: 15px;
+                                                border-radius: 5px;
+                                                padding: 3px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
