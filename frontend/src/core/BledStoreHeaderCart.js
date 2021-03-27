@@ -11,7 +11,7 @@ const BledStoreHeaderCart = ({ cartItems }) => {
     <Link to="/cart" className="header-right-cart">
       <div className="header-right-cart-items">
         <i className="fas fa-shopping-cart"></i>
-        <span className="cart-items">
+        <span className={`cart-items ${!!cartItems.length ? "cart-items-animation" : ""}`}>
           {cartItems.length > 0 ? cartItems.length : 0}
         </span>
       </div>

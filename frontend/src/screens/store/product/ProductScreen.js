@@ -265,7 +265,7 @@ const ProductScreen = (props) => {
                     alt={product.name}
                   />
                   <div className="product-scroll-content">
-                  <p className="product-scroll-name">{product.name}</p>
+                    <p className="product-scroll-name">{product.name}</p>
                   </div>
                 </div>
                 <div className="product-scroll-right">
@@ -281,7 +281,7 @@ const ProductScreen = (props) => {
                       </>
                     ) : (
                       <strong className="product-new-price">
-                        {product.price} €
+                        {product.price}€
                       </strong>
                     )}
                   </span>

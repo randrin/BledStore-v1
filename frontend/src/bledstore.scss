@@ -564,3 +564,16 @@ a {
 .display-block {
   display: block;
 }
+
+.cart-items-animation {
+  animation: items-cart 0.5s infinite;
+}
+
+@keyframes items-cart {
+  0% {
+    background-color: var(--bledstore-primary);
+  }
+  100% {
+    background-color: #f08040;
+  }
+}
