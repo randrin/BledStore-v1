@@ -95,7 +95,7 @@ const Product = ({ product }) => {
             to={`/product/${product._id}`}
             className="bledstore-button product-add-to-cart"
           >
-            <i className="fas fa-shopping-cart"></i> Add to Cart
+            <i className="fas fa-cart-plus"></i> Add to Cart
           </Link>
         </div>
       </div>

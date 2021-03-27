@@ -42,17 +42,13 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  var $searchHover = $(".search-wrapper").find(".search-input");
-
-  // $searchHover.on("click", () => {
-  //   console.log("$searchHover", $searchHover);
-  //   $(".main-wrapper").css({"opacity": "0.3", "pointer-events": "none"})
-  // });
-  // $("body").on("focusout", () => {
-  //   console.log("$searchHover", $searchHover);
-  //   $(".main-wrapper").css("opacity", "1")
-  // });
-  // $(this).on("click", function() {
-  //   $("body").css("opacity", "1")
-  // })
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 300) {
+      $(".product-scroll-wrapper").fadeIn();
+      $(".product-scroll-wrapper").toggleClass("display-block");
+    } else {
+      $(".product-scroll-wrapper").fadeOut();
+      $(".product-scroll-wrapper").toggleClass("display-none");
+    }
+  });
 });

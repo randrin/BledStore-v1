@@ -228,6 +228,98 @@
     .product-new-price {
         color: var(--bledstore-primary) !important;
     }
+
+    .product-scroll-wrapper {
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        background: var(--bledstore-white);
+        margin: 1rem;
+        padding: 1rem;
+        box-shadow: var(--bledstore-box-shadow);
+
+        .product-scroll-container {
+            display: flex;
+            padding-left: 10px;
+            padding-right: 10px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+            .product-scroll-left {
+                display: flex;
+                flex: 0 0 50%;
+                max-width: 50%;
+
+                .product-scroll-content {
+                    margin-left: 20px;
+                }
+            }
+
+            .product-scroll-right {
+                @include small() {
+                    display: block;
+                }
+
+                display: flex;
+                flex: 0 0 50%;
+                max-width: 50%;
+                text-align: center;
+
+                .product-scroll-price {
+                    @include small() {
+                        margin: 10px;
+                    }
+                    margin: 20px;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+
+                    .product-new-price {
+                        @include small() {
+                            font-size: 18px;
+                        }
+
+                        color: var(--bledstore-tomato) !important;
+                        font-size: 30px;
+                    }
+
+                    .product-old-price {
+                        @include small() {
+                            font-size: 13px;
+                        }
+
+                        color: var(--bledstore-primary) !important;
+                        font-size: 20px;
+                        margin-left: 10px;
+                        font-weight: 500;
+                    }
+                }
+
+                .product-scroll-qty {
+                    @include small() {
+                        margin: 10px;
+                    }
+                    margin: 20px;
+                }
+
+                .product-scroll-btn {
+                    @include small() {
+                        width: inherit;
+                        margin: 10px;
+                    }
+
+                    margin: 20px;
+                    width: 300px;
+                }
+            }
+        }
+    }
 }
 
 .search-wrapper {
@@ -253,6 +345,7 @@
         }
 
         .search-products-count {
+            color: var(--bledstore-primary);
             text-align: center;
         }
 

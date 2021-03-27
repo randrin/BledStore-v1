@@ -514,11 +514,11 @@ img.large {
 .cart-items {
   top: -15px;
   position: relative;
-  left: -5px;
+  left: -10px;
   max-height: 10px;
   background: #f08040;
   padding: 5px 10px;
-  border: 2px solid var(--bledstore-primary);
+  border: 5px solid var(--bledstore-primary);
   border-radius: 21px;
   align-items: center;
   font-size: 15px;
@@ -555,4 +555,12 @@ a {
   background: #f08040;
   border: #f08040;
   color: #ffffff;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-block {
+  display: block;
 }

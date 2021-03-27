@@ -186,7 +186,6 @@ const ProductScreen = (props) => {
                     <li>
                       <div className="row">
                         <div>Price</div>
-
                         <span>
                           {product.discountPrice ? (
                             <div className="price">
@@ -242,18 +241,78 @@ const ProductScreen = (props) => {
                     <li>
                       {product.countInStock <= 0 ? (
                         <button disabled className="primary block">
-                          <i className="fas fa-shopping-cart"></i> Add to Cart
+                          <i className="fas fa-cart-plus"></i> Add to Cart
                         </button>
                       ) : (
                         <button
                           onClick={addToCartHandler}
                           className="product-add-to-cart primary block"
                         >
-                          <i className="fas fa-shopping-cart"></i> Add to Cart
+                          <i className="fas fa-cart-plus"></i> Add to Cart
                         </button>
                       )}
                     </li>
                   </ul>
+                </div>
+              </div>
+            </div>
+            <div className="product-scroll-wrapper">
+              <div className="product-scroll-container">
+                <div className="product-scroll-left">
+                  <img
+                    className="product-scroll-img small"
+                    src={product.image}
+                    alt={product.name}
+                  />
+                  <div className="product-scroll-content">
+                  <p className="product-scroll-name">{product.name}</p>
+                  </div>
+                </div>
+                <div className="product-scroll-right">
+                  <span className="product-scroll-price">
+                    {product.discountPrice ? (
+                      <>
+                        <strong className="product-new-price">
+                          {product.discountPrice}€
+                        </strong>
+                        <strong className="product-old-price">
+                          {product.price}€
+                        </strong>
+                      </>
+                    ) : (
+                      <strong className="product-new-price">
+                        {product.price} €
+                      </strong>
+                    )}
+                  </span>
+                  <div className="product-scroll-qty">
+                    <select
+                      value={qty}
+                      onChange={(e) => setQty(e.target.value)}
+                    >
+                      {[...Array(product.countInStock).keys()].map(
+                        (x, index) => (
+                          <option key={index} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        )
+                      )}
+                    </select>
+                  </div>
+                  <div className="product-scroll-btn">
+                    {product.countInStock <= 0 ? (
+                      <button disabled className="primary block">
+                        <i className="fas fa-cart-plus"></i> Add to Cart
+                      </button>
+                    ) : (
+                      <button
+                        onClick={addToCartHandler}
+                        className="product-add-to-cart primary block"
+                      >
+                        <i className="fas fa-cart-plus"></i> Add to Cart
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
