@@ -14,8 +14,6 @@ const NewsLetters = () => {
   const userSubscription = useSelector((state) => state.userSubscription);
   const { loading, error, success, message } = userSubscription;
 
-  console.log(message, success, error);
-
   useEffect(() => {
     if (success) {
       setSubcriptionSuccess(true);

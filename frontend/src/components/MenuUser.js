@@ -6,7 +6,6 @@ import LoadingBox from "./LoadingBox";
 import MessageBox from "./MessageBox";
 
 const MenuUser = ({ user, products, loading, error }) => {
-  console.log("User: ", products);
 
   const responsive = {
     desktop: {

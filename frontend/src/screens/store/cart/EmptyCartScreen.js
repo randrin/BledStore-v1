@@ -4,7 +4,7 @@ import DividingLine from "../../../components/DividingLine";
 import HelmetSite from "../../../components/HelmetSite";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
-import Product from "../../../components/Product";
+import Product from "../../../components/ProductList";
 import { listProducts } from "../../../redux/actions/productActions";
 
 const EmptyCartScreen = () => {
@@ -46,7 +46,7 @@ const EmptyCartScreen = () => {
           <div className="row center">
             {products.length === 0 && <MessageBox>No Product Found</MessageBox>}
             {products.map((product, index) => (
-              <Product key={index} product={product} />
+              <ProductList key={index} product={product} />
             ))}
           </div>
         )}

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
 
-const Product = ({ product }) => {
+const ProductList = ({ product }) => {
   const labelSale = product.discountPrice
     ? Math.floor(
         ((product.price - product.discountPrice) / product.price) * 100
@@ -71,7 +71,7 @@ const Product = ({ product }) => {
                   <div className="product-discount-price">{product.price}€</div>
                 </>
               ) : (
-                <div className="price">{product.price}€</div>
+                <div className="product-price">{product.price}€</div>
               )}
             </div>
             {product.seller && (
@@ -103,4 +103,4 @@ const Product = ({ product }) => {
   );
 };
 
-export default Product;
+export default ProductList;

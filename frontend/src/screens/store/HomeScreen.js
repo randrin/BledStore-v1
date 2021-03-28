@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingBox from "../../components/LoadingBox";
 import MessageBox from "../../components/MessageBox";
-import Product from "../../components/Product";
+import ProductList from "../../components/ProductList";
 import { listProducts } from "../../redux/actions/productActions";
 import { Carousel } from "react-responsive-carousel";
 import { listTopSellers } from "../../redux/actions/userActions";
@@ -108,7 +108,7 @@ const HomeScreen = () => {
                 <MessageBox>No Product Found</MessageBox>
               )}
               {products.map((product, index) => (
-                <Product key={index} product={product} />
+                <ProductList key={index} product={product} />
               ))}
             </div>
             <div className="row center pagination">

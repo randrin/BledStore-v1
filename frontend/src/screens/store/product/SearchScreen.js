@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import HelmetSite from "../../../components/HelmetSite";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
-import Product from "../../../components/Product";
+import ProductList from "../../../components/ProductList";
+import ProductLarge from "../../../components/ProductLarge";
 import Rating from "../../../components/Rating";
 import { listProducts } from "../../../redux/actions/productActions";
 import { prices, ratings } from "../../../utils";
@@ -21,6 +22,8 @@ const SearchScreen = (props) => {
     pageNumber = 1,
     pageSize = 4,
   } = useParams();
+
+  const [productMode, setProductMode] = useState(true);
 
   const productList = useSelector((state) => state.productsList);
   const { loading, error, products, pages, page, totalProducts } = productList;
@@ -181,13 +184,31 @@ const SearchScreen = (props) => {
                             Avg. Customer Reviews
                           </option>
                         </select>
+                        <div className="select-product-grid">
+                          <button
+                            className={`${productMode ? "primary" : ""} block`}
+                            onClick={() => setProductMode(true)}
+                          >
+                            <i className="fas fa-th-large"></i>
+                          </button>
+                          <button
+                            className={`${productMode ? "" : "primary"} block`}
+                            onClick={() => setProductMode(false)}
+                          >
+                            <i className="fas fa-th-list"></i>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   )}
                   <div className="row center search-content">
-                    {products.map((product, index) => (
-                      <Product key={index} product={product} />
-                    ))}
+                    {productMode
+                      ? products.map((product, index) => (
+                          <ProductList key={index} product={product} />
+                        ))
+                      : products.map((product, index) => (
+                          <ProductLarge key={index} product={product} />
+                        ))}
                   </div>
                   {!!products.length && (
                     <div className="pagination">

@@ -131,6 +131,12 @@ button:hover:disabled {
 
 button.primary {
   background-color: #f0c040;
+  border: 1px solid #f0c040;
+
+  &:hover {
+    border-color: var(--bledstore-primary);
+    color: var(--bledstore-white);
+}
 }
 
 .bledstore-button.block,
@@ -306,7 +312,7 @@ img.large {
 }
 
 .price {
-  font-size: 2rem;
+  font-size: 30px;
   font-weight: 600;
   padding: 8px 0px;
   line-height: 25px;

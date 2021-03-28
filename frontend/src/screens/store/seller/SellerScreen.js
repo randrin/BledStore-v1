@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
-import Product from "../../../components/Product";
+import ProductList from "../../../components/ProductList";
 import Rating from "../../../components/Rating";
 import { listProducts } from "../../../redux/actions/productActions";
 import { getProfileSeller } from "../../../redux/actions/userActions";
@@ -84,7 +84,7 @@ const SellerScreen = (props) => {
             )}
             <div className="row center">
               {products.map((product) => (
-                <Product key={product._id} product={product}></Product>
+                <ProductList key={product._id} product={product}/>
               ))}
             </div>
             {!!products.length && (

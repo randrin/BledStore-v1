@@ -5,7 +5,7 @@ import Breadcrumb from "../../../components/Breadcrumb";
 import DividingLine from "../../../components/DividingLine";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
-import Product from "../../../components/Product";
+import ProductList from "../../../components/ProductList";
 import Rating from "../../../components/Rating";
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
@@ -192,7 +192,7 @@ const ProductScreen = (props) => {
                               {product.discountPrice} €
                             </div>
                           ) : (
-                            <div className="price">{product.price} €</div>
+                            <div className="price">{product.price}€</div>
                           )}
                         </span>
                       </div>
@@ -348,7 +348,7 @@ const ProductScreen = (props) => {
                       itemClass="carousel-item-padding-40-px"
                     >
                       {productsRelated.map((product, index) => (
-                        <Product key={index} product={product} />
+                        <ProductList key={index} product={product} />
                       ))}
                     </Carousel>
                   </div>
