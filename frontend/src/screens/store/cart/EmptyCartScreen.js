@@ -4,7 +4,7 @@ import DividingLine from "../../../components/DividingLine";
 import HelmetSite from "../../../components/HelmetSite";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
-import Product from "../../../components/ProductList";
+import ProductList from "../../../components/ProductList";
 import { listProducts } from "../../../redux/actions/productActions";
 
 const EmptyCartScreen = () => {
