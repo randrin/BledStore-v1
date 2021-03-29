@@ -1,4 +1,72 @@
 const data = {
+  sliders: [
+    {
+      _id: "5baa3bb4b33646b6a772709f",
+      title: "Offres et Promotions",
+      name: "Women Jeans",
+      oldPrice: "349.95",
+      newPrice: "279.99",
+      buttonTitle: "Buy More",
+      link: "/search/category/all/name/all",
+      image: "/assets/images/sliders/slide-1.jpg",
+      position: "center"
+    },
+    {
+      _id: "7e7463da17824c269dbdff4b",
+      title: "Deals of Week",
+      name: "High Tech Multicolors",
+      oldPrice: "102.89",
+      newPrice: "78.50",
+      buttonTitle: "Buy More",
+      link: "/search/category/all/name/all",
+      image: "/assets/images/sliders/slide-1.png",
+      position: "left"
+    },
+    {
+      _id: "ef5244f734b645e4b653c2ce",
+      title: "End of Promos Series",
+      name: "Women Hats",
+      oldPrice: "450.18",
+      newPrice: "350.98",
+      buttonTitle: "Buy More",
+      link: "/search/category/all/name/all",
+      image: "/assets/images/sliders/slide-2.jpg",
+      position: "right"
+    },
+    {
+      _id: "c052e69cd0024b788234a8e6",
+      title: "Offres et Promotions",
+      name: "Beats by Dre Studio 3",
+      oldPrice: "349.95",
+      newPrice: "279.99",
+      buttonTitle: "Buy More",
+      link: "/search/category/all/name/all",
+      image: "/assets/images/sliders/slide-2.png",
+      position: "center"
+    },
+    {
+      _id: "eb9c79870b474d2c85f9eff0",
+      title: "End of Stocks",
+      name: "Women Color Clothes",
+      oldPrice: "80.95",
+      newPrice: "55.99",
+      buttonTitle: "Buy More",
+      link: "/search/category/all/name/all",
+      image: "/assets/images/sliders/slide-3.jpg",
+      position: "left"
+    },
+    {
+      _id: "a3ae909f08604034b944f098",
+      title: "News Deals",
+      name: "Color Skirt Women",
+      oldPrice: "55.20",
+      newPrice: "45.10",
+      buttonTitle: "Buy More",
+      link: "/search/category/all/name/all",
+      image: "/assets/images/sliders/slide-4.jpg",
+      position: "right"
+    },
+  ],
   products: [
     {
       _id: "5baa3bb4b33646b6a772709f",

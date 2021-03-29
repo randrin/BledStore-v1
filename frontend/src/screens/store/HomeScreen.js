@@ -15,6 +15,7 @@ import NewsLetters from "../../components/NewsLetters";
 import MenuCategories from "../../components/MenuCategories";
 import MenuUser from "../../components/MenuUser";
 import HelmetSite from "../../components/HelmetSite";
+import data from "../../data";
 
 const HomeScreen = () => {
   const pageSize = 10;
@@ -70,26 +71,55 @@ const HomeScreen = () => {
                   <MessageBox>No Seller Found</MessageBox>
                 )}
                 <Carousel showArrows autoPlay infiniteLoop showThumbs={false}>
-                  {sellers.map((seller) => (
-                    <div key={seller._id}>
-                      <Link to={`/seller/${seller._id}`}>
-                        <img
-                          src={seller.seller.logo}
-                          alt={seller.seller.name}
-                        />
-                        <p className="legend">{seller.seller.name}</p>
-                      </Link>
+                  {data.sliders.map((slider) => (
+                    <div
+                      key={slider._id}
+                      style={{ backgroundImage: "url( " + slider.image + " )" }}
+                      className="sliders-wrapper"
+                    >
+                      <div
+                        className={`slider-container ${
+                          slider.position === "left"
+                            ? "slider-left"
+                            : slider.position === "right"
+                            ? "slider-right"
+                            : "slider-center"
+                        }`}
+                      >
+                        <h2 className="slider-title">{slider.title}</h2>
+                        <h3 className="slider-name">{slider.name}</h3>
+                        <div className="slider-price">
+                          <sup className="slider-old-price">
+                            {slider.oldPrice.split(".")[0]}€
+                          </sup>
+                          <span className="slider-new-price">
+                            {slider.newPrice.split(".")[0]}{" "}
+                            <sup>{slider.newPrice.split(".")[1]}</sup>€
+                          </span>
+                        </div>
+                        <div className="slider-button">
+                          <Link to={slider.link} className="slider-btn">
+                            {slider.buttonTitle}{" "}
+                            <i className="fas fa-long-arrow-alt-right"></i>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </Carousel>
               </>
             )}
           </div>
-          <div className="col-1">
+          {/* <div className="col-1">
             <div className="main-user-wrapper">
-              <MenuUser user={userInfo} products={products} loading={loading} error={error} />
+              <MenuUser
+                user={userInfo}
+                products={products}
+                loading={loading}
+                error={error}
+              />
             </div>
-          </div>
+          </div> */}
         </div>
         <Categories
           loading={loadingCategories}
