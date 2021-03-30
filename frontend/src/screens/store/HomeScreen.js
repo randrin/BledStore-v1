@@ -60,7 +60,18 @@ const HomeScreen = () => {
             />
           </div>
           <div className="col-2">
-            <DividingLine title="Top Sellers"></DividingLine>
+            {/* <DividingLine title="Top Sellers"></DividingLine> */}
+            <div className="sales-wrapper">
+              {data.sales.map((sale, index) => (
+                <div key={index} className="sale-item">
+                  <Link to={sale.link} className="sale-link">
+                    <i className={sale.icon}></i>
+                    <span className="sale-name">{sale.name}</span>
+                    <span className="sale-count">{sale.count}</span>
+                  </Link>
+                </div>
+              ))}
+            </div>
             {loadingSellers ? (
               <LoadingBox></LoadingBox>
             ) : errorSellers ? (

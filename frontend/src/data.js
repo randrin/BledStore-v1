@@ -1,4 +1,41 @@
 const data = {
+  sales: [
+    {
+      _id: "5baa3bb4b33646b6a772709f",
+      name: "En Cours",
+      icon: "fas fa-calendar-check",
+      link: "/search/category/all/name/all",
+      count: 10
+    },
+    {
+      _id: "7e7463da17824c269dbdff4b",
+      name: "Flash Deals",
+      icon: "fas fa-tags",
+      link: "/search/category/all/name/all",
+      count: 5
+    },
+    {
+      _id: "ef5244f734b645e4b653c2ce",
+      name: "Nouveautés",
+      icon: "fas fa-weight-hanging",
+      link: "/search/category/all/name/all",
+      count: 40
+    },
+    {
+      _id: "c052e69cd0024b788234a8e6",
+      name: "Prochaines ventes",
+      icon: "fas fa-clipboard-check",
+      link: "/search/category/all/name/all",
+      count: 25
+    },
+    {
+      _id: "a3ae909f08604034b944f098",
+      name: "Derniers jours",
+      icon: "fas fa-clock",
+      link: "/search/category/all/name/all",
+      count: 19
+    },
+  ],
   sliders: [
     {
       _id: "5baa3bb4b33646b6a772709f",
@@ -9,7 +46,7 @@ const data = {
       buttonTitle: "Buy More",
       link: "/search/category/all/name/all",
       image: "/assets/images/sliders/slide-1.jpg",
-      position: "center"
+      position: "center",
     },
     {
       _id: "7e7463da17824c269dbdff4b",
@@ -20,7 +57,7 @@ const data = {
       buttonTitle: "Buy More",
       link: "/search/category/all/name/all",
       image: "/assets/images/sliders/slide-1.png",
-      position: "left"
+      position: "left",
     },
     {
       _id: "ef5244f734b645e4b653c2ce",
@@ -31,7 +68,7 @@ const data = {
       buttonTitle: "Buy More",
       link: "/search/category/all/name/all",
       image: "/assets/images/sliders/slide-2.jpg",
-      position: "right"
+      position: "right",
     },
     {
       _id: "c052e69cd0024b788234a8e6",
@@ -42,7 +79,7 @@ const data = {
       buttonTitle: "Buy More",
       link: "/search/category/all/name/all",
       image: "/assets/images/sliders/slide-2.png",
-      position: "center"
+      position: "center",
     },
     {
       _id: "eb9c79870b474d2c85f9eff0",
@@ -53,7 +90,7 @@ const data = {
       buttonTitle: "Buy More",
       link: "/search/category/all/name/all",
       image: "/assets/images/sliders/slide-3.jpg",
-      position: "left"
+      position: "left",
     },
     {
       _id: "a3ae909f08604034b944f098",
@@ -64,7 +101,7 @@ const data = {
       buttonTitle: "Buy More",
       link: "/search/category/all/name/all",
       image: "/assets/images/sliders/slide-4.jpg",
-      position: "right"
+      position: "right",
     },
   ],
   products: [

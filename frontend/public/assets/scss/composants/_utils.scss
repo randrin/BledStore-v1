@@ -10,6 +10,8 @@
 .main-wrapper {
     .main-container {
         align-items: inherit;
+        top: 20px;
+        position: relative;
 
         .main-categories-wrapper {
             @include small() {
@@ -293,6 +295,68 @@
     }
 }
 
+//Sales Items 
+.sales-wrapper {
+    display: flex;
+    padding-bottom: 1rem;
+
+    .sale-item {
+        margin: 1rem;
+        padding: 1rem;
+        border: 1px solid var(--bledstore-warning);
+        background-color: var(--bledstore-warning);
+        position: relative;
+
+        &:hover {
+            border: 1px solid var(--bledstore-primary);
+            background-color: var(--bledstore-primary);
+
+            .sale-link {
+                color: var(--bledstore-white);
+            }
+        }
+
+        .sale-link {
+            @include small() {
+                font-size: 15px;
+            }
+
+            color: var(--bledstore-primary);
+            font-weight: 500;
+            font-size: 18px;
+            letter-spacing: 0px;
+            line-height: 24px;
+
+            &:hover {
+                color: var(--bledstore-white);
+            }
+
+            .sale-name {
+                left: 5px;
+                position: relative;
+                padding-right: 10px;
+            }
+
+            .sale-count {
+                top: -20px;
+                position: absolute;
+                right: -15px;
+                float: right;
+                font-weight: 500;
+                display: flex;
+                border: 4px solid var(--bledstore-white-smoke);
+                padding: 0;
+                background: var(--bledstore-primary);
+                color: var(--bledstore-white);
+                border-radius: 50%;
+                font-size: 13px;
+                width: 25px;
+                height: 25px;
+                justify-content: center;
+            }
+        }
+    }
+}
 
 // Sliders 
 .sliders-wrapper {
