@@ -580,6 +580,10 @@
                 right: 0;
                 position: inherit;
                 padding-top: 0;
+
+                .select-criteria-products {
+                    width: 200px;
+                }
             }
 
             right: 25px;
@@ -602,6 +606,10 @@
                 button {
                     margin-left: 15px;
                 }
+            }
+
+            .select-showing-products {
+                margin-left: 15px;
             }
         }
 

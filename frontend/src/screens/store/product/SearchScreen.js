@@ -56,9 +56,10 @@ const SearchScreen = (props) => {
     const filterName = filter.name || name;
     const filterRating = filter.rating || rating;
     const filterOrder = filter.order || order;
+    const filterPageSize = filter.pageSize || pageSize;
     const filterMin = filter.min ? filter.min : filter.min === 0 ? 0 : min;
     const filterMax = filter.max ? filter.max : filter.max === 0 ? 0 : max;
-    return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${filterOrder}/size/${pageSize}/page/${filterPage}`;
+    return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${filterOrder}/size/${filterPageSize}/page/${filterPage}`;
   };
 
   return (
@@ -169,7 +170,7 @@ const SearchScreen = (props) => {
                       </h2>
                       <div className="search-sort-by">
                         <span>Sort By</span>
-                        <select
+                        <select className="select-criteria-products"
                           value={order}
                           onChange={(e) => {
                             props.history.push(
@@ -198,6 +199,19 @@ const SearchScreen = (props) => {
                             <i className="fas fa-th-list"></i>
                           </button>
                         </div>
+                        <select className="select-showing-products"
+                          value={pageSize}
+                          onChange={(e) => {
+                            props.history.push(
+                              getFilterUrl({ pageSize: e.target.value })
+                            );
+                          }}
+                        >
+                          <option value="8">8</option>
+                          <option value="12">12</option>
+                          <option value="16">16</option>
+                          <option value="20">20</option>
+                        </select>
                       </div>
                     </div>
                   )}
