@@ -39,6 +39,11 @@ header {
   background-color: var(--bledstore-primary);
 }
 
+nav {
+  grid-area: nav;
+  background-color: var(--bledstore-primary);
+}
+
 main {
   grid-area: main;
   padding: 1rem;

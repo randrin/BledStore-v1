@@ -7,6 +7,7 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import BledStoreHeaderCart from "./BledStoreHeaderCart";
 import BledStoreHeaderUser from "./BledStoreHeaderUser";
+import BledStoreNavBar from "./BledStoreNavBar";
 
 const BledStoreHeader = () => {
   const dispatch = useDispatch();
@@ -56,6 +57,9 @@ const BledStoreHeader = () => {
           <BledStoreHeaderUser userInfo={userInfo} />
         </div>
       </header>
+      {/* <div>
+      <BledStoreNavBar />
+      </div> */}
       <aside className={sidebarIsOpen ? "open" : ""}>
         <ul className="categories">
           <li>

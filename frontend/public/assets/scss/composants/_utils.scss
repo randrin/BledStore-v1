@@ -300,8 +300,18 @@
     height: 400px;
 
     .slider-container {
+        @include small() {
+            display: block;
+            justify-content: center;
+            align-items: center;
+        }
 
         &.slider-left {
+            @include small() {
+                text-align: center;
+                left: 0;
+            }
+
             text-align: left;
             left: 100px;
             top: 50px;
@@ -314,6 +324,11 @@
         }
 
         &.slider-right {
+            @include small() {
+                text-align: center;
+                right: 0;
+            }
+
             text-align: right;
             right: 100px;
             top: 50px;

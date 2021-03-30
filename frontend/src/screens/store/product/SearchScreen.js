@@ -20,7 +20,7 @@ const SearchScreen = (props) => {
     rating = 0,
     order = "newest",
     pageNumber = 1,
-    pageSize = 4,
+    pageSize = 8,
   } = useParams();
 
   const [productMode, setProductMode] = useState(true);
@@ -224,7 +224,7 @@ const SearchScreen = (props) => {
                           <ProductLarge key={index} product={product} />
                         ))}
                   </div>
-                  {!!products.length && (
+                  {!!products.length && pages > 1 && (
                     <div className="pagination">
                       {[...Array(pages).keys()].map((x) => (
                         <Link
