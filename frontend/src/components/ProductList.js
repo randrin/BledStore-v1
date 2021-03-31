@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+import ProductModal from "./ProductModal";
 
 const ProductList = ({ product }) => {
+  const [open, setOpen] = useState(false);
+
+  const onCloseModal = () => setOpen(false);
+  const onOpenModal = () => setOpen(true);
+
+  const onGoToProduct = () => {
+    window.location.href = `/product/${product._id}`;
+  };
+
   const labelSale = product.discountPrice
     ? Math.floor(
         ((product.price - product.discountPrice) / product.price) * 100
@@ -16,8 +28,26 @@ const ProductList = ({ product }) => {
 
   return (
     <div className="product-wrapper">
+      <Modal
+        open={open}
+        onClose={onCloseModal}
+        center
+        classNames={{
+          overlayAnimationIn: "customEnterOverlayAnimation",
+          overlayAnimationOut: "customLeaveOverlayAnimation",
+          modalAnimationIn: "customEnterModalAnimation",
+          modalAnimationOut: "customLeaveModalAnimation",
+        }}
+        animationDuration={800}
+      >
+        <ProductModal
+          product={product}
+          labelNew={labelNew}
+          labelSale={labelSale}
+        />
+      </Modal>
       <div className="card">
-        <Link to={`/product/${product._id}`}>
+        <Link to="">
           {labelNew ? (
             <span className="card-product-label label-circle-new">New</span>
           ) : (
@@ -35,6 +65,20 @@ const ProductList = ({ product }) => {
             ""
           )}
           <img className="medium" src={product.image} alt={product.name} />
+          <div className="product-actions">
+            <ul className="product-actions-list">
+              <li className="product-action-item">
+                <button onClick={onGoToProduct}>
+                  <i className="fas fa-cart-plus"></i>
+                </button>
+              </li>
+              <li className="product-action-item">
+                <button onClick={onOpenModal}>
+                  <i className="fas fa-search-plus"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
         </Link>
         <div className="card-body">
           <div className="category">
