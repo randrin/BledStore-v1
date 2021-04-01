@@ -5,7 +5,7 @@ import Breadcrumb from "../../../components/Breadcrumb";
 import DividingLine from "../../../components/DividingLine";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
-import ProductList from "../../../components/ProductList";
+import ProductList from "../../../components/Products/ProductList";
 import Rating from "../../../components/Rating";
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";

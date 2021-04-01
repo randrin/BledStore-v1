@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart } from "../redux/actions/cartActions";
-import Rating from "./Rating";
+import { addToCart } from "../../redux/actions/cartActions";
+import Rating from "../Rating";
 
 const ProductModal = ({ product, labelNew, labelSale }) => {
   const dispatch = useDispatch();

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
-import ProductList from "../../../components/ProductList";
+import ProductList from "../../../components/Products/ProductList";
 import Rating from "../../../components/Rating";
 import { listProducts } from "../../../redux/actions/productActions";
 import { getProfileSeller } from "../../../redux/actions/userActions";

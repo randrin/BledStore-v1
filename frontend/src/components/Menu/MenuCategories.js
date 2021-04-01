@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LoadingBox from "./LoadingBox";
-import MessageBox from "./MessageBox";
+import LoadingBox from "../LoadingBox";
+import MessageBox from "../MessageBox";
 
 const MenuCategories = ({ loading, error, categories }) => {
   return (

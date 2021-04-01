@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
-import LoadingBox from "./LoadingBox";
-import MessageBox from "./MessageBox";
+import LoadingBox from "../LoadingBox";
+import MessageBox from "../MessageBox";
 
 const MenuUser = ({ user, products, loading, error }) => {
 
