@@ -15,6 +15,7 @@ const Categories = ({ loading, error, categories }) => {
   return (
     <div className="categories-wrapper">
       <h2 className="categories-title">Explore ours Popular Categories</h2>
+      <p className="categories-subtitle">We are selected the more best categories for you. Just clicking and enjoy the shopping</p>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (

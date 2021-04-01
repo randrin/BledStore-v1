@@ -748,18 +748,30 @@
 // Categories
 .categories-wrapper {
     padding: 20px;
+    text-align: center;
 
     .categories-title {
-        text-align: center;
-        margin-bottom: 4rem !important;
-        font-size: 2.4rem;
+        margin-bottom: 2rem !important;
+        font-size: 3.5rem;
         color: var(--bledstore-primary) !important;
+        line-height: 24px;
+        letter-spacing: 1px;
+    }
+
+    .categories-subtitle {
+        font-size: 2rem;
+        color: var(--bledstore-primary) !important;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        margin-bottom: 4rem !important;
     }
 
     .categories-container {
         justify-content: center;
         align-items: center;
         display: flex;
+        letter-spacing: -0.2px;
+        font-size: 15px;
 
         .categories-row {
             @include small() {
@@ -794,7 +806,7 @@
 
                 .categories-block-container-img {
                     .categories-block-img {
-                        max-width: 100px;
+                        width: 100px;
                         height: auto;
                         transition: transform 0.35s ease;
                     }

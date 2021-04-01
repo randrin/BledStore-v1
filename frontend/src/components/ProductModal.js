@@ -1,17 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addToCart } from "../redux/actions/cartActions";
 import Rating from "./Rating";
 
-const ProductModal = (props) => {
+const ProductModal = ({ product, labelNew, labelSale }) => {
+  const dispatch = useDispatch();
   const [qty, setQty] = useState(1);
 
   const addToCartHandler = () => {
-    props.history.push(`/cart/${product._id}?qty=${qty}`);
+    //window.location.href = `/cart/${product._id}?qty=${qty}`;
+    dispatch(addToCart(product._id, qty));
   };
-
-  const {product, labelNew, labelSale } = props;
-
-  console.log("ProductModal: ", props)
 
   return (
     <div className="product-modal-wrapper">
@@ -82,7 +82,7 @@ const ProductModal = (props) => {
         </div>
         <div className="product-modal-submit">
           <button className="primary product-modal-add-to-cart">
-            <Link onClick={addToCartHandler}>
+            <Link to="#" onClick={addToCartHandler}>
               <i className="fas fa-cart-plus"></i> Add to Cart
             </Link>
           </button>
