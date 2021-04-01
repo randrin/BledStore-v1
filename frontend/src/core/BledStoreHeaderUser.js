@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { signout } from "../redux/actions/userActions";
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+import LogoutModal from "../components/Modal/LogoutModal";
 
 const BledStoreHeaderUser = ({ userInfo }) => {
   const dispatch = useDispatch();
+
+  const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
 
   const goToPageHandler = (url) => {
     window.location.href = "/" + url;
@@ -79,10 +87,13 @@ const BledStoreHeaderUser = ({ userInfo }) => {
               <p>Leave Aurelando.com ?</p>
               <button
                 className="header-right-signin-hover-btn primary"
-                onClick={signoutHandler}
+                onClick={onOpenModal}
               >
                 <i className="fas fa-power-off"></i> Sign Out
               </button>
+              <Modal open={open} onClose={onCloseModal} center>
+                <LogoutModal onCloseModal={onCloseModal} signoutHandler={signoutHandler} />
+              </Modal>
             </div>
           </>
         ) : (
