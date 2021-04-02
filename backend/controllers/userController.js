@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import User from "../models/userModel.js";
 import data from "../data.js";
 import { generateToken } from "../utils.js";
+import { errorHandler } from "../helpers/errorHandler.js";
 import Subscribe from "../models/subscribeModel.js";
 
 export const seedUsers = expressAsyncHander(async (req, res) => {
@@ -152,17 +153,18 @@ export const deleteUser = expressAsyncHander(async (req, res) => {
     const userDeleted = await user.remove();
     res
       .status(200)
-      .send({ message: "USer Delivered successfully.", user: userDeleted });
+      .send({ message: "User Delivered successfully.", user: userDeleted });
   } else {
     res.status(404).send({ message: "User Not Found" });
   }
 });
 
 export const subscribeUser = expressAsyncHander(async (req, res) => {
-  const subscription = await Subscribe.where({ email: req.body.email });
-  if (subscription.email) {
-    res.status(404).send({
-      message: errorHandler(res),
+  const subscription = await Subscribe.findOne({ email: req.body.email });
+  console.log("subscription: ", res)
+  if (subscription && subscription.email) {
+    res.status(302).send({
+      message: `The subscription with the email ${req.body.email} is already done!`
     });
   } else {
     const userSubscription = await new Subscribe({email: req.body.email}).save();

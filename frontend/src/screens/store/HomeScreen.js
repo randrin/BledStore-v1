@@ -16,6 +16,7 @@ import MenuCategories from "../../components/Menu/MenuCategories";
 import MenuUser from "../../components/Menu/MenuUser";
 import HelmetSite from "../../components/HelmetSite";
 import data from "../../data";
+import PopupModal from "../../components/Modal/PopupModal";
 
 const HomeScreen = () => {
   const pageSize = 10;
@@ -167,6 +168,7 @@ const HomeScreen = () => {
         )}
         <Services />
         <NewsLetters />
+        <PopupModal />
       </main>
     </>
   );

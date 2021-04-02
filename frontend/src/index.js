@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 import Routes from "./routes/Routes";
 import "./bledstore.scss";
+import "react-responsive-modal/styles.css";
 import BledStoreHeader from "./core/BledStoreHeader";
 import BledStoreFooter from "./core/BledStoreFooter";
 import store from "./redux/store";

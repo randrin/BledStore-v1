@@ -20,18 +20,26 @@ $(document).ready(function () {
   });
 });
 
+$(document).ready(function() {
+  $('body').scrollTop(0);
+    //   window.scrollTo({
+    //   top: 0,
+    //   behavior: "smooth",
+    // });
+});
+
 // Click anytime and first go to top screen
 $(document).ready(function () {
   var element = document.querySelector(".loading.active");
 
   console.log("element: ", element)
-  $("a, button, img").on("click", () => {
-    // $("body").css("opacity", "0.3")
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  });
+  // $("a, button, img").on("click", () => {
+  //   // $("body").css("opacity", "0.3")
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth",
+  //   });
+  // });
   // if (!!element) {
   //   console.log("element: ", element);
   //   window.scrollTo({

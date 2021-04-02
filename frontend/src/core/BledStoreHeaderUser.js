@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { signout } from "../redux/actions/userActions";
-import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import LogoutModal from "../components/Modal/LogoutModal";
 

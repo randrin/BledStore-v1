@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import ProductModal from "../Modal/ProductModal";
 import Rating from "../Rating";

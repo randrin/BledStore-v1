@@ -7,7 +7,6 @@ import LoadingBox from "./LoadingBox";
 const NewsLetters = () => {
   const [email, setEmail] = useState("");
   const [subcriptionSuccess, setSubcriptionSuccess] = useState(false);
-  const [subcriptionError, setSubcriptionError] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -22,10 +21,6 @@ const NewsLetters = () => {
         dispatch({ type: USER_SUBSCRIBE_RESET });
       }, 3000);
       setEmail("");
-    }
-
-    if (error) {
-
     }
   }, [dispatch, success, error]);
 
@@ -42,7 +37,7 @@ const NewsLetters = () => {
         <div className="newsletters-error-message">
           <span className="newsletters-error-icon">
             <i className="fas fa-times-circle"></i>
-            The subscription with the email {email} is already done!
+            {error}
           </span>
         </div>
       ) : (

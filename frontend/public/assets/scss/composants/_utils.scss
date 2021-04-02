@@ -297,6 +297,10 @@
 
 //Sales Items 
 .sales-wrapper {
+    @include small() {
+        display: none;
+    }
+
     display: flex;
     padding-bottom: 1rem;
 
@@ -1178,34 +1182,40 @@
 
 @keyframes customEnterOverlayAnimation {
     0% {
-      transform: scale(0);
+        transform: scale(0);
     }
+
     100% {
-      transform: scale(1);
+        transform: scale(1);
     }
-  }
-  @keyframes customLeaveOverlayAnimation {
+}
+
+@keyframes customLeaveOverlayAnimation {
     0% {
-      transform: scale(1);
+        transform: scale(1);
     }
+
     100% {
-      transform: scale(0);
+        transform: scale(0);
     }
-  }
-  
-  @keyframes customEnterModalAnimation {
+}
+
+@keyframes customEnterModalAnimation {
     0% {
-      transform: scale(0.2);
+        transform: scale(0.2);
     }
+
     100% {
-      transform: scale(1);
+        transform: scale(1);
     }
-  }
-  @keyframes customLeaveModalAnimation {
+}
+
+@keyframes customLeaveModalAnimation {
     0% {
-      transform: scale(1);
+        transform: scale(1);
     }
+
     100% {
-      transform: scale(0.2);
+        transform: scale(0.2);
     }
-  }
+}
