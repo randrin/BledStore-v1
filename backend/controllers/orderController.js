@@ -1,5 +1,6 @@
 import expressAsyncHander from "express-async-handler";
 import Order from "../models/orderModel.js";
+import { mailgun, payOrderEmailTemplate } from "../utils.js";
 
 export const placeOrder = expressAsyncHander(async (req, res) => {
   if (req.body.orderItems.length === 0) {
@@ -46,7 +47,7 @@ export const getMineOrders = expressAsyncHander(async (req, res) => {
 });
 
 export const payOrder = expressAsyncHander(async (req, res) => {
-  const order = await Order.findById(req.params.orderId);
+  const order = await Order.findById(req.params.orderId).populate("user", "email name");
   if (order) {
     order.isPaid = true;
     order.paidAt = Date.now();
@@ -62,6 +63,18 @@ export const payOrder = expressAsyncHander(async (req, res) => {
       create_time: req.body.create_time,
     };
     const updatedOrder = await order.save();
+    mailgun().messages().send({
+      from: "BledStore-v1 <nzeukangrandrin@gmail.com>",
+      to: `${order.user.name} <${order.user.email}>`,
+      subject: `New Order ${order._id}`,
+      html: payOrderEmailTemplate(order)
+    }, (error, body) => {
+      if(error) {
+        console.log(error)
+      } else {
+        console.log(body)
+      }
+    })
     res
       .status(200)
       .send({ message: "Order Paid successfully.", order: updatedOrder });

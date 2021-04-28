@@ -14,4 +14,6 @@ export default {
   AWS_REGION: process.env.AWS_REGION,
   AWS_UPLOADED_FILE_URL_LINK: `https://s3-${process.env.AWS_REGION}.amazonaws.com/${process.env.AWS_BUCKET_NAME}`,
   GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
+  MAILGUN_API_KEY: process.env.MAILGUN_API_KEY,
+  MAILGUN_DOMAIN: process.env.MAILGUN_DOMAIN,
 };
