@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
 import path from 'path';
+import SocketIO from "socket.io";
+import http from "http";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -72,6 +74,9 @@ app.get('*', (req, res) =>
 //   res.send("Server is running ....");
 // });
 
-app.listen(config.PORT, () => {
-  console.log(`Server started at http://localhost:${config.PORT}`);
-});
+// app.listen(config.PORT, () => {
+//   console.log(`Server started at http://localhost:${config.PORT}`);
+// });
+
+const httpServer = http.Server(app);
+const socketIO = SocketIO(httpServer);
