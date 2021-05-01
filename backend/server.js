@@ -1,8 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
-import path from 'path';
-import SocketIO from "socket.io";
+import path from "path";
+import socketIO from "socket.io";
 import http from "http";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -63,11 +63,11 @@ app.use((err, req, res, next) => {
 });
 
 const __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
-app.use(express.static(path.join(__dirname, '/frontend/build')));
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+app.use(express.static(path.join(__dirname, "/frontend/build")));
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "/frontend/build/index.html"))
 );
 
 // app.get("/", (req, res) => {
@@ -79,4 +79,78 @@ app.get('*', (req, res) =>
 // });
 
 const httpServer = http.Server(app);
-const socketIO = SocketIO(httpServer);
+const socketio = socketIO(httpServer);
+const users = [];
+socketio.on("connection", (socket) => {
+  socket.on("disconnect", () => {
+    const user = users.find((x) => x.socketId === socket.id);
+    if (user) {
+      user.online = false;
+      console.log("Offline", user.name);
+      console.log(users);
+      const admin = users.find((x) => x.isAdmin && x.online);
+      if (admin) {
+        socketio.to(admin.socketId).emit("updateUser", user);
+      }
+    }
+    // const index = clients.map((item) => item.socketId).indexOf(socket.id);
+    // clients.splice(index, 1);
+    // console.log('removed', clients);
+  });
+  socket.on("onLogin", (user) => {
+    const updatedUser = {
+      ...user,
+      online: true,
+      socketId: socket.id,
+      messages: [],
+    };
+    const existUser = users.find((x) => x._id === updatedUser._id);
+    if (existUser) {
+      existUser.socketId = socket.id;
+      existUser.online = true;
+    } else {
+      users.push(updatedUser);
+    }
+    console.log("Online", user.name);
+    console.log(users);
+    const admin = users.find((x) => x.isAdmin && x.online);
+    if (admin) {
+      socketio.to(admin.socketId).emit("updateUser", updatedUser);
+    }
+    if (updatedUser.isAdmin) {
+      socketio.to(updatedUser.socketId).emit("listUsers", users);
+    }
+  });
+
+  socket.on("onUserSelected", (user) => {
+    const admin = users.find((x) => x.isAdmin && x.online);
+    if (admin) {
+      const existUser = users.find((x) => x._id === user._id);
+      socketio.to(admin.socketId).emit("selectUser", existUser);
+    }
+  });
+  socket.on("onMessage", (message) => {
+    if (message.isAdmin) {
+      const user = users.find((x) => x._id === message._id && x.online);
+      if (user) {
+        socketio.to(user.socketId).emit("message", message);
+        user.messages.push(message);
+      }
+    } else {
+      const admin = users.find((x) => x.isAdmin && x.online);
+      if (admin) {
+        socketio.to(admin.socketId).emit("message", message);
+        const user = users.find((x) => x._id === message._id && x.online);
+        user.messages.push(message);
+      } else {
+        socketio.to(socket.id).emit("message", {
+          name: "Admin",
+          body: "Sorry. I am not online right now",
+        });
+      }
+    }
+  });
+});
+httpServer.listen(config.PORT, () => {
+  console.log(`Server started at http://localhost:${config.PORT}`);
+});
