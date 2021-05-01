@@ -40,6 +40,7 @@ import PrivaciesPoliciesPage from "../pages/PrivaciesPoliciesPage";
 import CookiesPoliciesPage from "../pages/CookiesPoliciesPage";
 import StepsShopPage from "../pages/StepsShopPage";
 import ForgotPasswordScreen from "../screens/store/auth/ForgotPasswordScreen";
+import SupportScreen from "../screens/store/utils/SupportScreen";
 
 const Routes = () => (
   <Switch>
@@ -70,6 +71,7 @@ const Routes = () => (
     <AdminRoute exact path="/userlist" strict component={UserListScreen} /> 
     <SellerRoute exact path="/orderlist/seller" strict component={OrderListScreen} /> 
     <AdminRoute exact path="/user/:userId/edit" strict component={UserEditScreen} />
+    <AdminRoute exact path="/support" strict component={SupportScreen} />
     <Route exact path="/seller/:sellerId/page/:pageNumber/size/:pageSize" strict component={SellerScreen} />
     <Route exact path="/seller/:sellerId" strict component={SellerScreen} />
     <Route exact path="/search/name/:name?" strict component={SearchScreen} />

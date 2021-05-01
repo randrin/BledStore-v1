@@ -146,7 +146,7 @@ const BledStoreHeaderUser = ({ userInfo }) => {
               </Link>
             </li>
             <li className="header-right-signin-hover-menu-item">
-              <Link to="#">
+              <Link to="/support">
                 <i className="fas fa-question-circle"></i>{" "}
                 <span>Center Messages</span>
               </Link>
