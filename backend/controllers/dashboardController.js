@@ -2,6 +2,7 @@ import expressAsyncHander from "express-async-handler";
 import Category from "../models/categoryModel.js";
 import Order from "../models/orderModel.js";
 import User from "../models/userModel.js";
+import Product from "../models/productModel.js";
 
 export const getDashboardItems = expressAsyncHander(async (req, res) => {
   const orders = await Order.aggregate([
@@ -42,11 +43,12 @@ export const getDashboardItems = expressAsyncHander(async (req, res) => {
   const dailyOrders = await Order.aggregate([
     {
       $group: {
-        _id: { $dateToString: { format: "%d/%m/%Y", date: "$createdAt" } },
+        _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
         orders: { $sum: 1 },
         sales: { $sum: "$totalPrice" },
       },
     },
+    { $sort: { _id: 1 } },
   ]);
   const categories = await Category.aggregate([
     {
@@ -56,9 +58,15 @@ export const getDashboardItems = expressAsyncHander(async (req, res) => {
       },
     },
   ]);
-  res
-    .status(200)
-    .send({
-      dashboardItems: { users, admins, sellers, orders, dailyOrders, categories },
-    });
+  const productsCategories = await Product.aggregate([
+    {
+      $group: {
+        _id: "$category",
+        numProducts: { $sum: 1 },
+      },
+    },
+  ]);
+  res.status(200).send({
+    dashboardItems: { users, admins, sellers, orders, dailyOrders, categories, productsCategories },
+  });
 });

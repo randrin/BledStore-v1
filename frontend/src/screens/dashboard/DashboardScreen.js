@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import LoadingBox from "../../components/LoadingBox";
 import MessageBox from "../../components/MessageBox";
 import { getDashboardItems } from "../../redux/actions/dashboardActions";
+import Chart from "react-google-charts";
 
 const DashboardScreen = () => {
   const dispatch = useDispatch();
 
-  const dashboardItems = useSelector((state) => state.dashboardItems);
-  const { loading, error, items } = dashboardItems;
+  const dashboardItemss = useSelector((state) => state.dashboardItems);
+  const { loading, error, items } = dashboardItemss;
 
   useEffect(() => {
     dispatch(getDashboardItems());
@@ -18,8 +19,6 @@ const DashboardScreen = () => {
   const createHandler = () => {
     window.location.href = `/create/category`;
   };
-
-  console.log(items);
 
   return (
     <div className="bledstore-dashboard-wrapper">
@@ -32,6 +31,122 @@ const DashboardScreen = () => {
         >
           Create Category <i className="fas fa-angle-double-right"></i>
         </button>
+      </div>
+      <div className="row bledstore-dashboard-container">
+        {items?.dashboardItems?.dailyOrders?.length === 0 ? (
+          <MessageBox>No Sale</MessageBox>
+        ) : (
+          <div className="chart">
+            {items?.dashboardItems?.dailyOrders && (
+              <Chart
+                height="400px"
+                chartType="AreaChart"
+                loader={<div>Loading Chart</div>}
+                data={[
+                  ["Date", "Sales"],
+                  ...items.dashboardItems.dailyOrders.map((x) => [
+                    x._id,
+                    x.sales,
+                  ]),
+                ]}
+                options={{
+                  title: "Company Performance",
+                  hAxis: {
+                    title: "Period (yyyy-mm-dd)",
+                    titleTextStyle: { color: "#f0c040" },
+                  },
+                  vAxis: {
+                    title: "Sales (€)",
+                    titleTextStyle: { color: "#f0c040" },
+                    minValue: 0,
+                  },
+                  // For the legend to fit, we make the chart area smaller
+                  lineWidth: 3,
+                }}
+              />
+            )}
+          </div>
+        )}
+        {items?.dashboardItems?.dailyOrders?.length === 0 ? (
+          <MessageBox>No Sale</MessageBox>
+        ) : (
+          <div className="chart">
+            {items?.dashboardItems?.dailyOrders && (
+              <Chart
+                height="400px"
+                chartType="AreaChart"
+                loader={<div>Loading Chart</div>}
+                data={[
+                  ["Date", "Sales"],
+                  ...items.dashboardItems.dailyOrders.map((x) => [
+                    x._id,
+                    x.sales,
+                  ]),
+                ]}
+                options={{
+                  title: "Company Performance",
+                  hAxis: {
+                    title: "Period (yyyy-mm-dd)",
+                    titleTextStyle: { color: "#f0c040" },
+                  },
+                  vAxis: {
+                    title: "Sales (€)",
+                    titleTextStyle: { color: "#f0c040" },
+                    minValue: 0,
+                  },
+                  // For the legend to fit, we make the chart area smaller
+                  lineWidth: 3,
+                }}
+              />
+            )}
+          </div>
+        )}
+        {items?.dashboardItems?.productsCategories?.length === 0 ? (
+          <MessageBox>No Categories</MessageBox>
+        ) : (
+          <div className="chart">
+            {items?.dashboardItems?.productsCategories && (
+              <Chart
+                height="400px"
+                chartType="PieChart"
+                loader={<div>Loading Chart</div>}
+                data={[
+                  ["Category", "Products"],
+                  ...items.dashboardItems.productsCategories.map((x) => [
+                    x._id,
+                    x.numProducts,
+                  ]),
+                ]}
+                options={{
+                  title: "Products by Categories Sold",
+                }}
+              />
+            )}
+          </div>
+        )}
+        {items?.dashboardItems?.productsCategories?.length === 0 ? (
+          <MessageBox>No Categories</MessageBox>
+        ) : (
+          <div className="chart">
+            {items?.dashboardItems?.productsCategories && (
+              <Chart
+                height="400px"
+                chartType="PieChart"
+                loader={<div>Loading Chart</div>}
+                data={[
+                  ["Category", "Products"],
+                  ...items.dashboardItems.productsCategories.map((x) => [
+                    x._id,
+                    x.numProducts,
+                  ]),
+                ]}
+                options={{
+                  title: "Products by Categories Sold",
+                }}
+              />
+            )}
+          </div>
+        )}
       </div>
       {loading ? (
         <LoadingBox></LoadingBox>

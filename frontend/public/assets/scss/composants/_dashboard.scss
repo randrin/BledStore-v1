@@ -45,6 +45,7 @@
 
     .bledstore-dashboard-container {
         justify-content: center;
+        margin: 0px 0px 25px 0px;
 
         .bledstore-dashboard-items {
             @include small() {
