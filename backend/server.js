@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
 import path from "path";
-import socketIO from "socket.io";
+import Server from "socket.io";
 import http from "http";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -79,7 +79,7 @@ app.get("*", (req, res) =>
 // });
 
 const httpServer = http.Server(app);
-const socketio = socketIO(httpServer);
+const socketio = new Server(httpServer, {cors: {origin: "*"}});
 const users = [];
 socketio.on("connection", (socket) => {
   socket.on("disconnect", () => {
@@ -104,12 +104,13 @@ socketio.on("connection", (socket) => {
       socketId: socket.id,
       messages: [],
     };
+
     const existUser = users.find((x) => x._id === updatedUser._id);
     if (existUser) {
       existUser.socketId = socket.id;
       existUser.online = true;
     } else {
-      users.push(updatedUser);
+      users.push(updatedUser); 
     }
     console.log("Online", user.name);
     console.log(users);
@@ -144,13 +145,14 @@ socketio.on("connection", (socket) => {
         user.messages.push(message);
       } else {
         socketio.to(socket.id).emit("message", {
-          name: "Admin",
+          name: "Support BledStore",
           body: "Sorry. I am not online right now",
         });
       }
     }
   });
 });
+
 httpServer.listen(config.PORT, () => {
   console.log(`Server started at http://localhost:${config.PORT}`);
 });

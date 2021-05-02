@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect, useRef } from "react";
 import socketIOClient from "socket.io-client";
+import { useSelector } from "react-redux";
 import MessageBox from "../../../components/MessageBox";
 
 let allUsers = [];
@@ -10,18 +10,15 @@ const ENDPOINT =
   window.location.host.indexOf("localhost") >= 0
     ? "http://127.0.0.1:8000"
     : window.location.host;
-
-const SupportScreen = () => {
-  const [socket, setSocket] = useState([]);
-  const [users, setUsers] = useState([]);
+export default function SupportScreen() {
   const [selectedUser, setSelectedUser] = useState({});
-  const [messages, setMessages] = useState([]);
-  const [messageBody, setMessageBody] = useState("");
+  const [socket, setSocket] = useState(null);
   const uiMessagesRef = useRef(null);
-
+  const [messageBody, setMessageBody] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [users, setUsers] = useState([]);
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
-
   useEffect(() => {
     if (uiMessagesRef.current) {
       uiMessagesRef.current.scrollBy({
@@ -68,13 +65,13 @@ const SupportScreen = () => {
         allUsers = updatedUsers;
         setUsers(allUsers);
       });
+
       sk.on("selectUser", (user) => {
         allMessages = user.messages;
         setMessages(allMessages);
       });
     }
-  }, [messages, socket, userInfo._id, userInfo.isAdmin, userInfo.name, users]);
-
+  }, [messages, socket, users]);
   const selectUser = (user) => {
     allSelectedUser = user;
     setSelectedUser(allSelectedUser);
@@ -120,24 +117,26 @@ const SupportScreen = () => {
           <MessageBox>No Online User Found</MessageBox>
         )}
         <ul>
-          {users.filter((x) => x._id !== userInfo._id)
+          {users
+            .filter((x) => x._id !== userInfo._id)
             .map((user) => (
               <li
                 key={user._id}
-                className={user._id === selectedUser._id ? "selected" : ""}
+                className={user._id === selectedUser._id ? "  selected" : "  "}
               >
                 <button
                   className="block"
                   type="button"
+                  href="#"
                   onClick={() => selectUser(user)}
                 >
                   {user.name}
                 </button>
                 <span
                   className={
-                    user.unread ? "unread" : user.onlone ? "Online" : "Offline"
+                    user.unread ? "unread" : user.online ? "online" : "offline"
                   }
-                ></span>
+                />
               </li>
             ))}
         </ul>
@@ -175,5 +174,3 @@ const SupportScreen = () => {
     </div>
   );
 };
-
-export default SupportScreen;

@@ -141,7 +141,7 @@ button.primary {
   &:hover {
     border-color: var(--bledstore-primary);
     color: var(--bledstore-white);
-}
+  }
 }
 
 .bledstore-button.block,
@@ -584,6 +584,7 @@ a {
   0% {
     background-color: var(--bledstore-primary);
   }
+
   100% {
     background-color: #f08040;
   }
