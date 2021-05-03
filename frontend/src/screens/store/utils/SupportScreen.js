@@ -19,6 +19,9 @@ export default function SupportScreen() {
   const [users, setUsers] = useState([]);
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
+
+  console.log("messages: ", messages);
+
   useEffect(() => {
     if (uiMessagesRef.current) {
       uiMessagesRef.current.scrollBy({
@@ -90,24 +93,20 @@ export default function SupportScreen() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!messageBody.trim()) {
-      alert("Error. Please type message.");
-    } else {
-      allMessages = [
-        ...allMessages,
-        { body: messageBody, name: userInfo.name },
-      ];
-      setMessages(allMessages);
-      setMessageBody("");
-      setTimeout(() => {
-        socket.emit("onMessage", {
-          body: messageBody,
-          name: userInfo.name,
-          isAdmin: userInfo.isAdmin,
-          _id: selectedUser._id,
-        });
-      }, 1000);
-    }
+    allMessages = [
+      ...allMessages,
+      { body: messageBody, name: userInfo.name, isAdmin: true },
+    ];
+    setMessages(allMessages);
+    setMessageBody("");
+    setTimeout(() => {
+      socket.emit("onMessage", {
+        body: messageBody,
+        name: userInfo.name,
+        isAdmin: userInfo.isAdmin,
+        _id: selectedUser._id,
+      });
+    }, 1000);
   };
 
   return (
@@ -145,27 +144,50 @@ export default function SupportScreen() {
         {!selectedUser._id ? (
           <MessageBox>Select a user to start chat</MessageBox>
         ) : (
-          <div>
+          <div className="support-messages-container">
             <div className="row">
               <strong>Chat with {selectedUser.name} </strong>
             </div>
-            <ul ref={uiMessagesRef}>
+            <hr />
+            <ul ref={uiMessagesRef} className="support-messages-content">
               {messages.length === 0 && <li>No message.</li>}
               {messages.map((msg, index) => (
-                <li key={index}>
-                  <strong>{`${msg.name}: `}</strong> {msg.body}
+                <li
+                  key={index}
+                  className={`${
+                    msg.isAdmin ? "message-admin" : "message-user"
+                  }`}
+                >
+                  <div
+                    className={`${
+                      msg.isAdmin
+                        ? "message-admin-content"
+                        : "message-user-content"
+                    }`}
+                  >
+                    <strong>{msg.name}</strong>
+                    <span>{msg.body}</span>
+                  </div>
                 </li>
               ))}
             </ul>
-            <div>
+            <div className="support-messages-footer">
               <form onSubmit={submitHandler} className="row">
                 <input
                   value={messageBody}
                   onChange={(e) => setMessageBody(e.target.value)}
                   type="text"
-                  placeholder="type message"
+                  placeholder="type your message"
                 />
-                <button type="submit">Send</button>
+                <button
+                  type="submit"
+                  disabled={!!messageBody.length ? false : true}
+                  className={`chatbox-btn-submit ${
+                    !!messageBody.length ? "opacity-one" : "opacity-half"
+                  }`}
+                >
+                  Send <i className="far fa-paper-plane"></i>
+                </button>
               </form>
             </div>
           </div>
@@ -173,4 +195,4 @@ export default function SupportScreen() {
       </div>
     </div>
   );
-};
+}

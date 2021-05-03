@@ -14,6 +14,7 @@ const ChatBox = (props) => {
   const uiMessagesRef = useRef(null);
   const [messages, setMessages] = useState([
     {
+      type: "admin",
       name: "Support BledStore",
       body: "Hello There, Please ask your question ....",
     },
@@ -34,7 +35,10 @@ const ChatBox = (props) => {
         isAdmin: userInfo.isAdmin,
       });
       socket.on("message", (data) => {
-        setMessages([...messages, { body: data.body, name: data.name }]);
+        setMessages([
+          ...messages,
+          { body: data.body, name: data.name, type: "admin" },
+        ]);
       });
     }
   }, [messages, isOpen, socket]);
@@ -51,25 +55,21 @@ const ChatBox = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!messageBody.trim()) {
-      alert("Error. Please type message.");
-    } else {
-      setMessages([...messages, { body: messageBody, name: userInfo.name }]);
-      setMessageBody("");
-      setTimeout(() => {
-        socket.emit("onMessage", {
-          body: messageBody,
-          name: userInfo.name,
-          isAdmin: userInfo.isAdmin,
-          _id: userInfo._id,
-        });
-      }, 1000);
-    }
+    setMessages([...messages, { body: messageBody, name: userInfo.name }]);
+    setMessageBody("");
+    setTimeout(() => {
+      socket.emit("onMessage", {
+        body: messageBody,
+        name: userInfo.name,
+        isAdmin: userInfo.isAdmin,
+        _id: userInfo._id,
+      });
+    }, 1000);
   };
   return (
     <div className="chatbox-wrapper">
       {!isOpen ? (
-        <button type="button" onClick={supportHandler}>
+        <button type="button" onClick={supportHandler} className="chatbox-btn">
           <i className="far fa-comment-dots" />
         </button>
       ) : (
@@ -86,8 +86,24 @@ const ChatBox = (props) => {
           </div>
           <ul ref={uiMessagesRef} className="card-body-messages">
             {messages.map((msg, index) => (
-              <li key={index}>
-                <strong>{`${msg.name}: `}</strong> {msg.body}
+              <li
+                key={index}
+                className={`${
+                  msg.type === "admin"
+                    ? "message-admin-container"
+                    : "message-user-container"
+                }`}
+              >
+                <div
+                  className={`${
+                    msg.type === "admin"
+                      ? "message-admin-content"
+                      : "message-user-content"
+                  }`}
+                >
+                  <strong>{msg.name}</strong>
+                  <span>{msg.body}</span>
+                </div>
               </li>
             ))}
           </ul>
@@ -97,9 +113,15 @@ const ChatBox = (props) => {
                 value={messageBody}
                 onChange={(e) => setMessageBody(e.target.value)}
                 type="text"
-                placeholder="type message"
+                placeholder="Type your message"
               />
-              <button type="submit" className="chatbox-btn-submit">
+              <button
+                type="submit"
+                className={`chatbox-btn-submit ${
+                  !!messageBody.length ? "opacity-one" : "opacity-half"
+                }`}
+                disabled={!!messageBody.length ? false : true}
+              >
                 Send <i className="far fa-paper-plane"></i>
               </button>
             </form>

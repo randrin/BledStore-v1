@@ -1,9 +1,14 @@
 .chatbox-wrapper {
     color: var(--bledstore-black);
     position: fixed;
-    right: 1rem;
-    bottom: 1rem;
+    right: 2.2rem;
+    bottom: 5em;
     z-index: 1000;
+    width: 600px;
+
+    .chatbox-btn {
+        float: right;
+    }
 
     .card-body {
         .card-body-container {
@@ -25,6 +30,83 @@
                 background: var(--bledstore-primary);
             }
         }
+
+        .card-body-messages {
+            padding: 1rem;
+            height: 600px;
+
+            .message-admin-container {
+                float: right;
+                width: 75%;
+
+                .message-admin-content {
+                    display: grid;
+                    text-align: right;
+                    background: var(--bledstore-warning);
+                    border-radius: 5px;
+                    padding: 1rem;
+                    width: fit-content;
+                    float: right;
+
+                    span {
+                        color: var(--bledstore-white);
+                        font-size: 16px;
+                        letter-spacing: 0.8px;
+                        line-height: 24px;
+                    }
+                }
+            }
+
+            .message-user-container {
+                float: left;
+                width: 75%;
+
+                .message-user-content {
+                    display: grid;
+                    text-align: left;
+                    background: var(--bledstore-primary);
+                    border-radius: 5px;
+                    padding: 1rem;
+                    width: fit-content;
+
+                    strong {
+                        color: var(--bledstore-white);
+                    }
+
+                    span {
+                        color: var(--bledstore-warning);
+                        font-size: 16px;
+                        letter-spacing: 0.8px;
+                        line-height: 24px;
+                    }
+                }
+            }
+
+
+            .message-admin {
+                text-align: right;
+            }
+
+            .message-user {
+                text-align: left;
+            }
+        }
+
+        .card-body-footer {
+            .opacity-one {
+                opacity: 1;
+            }
+
+            .opacity-half {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+
+            .chatbox-btn-submit {
+                background: var(--bledstore-primary);
+                color: var(--bledstore-white);
+            }
+        }
     }
 
     ul {
@@ -41,71 +123,138 @@
     }
 }
 
+.support-wrapper {
+    top: 15px;
+    position: relative;
 
-.support-users li {
-    background-color: var(--bledstore-white-smoke);
-}
+    .support-users {
 
-.support-users {
-    background: #f0f0f0;
-    height: 100%;
-}
+        background: #f0f0f0;
+        height: 100%;
 
-.support-users button {
-    background-color: transparent;
-    border: none;
-    text-align: left;
-}
+        li {
+            background-color: var(--bledstore-white-smoke);
+            margin: 0;
+            border-bottom: 0.1rem #c0c0c0 solid;
 
-.support-users li {
-    margin: 0;
-    background-color: #f0f0f0;
-    border-bottom: 0.1rem #c0c0c0 solid;
-}
+            button {
+                background-color: transparent;
+                border: none;
+                text-align: left;
+            }
 
-.support-users li:hover {
-    background-color: #f0f0f0;
-}
+            span {
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                position: absolute;
+                margin-left: -25px;
+                margin-top: 10px;
+            }
 
-.support-users li.selected {
-    background-color: #c0c0c0;
-}
+            .offline {
+                background-color: var(--bledstore-secondary);
+            }
 
-.support-messages {
-    padding: 1rem;
-}
+            .online {
+                background-color: var(--bledstore-success);
+            }
 
-.support-messages input {
-    width: calc(100% - 9rem);
-}
+            .unread {
+                background-color: var(--bledstore-tomato);
+            }
 
-.support-messages ul {
-    height: calc(100vh - 18rem);
-    max-height: calc(100vh - 18rem);
-    overflow: scroll;
-}
+            &:hover {
+                background-color: #f0f0f0;
+            }
 
-.support-messages li {
-    margin-bottom: 1rem;
-}
+            &.selected {
+                background-color: #c0c0c0;
+            }
+        }
+    }
 
-.support-users span {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    position: absolute;
-    margin-left: -25px;
-    margin-top: 10px;
-}
+    .support-messages {
+        padding: 1rem;
 
-.support-users .offline {
-    background-color: #808080;
-}
+        .support-messages-container {
+            .support-messages-content {
+                height: calc(100vh - 18rem);
+                max-height: calc(100vh - 18rem);
+                overflow: scroll;
+                padding: 2rem;
 
-.support-users .online {
-    background-color: #20a020;
-}
+                .message-admin {
+                    margin-bottom: 1rem;
+                    float: right;
+                    width: 75%;
 
-.support-users .unread {
-    background-color: #f02020;
+                    .message-admin-content {
+                        display: grid;
+                        text-align: right;
+                        background: var(--bledstore-warning);
+                        border-radius: 5px;
+                        padding: 1rem;
+                        width: fit-content;
+                        float: right;
+
+                        span {
+                            color: var(--bledstore-white);
+                            font-size: 16px;
+                            letter-spacing: 0.8px;
+                            line-height: 24px;
+                        }
+                    }
+
+                }
+
+                .message-user {
+                    margin-bottom: 1rem;
+                    float: left;
+                    width: 75%;
+
+                    .message-user-content {
+                        display: grid;
+                        text-align: left;
+                        background: var(--bledstore-primary);
+                        border-radius: 5px;
+                        padding: 1rem;
+                        width: fit-content;
+
+                        strong {
+                            color: var(--bledstore-white);
+                        }
+
+                        span {
+                            color: var(--bledstore-warning);
+                            font-size: 16px;
+                            letter-spacing: 0.8px;
+                            line-height: 24px;
+                        }
+                    }
+
+                }
+            }
+
+            .support-messages-footer {
+                input {
+                    width: calc(100% - 11rem);
+                }
+
+                .opacity-one {
+                    opacity: 1;
+                }
+
+                .opacity-half {
+                    opacity: 0.5;
+                    pointer-events: none;
+                }
+
+                .chatbox-btn-submit {
+                    background: var(--bledstore-primary);
+                    color: var(--bledstore-white);
+                }
+            }
+        }
+    }
 }
