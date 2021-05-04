@@ -41,6 +41,9 @@ import CookiesPoliciesPage from "../pages/CookiesPoliciesPage";
 import StepsShopPage from "../pages/StepsShopPage";
 import ForgotPasswordScreen from "../screens/store/auth/ForgotPasswordScreen";
 import SupportScreen from "../screens/store/utils/SupportScreen";
+import BrandListScreen from "../screens/dashboard/brands/BrandListScreen";
+import BrandCreateScreen from "../screens/dashboard/brands/BrandCreateScreen";
+import BrandEditScreen from "../screens/dashboard/brands/BrandEditScreen";
 
 const Routes = () => (
   <Switch>
@@ -49,6 +52,7 @@ const Routes = () => (
     <Route exact path="/product/:productId" strict component={ProductScreen} />
     <Route exact path="/product/:productId/edit" strict component={ProductEditScreen} />
     <AdminRoute exact path="/category/:categoryId/edit" strict component={CategoryEditScreen} />
+    <AdminRoute exact path="/brand/:brandId/edit" strict component={BrandEditScreen} />
     <Route exact path="/cart/:productId?" strict component={CartScreen} />
     <Route exact path="/signin" strict component={SigninScreen} />
     <Route exact path="/register" strict component={RegisterScreen} />
@@ -63,10 +67,12 @@ const Routes = () => (
     <PrivateRoute exact path="/map" strict component={MapScreen} />
     <AdminRoute exact path="/productlist" strict component={ProductListScreen} />
     <AdminRoute exact path="/categorylist" strict component={CategoryListScreen} />
+    <AdminRoute exact path="/brandlist" strict component={BrandListScreen} />
     <AdminRoute exact path="/productlist/page/:pageNumber/size/:pageSize" strict component={ProductListScreen} />
     <SellerRoute exact path="/productlist/seller" strict component={ProductListScreen} />
     <SellerOrAdminRoute exact path="/create/product" strict component={ProductCreateScreen} />
     <AdminRoute exact path="/create/category" strict component={CategoryCreateScreen} />
+    <AdminRoute exact path="/create/brand" strict component={BrandCreateScreen} />
     <AdminRoute exact path="/orderlist" strict component={OrderListScreen} />
     <AdminRoute exact path="/userlist" strict component={UserListScreen} /> 
     <SellerRoute exact path="/orderlist/seller" strict component={OrderListScreen} /> 

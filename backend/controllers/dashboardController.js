@@ -3,6 +3,7 @@ import Category from "../models/categoryModel.js";
 import Order from "../models/orderModel.js";
 import User from "../models/userModel.js";
 import Product from "../models/productModel.js";
+import Brand from "../models/brandModel.js";
 
 export const getDashboardItems = expressAsyncHander(async (req, res) => {
   const orders = await Order.aggregate([
@@ -66,7 +67,15 @@ export const getDashboardItems = expressAsyncHander(async (req, res) => {
       },
     },
   ]);
+  const brands = await Brand.aggregate([
+    {
+      $group: {
+        _id: null,
+        count: { $sum: 1 },
+      },
+    },
+  ]);
   res.status(200).send({
-    dashboardItems: { users, admins, sellers, orders, dailyOrders, categories, productsCategories },
+    dashboardItems: { users, admins, sellers, orders, dailyOrders, categories, productsCategories, brands },
   });
 });

@@ -3,77 +3,72 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import {
-  listCagetories,
-  deleteCategory,
-  activationCategory,
-} from "../../../redux/actions/categoryActions";
-import {
-  CATEGORY_ACTIVATION_RESET,
-  CATEGORY_DELETE_RESET,
-} from "../../../redux/constants/categoryConstants";
+  activationBrand,
+  deleteBrand,
+  listBrands,
+} from "../../../redux/actions/brandActions";
+import { BRAND_ACTIVATION_RESET, BRAND_DELETE_RESET } from "../../../redux/constants/brandConstants";
 
-const CategoryListScreen = (props) => {
+const BrandListScreen = (props) => {
   const dispatch = useDispatch();
 
   const createHandler = () => {
-    window.location.href = `/create/category`;
+    window.location.href = `/create/brand`;
   };
 
-  const categoryList = useSelector((state) => state.categoriesList);
-  const { loading, error, categories } = categoryList;
+  const brandList = useSelector((state) => state.brandsList);
+  const { loading, error, brands } = brandList;
 
-  const categoryDelete = useSelector((state) => state.categoryDelete);
+  const brandDelete = useSelector((state) => state.brandDelete);
   const {
     loading: loadingDelete,
     error: errorDelete,
     success: successDelete,
-  } = categoryDelete;
+  } = brandDelete;
 
-  const categoryActivation = useSelector((state) => state.categoryActivation);
+  const brandActivation = useSelector((state) => state.brandActivation);
   const {
     loading: loadingActivation,
     error: errorActivation,
     success: successActivation,
-  } = categoryActivation;
+  } = brandActivation;
 
   useEffect(() => {
     if (successDelete) {
-      dispatch({ type: CATEGORY_DELETE_RESET });
+      dispatch({ type: BRAND_DELETE_RESET });
     }
     if (successActivation) {
-      dispatch({ type: CATEGORY_ACTIVATION_RESET });
+      dispatch({ type: BRAND_ACTIVATION_RESET });
     }
-    dispatch(listCagetories());
+    dispatch(listBrands());
   }, [dispatch, successDelete, successActivation]);
 
-  const deleteHandler = (category) => {
-    if (window.confirm("Are you sure to delete this category?")) {
-      dispatch(deleteCategory(category._id));
+  const deleteHandler = (brand) => {
+    if (window.confirm("Are you sure to delete this brand?")) {
+      dispatch(deleteBrand(brand._id));
     }
   };
 
-  const activateHandler = (category) => {
+  const activateHandler = (brand) => {
     if (
       window.confirm(
-        `Are you sure to ${
-          category.active ? "disabled" : "activate"
-        } this category?`
+        `Are you sure to ${brand.active ? "disabled" : "activate"} this brand?`
       )
     ) {
-      dispatch(activationCategory(category._id));
+      dispatch(activationBrand(brand._id));
     }
   };
 
   return (
     <div className="bledstore-dashboard-wrapper">
       <div className="row">
-        <h1>All Categories Store</h1>
+        <h1>All Brands Store</h1>
         <button
           type="button"
           className="bledstore-dashboard-btn primary"
           onClick={createHandler}
         >
-          Create Category <i className="fas fa-angle-double-right"></i>
+          Create Brand <i className="fas fa-angle-double-right"></i>
         </button>
       </div>
       {loadingDelete && <LoadingBox></LoadingBox>}
@@ -90,26 +85,22 @@ const CategoryListScreen = (props) => {
         <table className="table">
           <thead>
             <tr>
-              <th>ID CATEGORY</th>
+              <th>ID Brands</th>
               <th>NAME</th>
-              <th className="table-text-center">ICON</th>
               <th className="table-text-center">IMAGE</th>
               <th className="table-text-center">IS ACTIVE?</th>
               <th>ACTIONS</th>
             </tr>
           </thead>
           <tbody>
-            {categories.map((category) => (
-              <tr key={category._id}>
-                <td>{category._id}</td>
-                <td>{category.name}</td>
-                <td className="bledstore-dashboard-table-item">
-                  <i className={category.icon}></i>
-                </td>
+            {brands.map((brand) => (
+              <tr key={brand._id}>
+                <td>{brand._id}</td>
+                <td>{brand.name}</td>
                 <td className="bledstore-dashboard-table-item">
                   <img
-                    src={category.image}
-                    alt={category.name}
+                    src={brand.image}
+                    alt={brand.name}
                     width="50"
                     height="50"
                   />
@@ -117,7 +108,7 @@ const CategoryListScreen = (props) => {
                 <td className="bledstore-dashboard-table-item">
                   <i
                     className={`fas fa-power-off ${
-                      category.active ? "success" : "danger"
+                      brand.active ? "success" : "danger"
                     }`}
                   ></i>
                 </td>
@@ -125,20 +116,20 @@ const CategoryListScreen = (props) => {
                   <button
                     type="button"
                     className="small"
-                    onClick={() => activateHandler(category)}
+                    onClick={() => activateHandler(brand)}
                   >
                     <i
                       className={`fas fa-power-off ${
-                        category.active ? "danger" : "success"
+                        brand.active ? "danger" : "success"
                       }`}
                     ></i>{" "}
-                    {category.active ? "Disactivate" : "Activate"}
+                    {brand.active ? "Disactivate" : "Activate"}
                   </button>
                   <button
                     type="button"
                     className="small"
                     onClick={() => {
-                      props.history.push(`/category/${category._id}/edit`);
+                      props.history.push(`/brand/${brand._id}/edit`);
                     }}
                   >
                     <i className="far fa-edit success"></i> Edit
@@ -146,7 +137,7 @@ const CategoryListScreen = (props) => {
                   <button
                     type="button"
                     className="small"
-                    onClick={() => deleteHandler(category)}
+                    onClick={() => deleteHandler(brand)}
                   >
                     <i className="far fa-window-close danger"></i> Delete
                   </button>
@@ -160,4 +151,4 @@ const CategoryListScreen = (props) => {
   );
 };
 
-export default CategoryListScreen;
+export default BrandListScreen;

@@ -189,7 +189,7 @@ const DashboardScreen = () => {
             </Link>
             <Link to="/categorylist" className="bledstore-dashboard-item">
               <div className="bledstore-dashboard-item-icon">
-                <i className="fab fa-delicious"></i>
+                <i className="fas fa-shapes"></i>
               </div>
               <div className="bledstore-dashboard-item-content">
                 <h2 className="bledstore-dashboard-item-content-title">
@@ -203,18 +203,18 @@ const DashboardScreen = () => {
                 </p>
               </div>
             </Link>
-            <Link to="/orderlist" className="bledstore-dashboard-item">
+            <Link to="/brandlist" className="bledstore-dashboard-item">
               <div className="bledstore-dashboard-item-icon">
                 <i className="fab fa-delicious"></i>
               </div>
               <div className="bledstore-dashboard-item-content">
                 <h2 className="bledstore-dashboard-item-content-title">
-                  {items.dashboardItems?.categories[0]
-                    ? items.dashboardItems?.categories[0]?.count
+                  {items.dashboardItems?.brands[0]
+                    ? items.dashboardItems?.brands[0]?.count
                     : 0}
                 </h2>
                 <p className="bledstore-dashboard-item-content-subtitle">
-                  Categories products present in Aurelando Shop (Activae and/or
+                  Brands present in Aurelando Shop (Activae and/or
                   disactive ...)
                 </p>
               </div>

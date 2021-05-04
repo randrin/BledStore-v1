@@ -436,6 +436,9 @@ img.large {
 .table {
   width: 100%;
   border-collapse: collapse;
+  .table-text-center {
+    text-align: center;
+  }
 }
 
 .table tbody tr:nth-of-type(odd) {

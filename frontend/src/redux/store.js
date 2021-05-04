@@ -1,5 +1,13 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
+import {
+  brandActivationReducer,
+  brandCreateReducer,
+  brandDeleteReducer,
+  brandDetailsReducer,
+  brandsReducer,
+  brandUpdateReducer,
+} from "./reducers/brandsReducer";
 import { cartReducer } from "./reducers/cartsReducer";
 import {
   categoriesReducer,
@@ -104,6 +112,12 @@ const reducer = combineReducers({
   categoryDetails: categoryDetailsReducer,
   reviews: reviewsReducer,
   sellerDetails: sellerDetailsReducer,
+  brandsList: brandsReducer,
+  brandCreate: brandCreateReducer,
+  brandDelete: brandDeleteReducer,
+  brandActivation: brandActivationReducer,
+  brandUpdate: brandUpdateReducer,
+  brandDetails: brandDetailsReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

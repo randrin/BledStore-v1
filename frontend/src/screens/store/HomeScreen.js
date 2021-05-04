@@ -17,7 +17,6 @@ import MenuUser from "../../components/Menu/MenuUser";
 import HelmetSite from "../../components/HelmetSite";
 import data from "../../data";
 import PopupModal from "../../components/Modal/PopupModal";
-import ChatBox from "../../components/ChatBox";
 import Brand from "../../components/Brand";
 
 const HomeScreen = () => {
@@ -173,7 +172,6 @@ const HomeScreen = () => {
         <Brand />
         <PopupModal />
       </main>
-      {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
     </>
   );
 };

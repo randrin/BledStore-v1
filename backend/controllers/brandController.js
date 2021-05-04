@@ -1,5 +1,5 @@
 import expressAsyncHander from "express-async-handler";
-import Brand from "../models/brandModel";
+import Brand from "../models/brandModel.js";
 
 export const getListBrands = expressAsyncHander(async (req, res) => {
   const listBrands = await Brand.find({});
@@ -34,7 +34,7 @@ export const getBrandById = expressAsyncHander(async (req, res) => {
 export const updateBrand = expressAsyncHander(async (req, res) => {
   const brand = await Brand.findById(req.params.brandId);
   if (brand) {
-    brand.name = req.body.brand;
+    brand.name = req.body.name;
     brand.image = req.body.image;
     const brandUpdated = await brand.save();
     if (brandUpdated) {
