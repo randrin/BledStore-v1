@@ -101,7 +101,7 @@ const BrandListScreen = (props) => {
                   <img
                     src={brand.image}
                     alt={brand.name}
-                    width="50"
+                    width="100"
                     height="50"
                   />
                 </td>

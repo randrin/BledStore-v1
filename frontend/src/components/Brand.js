@@ -42,7 +42,7 @@ const Brand = () => {
                   <img
                     src={brand.image}
                     alt={brand.name}
-                    style={{ width: "100%" , height: "150px" }}
+                    style={{ width: "100%" , height: "50px" }}
                   />
                 </div>
               </div>
