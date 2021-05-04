@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./carousel.css";
 
 const Carousel = (props) => {
   const { children, show } = props;
@@ -58,7 +57,7 @@ const Carousel = (props) => {
         {/* You can alwas change the content of the button to other things */}
         {currentIndex > 0 && (
           <button onClick={prev} className="left-arrow">
-            &lt;
+            <i className="fas fa-chevron-left"></i>
           </button>
         )}
         <div
@@ -78,7 +77,7 @@ const Carousel = (props) => {
         {/* You can alwas change the content of the button to other things */}
         {currentIndex < length - show && (
           <button onClick={next} className="right-arrow">
-            &gt;
+            <i className="fas fa-chevron-right"></i>
           </button>
         )}
       </div>
