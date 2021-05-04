@@ -18,6 +18,7 @@ import HelmetSite from "../../components/HelmetSite";
 import data from "../../data";
 import PopupModal from "../../components/Modal/PopupModal";
 import ChatBox from "../../components/ChatBox";
+import Brand from "../../components/Brand";
 
 const HomeScreen = () => {
   const pageSize = 10;
@@ -169,6 +170,7 @@ const HomeScreen = () => {
         )}
         <Services />
         <NewsLetters />
+        <Brand />
         <PopupModal />
       </main>
       {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}

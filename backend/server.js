@@ -18,6 +18,7 @@ import productRouter from "./routers/productRouter.js";
 import orderRouter from "./routers/orderRouter.js";
 import uploadRouter from "./routers/uploadRouter.js";
 import categoryRouter from "./routers/categoryRouter.js";
+import brandRouter from "./routers/brandRouter.js";
 import reviewRouter from "./routers/reviewRouter.js";
 
 const app = express();
@@ -43,6 +44,7 @@ app.use("/v1/api/dashboards", dashboardRouter);
 app.use("/v1/api/users", userRouter);
 app.use("/v1/api/products", productRouter);
 app.use("/v1/api/categories", categoryRouter);
+app.use("/v1/api/brands", brandRouter);
 app.use("/v1/api/orders", orderRouter);
 app.use("/v1/api/reviews", reviewRouter);
 app.use("/v1/api/uploads", uploadRouter);
