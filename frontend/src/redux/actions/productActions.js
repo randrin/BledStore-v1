@@ -26,6 +26,7 @@ export const listProducts = ({
   seller = "",
   name = "",
   category = "",
+  brand = "",
   min = 0,
   max = 0,
   rating = 0,
@@ -36,7 +37,7 @@ export const listProducts = ({
   });
   try {
     const response = await axios({
-      url: `/v1/api/products?pageNumber=${pageNumber}&pageSize=${pageSize}&seller=${seller}&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}&order=${order}`,
+      url: `/v1/api/products?pageNumber=${pageNumber}&pageSize=${pageSize}&seller=${seller}&name=${name}&category=${category}&brand=${brand}&min=${min}&max=${max}&rating=${rating}&order=${order}`,
       method: "GET",
     });
     if (response.statusText !== "OK") {

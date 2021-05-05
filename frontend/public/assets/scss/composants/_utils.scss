@@ -827,6 +827,9 @@
 
 //Messages Box
 .message-box-wrapper {
+    top: 10px;
+    position: relative;
+
     .message-box-alert {
         top: -1px;
         position: relative;

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { listBrands } from "../redux/actions/brandActions";
 import LoadingBox from "./LoadingBox";
 import MessageBox from "./MessageBox";
@@ -38,13 +39,15 @@ const Brand = () => {
                 }}
                 key={index}
               >
-                <div style={{ padding: 8 }}>
-                  <img
-                    src={brand.image}
-                    alt={brand.name}
-                    style={{ width: "100%" , height: "50px" }}
-                  />
-                </div>
+                <Link to={`/search/brand/${brand.name}`}>
+                  <div style={{ padding: 8 }}>
+                    <img
+                      src={brand.image}
+                      alt={brand.name}
+                      style={{ width: "100%", height: "50px" }}
+                    />
+                  </div>
+                </Link>
               </div>
             ))}
           </Carousel>

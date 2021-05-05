@@ -10,6 +10,7 @@ export const getListProducts = expressAsyncHander(async (req, res) => {
   const name = req.query.name || "";
   const order = req.query.order || "";
   const category = req.query.category || "";
+  const brand = req.query.brand || "";
   const min =
     req.query.min && Number(req.query.min) !== 0 ? Number(req.query.min) : 0;
   const max =
@@ -20,6 +21,7 @@ export const getListProducts = expressAsyncHander(async (req, res) => {
       : 0;
   const sellerFilter = seller ? { seller } : {};
   const categoryFilter = category ? { category } : {};
+  const brandFilter = brand ? { brand } : {};
   const priceFilter = min && max ? { price: { $gte: min, $lte: max } } : {};
   const ratingFilter = rating ? { rating: { $gte: rating } } : {};
   const nameFilter = name ? { name: { $regex: name, $options: "i" } } : {}; // to contains some characters in the search
@@ -35,6 +37,7 @@ export const getListProducts = expressAsyncHander(async (req, res) => {
     ...sellerFilter,
     ...nameFilter,
     ...categoryFilter,
+    ...brandFilter,
     ...priceFilter,
     ...ratingFilter,
   });
@@ -42,6 +45,7 @@ export const getListProducts = expressAsyncHander(async (req, res) => {
     ...sellerFilter,
     ...nameFilter,
     ...categoryFilter,
+    ...brandFilter,
     ...priceFilter,
     ...ratingFilter,
   })

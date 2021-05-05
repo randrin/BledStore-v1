@@ -14,6 +14,7 @@ const SearchScreen = (props) => {
   const dispatch = useDispatch();
   const {
     category = "all",
+    brand = "all",
     name = "all",
     min = 0,
     max = 0,
@@ -35,6 +36,9 @@ const SearchScreen = (props) => {
     categories,
   } = categoryList;
 
+  const brandList = useSelector((state) => state.brandsList);
+  const { loading: loadingBrand, error: errorBrand, brands } = brandList;
+
   useEffect(() => {
     dispatch(
       listProducts({
@@ -42,16 +46,18 @@ const SearchScreen = (props) => {
         pageSize,
         name: name !== "all" ? name : "",
         category: category !== "all" ? category : "",
+        brand: brand !== "all" ? brand : "",
         min,
         max,
         rating,
         order,
       })
     );
-  }, [category, dispatch, max, min, name, order, pageNumber, pageSize, rating]);
+  }, [category, brand, dispatch, max, min, name, order, pageNumber, pageSize, rating]);
 
   const getFilterUrl = (filter) => {
     const filterCategory = filter.category || category;
+    const filterBrand = filter.brand || brand;
     const filterPage = filter.page || pageNumber;
     const filterName = filter.name || name;
     const filterRating = filter.rating || rating;
@@ -59,7 +65,7 @@ const SearchScreen = (props) => {
     const filterPageSize = filter.pageSize || pageSize;
     const filterMin = filter.min ? filter.min : filter.min === 0 ? 0 : min;
     const filterMax = filter.max ? filter.max : filter.max === 0 ? 0 : max;
-    return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${filterOrder}/size/${filterPageSize}/page/${filterPage}`;
+    return `/search/category/${filterCategory}/brand/${filterBrand}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${filterOrder}/size/${filterPageSize}/page/${filterPage}`;
   };
 
   return (
@@ -98,6 +104,37 @@ const SearchScreen = (props) => {
                           className={c.name === category ? "active" : ""}
                         >
                           {c.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div className="search-content">
+                <h3 className="search-title">
+                  <span>Brands</span>
+                </h3>
+                {loadingBrand ? (
+                  <LoadingBox></LoadingBox>
+                ) : errorBrand ? (
+                  <MessageBox variant="danger">{errorBrand}</MessageBox>
+                ) : (
+                  <ul className="search-content-items">
+                    <li>
+                      <Link
+                        className={"all" === brand ? "active" : ""}
+                        to={getFilterUrl({ brand: "all" })}
+                      >
+                        Any
+                      </Link>
+                    </li>
+                    {brands.map((b, index) => (
+                      <li key={index}>
+                        <Link
+                          to={getFilterUrl({ brand: b.name })}
+                          className={b.name === brand ? "active" : ""}
+                        >
+                          {b.name}
                         </Link>
                       </li>
                     ))}
@@ -159,7 +196,7 @@ const SearchScreen = (props) => {
                   {totalProducts === 0 ? (
                     <MessageBox>
                       No Product Found for search: name: {name}, category:{" "}
-                      {category}, min: {min}, max: {max}, rating: {rating} and
+                      {category}, brand: {brand}, min: {min}, max: {max}, rating: {rating} and
                       sort: {order}
                     </MessageBox>
                   ) : (
@@ -170,7 +207,8 @@ const SearchScreen = (props) => {
                       </h2>
                       <div className="search-sort-by">
                         <span>Sort By</span>
-                        <select className="select-criteria-products"
+                        <select
+                          className="select-criteria-products"
                           value={order}
                           onChange={(e) => {
                             props.history.push(
@@ -199,7 +237,8 @@ const SearchScreen = (props) => {
                             <i className="fas fa-th-list"></i>
                           </button>
                         </div>
-                        <select className="select-showing-products"
+                        <select
+                          className="select-showing-products"
                           value={pageSize}
                           onChange={(e) => {
                             props.history.push(

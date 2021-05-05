@@ -82,8 +82,9 @@ const Routes = () => (
     <Route exact path="/seller/:sellerId" strict component={SellerScreen} />
     <Route exact path="/search/name/:name?" strict component={SearchScreen} />
     <Route exact path="/search/category/:category" strict component={SearchScreen} />
+    <Route exact path="/search/brand/:brand" strict component={SearchScreen} />
     <Route exact path="/search/category/:category/name/:name" strict component={SearchScreen} />
-    <Route exact path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/size/:pageSize/page/:pageNumber" strict component={SearchScreen} />
+    <Route exact path="/search/category/:category/brand/:brand/name/:name/min/:min/max/:max/rating/:rating/order/:order/size/:pageSize/page/:pageNumber" strict component={SearchScreen} />
     <Route exact path="/terms-conditions" strict component={TermsConditionsPage} />
     <Route exact path="/privacies-policies" strict component={PrivaciesPoliciesPage} />
     <Route exact path="/cookies-policies" strict component={CookiesPoliciesPage} />
