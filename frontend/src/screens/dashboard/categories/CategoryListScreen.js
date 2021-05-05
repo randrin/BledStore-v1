@@ -104,7 +104,7 @@ const CategoryListScreen = (props) => {
                 <td>{category._id}</td>
                 <td>{category.name}</td>
                 <td className="bledstore-dashboard-table-item">
-                  <i className={category.icon}></i>
+                  <i className={`bledstore-dashboard-table-item-icon ${category.icon}`}></i>
                 </td>
                 <td className="bledstore-dashboard-table-item">
                   <img

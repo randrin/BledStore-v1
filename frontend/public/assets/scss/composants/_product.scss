@@ -485,6 +485,37 @@
         .products-related-carousel {
             display: grid;
 
+            .carousel-container {
+                flex-direction: row;
+
+                .react-multiple-carousel__arrow {
+                    &::before {
+                        font-weight: 600;
+                    }
+
+                    &:hover {
+                        &::before {
+                            color: var(--bledstore-primary) !important;
+                        }
+                    }
+
+                    &.react-multiple-carousel__arrow--left,
+                    &.react-multiple-carousel__arrow--right {
+                        background: var(--bledstore-primary);
+                        color: var(--bledstore-white);
+                    }
+
+                    &.react-multiple-carousel__arrow--left,
+                    &.react-multiple-carousel__arrow--right {
+                        &:hover {
+                            background: var(--bledstore-white);
+                            color: var(--bledstore-primary) !important;
+                            border: 1px solid var(--bledstore-white);
+                        }
+                    }
+                }
+            }
+
             .react-multi-carousel-item {
                 width: 100% !important;
             }

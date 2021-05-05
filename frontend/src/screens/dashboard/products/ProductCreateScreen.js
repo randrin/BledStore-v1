@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "../../../../node_modules/axios/index";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
+import { listBrands } from "../../../redux/actions/brandActions";
 import { listCagetories } from "../../../redux/actions/categoryActions";
 import { createProduct } from "../../../redux/actions/productActions";
 import { PRODUCT_CREATE_RESET } from "../../../redux/constants/productConstants";
@@ -29,6 +30,13 @@ const ProductCreateScreen = (props) => {
     categories,
   } = categoryList;
 
+  const brandList = useSelector((state) => state.brandsList);
+  const {
+    loading: loadingBrands,
+    error: errorBrands,
+    brands,
+  } = brandList;
+
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
@@ -41,6 +49,7 @@ const ProductCreateScreen = (props) => {
       props.history.push("/productlist");
     }
     dispatch(listCagetories());
+    dispatch(listBrands());
   }, [dispatch, props.history, success]);
 
   const submitCreateHandler = (e) => {
@@ -204,14 +213,33 @@ const ProductCreateScreen = (props) => {
               <label htmlFor="brand">
                 Brand <span className="form-required">*</span>
               </label>
-              <input
+              {loadingBrands ? (
+                <LoadingBox></LoadingBox>
+              ) : errorBrands ? (
+                <MessageBox variant="danger">{error}</MessageBox>
+              ) : (
+                <select
+                  onChange={(e) => setBrand(e.target.value)}
+                  value={brand}
+                >
+                  <option value="" disabled hidden>
+                    Select the Brand
+                  </option>
+                  {brands.map((brand, index) => (
+                    <option key={index} value={brand.name}>
+                      {brand.name}
+                    </option>
+                  ))}
+                </select>
+              )}
+              {/* <input
                 id="brand"
                 type="text"
                 placeholder="Enter brand"
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
                 required
-              ></input>
+              ></input> */}
             </div>
             <div>
               <label htmlFor="countInStock">

@@ -9,6 +9,7 @@ import ProductLarge from "../../../components/Products/ProductLarge";
 import Rating from "../../../components/Rating";
 import { listProducts } from "../../../redux/actions/productActions";
 import { prices, ratings } from "../../../utils";
+import { listBrands } from "../../../redux/actions/brandActions";
 
 const SearchScreen = (props) => {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ const SearchScreen = (props) => {
         order,
       })
     );
+    dispatch(listBrands());
   }, [category, brand, dispatch, max, min, name, order, pageNumber, pageSize, rating]);
 
   const getFilterUrl = (filter) => {
