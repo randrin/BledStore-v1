@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import * as moment from "moment";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import { deleteOrder, listOrders } from "../../../redux/actions/orderActions";
@@ -53,10 +54,10 @@ const OrderListScreen = (props) => {
             <tr>
               <th>ID</th>
               <th>USER</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
+              <th>DATE (dd/mm/yyyy)</th>
+              <th>TOTAL (€)</th>
+              <th className="table-text-center">PAID</th>
+              <th className="table-text-center">DELIVERED</th>
               <th>ACTIONS</th>
             </tr>
           </thead>
@@ -65,12 +66,12 @@ const OrderListScreen = (props) => {
               <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.user?.name}</td>
-                <td>{order.createdAt.substring(0, 10)}</td>
+                <td>{moment(order.createdAt).format("DD/MM/YYYY")}</td>
                 <td>{order.totalPrice.toFixed(2)}</td>
-                <td>{order.isPaid ? order.paidAt.substring(0, 10) : "No"}</td>
-                <td>
+                <td className="table-text-center">{order.isPaid ? moment(order.paidAt).format("DD/MM/YYYY") : "No"}</td>
+                <td className="table-text-center">
                   {order.isDelivered
-                    ? order.deliveredAt.substring(0, 10)
+                    ? moment(order.deliveredAt).format("DD/MM/YYYY")
                     : "No"}
                 </td>
                 <td>

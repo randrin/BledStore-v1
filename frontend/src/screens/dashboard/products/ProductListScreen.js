@@ -88,10 +88,10 @@ const ProductListScreen = (props) => {
                 <th>PRODUCT ID</th>
                 <th>NAME</th>
                 <th>SELLER NAME</th>
-                <th>PRICE (€)</th>
-                <th>STOCK</th>
-                <th>CATEGORY</th>
-                <th>BRAND</th>
+                <th className="table-text-center">PRICE (€)</th>
+                <th className="table-text-center">PRODUCT STOCK</th>
+                <th className="table-text-center">CATEGORY</th>
+                <th className="table-text-center">BRAND</th>
                 <th>ACTIONS</th>
               </tr>
             </thead>
@@ -101,10 +101,10 @@ const ProductListScreen = (props) => {
                   <td>{product._id}</td>
                   <td>{product.name}</td>
                   <td>{product.seller.seller.name}</td>
-                  <td>{product.price}</td>
-                  <td>{product.countInStock}</td>
-                  <td>{product.category}</td>
-                  <td>{product.brand}</td>
+                  <td className="table-text-center"><span className="product-price">{product.price}</span> <span className="product-discount-price">{product.discountPrice !== 0 ? product.discountPrice : ""}</span></td>
+                  <td className="table-text-center">{product.countInStock}</td>
+                  <td className="table-text-center">{product.category}</td>
+                  <td className="table-text-center">{product.brand}</td>
                   <td>
                     <button
                       type="button"
