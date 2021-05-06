@@ -37,18 +37,18 @@ const OrderHistoryScreeen = (props) => {
               {orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order._id}</td>
-                  <td>{moment(order.createdAt).format("DD/MM/YYYY")}</td>
+                  <td>{moment(order.createdAt).format("DD/MM/YYYY HH:mm:ss")}</td>
                   <td className="table-text-center">
                     {order.totalPrice.toFixed(2)}
                   </td>
                   <td className="table-text-center">
                     {order.isPaid
-                      ? moment(order.paidAt).format("DD/MM/YYYY")
+                      ? moment(order.paidAt).format("DD/MM/YYYY HH:mm:ss")
                       : "No"}
                   </td>
                   <td className="table-text-center">
                     {order.isDelivered
-                      ? moment(order.deliveredAt).format("DD/MM/YYYY")
+                      ? moment(order.deliveredAt).format("DD/MM/YYYY HH:mm:ss")
                       : "No"}
                   </td>
                   <td>
