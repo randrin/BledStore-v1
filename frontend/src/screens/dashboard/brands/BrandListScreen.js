@@ -1,16 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Modal } from "react-responsive-modal";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
+import DashboardActionModal from "../../../components/Modal/DashboardActionModal";
 import {
   activationBrand,
   deleteBrand,
   listBrands,
 } from "../../../redux/actions/brandActions";
-import { BRAND_ACTIVATION_RESET, BRAND_DELETE_RESET } from "../../../redux/constants/brandConstants";
+import {
+  BRAND_ACTIVATION_RESET,
+  BRAND_DELETE_RESET,
+} from "../../../redux/constants/brandConstants";
 
 const BrandListScreen = (props) => {
   const dispatch = useDispatch();
+
+  const [open, setOpen] = useState(false);
+  const [action, setAction] = useState("");
+  const [indexItem, setindexItem] = useState("");
+
+  const onOpenModal = (acton, index) => {
+    setOpen(true);
+    setAction(acton);
+    setindexItem(index);
+  };
+  const onCloseModal = () => setOpen(false);
 
   const createHandler = () => {
     window.location.href = `/create/brand`;
@@ -44,19 +60,13 @@ const BrandListScreen = (props) => {
   }, [dispatch, successDelete, successActivation]);
 
   const deleteHandler = (brand) => {
-    if (window.confirm("Are you sure to delete this brand?")) {
-      dispatch(deleteBrand(brand._id));
-    }
+    dispatch(deleteBrand(brand._id));
+    setOpen(false);
   };
 
   const activateHandler = (brand) => {
-    if (
-      window.confirm(
-        `Are you sure to ${brand.active ? "disabled" : "activate"} this brand?`
-      )
-    ) {
-      dispatch(activationBrand(brand._id));
-    }
+    dispatch(activationBrand(brand._id));
+    setOpen(false);
   };
 
   return (
@@ -93,7 +103,7 @@ const BrandListScreen = (props) => {
             </tr>
           </thead>
           <tbody>
-            {brands.map((brand) => (
+            {brands.map((brand, index) => (
               <tr key={brand._id}>
                 <td>{brand._id}</td>
                 <td>{brand.name}</td>
@@ -116,7 +126,7 @@ const BrandListScreen = (props) => {
                   <button
                     type="button"
                     className="small"
-                    onClick={() => activateHandler(brand)}
+                    onClick={() => onOpenModal("activate", index)}
                   >
                     <i
                       className={`fas fa-power-off ${
@@ -137,10 +147,24 @@ const BrandListScreen = (props) => {
                   <button
                     type="button"
                     className="small"
-                    onClick={() => deleteHandler(brand)}
+                    onClick={() => onOpenModal("delete", index)}
                   >
                     <i className="far fa-window-close danger"></i> Delete
                   </button>
+                  {index === indexItem && (
+                    <Modal open={open} onClose={onCloseModal} center>
+                      <DashboardActionModal
+                        onCloseModal={onCloseModal}
+                        action={action}
+                        item={brand}
+                        actionHandler={
+                          action === "delete"
+                            ? () => deleteHandler(brand)
+                            : () => activateHandler(brand)
+                        }
+                      />
+                    </Modal>
+                  )}
                 </td>
               </tr>
             ))}

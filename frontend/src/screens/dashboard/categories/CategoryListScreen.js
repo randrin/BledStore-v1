@@ -132,7 +132,6 @@ const CategoryListScreen = (props) => {
                   <button
                     type="button"
                     className="small"
-                    //onClick={() => activateHandler(category)}
                     onClick={() => onOpenModal("activate", index)}
                   >
                     <i
@@ -154,7 +153,6 @@ const CategoryListScreen = (props) => {
                   <button
                     type="button"
                     className="small"
-                    //onClick={() => deleteHandler(category)}
                     onClick={() => onOpenModal("delete", index)}
                   >
                     <i className="far fa-window-close danger"></i> Delete
