@@ -1,14 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Modal } from "react-responsive-modal";
 import * as moment from "moment";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import { deleteOrder, listOrders } from "../../../redux/actions/orderActions";
 import { ORDER_DELETE_RESET } from "../../../redux/constants/orderConstants";
+import DashboardActionModal from "../../../components/Modal/DashboardActionModal";
 
 const OrderListScreen = (props) => {
-  const sellerMode = props.match.path.indexOf('/seller') >= 0;
+  const sellerMode = props.match.path.indexOf("/seller") >= 0;
   const dispatch = useDispatch();
+
+  const [open, setOpen] = useState(false);
+  const [action, setAction] = useState("");
+  const [indexItem, setindexItem] = useState("");
+
+  const onOpenModal = (acton, index) => {
+    setOpen(true);
+    setAction(acton);
+    setindexItem(index);
+  };
+  const onCloseModal = () => setOpen(false);
 
   const ordersList = useSelector((state) => state.ordersList);
   const { loading, error, orders } = ordersList;
@@ -27,13 +40,12 @@ const OrderListScreen = (props) => {
     if (successDelete) {
       dispatch({ type: ORDER_DELETE_RESET });
     }
-    dispatch(listOrders({ seller: sellerMode ? userInfo._id : '' }));
+    dispatch(listOrders({ seller: sellerMode ? userInfo._id : "" }));
   }, [dispatch, sellerMode, successDelete, userInfo._id]);
 
   const deleteHandler = (order) => {
-    if (window.confirm("Are you sure to delete?")) {
-      dispatch(deleteOrder(order._id));
-    }
+    dispatch(deleteOrder(order._id));
+    setOpen(false);
   };
 
   return (
@@ -62,13 +74,19 @@ const OrderListScreen = (props) => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
+            {orders.map((order, index) => (
               <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.user?.name}</td>
                 <td>{moment(order.createdAt).format("DD/MM/YYYY")}</td>
-                <td className="table-text-center">{order.totalPrice.toFixed(2)}</td>
-                <td className="table-text-center">{order.isPaid ? moment(order.paidAt).format("DD/MM/YYYY") : "No"}</td>
+                <td className="table-text-center">
+                  {order.totalPrice.toFixed(2)}
+                </td>
+                <td className="table-text-center">
+                  {order.isPaid
+                    ? moment(order.paidAt).format("DD/MM/YYYY")
+                    : "No"}
+                </td>
                 <td className="table-text-center">
                   {order.isDelivered
                     ? moment(order.deliveredAt).format("DD/MM/YYYY")
@@ -87,10 +105,20 @@ const OrderListScreen = (props) => {
                   <button
                     type="button"
                     className="small"
-                    onClick={() => deleteHandler(order)}
+                    onClick={() => onOpenModal("delete", index)}
                   >
-                    <i className="far fa-window-close danger"></i> Delete 
+                    <i className="far fa-window-close danger"></i> Delete
                   </button>
+                  {index === indexItem && (
+                    <Modal open={open} onClose={onCloseModal} center>
+                      <DashboardActionModal
+                        onCloseModal={onCloseModal}
+                        action={action}
+                        item={order}
+                        actionHandler={() => deleteHandler(order)}
+                      />
+                    </Modal>
+                  )}
                 </td>
               </tr>
             ))}
