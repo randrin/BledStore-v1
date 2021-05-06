@@ -31,11 +31,7 @@ const ProductCreateScreen = (props) => {
   } = categoryList;
 
   const brandList = useSelector((state) => state.brandsList);
-  const {
-    loading: loadingBrands,
-    error: errorBrands,
-    brands,
-  } = brandList;
+  const { loading: loadingBrands, error: errorBrands, brands } = brandList;
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -46,11 +42,13 @@ const ProductCreateScreen = (props) => {
   useEffect(() => {
     if (success) {
       dispatch({ type: PRODUCT_CREATE_RESET });
-      props.history.push("/productlist");
+      props.history.push(
+        `${userInfo.isAdmin ? "/productlist" : "/productlist/seller"}`
+      );
     }
     dispatch(listCagetories());
     dispatch(listBrands());
-  }, [dispatch, props.history, success]);
+  }, [dispatch, props.history, success, userInfo.isAdmin]);
 
   const submitCreateHandler = (e) => {
     e.preventDefault();
@@ -105,10 +103,9 @@ const ProductCreateScreen = (props) => {
         </div>
         {loading ? (
           <LoadingBox></LoadingBox>
-        ) : error ? (
-          <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <>
+            {error && <MessageBox variant="danger">{error}</MessageBox>}
             <div>
               <label htmlFor="name">
                 Name <span className="form-required">*</span>

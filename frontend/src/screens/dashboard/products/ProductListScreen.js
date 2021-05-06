@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { Modal } from "react-responsive-modal";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
+import DashboardActionModal from "../../../components/Modal/DashboardActionModal";
 import {
   deleteProduct,
   listProducts,
@@ -12,6 +14,17 @@ import { PRODUCT_DELETE_RESET } from "../../../redux/constants/productConstants"
 const ProductListScreen = (props) => {
   const pageSize = 10;
   const { pageNumber = 1 } = useParams();
+
+  const [open, setOpen] = useState(false);
+  const [action, setAction] = useState("");
+  const [indexItem, setindexItem] = useState("");
+
+  const onOpenModal = (acton, index) => {
+    setOpen(true);
+    setAction(acton);
+    setindexItem(index);
+  };
+  const onCloseModal = () => setOpen(false);
 
   const sellerMode = props.match.path.indexOf("/seller") >= 0;
   const dispatch = useDispatch();
@@ -61,16 +74,19 @@ const ProductListScreen = (props) => {
   };
 
   const deleteHandler = (product) => {
-    if (window.confirm("Are you sure to delete this product?")) {
-      dispatch(deleteProduct(product._id));
-    }
+    dispatch(deleteProduct(product._id));
+    setOpen(false);
   };
 
   return (
     <div className="bledstore-dashboard-wrapper">
       <div className="row">
         <h1>All Products Store</h1>
-        <button type="button" className="bledstore-dashboard-btn primary" onClick={createHandler}>
+        <button
+          type="button"
+          className="bledstore-dashboard-btn primary"
+          onClick={createHandler}
+        >
           Create Product <i className="fas fa-angle-double-right"></i>
         </button>
       </div>
@@ -96,12 +112,17 @@ const ProductListScreen = (props) => {
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
+              {products.map((product, index) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
                   <td>{product.seller.seller.name}</td>
-                  <td className="table-text-center"><span className="product-price">{product.price}</span> <span className="product-discount-price">{product.discountPrice !== 0 ? product.discountPrice : ""}</span></td>
+                  <td className="table-text-center">
+                    <span className="product-price">{product.price}</span>{" "}
+                    <span className="product-discount-price">
+                      {product.discountPrice !== 0 ? product.discountPrice : ""}
+                    </span>
+                  </td>
                   <td className="table-text-center">{product.countInStock}</td>
                   <td className="table-text-center">{product.category}</td>
                   <td className="table-text-center">{product.brand}</td>
@@ -118,10 +139,20 @@ const ProductListScreen = (props) => {
                     <button
                       type="button"
                       className="small"
-                      onClick={() => deleteHandler(product)}
+                      onClick={() => onOpenModal("delete", index)}
                     >
                       <i className="far fa-window-close danger"></i> Delete
                     </button>
+                    {index === indexItem && (
+                      <Modal open={open} onClose={onCloseModal} center>
+                        <DashboardActionModal
+                          onCloseModal={onCloseModal}
+                          action={action}
+                          item={product}
+                          actionHandler={() => deleteHandler(product)}
+                        />
+                      </Modal>
+                    )}
                   </td>
                 </tr>
               ))}

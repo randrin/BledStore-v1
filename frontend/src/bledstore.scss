@@ -114,7 +114,7 @@ button {
 
 button:disabled {
   cursor: no-drop;
-  color: var(--bledstore-primary) !important;
+  color: var(--bledstore-primary);
   opacity: 0.5;
   border: none !important;
 }

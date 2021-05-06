@@ -64,7 +64,6 @@ const CategoryCreateScreen = (props) => {
     }
   };
 
-
   return (
     <div className="bledstore-dashboard-wrapper">
       <div className="bledstore-dashboard-btn-back">
@@ -78,10 +77,9 @@ const CategoryCreateScreen = (props) => {
         </div>
         {loading ? (
           <LoadingBox></LoadingBox>
-        ) : error ? (
-          <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <>
+            {error && <MessageBox variant="danger">{error}</MessageBox>}
             <div>
               <label htmlFor="name">
                 Name <span className="form-required">*</span>
