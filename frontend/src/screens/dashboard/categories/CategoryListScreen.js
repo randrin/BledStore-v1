@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Modal } from "react-responsive-modal";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
+import DashboardActionModal from "../../../components/Modal/DashboardActionModal";
 import {
   listCagetories,
   deleteCategory,
@@ -14,6 +16,17 @@ import {
 
 const CategoryListScreen = (props) => {
   const dispatch = useDispatch();
+
+  const [open, setOpen] = useState(false);
+  const [action, setAction] = useState("");
+  const [indexItem, setindexItem] = useState("");
+
+  const onOpenModal = (acton, index) => {
+    setOpen(true);
+    setAction(acton);
+    setindexItem(index);
+  };
+  const onCloseModal = () => setOpen(false);
 
   const createHandler = () => {
     window.location.href = `/create/category`;
@@ -47,21 +60,13 @@ const CategoryListScreen = (props) => {
   }, [dispatch, successDelete, successActivation]);
 
   const deleteHandler = (category) => {
-    if (window.confirm("Are you sure to delete this category?")) {
-      dispatch(deleteCategory(category._id));
-    }
+    dispatch(deleteCategory(category._id));
+    setOpen(false);
   };
 
   const activateHandler = (category) => {
-    if (
-      window.confirm(
-        `Are you sure to ${
-          category.active ? "disabled" : "activate"
-        } this category?`
-      )
-    ) {
-      dispatch(activationCategory(category._id));
-    }
+    dispatch(activationCategory(category._id));
+    setOpen(false);
   };
 
   return (
@@ -99,12 +104,14 @@ const CategoryListScreen = (props) => {
             </tr>
           </thead>
           <tbody>
-            {categories.map((category) => (
-              <tr key={category._id}>
+            {categories.map((category, index) => (
+              <tr key={index}>
                 <td>{category._id}</td>
                 <td>{category.name}</td>
                 <td className="bledstore-dashboard-table-item">
-                  <i className={`bledstore-dashboard-table-item-icon ${category.icon}`}></i>
+                  <i
+                    className={`bledstore-dashboard-table-item-icon ${category.icon}`}
+                  ></i>
                 </td>
                 <td className="bledstore-dashboard-table-item">
                   <img
@@ -125,7 +132,8 @@ const CategoryListScreen = (props) => {
                   <button
                     type="button"
                     className="small"
-                    onClick={() => activateHandler(category)}
+                    //onClick={() => activateHandler(category)}
+                    onClick={() => onOpenModal("activate", index)}
                   >
                     <i
                       className={`fas fa-power-off ${
@@ -146,10 +154,23 @@ const CategoryListScreen = (props) => {
                   <button
                     type="button"
                     className="small"
-                    onClick={() => deleteHandler(category)}
+                    //onClick={() => deleteHandler(category)}
+                    onClick={() => onOpenModal("delete", index)}
                   >
                     <i className="far fa-window-close danger"></i> Delete
                   </button>
+                  {index === indexItem && <Modal open={open} onClose={onCloseModal} center>
+                    <DashboardActionModal
+                      onCloseModal={onCloseModal}
+                      action={action}
+                      item={category}
+                      actionHandler={
+                        action === "delete"
+                          ? () => deleteHandler(category)
+                          : () => activateHandler(category)
+                      }
+                    />
+                  </Modal>}
                 </td>
               </tr>
             ))}

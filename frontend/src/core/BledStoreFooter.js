@@ -10,8 +10,6 @@ const BledStoreFooter = () => {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
-  console.log("userInfo: ", userInfo)
-
   return (
     <>
       {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
@@ -129,7 +127,7 @@ const BledStoreFooter = () => {
             <div className="bledstore-footer-box-quarter">
               <h2>My Account</h2>
               <div className="box-quarter">
-                {userInfo ? <Link to="/profile">Hi {userInfo.pseudo}</Link> : <Link to="/signin">Sign In / Sign Up</Link>}
+                {userInfo ? <Link to="/profile">Hello {userInfo.pseudo}</Link> : <Link to="/signin">Sign In / Sign Up</Link>}
                 <a href="#" title="">
                   How to create an account
                 </a>

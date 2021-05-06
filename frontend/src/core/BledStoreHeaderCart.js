@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const BledStoreHeaderCart = ({ cartItems }) => {
   const goToShopping = (e) => {
     e.preventDefault();
-    window.location.href = "/";
+    window.location.href = "search/category/all/name/all";
   };
 
   return (

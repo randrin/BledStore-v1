@@ -55,7 +55,7 @@ const OrderListScreen = (props) => {
               <th>ID</th>
               <th>USER</th>
               <th>DATE (dd/mm/yyyy)</th>
-              <th>TOTAL (€)</th>
+              <th className="table-text-center">TOTAL (€)</th>
               <th className="table-text-center">PAID</th>
               <th className="table-text-center">DELIVERED</th>
               <th>ACTIONS</th>
@@ -67,7 +67,7 @@ const OrderListScreen = (props) => {
                 <td>{order._id}</td>
                 <td>{order.user?.name}</td>
                 <td>{moment(order.createdAt).format("DD/MM/YYYY")}</td>
-                <td>{order.totalPrice.toFixed(2)}</td>
+                <td className="table-text-center">{order.totalPrice.toFixed(2)}</td>
                 <td className="table-text-center">{order.isPaid ? moment(order.paidAt).format("DD/MM/YYYY") : "No"}</td>
                 <td className="table-text-center">
                   {order.isDelivered

@@ -40,7 +40,7 @@ const Brand = () => {
                 key={index}
               >
                 <Link to={`/search/brand/${brand.name}`}>
-                  <div style={{ padding: 8 }}>
+                  <div style={{ padding: 8, margin: "0 25px" }}>
                     <img
                       src={brand.image}
                       alt={brand.name}
