@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import * as moment from "moment";
 import LoadingBox from "../../../components/LoadingBox";
 import MessageBox from "../../../components/MessageBox";
 import Rating from "../../../components/Rating";
@@ -63,7 +64,7 @@ const ReviewScreen = ({ product, productId }) => {
             <li key={review._id}>
               <strong>{review.name}</strong>
               <Rating rating={review.rating} caption=" "></Rating>
-              <p>{review.createdAt && review.createdAt.substring(0, 10)}</p>
+              <p>{review.createdAt && moment(review.createdAt).format("DD/MM/YYYY HH:mm:ss")}</p>
               <p>{review.comment && review.comment}</p>
             </li>
           ))}

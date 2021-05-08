@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { listCagetories } from "../redux/actions/categoryActions";
+import { truncate } from "../utils";
 import LoadingBox from "./LoadingBox";
 import MessageBox from "./MessageBox";
 
@@ -34,9 +35,7 @@ const Categories = ({ loading, error, categories }) => {
                     />
                   </span>
                   <h3 className="categories-block-title">
-                    {c.name.length > 20
-                      ? c.name.substring(0, 20) + " ..."
-                      : c.name}
+                      {truncate(c.name, 20)}
                   </h3>
                 </Link>
               </div>

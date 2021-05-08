@@ -49,3 +49,10 @@ export const ratings = [
     rating: 1,
   },
 ];
+export const truncate = (name, lgt) => {
+  if (typeof lgt === "number") {
+    return name.length > lgt ? name.substring(0, lgt) + " ..." : name;
+  } else {
+    return name.length > lgt ? name.substring(0, 20) + " ..." : name;
+  }
+}

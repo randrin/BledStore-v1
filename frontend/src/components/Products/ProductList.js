@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
 import ProductModal from "../Modal/ProductModal";
 import Rating from "../Rating";
+import { truncate } from "../../utils";
+import { AFTER_7_DAYS } from "../../constants";
 
 const ProductList = ({ product }) => {
   const [open, setOpen] = useState(false);
@@ -21,7 +23,7 @@ const ProductList = ({ product }) => {
     : 0;
 
   const productCreatedAt = new Date(product.createdAt).getTime();
-  const productCreatedAtAfter7Day = productCreatedAt + 7 * 24 * 60 * 60 * 1000;
+  const productCreatedAtAfter7Day = productCreatedAt + AFTER_7_DAYS;
   const currentDate = new Date().getTime();
   const labelNew = currentDate > productCreatedAtAfter7Day ? false : true;
 
@@ -46,7 +48,7 @@ const ProductList = ({ product }) => {
         />
       </Modal>
       <div className="card">
-        <Link to="">
+        <Link to={`/product/${product._id}`}>
           {labelNew ? (
             <span className="card-product-label label-circle-new">New</span>
           ) : (
@@ -98,13 +100,11 @@ const ProductList = ({ product }) => {
             )}
           </div>
           <Link to={`/product/${product._id}`}>
-            <h2 className="card-title">{product.name}</h2>
+            <h2 className="card-title">{truncate(product.name, 25)}</h2>
           </Link>
           <Rating rating={product.rating} numReviews={product.numReviews} />
           <div className="description">
-            {product.description.length > 30
-              ? product.description.substring(0, 30) + " ..."
-              : product.description}
+            {truncate(product.description, 30)}
           </div>
           <div className="row start product-seller-content">
             <div className="product-price-content">
@@ -125,9 +125,7 @@ const ProductList = ({ product }) => {
                     src={product.seller.seller.logo}
                     alt={product.seller.seller.name}
                   ></img>
-                  {product.seller.seller.name.length > 10
-                    ? product.seller.seller.name.substring(0, 10) + " ..."
-                    : product.seller.seller.name}
+                  {truncate(product.seller.seller.name, 10)}
                 </Link>
               </span>
             )}

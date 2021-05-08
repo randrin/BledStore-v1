@@ -317,7 +317,7 @@
                 .popup-modal-input-group {
                     .popup-modal-input-row {
                         margin-bottom: 1.5rem;
-                        display: flex;
+                        display: inherit;
 
                         label {
                             cursor: pointer;
@@ -329,6 +329,15 @@
                         .popup-modal-input-control {
                             width: 100%;
                             height: 30px;
+                            &.popup-modal-input-error {
+                                border-color: var(--bledstore-tomato);
+                            }
+                        }
+
+                        .popup-modal-input-text-error {
+                            color: var(--bledstore-tomato);
+                            font-size: 15px;
+                            margin: 0px 10px;
                         }
 
                         .popup-modal-checkbox-control {

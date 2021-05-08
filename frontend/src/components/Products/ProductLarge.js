@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AFTER_7_DAYS } from "../../constants";
+import { truncate } from "../../utils";
 import Rating from "../Rating";
 
 const ProductLarge = ({ product }) => {
@@ -10,7 +12,7 @@ const ProductLarge = ({ product }) => {
     : 0;
 
   const productCreatedAt = new Date(product.createdAt).getTime();
-  const productCreatedAtAfter7Day = productCreatedAt + 7 * 24 * 60 * 60 * 1000;
+  const productCreatedAtAfter7Day = productCreatedAt + AFTER_7_DAYS;
   const currentDate = new Date().getTime();
   const labelNew = currentDate > productCreatedAtAfter7Day ? false : true;
 
@@ -41,7 +43,7 @@ const ProductLarge = ({ product }) => {
         <div className="card-body">
           <div className="card-product-infos">
             <Link to={`/product/${product._id}`}>
-              <h2 className="card-title">{product.name}</h2>
+              <h2 className="card-title">{truncate(product.name, 100)}</h2>
             </Link>
           </div>
           <div className="category">
@@ -75,9 +77,7 @@ const ProductLarge = ({ product }) => {
             <Rating rating={product.rating} numReviews={product.numReviews} />
           </div>
           <div className="description">
-            {product.description.length > 150
-              ? product.description.substring(0, 150) + " ..."
-              : product.description}
+            {truncate(product.description, 150)}
           </div>
           <div className="row start product-seller-content">
             <button className="bledstore-button primary product-add-to-cart">
@@ -93,9 +93,7 @@ const ProductLarge = ({ product }) => {
                     src={product.seller.seller.logo}
                     alt={product.seller.seller.name}
                   ></img>
-                  {product.seller.seller.name.length > 10
-                    ? product.seller.seller.name.substring(0, 10) + " ..."
-                    : product.seller.seller.name}
+                  {truncate(product.seller.seller.name, 10)}
                 </Link>
               </span>
             )}

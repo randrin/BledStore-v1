@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import * as moment from "moment";
 import LoadingBox from "../../components/LoadingBox";
 import MessageBox from "../../components/MessageBox";
 import { getDashboardItems } from "../../redux/actions/dashboardActions";
@@ -45,14 +46,14 @@ const DashboardScreen = () => {
                 data={[
                   ["Date", "Sales"],
                   ...items.dashboardItems.dailyOrders.map((x) => [
-                    x._id,
+                    moment(x._id).format("DD/MM/YYYY"),
                     x.sales,
                   ]),
                 ]}
                 options={{
                   title: "Company Performance",
                   hAxis: {
-                    title: "Period (yyyy-mm-dd)",
+                    title: "Period (dd/mm/yyyy)",
                     titleTextStyle: { color: "#f0c040" },
                   },
                   vAxis: {
@@ -79,14 +80,14 @@ const DashboardScreen = () => {
                 data={[
                   ["Date", "Sales"],
                   ...items.dashboardItems.dailyOrders.map((x) => [
-                    x._id,
-                    x.sales,
+                    moment(x._id).format("DD/MM/YYYY"),
+                    x.sales
                   ]),
                 ]}
                 options={{
                   title: "Company Performance",
                   hAxis: {
-                    title: "Period (yyyy-mm-dd)",
+                    title: "Period (dd/mm/yyyy)",
                     titleTextStyle: { color: "#f0c040" },
                   },
                   vAxis: {
