@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
-  pseudo: { type: String, required: true, unique: true },
+  pseudo: { type: String, required: true, minlength: 5, maxlength: 15, unique: true },
   sex: { type: String, required: true, default: 'Male' },
   email: { type: String, required: true, index: true, unique: true },
   phone: { type: Number, required: true, unique: true },

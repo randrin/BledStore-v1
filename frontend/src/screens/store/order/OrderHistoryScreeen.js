@@ -25,7 +25,7 @@ const OrderHistoryScreeen = (props) => {
           <table className="table">
             <thead>
               <tr>
-                <th>ID</th>
+                <th>ORDER ID</th>
                 <th>DATE (dd/mm/yyyy)</th>
                 <th className="table-text-center">TOTAL (€)</th>
                 <th className="table-text-center">PAID</th>
@@ -43,13 +43,13 @@ const OrderHistoryScreeen = (props) => {
                   </td>
                   <td className="table-text-center">
                     {order.isPaid
-                      ? moment(order.paidAt).format("DD/MM/YYYY HH:mm:ss")
-                      : "No"}
+                      ? <span className="alert alert-success">{moment(order.paidAt).format("DD/MM/YYYY HH:mm:ss")}</span>
+                      : <span className="alert alert-danger">No</span>}
                   </td>
                   <td className="table-text-center">
                     {order.isDelivered
-                      ? moment(order.deliveredAt).format("DD/MM/YYYY HH:mm:ss")
-                      : "No"}
+                      ? <span className="alert alert-success">{moment(order.deliveredAt).format("DD/MM/YYYY HH:mm:ss")}</span>
+                      : <span className="alert alert-danger">No</span>}
                   </td>
                   <td>
                     <button
