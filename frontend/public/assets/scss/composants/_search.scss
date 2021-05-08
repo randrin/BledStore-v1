@@ -16,8 +16,12 @@
         }
 
         .search-content {
+            @include small() {
+                width: 0px;
+            }
             margin: 30px;
             position: relative;
+            width: 250px;
 
             .search-content-items {
                 // margin-bottom: 10px;

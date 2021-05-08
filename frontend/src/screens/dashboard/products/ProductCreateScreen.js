@@ -110,14 +110,15 @@ const ProductCreateScreen = (props) => {
               <label htmlFor="name">
                 Name <span className="form-required">*</span>
               </label>
-              <input
+              <textarea
                 id="name"
                 type="text"
+                rows="5"
                 placeholder="Enter name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-              ></input>
+              ></textarea>
             </div>
             <div>
               <label htmlFor="price">
@@ -196,15 +197,6 @@ const ProductCreateScreen = (props) => {
                   ))}
                 </select>
               )}
-
-              {/* <input
-                id="category"
-                type="text"
-                placeholder="Enter category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                required
-              ></input> */}
             </div>
             <div>
               <label htmlFor="brand">
@@ -229,14 +221,6 @@ const ProductCreateScreen = (props) => {
                   ))}
                 </select>
               )}
-              {/* <input
-                id="brand"
-                type="text"
-                placeholder="Enter brand"
-                value={brand}
-                onChange={(e) => setBrand(e.target.value)}
-                required
-              ></input> */}
             </div>
             <div>
               <label htmlFor="countInStock">

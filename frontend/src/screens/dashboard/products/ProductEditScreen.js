@@ -137,13 +137,14 @@ const ProductEditScreen = (props) => {
               <label htmlFor="name">
                 Name <span className="form-required">*</span>
               </label>
-              <input
+              <textarea
                 id="name"
                 type="text"
+                rows="5"
                 placeholder="Enter name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-              ></input>
+              ></textarea>
             </div>
             <div>
               <label htmlFor="price">
@@ -217,13 +218,6 @@ const ProductEditScreen = (props) => {
                   ))}
                 </select>
               )}
-              {/* <input
-                id="category"
-                type="text"
-                placeholder="Enter category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              ></input> */}
             </div>
             <div>
               <label htmlFor="brand">
@@ -248,13 +242,6 @@ const ProductEditScreen = (props) => {
                   ))}
                 </select>
               )}
-              {/* <input
-                id="brand"
-                type="text"
-                placeholder="Enter brand"
-                value={brand}
-                onChange={(e) => setBrand(e.target.value)}
-              ></input> */}
             </div>
             <div>
               <label htmlFor="countInStock">
@@ -283,7 +270,7 @@ const ProductEditScreen = (props) => {
             </div>
             <div>
               <label></label>
-              <button className="primary" type="submit">
+              <button className="bledstore-dashboard-btn primary" type="submit">
               <i className="fas fa-check"></i> Update
               </button>
             </div>
