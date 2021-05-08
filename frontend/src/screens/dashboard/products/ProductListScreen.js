@@ -10,6 +10,7 @@ import {
   listProducts,
 } from "../../../redux/actions/productActions";
 import { PRODUCT_DELETE_RESET } from "../../../redux/constants/productConstants";
+import ShowMoreAndLess from "../../../components/utils/ShowMoreAndLess";
 
 const ProductListScreen = (props) => {
   const pageSize = 10;
@@ -115,7 +116,7 @@ const ProductListScreen = (props) => {
               {products.map((product, index) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
-                  <td>{product.name}</td>
+                  <td>{<ShowMoreAndLess name={product.name} lgt={20} />}</td>
                   <td>{product.seller.seller.name}</td>
                   <td className="table-text-center">
                     <span className="product-price">{product.price}</span>{" "}
