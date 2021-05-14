@@ -48,7 +48,7 @@ const ProductList = ({ product }) => {
         />
       </Modal>
       <div className="card">
-        <Link to={`/product/${product._id}`}>
+        <Link to="">
           {labelNew ? (
             <span className="card-product-label label-circle-new">New</span>
           ) : (

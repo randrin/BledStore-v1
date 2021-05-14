@@ -453,6 +453,21 @@ img.large {
   .table-text-center {
     text-align: center;
 
+    .product-in-stock {
+      color: var(--bledstore-success);
+      font-weight: 600;
+    }
+
+    .product-out-stock {
+      font-weight: 600;
+      color: var(--bledstore-secondary);
+    }
+
+    .product-stock {
+      font-weight: 600;
+      color: var(--bledstore-tomato);
+    }
+
     .product-price {
       font-size: 2rem;
       font-weight: 600;
@@ -473,7 +488,7 @@ img.large {
 }
 
 .table tbody tr:nth-of-type(odd) {
-  background-color: #f4f4f4;
+  background-color: var(--bledstore-sliver);
 }
 
 .table td,

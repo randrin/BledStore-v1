@@ -52,15 +52,15 @@ export const payOrder = expressAsyncHander(async (req, res) => {
     order.isPaid = true;
     order.paidAt = Date.now();
     order.paymentResult = {
-      paymentID: req.body.id,
-      status: req.body.status,
-      payerID: req.body.payer.payer_id,
-      payerEmailAddress: req.body.payer.email_address,
-      payerCountryCode: req.body.payer.address.country_code,
+      paymentID: req.body.paymentResult.id,
+      status: req.body.paymentResult.status,
+      payerID: req.body.paymentResult.payer.payer_id,
+      payerEmailAddress: req.body.paymentResult.payer.email_address,
+      payerCountryCode: req.body.paymentResult.payer.address.country_code,
       payerFullName:
-        req.body.payer.name.given_name + " " + req.body.payer.name.surname,
-      update_time: req.body.update_time,
-      create_time: req.body.create_time,
+        req.body.paymentResult.payer.name.given_name + " " + req.body.paymentResult.payer.name.surname,
+      update_time: req.body.paymentResult.update_time,
+      create_time: req.body.paymentResult.create_time,
     };
     const updatedOrder = await order.save();
     mailgun().messages().send({

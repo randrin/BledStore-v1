@@ -23,6 +23,7 @@ const productSchema = new mongoose.Schema(
     price: { type: Number, default: 0.0, required: true },
     discountPrice: { type: Number, default: 0.0, required: false },
     countInStock: { type: Number, default: 0, required: true },
+    countSold: { type: Number, default: 0 },
     rating: { type: Number, default: 0.0, required: true },
     numReviews: { type: Number, default: 0, required: true },
     active: { type: Boolean, default: false },

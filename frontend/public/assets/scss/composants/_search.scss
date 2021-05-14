@@ -17,7 +17,7 @@
 
         .search-content {
             @include small() {
-                width: 0px;
+                width: auto;
             }
             margin: 30px;
             position: relative;
@@ -28,5 +28,4 @@
             }
         }
     }
-
 }

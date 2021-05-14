@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import config from "./config.js";
 import mg from "mailgun-js";
+import Product from "./models/productModel.js";
 
 export const generateToken = (user) => {
   return jwt.sign(
@@ -62,10 +63,33 @@ export const isSellerOrAdmin = (req, res, next) => {
   }
 };
 
-export const mailgun = () => mg({
-  apiKey: config.MAILGUN_API_KEY,
-  domain: config.MAILGUN_DOMAIN
-});
+export const decreaseQuantity = (req, res, next) => {
+  console.log("req.body: ", JSON.stringify(req.body.orderItems[0]))
+  let bulkOps = req.body.orderItems.map((item) => {
+    return {
+      updateOne: {
+        filter: { _id: item._id },
+        update: { $inc: { countInStock: -item.qty, countInSold: +item.qty } },
+      },
+    };
+  });
+
+  console.log("bulkOps: ", bulkOps)
+  Product.bulkWrite(bulkOps, {}, (error, products) => {
+    if (error) {
+      return res.status(400).json({
+        error: "Could not update product",
+      });
+    }
+    next();
+  });
+};
+
+export const mailgun = () =>
+  mg({
+    apiKey: config.MAILGUN_API_KEY,
+    domain: config.MAILGUN_DOMAIN,
+  });
 
 export const payOrderEmailTemplate = (order) => {
   return `<h1>Thanks you for shopping with us</h1>
@@ -81,13 +105,17 @@ export const payOrderEmailTemplate = (order) => {
       </tr>
     </thead>
     <tbody>
-    ${order.orderItems.map((item) => `
+    ${order.orderItems
+      .map(
+        (item) => `
       <tr>
         <td>${item.name}</td>
         <td align="center">${item.qty}</td>
         <td align="right">${item.price.toFixed(2)} €</td>
       </tr>
-    `).join('\n')}
+    `
+      )
+      .join("\n")}
     </tbody>
     <tfoot>
       <tr>
@@ -122,5 +150,5 @@ export const payOrderEmailTemplate = (order) => {
   </p>
   <hr/>
   <p>Thanks for shopping with us.</p>
-  `
+  `;
 };

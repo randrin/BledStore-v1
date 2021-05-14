@@ -33,7 +33,7 @@ export const payOrder = (order, paymentResult) => async (
         "Content-Type": "application/json",
         Authorization: `Bearer ${userInfo.token}`,
       },
-      data: paymentResult,
+      data: {order, paymentResult},
     });
     if (response.statusText !== "OK") {
       dispatch({ type: ADD_PAYMENT_FAIL, error: "Something went wrong !!!" });

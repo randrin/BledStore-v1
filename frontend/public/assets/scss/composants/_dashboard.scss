@@ -1,5 +1,88 @@
 .bledstore-dashboard-wrapper {
-    margin: 20px;
+    margin: 20px 20px 20px 0;
+
+    .bledstore-dashboard-col-1 {
+        flex: 1 1 20rem;
+        padding: 20px;
+        background-color: var(--bledstore-primary);
+
+        .bledstore-dashboard-left-wrapper {
+            display: grid;
+
+            .bledstore-dashboard-left-item {
+                margin: 10px 0;
+                cursor: pointer;
+                font-size: 18px;
+
+                .bledstore-dashboard-left-link {
+                    color: var(--bledstore-white);
+
+                    &.active {
+                        color: var(--bledstore-warning);
+                    }
+
+                    &:hover {
+                        color: var(--bledstore-warning);
+                    }
+
+                    .bledstore-dashboard-left-icon {
+                        padding-right: 5px;
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    .bledstore-dashboard-left-name {
+                        left: 5px;
+                        position: relative;
+                    }
+                }
+
+                .bledstore-dashboard-left-children {
+                    float: right;
+                    font-size: 18px;
+                    color: var(--bledstore-white);
+                    top: 3px;
+                    position: relative;
+                }
+
+                .bledstore-dashboard-left-children-menu {
+                    float: left;
+                    left: 30px;
+                    position: relative;
+                    font-size: 18px;
+                    color: var(--bledstore-white);
+
+                    .bledstore-dashboard-left-children-item {
+                        margin: 10px 0px;
+
+                        .bledstore-dashboard-left-children-link {
+                            color: var(--bledstore-white);
+
+                            &:hover {
+                                color: var(--bledstore-warning);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .bledstore-dashboard-col-3 {
+        flex: 32 1 80rem;
+        margin-left: 20px;
+
+        .bledstore-dashboard-product {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+
+            .bledstore-dashboard-product-img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
 
     .bledstore-dashboard-btn {
         margin: 30px 0px;

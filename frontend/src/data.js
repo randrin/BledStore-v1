@@ -5,35 +5,35 @@ const data = {
       name: "En Cours",
       icon: "fas fa-calendar-check",
       link: "/search/category/all/name/all",
-      count: 10
+      count: 10,
     },
     {
       _id: "7e7463da17824c269dbdff4b",
       name: "Flash Deals",
       icon: "fas fa-tags",
       link: "/search/category/all/name/all",
-      count: 5
+      count: 5,
     },
     {
       _id: "ef5244f734b645e4b653c2ce",
       name: "Nouveautés",
       icon: "fas fa-weight-hanging",
       link: "/search/category/all/name/all",
-      count: 40
+      count: 40,
     },
     {
       _id: "c052e69cd0024b788234a8e6",
       name: "Prochaines ventes",
       icon: "fas fa-clipboard-check",
       link: "/search/category/all/name/all",
-      count: 25
+      count: 25,
     },
     {
       _id: "a3ae909f08604034b944f098",
       name: "Derniers jours",
       icon: "fas fa-clock",
       link: "/search/category/all/name/all",
-      count: 19
+      count: 19,
     },
   ],
   sliders: [
@@ -312,6 +312,70 @@ const data = {
       countInStock: 1,
       price: 11,
       image: "/assets/images/products/product-15.jpg",
+    },
+  ],
+  dashboard: [
+    {
+      name: "Dashboard",
+      link: "/dashboard",
+      icon: "far fa-list-alt",
+    },
+    {
+      name: "Products",
+      link: "/productlist",
+      icon: "fas fa-gifts",
+      children: [
+        {
+          name: "Products",
+          link: "/productlist",
+        },
+        {
+          name: "Special Offers",
+          link: "/create/product",
+        },
+        {
+          name: "Pending Products",
+          link: "/create/product",
+        },
+        {
+          name: "Expired Products",
+          link: "/create/product",
+        },
+        {
+          name: "Add Product",
+          link: "/create/product",
+        },
+      ],
+    },
+    {
+      name: "Categories",
+      link: "/categoryList",
+      icon: "fas fa-shapes",
+      children: [
+        {
+          name: "Categories",
+          link: "/categoryList",
+        },
+        {
+          name: "Add Category",
+          link: "/create/category",
+        },
+      ],
+    },
+    {
+      name: "Brands",
+      link: "/brandList",
+      icon: "fab fa-delicious",
+      children: [
+        {
+          name: "Brands",
+          link: "/brandList",
+        },
+        {
+          name: "Add Brand",
+          link: "/create/brand",
+        },
+      ],
     },
   ],
 };
