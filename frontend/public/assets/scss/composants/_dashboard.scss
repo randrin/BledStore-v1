@@ -2,64 +2,106 @@
     margin: 20px 20px 20px 0;
 
     .bledstore-dashboard-col-1 {
-        flex: 1 1 20rem;
+        flex: 1 1 25rem;
         padding: 20px;
         background-color: var(--bledstore-primary);
 
         .bledstore-dashboard-left-wrapper {
             display: grid;
 
-            .bledstore-dashboard-left-item {
-                margin: 10px 0;
-                cursor: pointer;
-                font-size: 18px;
+            .bledstore-dashboard-left-profile {
+                margin: 20px 0;
+                display: flex;
+                border: 1px solid var(--bledstore-white);
+                border-radius: 5px;
+                padding: 10px;
 
-                .bledstore-dashboard-left-link {
+                .bledstore-dashboard-left-profile-img {
+                    img {
+                        border-radius: 50%;
+                        width: 80px;
+                        height: 80px;
+                    }
+                }
+
+                .bledstore-dashboard-left-profile-infos {
+                    display: grid;
+                    margin: 0 20px;
+
+                    .info-name {
+                        color: var(--bledstore-white);
+                        font-size: 18px;
+                        font-weight: 500;
+                    }
+
+                    .info-admin,
+                    .info-seller {
+                        color: var(--bledstore-warning);
+                    }
+                }
+            }
+
+            .bledstore-dashboard-left-container {
+                padding-bottom: 20px;
+
+                .bledstore-dashboard-left-section {
+                    text-transform: uppercase;
                     color: var(--bledstore-white);
+                    font-weight: 600;
+                }
 
-                    &.active {
-                        color: var(--bledstore-warning);
+                .bledstore-dashboard-left-item {
+                    margin: 20px 0;
+                    cursor: pointer;
+                    font-size: 18px;
+
+                    .bledstore-dashboard-left-link {
+                        color: var(--bledstore-white);
+
+                        &.active {
+                            color: var(--bledstore-warning);
+                        }
+
+                        &:hover {
+                            color: var(--bledstore-warning);
+                        }
+
+                        .bledstore-dashboard-left-icon {
+                            padding-right: 5px;
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        .bledstore-dashboard-left-name {
+                            left: 5px;
+                            position: relative;
+                        }
                     }
 
-                    &:hover {
-                        color: var(--bledstore-warning);
-                    }
-
-                    .bledstore-dashboard-left-icon {
-                        padding-right: 5px;
-                        width: 20px;
-                        height: 20px;
-                    }
-
-                    .bledstore-dashboard-left-name {
-                        left: 5px;
+                    .bledstore-dashboard-left-children {
+                        float: right;
+                        font-size: 18px;
+                        color: var(--bledstore-white);
+                        top: 3px;
                         position: relative;
                     }
-                }
 
-                .bledstore-dashboard-left-children {
-                    float: right;
-                    font-size: 18px;
-                    color: var(--bledstore-white);
-                    top: 3px;
-                    position: relative;
-                }
+                    .bledstore-dashboard-left-children-menu {
+                        // float: left;
+                        left: 30px;
+                        position: relative;
+                        font-size: 18px;
+                        color: var(--bledstore-white);
 
-                .bledstore-dashboard-left-children-menu {
-                    float: left;
-                    left: 30px;
-                    position: relative;
-                    font-size: 18px;
-                    color: var(--bledstore-white);
+                        .bledstore-dashboard-left-children-item {
+                            margin: 15px 0px;
 
-                    .bledstore-dashboard-left-children-item {
-                        margin: 10px 0px;
+                            .bledstore-dashboard-left-children-link {
+                                color: var(--bledstore-white);
 
-                        .bledstore-dashboard-left-children-link {
-                            color: var(--bledstore-white);
-
-                            &:hover {
-                                color: var(--bledstore-warning);
+                                &:hover {
+                                    color: var(--bledstore-warning);
+                                }
                             }
                         }
                     }
